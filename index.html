@@ -4,6 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Canvass — Cold email is broken. This is what replaced it.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -23,6 +26,10 @@
   --green:      #22c55e;
   --red:        #ef4444;
   --amber:      #f59e0b;
+  /* Glassmorphism tokens */
+  --glass-bg:     rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-blur:   16px;
 }
 
 html { scroll-behavior: smooth; }
@@ -30,10 +37,41 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 16px; line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* ── FOCUS STATES (keyboard accessibility) ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── CURSOR POINTER on all interactive elements ── */
+a, button, [role="button"], [onclick], label[for], select { cursor: pointer; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
 
 /* ── NAV ── */
@@ -41,18 +79,19 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 56px; height: 60px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(7,8,12,0.95);
-  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(7,8,12,0.75);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
 }
-.logo { font-size: 19px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo { font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
 .logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--accent); display: flex; align-items: center; justify-content: center; }
 .logo-mark svg { width: 13px; height: 13px; fill: #fff; }
 nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
 nav ul a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.18s; }
 nav ul a:hover { color: var(--text); }
-.nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 8px 20px; border-radius: 7px; font-weight: 700 !important; font-size: 13px !important; }
-.nav-cta:hover { opacity: 0.85 !important; }
+.nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 9px 20px; border-radius: 7px; font-weight: 700 !important; font-size: 13px !important; min-height: 36px; transition: opacity 0.18s, transform 0.18s !important; }
+.nav-cta:hover { opacity: 0.88 !important; transform: translateY(-1px) !important; }
 
 /* ── HERO ── */
 .hero {
@@ -71,19 +110,38 @@ nav ul a:hover { color: var(--text); }
   text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
 }
 h1 {
+  font-family: 'Outfit', sans-serif;
   font-size: clamp(54px, 7.5vw, 96px);
   font-weight: 900; letter-spacing: -4.5px; line-height: 0.93;
   margin-bottom: 30px; max-width: 960px;
+}
+h2 {
+  font-family: 'Outfit', sans-serif;
 }
 .hero-sub {
   font-size: 20px; color: var(--mid); max-width: 580px;
   margin: 0 auto 52px; line-height: 1.75;
 }
 .hero-cta { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 72px; }
-.btn-white { background: var(--text); color: var(--bg); padding: 14px 32px; border-radius: 9px; font-size: 15px; font-weight: 700; text-decoration: none; transition: opacity 0.15s; }
-.btn-white:hover { opacity: 0.88; }
-.btn-outline { border: 1px solid var(--border2); color: var(--mid); padding: 14px 28px; border-radius: 9px; font-size: 15px; font-weight: 500; text-decoration: none; transition: all 0.18s; }
-.btn-outline:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+.btn-white {
+  background: var(--text); color: var(--bg);
+  padding: 15px 32px; border-radius: 9px; font-size: 15px; font-weight: 700;
+  text-decoration: none; min-height: 48px; display: inline-flex; align-items: center;
+  transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 0 0 0 rgba(79,142,255,0);
+}
+.btn-white:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.btn-outline {
+  border: 1px solid var(--border2); color: var(--mid);
+  padding: 15px 28px; border-radius: 9px; font-size: 15px; font-weight: 500;
+  text-decoration: none; min-height: 48px; display: inline-flex; align-items: center;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.25); color: var(--text); background: rgba(255,255,255,0.04); }
 
 .stat-strip { display: flex; align-items: center; border: 1px solid var(--border2); border-radius: 12px; background: var(--surface); overflow: hidden; }
 .ss-item { padding: 16px 28px; text-align: center; border-right: 1px solid var(--border); }
@@ -301,11 +359,33 @@ h2 { font-size: clamp(34px, 4.5vw, 54px); font-weight: 900; letter-spacing: -2.5
 
 /* ── PRICING ── */
 .pricing-section { padding: 120px 24px; background: var(--bg2); }
-.pricing-grid { max-width: 960px; margin: 64px auto 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-.price-box { background: var(--surface); padding: 36px 28px; }
-.price-box.feat { background: var(--bg3); }
-.price-tier { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
-.price-n { font-size: 48px; font-weight: 900; letter-spacing: -2.5px; line-height: 1; margin-bottom: 6px; }
+.pricing-grid { max-width: 980px; margin: 64px auto 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.price-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.price-box:hover {
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.price-box.feat {
+  background: rgba(79,142,255,0.06);
+  border-color: rgba(79,142,255,0.35);
+  box-shadow: 0 0 40px rgba(79,142,255,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.price-box.feat:hover {
+  border-color: rgba(79,142,255,0.55);
+  box-shadow: 0 16px 48px rgba(79,142,255,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.price-tier { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.price-box.feat .price-tier { color: var(--accent); }
+.price-n { font-family: 'Outfit', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 6px; }
 .price-n sup { font-size: 22px; vertical-align: top; margin-top: 10px; font-weight: 700; }
 .price-n sub { font-size: 14px; color: var(--muted); font-weight: 400; vertical-align: baseline; }
 .price-tag { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.65; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
@@ -317,11 +397,17 @@ h2 { font-size: clamp(34px, 4.5vw, 54px); font-weight: 900; letter-spacing: -2.5
 .dim { color: var(--muted); }
 .dim .ck { color: var(--muted); }
 .price-list li strong { color: var(--text); font-weight: 600; }
-.price-btn { display: block; text-align: center; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none; transition: all 0.18s; }
+.price-btn {
+  display: block; text-align: center;
+  padding: 14px; border-radius: 9px; font-weight: 700; font-size: 14px;
+  text-decoration: none; min-height: 48px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+}
 .p-w { background: var(--text); color: var(--bg); }
-.p-w:hover { opacity: 0.88; }
-.p-g { border: 1px solid var(--border2); color: var(--text); }
-.p-g:hover { border-color: rgba(255,255,255,0.25); }
+.p-w:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.p-g { border: 1px solid var(--border2); color: var(--text); background: transparent; }
+.p-g:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); transform: translateY(-1px); }
 
 /* ── CTA ── */
 .cta-section { padding: 140px 24px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
@@ -608,19 +694,11 @@ footer p { color: var(--muted); font-size: 13px; }
   .pricing-section { padding: 72px 20px; }
   .pricing-grid {
     grid-template-columns: 1fr;
-    border: none;
-    border-radius: 0;
-    overflow: visible;
     gap: 14px;
     max-width: 100%;
   }
-  .price-box {
-    border: 1px solid var(--border);
-    border-radius: 14px;
-  }
-  .price-box.feat {
-    border-color: rgba(79,142,255,0.45);
-  }
+  .price-box { transform: none !important; }
+  .price-box:hover { transform: none !important; }
 
   /* CTA */
   .cta-section { padding: 80px 20px; }
@@ -699,8 +777,8 @@ footer p { color: var(--muted); font-size: 13px; }
 <section class="previews-section dot-grid" style="position:relative;">
   <div class="inner">
     <div style="text-align:center;">
-      <div class="section-eyebrow">Live Demo</div>
-      <h2>500 outreaches on Friday.<br/>11 replies by Monday morning.</h2>
+      <div class="section-eyebrow reveal">Live Demo</div>
+      <h2 class="reveal reveal-delay-1">500 outreaches on Friday.<br/>11 replies by Monday morning.</h2>
     </div>
     <div class="preview-cards">
 
@@ -873,8 +951,8 @@ footer p { color: var(--muted); font-size: 13px; }
   <div class="inner">
     <div class="insight-grid">
       <div class="insight-left">
-        <div class="section-eyebrow">Why It Works</div>
-        <h2>Every business built an inbox for new inquiries.<br/>Nobody's using it.</h2>
+        <div class="section-eyebrow reveal">Why It Works</div>
+        <h2 class="reveal reveal-delay-1">Every business built an inbox for new inquiries.<br/>Nobody's using it.</h2>
         <p class="insight-body">
           Every business publishes a contact form on their website — built for customers, vendors, and partners to reach them. <strong>It routes directly to the person who handles new leads.</strong> Not a spam folder. Not a promotions tab. Their actual inbox.<br/><br/>
           Salespeople occasionally fill these out manually. It works well. But nobody does it at scale — finding each form, filling every field, solving CAPTCHAs, and writing a message for 500 companies would take days.<br/><br/>
@@ -923,8 +1001,8 @@ footer p { color: var(--muted); font-size: 13px; }
 <!-- VS -->
 <section class="vs-section">
   <div class="inner">
-    <div class="section-eyebrow">Cold Email vs. Canvass</div>
-    <h2>You've been paying for<br/>a broken channel.</h2>
+    <div class="section-eyebrow reveal">Cold Email vs. Canvass</div>
+    <h2 class="reveal reveal-delay-1">You've been paying for<br/>a broken channel.</h2>
     <div class="vs-grid">
       <div class="vs-col">
         <div class="vs-head"><div class="vs-title">Cold Email</div><div class="vs-tag tag-old">The broken channel</div></div>
@@ -1256,8 +1334,8 @@ footer p { color: var(--muted); font-size: 13px; }
 <section id="pricing" class="pricing-section">
   <div class="inner">
     <div style="text-align:center;">
-      <div class="section-eyebrow">Pricing</div>
-      <h2>Replace a $600/mo stack<br/>with one flat price.</h2>
+      <div class="section-eyebrow reveal">Pricing</div>
+      <h2 class="reveal reveal-delay-1">Replace a $600/mo stack<br/>with one flat price.</h2>
       <p class="section-sub" style="margin:0 auto 40px;">Database, automation, reply tracking, and CRM push — all included. No data vendor. No warmup tool. No sending infrastructure.</p>
       <!-- Annual toggle -->
       <div id="billing-toggle" style="display:inline-flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:6px 16px;margin-bottom:48px;font-size:13px;cursor:pointer;user-select:none;" onclick="toggleBilling()">
@@ -1300,7 +1378,7 @@ footer p { color: var(--muted); font-size: 13px; }
       </script>
     </div>
     <div class="pricing-grid">
-      <div class="price-box">
+      <div class="price-box reveal">
         <div class="price-tier">Starter</div>
         <div class="price-n"><sup>$</sup>0<sub>/mo</sub></div>
         <p class="price-tag">Try it with your own list. No credit card, no time limit.</p>
@@ -1315,7 +1393,7 @@ footer p { color: var(--muted); font-size: 13px; }
         </ul>
         <a href="#" class="price-btn p-g">Start Free — No Card</a>
       </div>
-      <div class="price-box feat">
+      <div class="price-box feat reveal reveal-delay-1">
         <div class="price-tier">Growth — Most Popular</div>
         <div class="price-n"><sup>$</sup><span id="price-growth">149</span><sub>/mo</sub></div>
         <p class="price-tag" id="price-tag-growth">That's <strong>$0.015 per outreach</strong>. Cold email costs 40× more per reply.</p>
@@ -1331,7 +1409,7 @@ footer p { color: var(--muted); font-size: 13px; }
         </ul>
         <a href="#" class="price-btn p-w">Start 14-Day Free Trial</a>
       </div>
-      <div class="price-box">
+      <div class="price-box reveal reveal-delay-2">
         <div class="price-tier">Scale</div>
         <div class="price-n"><sup>$</sup><span id="price-scale">399</span><sub>/mo</sub></div>
         <p class="price-tag">For agencies and teams running outreach at full volume.</p>
@@ -1376,5 +1454,20 @@ footer p { color: var(--muted); font-size: 13px; }
   </div>
 </footer>
 
+<script>
+// Scroll reveal — IntersectionObserver, no library needed
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
