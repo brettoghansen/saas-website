@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Canvass — Cold email is broken. This is what replaced it.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #07080c;
+  --bg2:        #0a0b11;
+  --bg3:        #0d0f1a;
+  --surface:    #0d0f18;
+  --elevated:   #111422;
+  --border:     rgba(255,255,255,0.07);
+  --border2:    rgba(255,255,255,0.13);
+  --accent:     #4f8eff;
+  --accent-dim: rgba(79,142,255,0.10);
+  --text:       #eef0f8;
+  --muted:      #454d6a;
+  --mid:        #7a86a8;
+  --green:      #22c55e;
+  --red:        #ef4444;
+  --amber:      #f59e0b;
+  /* Glassmorphism tokens */
+  --glass-bg:     rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.10);
+  --glass-blur:   16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px; line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── FOCUS STATES (keyboard accessibility) ── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── CURSOR POINTER on all interactive elements ── */
+a, button, [role="button"], [onclick], label[for], select { cursor: pointer; }
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 56px; height: 60px;
+  border-bottom: 1px solid var(--glass-border);
+  background: rgba(7,8,12,0.75);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+.logo { font-family: 'Outfit', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--accent); display: flex; align-items: center; justify-content: center; }
+.logo-mark svg { width: 13px; height: 13px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.18s; }
+nav ul a:hover { color: var(--text); }
+.nav-cta { background: var(--text) !important; color: var(--bg) !important; padding: 9px 20px; border-radius: 7px; font-weight: 700 !important; font-size: 13px !important; min-height: 36px; transition: opacity 0.18s, transform 0.18s !important; }
+.nav-cta:hover { opacity: 0.88 !important; transform: translateY(-1px) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 140px 24px 100px;
+  position: relative; overflow: hidden;
+}
+.hero-glow {
+  position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+  width: 1100px; height: 680px; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 10%, rgba(79,142,255,0.09) 0%, transparent 55%);
+}
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
+}
+h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(54px, 7.5vw, 96px);
+  font-weight: 900; letter-spacing: -4.5px; line-height: 0.93;
+  margin-bottom: 30px; max-width: 960px;
+}
+h2 {
+  font-family: 'Outfit', sans-serif;
+}
+.hero-sub {
+  font-size: 20px; color: var(--mid); max-width: 580px;
+  margin: 0 auto 52px; line-height: 1.75;
+}
+.hero-cta { display: flex; align-items: center; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 72px; }
+.btn-white {
+  background: var(--text); color: var(--bg);
+  padding: 15px 32px; border-radius: 9px; font-size: 15px; font-weight: 700;
+  text-decoration: none; min-height: 48px; display: inline-flex; align-items: center;
+  transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 0 0 0 rgba(79,142,255,0);
+}
+.btn-white:hover {
+  opacity: 0.92;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+.btn-outline {
+  border: 1px solid var(--border2); color: var(--mid);
+  padding: 15px 28px; border-radius: 9px; font-size: 15px; font-weight: 500;
+  text-decoration: none; min-height: 48px; display: inline-flex; align-items: center;
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.25); color: var(--text); background: rgba(255,255,255,0.04); }
+
+.stat-strip { display: flex; align-items: center; border: 1px solid var(--border2); border-radius: 12px; background: var(--surface); overflow: hidden; }
+.ss-item { padding: 16px 28px; text-align: center; border-right: 1px solid var(--border); }
+.ss-item:last-child { border-right: none; }
+.ssv { font-size: 24px; font-weight: 900; letter-spacing: -1px; margin-bottom: 2px; }
+.ssv.accent { color: var(--accent); }
+.ssl { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+/* ── ANIMATED PREVIEWS ── */
+.previews-section { padding: 100px 24px; background: var(--bg2); overflow: hidden; }
+.preview-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; max-width: 1060px; margin: 56px auto 0; }
+.preview-card { border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--surface); animation: card-float 6s ease-in-out infinite; }
+.preview-card:nth-child(2) { animation-delay: -2s; }
+.preview-card:nth-child(3) { animation-delay: -4s; }
+@keyframes card-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.preview-chrome { background: var(--elevated); padding: 9px 12px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); }
+.chrome-dots { display: flex; gap: 5px; }
+.chrome-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+.chrome-bar { flex: 1; background: rgba(255,255,255,0.04); border-radius: 4px; height: 15px; display: flex; align-items: center; padding: 0 8px; }
+.chrome-url { font-size: 10px; color: var(--muted); }
+.preview-window { height: 210px; overflow: hidden; position: relative; }
+.preview-scroll-track { animation: scroll-up 12s linear infinite; }
+.preview-card:nth-child(2) .preview-scroll-track { animation-duration: 9s; }
+.preview-card:nth-child(3) .preview-scroll-track { animation-duration: 15s; }
+@keyframes scroll-up { 0%{transform:translateY(0)} 100%{transform:translateY(-50%)} }
+.preview-fade-bottom { position: absolute; bottom: 0; left: 0; right: 0; height: 60px; background: linear-gradient(transparent, var(--surface)); pointer-events: none; }
+.pv-row { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pv-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.pv-ok { background: var(--green); }
+.pv-info { background: var(--accent); }
+.pv-warn { background: var(--amber); }
+.pv-body { flex: 1; min-width: 0; }
+.pv-name { font-weight: 600; font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-detail { font-size: 10px; color: var(--muted); }
+.pv-time { font-size: 10px; color: var(--muted); flex-shrink: 0; }
+.pv-reply-row { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pv-reply-row.hot { background: rgba(34,197,94,0.04); }
+.pv-reply-head { display: flex; justify-content: space-between; margin-bottom: 3px; }
+.pv-reply-co { font-size: 11px; font-weight: 700; }
+.pv-reply-time { font-size: 10px; color: var(--muted); }
+.pv-reply-preview { font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pv-db-row { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.pv-db-name { font-weight: 600; font-size: 11px; }
+.pv-db-meta { color: var(--muted); font-size: 10px; }
+.pv-db-tag { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 4px; background: var(--accent-dim); color: var(--accent); }
+.preview-footer { padding: 10px 14px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; color: var(--mid); display: flex; align-items: center; justify-content: space-between; }
+.live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 6px var(--green); display: inline-block; margin-right: 5px; animation: blink 1.5s infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ── SHARED ── */
+.inner { max-width: 1060px; margin: 0 auto; }
+.section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+h2 { font-size: clamp(34px, 4.5vw, 54px); font-weight: 900; letter-spacing: -2.5px; line-height: 1.04; margin-bottom: 18px; }
+.section-sub { font-size: 18px; color: var(--mid); max-width: 580px; line-height: 1.8; margin-bottom: 60px; }
+.section-line { height: 1px; background: var(--border); }
+
+/* ── PAIN ── */
+.pain-section { padding: 120px 24px; }
+.pain-inner { max-width: 820px; margin: 0 auto; }
+.pain-lede { font-size: clamp(22px, 3vw, 32px); font-weight: 800; letter-spacing: -1px; line-height: 1.25; margin-bottom: 48px; color: var(--text); }
+.pain-lede span { color: var(--muted); }
+.pain-items { display: flex; flex-direction: column; gap: 0; margin-bottom: 56px; }
+.pain-item { display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.pain-item:first-child { border-top: 1px solid var(--border); }
+.pain-x { font-size: 13px; color: var(--red); font-weight: 700; flex-shrink: 0; width: 16px; margin-top: 2px; }
+.pain-item-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+.pain-item-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.pain-callout { padding: 28px 32px; border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; background: var(--surface); }
+.pain-callout p { font-size: 19px; color: var(--mid); line-height: 1.8; font-style: italic; }
+.pain-callout p strong { color: var(--text); font-style: normal; }
+
+/* ── INSIGHT ── */
+.insight-section { padding: 120px 24px; background: var(--bg2); }
+.insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.insight-left h2 { margin-bottom: 24px; }
+.insight-left .insight-body { font-size: 17px; color: var(--mid); line-height: 1.85; margin-bottom: 32px; }
+.insight-left .insight-body strong { color: var(--text); }
+.insight-bullets { display: flex; flex-direction: column; gap: 14px; }
+.insight-bullet { display: flex; align-items: flex-start; gap: 12px; }
+.ibdot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 9px; }
+.insight-bullet p { font-size: 15px; color: var(--mid); line-height: 1.7; }
+.insight-bullet strong { color: var(--text); }
+.insight-visual { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.iv-head { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.iv-title { font-size: 13px; font-weight: 700; }
+.iv-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; background: rgba(34,197,94,0.12); color: var(--green); }
+.iv-inbox-row { padding: 16px 24px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.iv-inbox-row.unread { background: rgba(79,142,255,0.04); }
+.iv-from { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.iv-from-name { font-size: 13px; font-weight: 700; }
+.iv-from-time { font-size: 11px; color: var(--muted); }
+.iv-subject { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+.iv-preview { font-size: 12px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.iv-footer { padding: 14px 24px; display: flex; align-items: center; gap: 8px; background: rgba(34,197,94,0.04); border-top: 1px solid var(--border); }
+.iv-footer-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 5px var(--green); }
+.iv-footer-text { font-size: 12px; color: var(--mid); }
+.iv-footer-text strong { color: var(--text); }
+
+/* ── VS ── */
+.vs-section { padding: 120px 24px; }
+.vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 64px; }
+.vs-col { background: var(--surface); }
+.vs-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+.vs-title { font-size: 15px; font-weight: 800; letter-spacing: -0.3px; }
+.vs-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em; }
+.tag-old { background: rgba(255,255,255,0.05); color: var(--muted); }
+.tag-new { background: var(--accent-dim); color: var(--accent); }
+.vs-row { display: flex; align-items: flex-start; gap: 12px; padding: 18px 28px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.vs-row:last-child { border-bottom: none; }
+.vs-icon { font-size: 13px; flex-shrink: 0; margin-top: 2px; width: 16px; }
+.vs-body h4 { font-size: 14px; font-weight: 700; margin-bottom: 5px; }
+.vs-body p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.vs-col.right .vs-row { border-left: 1px solid rgba(255,255,255,0.04); }
+.vs-col.right .vs-head { border-left: 1px solid var(--border); }
+
+/* ── HOW IT WORKS ── */
+.how-section { padding: 120px 24px; background: var(--bg2); }
+.how-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; margin-top: 72px; position: relative; }
+.how-line { position: absolute; top: 26px; left: calc(10% + 18px); right: calc(10% + 18px); height: 1px; background: var(--border); z-index: 0; }
+.how-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 10px; position: relative; z-index: 1; }
+.how-circle { width: 52px; height: 52px; border-radius: 50%; background: var(--surface); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 17px; margin-bottom: 20px; }
+.how-step.on .how-circle { background: var(--accent-dim); border-color: rgba(79,142,255,0.3); }
+.how-step h4 { font-size: 13px; font-weight: 800; margin-bottom: 7px; letter-spacing: -0.2px; }
+.how-step p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.how-human-note { margin-top: 56px; display: flex; align-items: flex-start; gap: 18px; padding: 28px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; }
+.human-icon { font-size: 22px; flex-shrink: 0; }
+.human-note p { font-size: 15px; color: var(--mid); line-height: 1.8; }
+.human-note strong { color: var(--text); }
+
+/* ── UNDER THE HOOD ── */
+.hood-section { padding: 120px 24px; }
+.hood-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 64px; }
+.hood-box { background: var(--surface); padding: 32px 28px; }
+.hood-box.mid { background: var(--bg3); border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.hood-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+.hood-box h3 { font-size: 18px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+.hood-box p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+.hood-detail { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+.hood-row { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--mid); }
+.hood-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+/* ── DATABASE ── */
+.db-section { padding: 120px 24px; background: var(--bg2); }
+.db-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.db-num { font-size: clamp(80px, 10vw, 120px); font-weight: 900; letter-spacing: -6px; line-height: 0.88; margin-bottom: 14px; }
+.db-num span { color: var(--accent); }
+.db-desc { font-size: 17px; color: var(--mid); line-height: 1.85; margin-bottom: 32px; }
+.db-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 32px; }
+.db-tag { background: var(--surface); border: 1px solid var(--border); border-radius: 100px; padding: 5px 13px; font-size: 12px; color: var(--mid); font-weight: 500; }
+.db-bullets { display: flex; flex-direction: column; gap: 12px; }
+.db-bullet { display: flex; gap: 10px; font-size: 14px; color: var(--mid); line-height: 1.7; }
+.db-bullet strong { color: var(--text); }
+.db-bdot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+.db-table { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; }
+.db-head { padding: 14px 18px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+.db-head-title { font-size: 12px; font-weight: 700; }
+.db-head-sub { font-size: 11px; color: var(--muted); }
+.db-row { display: grid; grid-template-columns: 1fr 1fr 1fr 70px; gap: 10px; padding: 11px 18px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; align-items: center; }
+.db-row:last-child { border-bottom: none; }
+.db-row.hr { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.db-co { font-weight: 600; }
+.db-meta { color: var(--muted); }
+.tier { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px; text-align: center; }
+.t-free { background: rgba(255,255,255,0.05); color: var(--muted); }
+.t-pro { background: var(--accent-dim); color: var(--accent); }
+.db-foot { padding: 12px 18px; text-align: center; font-size: 11px; color: var(--muted); border-top: 1px solid var(--border); background: rgba(255,255,255,0.01); }
+
+/* ── WORKFLOW ── */
+.workflow-section { padding: 120px 24px; }
+.workflow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.workflow-items { display: flex; flex-direction: column; }
+.wf-item { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.wf-item:first-child { border-top: 1px solid var(--border); }
+.wf-icon { width: 42px; height: 42px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border2); display: flex; align-items: center; justify-content: center; font-size: 17px; flex-shrink: 0; margin-top: 2px; }
+.wf-body h4 { font-size: 16px; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.3px; }
+.wf-body p { font-size: 14px; color: var(--muted); line-height: 1.75; }
+.new-pill { display: inline-flex; margin-top: 8px; background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(79,142,255,0.2); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 4px; }
+.workflow-visual { display: flex; flex-direction: column; gap: 12px; }
+.wv { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; }
+.wv-head { display: flex; justify-content: space-between; margin-bottom: 12px; align-items: center; }
+.wv-title { font-size: 12px; font-weight: 700; }
+.wv-val { font-size: 11px; font-weight: 700; color: var(--accent); }
+.wv-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; }
+.wv-row:last-child { border-bottom: none; padding-bottom: 0; }
+.wv-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+.wv-g { background: var(--green); }
+.wv-b { background: var(--accent); }
+.wv-a { background: var(--amber); }
+.wv-co { font-weight: 600; flex: 1; }
+.wv-st { font-size: 10px; color: var(--muted); }
+.wv-crm { display: flex; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid var(--border); margin-top: 4px; font-size: 12px; }
+.wv-crm-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); }
+.wv-crm p { color: var(--mid); }
+.wv-crm strong { color: var(--text); }
+.wv-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.wv-stat { text-align: center; padding: 14px; background: var(--elevated); border-radius: 8px; }
+.wv-stat-n { font-size: 26px; font-weight: 900; letter-spacing: -1px; }
+.wv-stat-l { font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+/* ── INTEGRATIONS ── */
+.integrations-section { padding: 120px 24px; background: var(--bg2); }
+
+/* ── REVIEWS ── */
+.reviews-section { padding: 120px 24px; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 56px; }
+.review-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 26px; display: flex; flex-direction: column; gap: 16px; transition: border-color 0.18s; }
+.review-card:hover { border-color: var(--border2); }
+.review-stars { color: var(--amber); font-size: 13px; letter-spacing: 1px; }
+.review-quote { font-size: 14px; color: var(--mid); line-height: 1.75; flex: 1; }
+.review-quote strong { color: var(--text); font-weight: 600; }
+.review-person { display: flex; align-items: center; gap: 11px; padding-top: 16px; border-top: 1px solid var(--border); }
+.review-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border2); }
+.review-name { font-size: 13px; font-weight: 700; margin-bottom: 1px; }
+.review-role { font-size: 11px; color: var(--muted); }
+
+/* ── PRICING ── */
+.pricing-section { padding: 120px 24px; background: var(--bg2); }
+.pricing-grid { max-width: 980px; margin: 64px auto 0; display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.price-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+.price-box:hover {
+  border-color: rgba(255,255,255,0.18);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+.price-box.feat {
+  background: rgba(79,142,255,0.06);
+  border-color: rgba(79,142,255,0.35);
+  box-shadow: 0 0 40px rgba(79,142,255,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.price-box.feat:hover {
+  border-color: rgba(79,142,255,0.55);
+  box-shadow: 0 16px 48px rgba(79,142,255,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.price-tier { font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+.price-box.feat .price-tier { color: var(--accent); }
+.price-n { font-family: 'Outfit', sans-serif; font-size: 52px; font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 6px; }
+.price-n sup { font-size: 22px; vertical-align: top; margin-top: 10px; font-weight: 700; }
+.price-n sub { font-size: 14px; color: var(--muted); font-weight: 400; vertical-align: baseline; }
+.price-tag { font-size: 13px; color: var(--muted); margin-bottom: 24px; line-height: 1.65; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.price-db { margin-bottom: 20px; padding: 10px 12px; background: var(--accent-dim); border-radius: 7px; border: 1px solid rgba(79,142,255,0.18); font-size: 12px; color: var(--mid); line-height: 1.5; }
+.price-db strong { color: var(--accent); }
+.price-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+.price-list li { display: flex; align-items: flex-start; gap: 9px; font-size: 13px; color: var(--mid); }
+.ck { color: var(--accent); font-weight: 700; flex-shrink: 0; }
+.dim { color: var(--muted); }
+.dim .ck { color: var(--muted); }
+.price-list li strong { color: var(--text); font-weight: 600; }
+.price-btn {
+  display: block; text-align: center;
+  padding: 14px; border-radius: 9px; font-weight: 700; font-size: 14px;
+  text-decoration: none; min-height: 48px; line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: opacity 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.p-w { background: var(--text); color: var(--bg); }
+.p-w:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+.p-g { border: 1px solid var(--border2); color: var(--text); background: transparent; }
+.p-g:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); transform: translateY(-1px); }
+
+/* ── CTA ── */
+.cta-section { padding: 140px 24px; text-align: center; border-top: 1px solid var(--border); position: relative; overflow: hidden; }
+.cta-section::before { content: ''; position: absolute; top: -80px; left: 50%; transform: translateX(-50%); width: 700px; height: 400px; background: radial-gradient(ellipse, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.cta-section h2 { margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+
+/* ── VISUAL DESIGN — GRID + TEXTURE + GLOW ─────────────────────────────────── */
+
+/* Dot grid overlay — applied to sections via class */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.line-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Hero grid — perspective-ish uniform grid that fades out */
+.hero-bg-grid {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.hero-bg-grid::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(79,142,255,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,142,255,0.045) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, rgba(0,0,0,0.9) 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 35%, rgba(0,0,0,0.9) 20%, transparent 80%);
+}
+
+/* Scattered star dots in hero */
+.hero-stars { position: absolute; inset: 0; pointer-events: none; }
+.hero-star {
+  position: absolute; border-radius: 50%;
+  background: rgba(255,255,255,0.55);
+  animation: star-pulse 4s ease-in-out infinite;
+}
+@keyframes star-pulse { 0%,100%{opacity:.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.4)} }
+
+/* Decorative glow blob */
+.glow-blob {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(80px); opacity: 0.12;
+}
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(125deg, var(--accent) 20%, #a78bfa 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border card — used with .gb wrapper */
+.gb-card {
+  position: relative;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.gb-card::before {
+  content: '';
+  position: absolute; inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(79,142,255,0.28), rgba(167,139,250,0.12), rgba(79,142,255,0.06));
+  z-index: -1;
+}
+
+/* Section accent line — thin gradient bar at top of dark sections */
+.section-accent-line {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 320px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), transparent);
+}
+
+/* How-it-works connector arrow */
+.how-connector {
+  position: absolute; top: 22px;
+  display: flex; align-items: center;
+  pointer-events: none; z-index: 0;
+}
+.how-connector svg { opacity: 0.25; }
+
+/* Squiggly / decorative underline on key word */
+.deco-underline {
+  position: relative; display: inline-block;
+}
+.deco-underline::after {
+  content: '';
+  position: absolute; left: 0; bottom: -6px; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a78bfa);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Angle divider between sections */
+.angle-top {
+  position: absolute; top: 0; left: 0; right: 0;
+  overflow: hidden; line-height: 0;
+}
+.angle-top svg { display: block; width: 100%; height: 32px; }
+
+/* Hood cards — improved accent strip on top */
+.hood-box { position: relative; overflow: hidden; }
+.hood-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.hood-box:hover::before { opacity: 1; }
+.hood-box.mid::before {
+  background: linear-gradient(90deg, transparent, rgba(167,139,250,0.5), transparent);
+}
+
+/* Review card polish */
+.review-card { position: relative; overflow: hidden; }
+.review-card::before {
+  content: '"';
+  position: absolute; top: 12px; right: 20px;
+  font-size: 80px; font-weight: 900; line-height: 1;
+  color: rgba(79,142,255,0.07);
+  font-family: Georgia, serif;
+  pointer-events: none;
+}
+
+/* Pain section red accent */
+.pain-section {
+  position: relative; overflow: hidden;
+}
+.pain-section::before {
+  content: '';
+  position: absolute; top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(239,68,68,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* DB number gradient */
+.db-num .grad-digit {
+  background: linear-gradient(135deg, var(--accent) 30%, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Stat strip glow on value */
+.ssv.accent { text-shadow: 0 0 28px rgba(79,142,255,0.4); }
+
+/* Integration card subtle top accent */
+.int-card-accent {
+  height: 2px; border-radius: 1px; margin-bottom: 20px;
+  background: linear-gradient(90deg, rgba(79,142,255,0.4), rgba(167,139,250,0.3), transparent);
+}
+
+/* Pricing featured card top glow */
+.price-box.feat {
+  position: relative; overflow: hidden;
+}
+.price-box.feat::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), rgba(167,139,250,0.8), transparent);
+}
+
+/* Workflow icon ring glow */
+.wf-icon {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.wf-item:hover .wf-icon {
+  box-shadow: 0 0 16px rgba(79,142,255,0.2);
+  border-color: rgba(79,142,255,0.35);
+}
+
+/* Animated gradient on CTA button */
+@keyframes btn-glow { 0%,100%{box-shadow:0 0 16px rgba(79,142,255,0.3)} 50%{box-shadow:0 0 28px rgba(79,142,255,0.55)} }
+.btn-white { animation: btn-glow 3s ease-in-out infinite; }
+
+/* ── FOOTER ── */
+footer { padding: 36px 56px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+footer p { color: var(--muted); font-size: 13px; }
+.footer-links { display: flex; gap: 28px; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.18s; }
+.footer-links a:hover { color: var(--text); }
+
+/* ── RESPONSIVE ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Nav — logo + CTA only */
+  nav { padding: 0 20px; }
+  nav ul li:not(:last-child) { display: none; }
+
+  /* Shared */
+  h2 { font-size: clamp(30px, 7vw, 44px); letter-spacing: -1.5px; }
+  .section-sub { font-size: 16px; margin-bottom: 40px; }
+
+  /* Hero */
+  .hero { padding: 110px 20px 72px; }
+  h1 { font-size: clamp(40px, 11vw, 62px); letter-spacing: -2.5px; }
+  .hero-sub { font-size: 17px; max-width: 100%; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .btn-white, .btn-outline { text-align: center; padding: 16px 24px; font-size: 16px; }
+
+  /* Stat strip — 2×2 grid */
+  .stat-strip { display: grid; grid-template-columns: 1fr 1fr; border-radius: 12px; }
+  .ss-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 16px 12px; }
+  .ss-item:nth-child(odd) { border-right: 1px solid var(--border) !important; }
+  .ss-item:nth-child(3), .ss-item:nth-child(4) { border-bottom: none; }
+  .ssv { font-size: 18px; }
+  .ssl { font-size: 10px; }
+
+  /* Previews */
+  .previews-section { padding: 60px 20px; }
+  .preview-cards { grid-template-columns: 1fr; max-width: 100%; }
+  .preview-card:nth-child(n+2) { display: none; }
+
+  /* Pain — trim body text on mobile */
+  .pain-section { padding: 72px 20px; }
+  .pain-lede { font-size: 22px; }
+  .pain-item-body p { display: none; }
+  .pain-item { padding: 16px 0; }
+  .pain-item-body h4 { font-size: 16px; }
+  .pain-callout p { font-size: 16px; }
+
+  /* Insight */
+  .insight-section { padding: 72px 20px; }
+  .insight-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* VS */
+  .vs-section { padding: 72px 20px; }
+  .vs-grid { grid-template-columns: 1fr; }
+  .vs-col.right .vs-row { border-left: none; }
+  .vs-col.right .vs-head { border-left: none; border-top: 2px solid var(--border); }
+  .vs-body p { display: none; }
+  .vs-body h4 { font-size: 14px; }
+
+  /* How it works */
+  .how-section { padding: 72px 20px; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .how-steps > svg { display: none; }
+  .how-circle { width: 44px; height: 44px; font-size: 15px; }
+  .how-step h4 { font-size: 13px; }
+  .how-step p { font-size: 11px; }
+
+  /* Under the hood */
+  .hood-section { padding: 72px 20px; }
+  .hood-grid { grid-template-columns: 1fr; }
+  .hood-box.mid { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .hood-box p { font-size: 14px; }
+
+  /* Database */
+  .db-section { padding: 72px 20px; }
+  .db-grid { grid-template-columns: 1fr; gap: 40px; }
+  .db-num { font-size: 80px; letter-spacing: -4px; }
+  .db-desc { font-size: 16px; }
+
+  /* Workflow */
+  .workflow-section { padding: 72px 20px; }
+  .workflow-grid { grid-template-columns: 1fr; gap: 40px; }
+  .wf-body p { font-size: 13px; }
+
+  /* Integrations — id-targeted */
+  .integrations-section { padding: 72px 20px; }
+  #int-cols { display: flex !important; flex-direction: column !important; border-radius: 12px; }
+  #int-cols > div { border-left: none !important; border-top: 1px solid var(--border) !important; padding: 24px 20px !important; }
+  #int-cols > div:first-child { border-top: none !important; }
+
+  /* Reviews — first 3 only */
+  .reviews-section { padding: 72px 20px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+  .review-card:nth-child(n+4) { display: none; }
+  .review-quote { font-size: 15px; }
+
+  /* Pricing — each box as a card */
+  .pricing-section { padding: 72px 20px; }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 100%;
+  }
+  .price-box { transform: none !important; }
+  .price-box:hover { transform: none !important; }
+
+  /* CTA */
+  .cta-section { padding: 80px 20px; }
+  .cta-section h2 { font-size: clamp(28px, 7vw, 42px); }
+  .cta-section p { font-size: 16px; }
+
+  /* Footer */
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  .stat-strip { grid-template-columns: 1fr; }
+  .ss-item { border-right: none !important; }
+  .ss-item:nth-child(3) { border-bottom: 1px solid var(--border) !important; }
+  .ss-item:nth-child(4) { border-bottom: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">
+    <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Canvass
+  </a>
+  <ul>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#database">Database</a></li>
+    <li><a href="#workflow">Workflow</a></li>
+    <li><a href="#integrations">Integrations</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#" class="nav-cta">Start Free →</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-bg-grid"></div>
+  <!-- Scattered star dots -->
+  <div class="hero-stars">
+    <div class="hero-star" style="width:2px;height:2px;top:18%;left:12%;animation-delay:0s;animation-duration:3.5s;"></div>
+    <div class="hero-star" style="width:2px;height:2px;top:31%;left:22%;animation-delay:1.2s;animation-duration:4.8s;"></div>
+    <div class="hero-star" style="width:3px;height:3px;top:14%;left:38%;animation-delay:0.4s;animation-duration:5.5s;"></div>
+    <div class="hero-star" style="width:2px;height:2px;top:42%;left:74%;animation-delay:2.1s;animation-duration:3.9s;"></div>
+    <div class="hero-star" style="width:3px;height:3px;top:22%;left:82%;animation-delay:0.8s;animation-duration:6s;"></div>
+    <div class="hero-star" style="width:2px;height:2px;top:56%;left:88%;animation-delay:3s;animation-duration:4.2s;"></div>
+    <div class="hero-star" style="width:2px;height:2px;top:12%;left:60%;animation-delay:1.7s;animation-duration:5.1s;"></div>
+    <div class="hero-star" style="width:2px;height:2px;top:68%;left:15%;animation-delay:0.3s;animation-duration:4.6s;"></div>
+  </div>
+  <!-- Decorative glow blobs -->
+  <div class="glow-blob" style="width:500px;height:500px;top:-100px;left:-120px;background:var(--accent);"></div>
+  <div class="glow-blob" style="width:400px;height:400px;bottom:-80px;right:-100px;background:#7c3aed;"></div>
+  <div class="eyebrow">Outbound Sales Platform</div>
+
+  <h1>Cold email is broken.<br/>This is what<br/><span class="grad-text">replaced it.</span></h1>
+
+  <p class="hero-sub">Every business publishes a contact form for new inquiries. It goes straight to their inbox — no spam filter, no promotions tab. Canvass finds those forms, fills them in, and submits your message automatically. You write it once. We reach hundreds of businesses while you're doing something else.</p>
+
+  <div class="hero-cta">
+    <a href="#" class="btn-white">Start Free — No Credit Card →</a>
+    <a href="#how" class="btn-outline">See how it works</a>
+  </div>
+
+  <div class="stat-strip">
+    <div class="ss-item"><div class="ssv accent">100M+</div><div class="ssl">businesses in database</div></div>
+    <div class="ss-item"><div class="ssv">Zero warmup</div><div class="ssl">no domain. starts today.</div></div>
+    <div class="ss-item"><div class="ssv">Inquiry inbox</div><div class="ssl">bypasses spam entirely</div></div>
+    <div class="ss-item"><div class="ssv">Set it once</div><div class="ssl">runs while you sleep</div></div>
+  </div>
+</section>
+
+<!-- ANIMATED PREVIEWS -->
+<section class="previews-section dot-grid" style="position:relative;">
+  <div class="inner">
+    <div style="text-align:center;">
+      <div class="section-eyebrow reveal">Live Demo</div>
+      <h2 class="reveal reveal-delay-1">500 outreaches on Friday.<br/>11 replies by Monday morning.</h2>
+    </div>
+    <div class="preview-cards">
+
+      <!-- Card 1: Live Activity -->
+      <div class="preview-card">
+        <div class="preview-chrome">
+          <div class="chrome-dots"><div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div></div>
+          <div class="chrome-bar"><span class="chrome-url">canvass.io/campaigns</span></div>
+        </div>
+        <div class="preview-window">
+          <div class="preview-scroll-track">
+            <div style="padding:10px 0;">
+              <div style="padding:6px 14px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Live Activity <span class="live-dot"></span></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Gulf Coast Fence & Gate</div><div class="pv-detail">Inquiry sent · Houston, TX</div></div><div class="pv-time">1m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-info"></div><div class="pv-body"><div class="pv-name">Lone Star Fencing LLC</div><div class="pv-detail">Replied — pushed to HubSpot</div></div><div class="pv-time">4m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Houston Fence Pros</div><div class="pv-detail">Inquiry sent · Dallas, TX</div></div><div class="pv-time">7m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-warn"></div><div class="pv-body"><div class="pv-name">Texas Gate & Fence</div><div class="pv-detail">Queued for your review</div></div><div class="pv-time">9m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Precision Fence & Deck</div><div class="pv-detail">Inquiry sent · Austin, TX</div></div><div class="pv-time">12m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">A&J Fence Company</div><div class="pv-detail">Inquiry sent · San Antonio</div></div><div class="pv-time">16m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-info"></div><div class="pv-body"><div class="pv-name">Border Fence Specialists</div><div class="pv-detail">Replied — follow-up queued</div></div><div class="pv-time">21m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Southern Gate Masters</div><div class="pv-detail">Inquiry sent · El Paso, TX</div></div><div class="pv-time">24m</div></div>
+            </div>
+            <div style="padding:10px 0;">
+              <div style="padding:6px 14px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Live Activity <span class="live-dot"></span></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Gulf Coast Fence & Gate</div><div class="pv-detail">Inquiry sent · Houston, TX</div></div><div class="pv-time">1m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-info"></div><div class="pv-body"><div class="pv-name">Lone Star Fencing LLC</div><div class="pv-detail">Replied — pushed to HubSpot</div></div><div class="pv-time">4m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Houston Fence Pros</div><div class="pv-detail">Inquiry sent · Dallas, TX</div></div><div class="pv-time">7m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-warn"></div><div class="pv-body"><div class="pv-name">Texas Gate & Fence</div><div class="pv-detail">Queued for your review</div></div><div class="pv-time">9m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Precision Fence & Deck</div><div class="pv-detail">Inquiry sent · Austin, TX</div></div><div class="pv-time">12m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">A&J Fence Company</div><div class="pv-detail">Inquiry sent · San Antonio</div></div><div class="pv-time">16m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-info"></div><div class="pv-body"><div class="pv-name">Border Fence Specialists</div><div class="pv-detail">Replied — follow-up queued</div></div><div class="pv-time">21m</div></div>
+              <div class="pv-row"><div class="pv-dot pv-ok"></div><div class="pv-body"><div class="pv-name">Southern Gate Masters</div><div class="pv-detail">Inquiry sent · El Paso, TX</div></div><div class="pv-time">24m</div></div>
+            </div>
+          </div>
+          <div class="preview-fade-bottom"></div>
+        </div>
+        <div class="preview-footer"><span><span class="live-dot"></span>Live</span><span style="color:var(--accent);">94 sent today →</span></div>
+      </div>
+
+      <!-- Card 2: Replies -->
+      <div class="preview-card">
+        <div class="preview-chrome">
+          <div class="chrome-dots"><div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div></div>
+          <div class="chrome-bar"><span class="chrome-url">canvass.io/replies</span></div>
+        </div>
+        <div class="preview-window">
+          <div class="preview-scroll-track">
+            <div style="padding:10px 0;">
+              <div style="padding:6px 14px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Replies — 6 New</div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Gulf Coast Fence & Gate</span><span class="pv-reply-time">8m</span></div><div class="pv-reply-preview">"Can you send pricing? We're always looking."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Lone Star Fencing LLC</span><span class="pv-reply-time">41m</span></div><div class="pv-reply-preview">"Who handles TX accounts? Would love to chat."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Southern Roof Pros</span><span class="pv-reply-time">1h</span></div><div class="pv-reply-preview">"Great timing — we just lost our supplier."</div></div>
+              <div class="pv-reply-row"><div class="pv-reply-head"><span class="pv-reply-co" style="color:var(--mid);">Precision Fence & Deck</span><span class="pv-reply-time">3h</span></div><div class="pv-reply-preview">"Not right now, try us again in Q1."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Carolina Roof Masters</span><span class="pv-reply-time">4h</span></div><div class="pv-reply-preview">"Interested. Send your deck over."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Summit Services LLC</span><span class="pv-reply-time">5h</span></div><div class="pv-reply-preview">"Give us a call — might be a fit."</div></div>
+            </div>
+            <div style="padding:10px 0;">
+              <div style="padding:6px 14px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);">Replies — 6 New</div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Gulf Coast Fence & Gate</span><span class="pv-reply-time">8m</span></div><div class="pv-reply-preview">"Can you send pricing? We're always looking."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Lone Star Fencing LLC</span><span class="pv-reply-time">41m</span></div><div class="pv-reply-preview">"Who handles TX accounts? Would love to chat."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Southern Roof Pros</span><span class="pv-reply-time">1h</span></div><div class="pv-reply-preview">"Great timing — we just lost our supplier."</div></div>
+              <div class="pv-reply-row"><div class="pv-reply-head"><span class="pv-reply-co" style="color:var(--mid);">Precision Fence & Deck</span><span class="pv-reply-time">3h</span></div><div class="pv-reply-preview">"Not right now, try us again in Q1."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Carolina Roof Masters</span><span class="pv-reply-time">4h</span></div><div class="pv-reply-preview">"Interested. Send your deck over."</div></div>
+              <div class="pv-reply-row hot"><div class="pv-reply-head"><span class="pv-reply-co">Summit Services LLC</span><span class="pv-reply-time">5h</span></div><div class="pv-reply-preview">"Give us a call — might be a fit."</div></div>
+            </div>
+          </div>
+          <div class="preview-fade-bottom"></div>
+        </div>
+        <div class="preview-footer"><span>Replies</span><span style="color:var(--green);">6 new this week →</span></div>
+      </div>
+
+      <!-- Card 3: Database -->
+      <div class="preview-card">
+        <div class="preview-chrome">
+          <div class="chrome-dots"><div class="chrome-dot"></div><div class="chrome-dot"></div><div class="chrome-dot"></div></div>
+          <div class="chrome-bar"><span class="chrome-url">canvass.io/database</span></div>
+        </div>
+        <div class="preview-window">
+          <div class="preview-scroll-track">
+            <div style="padding:10px 0;">
+              <div style="display:flex;gap:5px;padding:6px 14px 10px;">
+                <div style="flex:1;background:var(--elevated);border:1px solid var(--border);border-radius:5px;padding:5px 8px;font-size:10px;color:var(--mid);">Roofing Contractors</div>
+                <div style="background:var(--elevated);border:1px solid var(--border);border-radius:5px;padding:5px 8px;font-size:10px;color:var(--mid);">Texas</div>
+                <div style="background:var(--accent);border-radius:5px;padding:5px 9px;font-size:10px;font-weight:700;color:#fff;">Go</div>
+              </div>
+              <div style="padding:0 14px 8px;font-size:10px;color:var(--muted);">48,291 businesses found</div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Lone Star Roofing Co.</div><div class="pv-db-meta">Houston, TX · Roofing</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Southern Roof Pros</div><div class="pv-db-meta">Dallas, TX · Residential</div></div><div class="pv-db-tag">Free</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Gulf States Roofing LLC</div><div class="pv-db-meta">Austin, TX · Commercial</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Texas Roof Masters</div><div class="pv-db-meta">San Antonio, TX</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Premier Roofing TX</div><div class="pv-db-meta">El Paso, TX · Residential</div></div><div class="pv-db-tag">Free</div></div>
+            </div>
+            <div style="padding:10px 0;">
+              <div style="display:flex;gap:5px;padding:6px 14px 10px;">
+                <div style="flex:1;background:var(--elevated);border:1px solid var(--border);border-radius:5px;padding:5px 8px;font-size:10px;color:var(--mid);">Roofing Contractors</div>
+                <div style="background:var(--elevated);border:1px solid var(--border);border-radius:5px;padding:5px 8px;font-size:10px;color:var(--mid);">Texas</div>
+                <div style="background:var(--accent);border-radius:5px;padding:5px 9px;font-size:10px;font-weight:700;color:#fff;">Go</div>
+              </div>
+              <div style="padding:0 14px 8px;font-size:10px;color:var(--muted);">48,291 businesses found</div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Lone Star Roofing Co.</div><div class="pv-db-meta">Houston, TX · Roofing</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Southern Roof Pros</div><div class="pv-db-meta">Dallas, TX · Residential</div></div><div class="pv-db-tag">Free</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Gulf States Roofing LLC</div><div class="pv-db-meta">Austin, TX · Commercial</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Texas Roof Masters</div><div class="pv-db-meta">San Antonio, TX</div></div><div class="pv-db-tag">Pro</div></div>
+              <div class="pv-db-row"><div><div class="pv-db-name">Premier Roofing TX</div><div class="pv-db-meta">El Paso, TX · Residential</div></div><div class="pv-db-tag">Free</div></div>
+            </div>
+          </div>
+          <div class="preview-fade-bottom"></div>
+        </div>
+        <div class="preview-footer"><span>100M Database</span><span style="color:var(--accent);">Search any niche →</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="inner">
+    <div class="pain-inner">
+      <div class="section-eyebrow">The Cold Email Problem</div>
+      <p class="pain-lede">You didn't fail at cold email. <span>Cold email failed you.</span></p>
+
+      <div class="pain-items">
+        <div class="pain-item">
+          <div class="pain-x">✗</div>
+          <div class="pain-item-body">
+            <h4>Six weeks of warmup. Gone overnight.</h4>
+            <p>You built the domain, warmed the inbox, watched the reputation score climb — then one aggressive batch got you blacklisted. Start over. Again.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-x">✗</div>
+          <div class="pain-item-body">
+            <h4>A $3,000 list that was stale on arrival.</h4>
+            <p>B2B contact data decays at 22% per year. You uploaded 10,000 contacts. Thirty percent bounced. Another twenty went to spam. Your deliverability never recovered.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-x">✗</div>
+          <div class="pain-item-body">
+            <h4>Four tools. Four invoices. Still not working.</h4>
+            <p>Apollo for data. Instantly for sending. Mailreach for warmup. Smartlead as the backup. You're spending $600 a month before a single reply — and each tool promises what the last one couldn't deliver.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-x">✗</div>
+          <div class="pain-item-body">
+            <h4>15% open rate on a great day.</h4>
+            <p>Decision-makers get 100+ cold emails a week. They recognize the pattern instantly. Subject line tricks have a half-life measured in weeks. The channel is saturated and everyone knows it.</p>
+          </div>
+        </div>
+        <div class="pain-item">
+          <div class="pain-x">✗</div>
+          <div class="pain-item-body">
+            <h4>SPF. DKIM. DMARC. Dedicated IPs. Rotating inboxes.</h4>
+            <p>You became an email infrastructure engineer just to do sales. That's not a strategy — it's a treadmill that costs more every year and delivers less every quarter.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pain-callout gb-card" style="background:var(--surface);">
+        <p>"I spent three years on cold email. Warmed domains. Swapped IPs when deliverability collapsed. Bounced between Instantly, Smartlead, and Apollo. Thousands a month in tools. And at the end of it — <strong>a 2% reply rate and a sales team that had lost faith in the channel entirely.</strong>"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT -->
+<section class="insight-section line-grid" style="position:relative;">
+  <div class="inner">
+    <div class="insight-grid">
+      <div class="insight-left">
+        <div class="section-eyebrow reveal">Why It Works</div>
+        <h2 class="reveal reveal-delay-1">Every business built an inbox for new inquiries.<br/>Nobody's using it.</h2>
+        <p class="insight-body">
+          Every business publishes a contact form on their website — built for customers, vendors, and partners to reach them. <strong>It routes directly to the person who handles new leads.</strong> Not a spam folder. Not a promotions tab. Their actual inbox.<br/><br/>
+          Salespeople occasionally fill these out manually. It works well. But nobody does it at scale — finding each form, filling every field, solving CAPTCHAs, and writing a message for 500 companies would take days.<br/><br/>
+          <strong>Canvass does it automatically.</strong> Import your list, write your message once, and start the campaign. Canvass handles every form, every field, every CAPTCHA. The business gets a real website inquiry — because that's exactly what it is.
+        </p>
+        <div class="insight-bullets">
+          <div class="insight-bullet"><div class="ibdot"></div><p><strong>No spam filter.</strong> Website contact submissions route through the business's own site directly to their inbox.</p></div>
+          <div class="insight-bullet"><div class="ibdot"></div><p><strong>No domain warmup.</strong> No infrastructure. No rotating IPs. Nothing to configure before you start.</p></div>
+          <div class="insight-bullet"><div class="ibdot"></div><p><strong>They're expecting it.</strong> Businesses publish that form because they want to hear from people. You're using the channel they built for exactly this.</p></div>
+        </div>
+      </div>
+      <div class="insight-visual">
+        <div class="iv-head">
+          <div class="iv-title">New Inquiries — Acme Roofing LLC</div>
+          <div class="iv-tag">Inquiry Inbox</div>
+        </div>
+        <div class="iv-inbox-row unread">
+          <div class="iv-from"><span class="iv-from-name">National Trade Partners</span><span class="iv-from-time">Today 9:14am</span></div>
+          <div class="iv-subject">Partnership inquiry — roofing supply</div>
+          <div class="iv-preview">Hi, I came across Acme Roofing and wanted to introduce our wholesale supply...</div>
+        </div>
+        <div class="iv-inbox-row unread">
+          <div class="iv-from"><span class="iv-from-name">BuildPath Services</span><span class="iv-from-time">Today 8:52am</span></div>
+          <div class="iv-subject">Quick question about your projects</div>
+          <div class="iv-preview">We work with roofing contractors across Texas and wanted to reach out...</div>
+        </div>
+        <div class="iv-inbox-row">
+          <div class="iv-from"><span class="iv-from-name" style="color:var(--mid);">ABC Materials Co.</span><span class="iv-from-time" style="color:var(--muted);">Yesterday</span></div>
+          <div class="iv-subject" style="color:var(--mid);">Supply chain partnership</div>
+          <div class="iv-preview">We specialize in roofing materials for contractors in your area...</div>
+        </div>
+        <div class="iv-inbox-row">
+          <div class="iv-from"><span class="iv-from-name" style="color:var(--mid);">Tier One Marketing</span><span class="iv-from-time" style="color:var(--muted);">Mon</span></div>
+          <div class="iv-subject" style="color:var(--mid);">Business opportunity</div>
+          <div class="iv-preview">Reaching out to introduce our services to growing roofing companies...</div>
+        </div>
+        <div class="iv-footer">
+          <div class="iv-footer-dot"></div>
+          <div class="iv-footer-text">These land in the <strong>inquiry inbox</strong> — not spam. No spam filter. No promotions tab.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VS -->
+<section class="vs-section">
+  <div class="inner">
+    <div class="section-eyebrow reveal">Cold Email vs. Canvass</div>
+    <h2 class="reveal reveal-delay-1">You've been paying for<br/>a broken channel.</h2>
+    <div class="vs-grid">
+      <div class="vs-col">
+        <div class="vs-head"><div class="vs-title">Cold Email</div><div class="vs-tag tag-old">The broken channel</div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--red);">✗</div><div class="vs-body"><h4>Spam filters eat 20–30% of your volume</h4><p>Six weeks of warmup can evaporate with one aggressive batch. You start over.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--red);">✗</div><div class="vs-body"><h4>15% open rate. 2% reply rate.</h4><p>Decision-makers recognize cold email instantly. The channel is saturated. Everyone knows it.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--red);">✗</div><div class="vs-body"><h4>Domain blacklisting kills campaigns overnight</h4><p>One bad send and months of reputation-building are gone. No warning. No appeal.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--red);">✗</div><div class="vs-body"><h4>$600+/mo before a single reply</h4><p>Data tool. Warmup tool. Sending tool. Inbox rotation. You're paying for infrastructure, not results.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--red);">✗</div><div class="vs-body"><h4>You become an email engineer</h4><p>SPF, DKIM, DMARC, dedicated IPs, suppression lists. None of this is sales. It's all overhead.</p></div></div>
+      </div>
+      <div class="vs-col right">
+        <div class="vs-head"><div class="vs-title">Canvass</div><div class="vs-tag tag-new">The working channel</div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--accent);">→</div><div class="vs-body"><h4>Lands in their inquiry inbox. No spam filter.</h4><p>Website contact submissions route through their own site. No spam filter catches their own form.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--accent);">→</div><div class="vs-body"><h4>Businesses actually read their inquiry inbox.</h4><p>That's where their real customer leads come from. You're arriving in the same place.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--accent);">→</div><div class="vs-body"><h4>Zero domain risk. Zero blacklisting.</h4><p>No warmup. No reputation to protect. Email fallback runs through Amazon SES at $0.10/1,000.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--accent);">→</div><div class="vs-body"><h4>One flat monthly price. No stack.</h4><p>Database, automation, reply tracking, follow-up queue, CRM push — all included.</p></div></div>
+        <div class="vs-row"><div class="vs-icon" style="color:var(--accent);">→</div><div class="vs-body"><h4>You do sales. Canvass handles the rest.</h4><p>Import a list. Write your message once. Canvass finds every form, fills every field, and submits automatically — no manual clicking required.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how-section dot-grid" style="position:relative;">
+  <div class="section-accent-line"></div>
+  <div class="inner">
+    <div class="section-eyebrow">How It Works</div>
+    <h2>Up and running in<br/><span class="deco-underline">under 10 minutes.</span></h2>
+    <p class="section-sub" style="margin-bottom:0;">No domain setup. No warmup period. No infrastructure. Import your list and start reaching businesses today.</p>
+
+    <div class="how-steps">
+      <!-- SVG connector arrows replacing boring line -->
+      <svg style="position:absolute;top:18px;left:calc(10% + 36px);right:calc(10% + 36px);width:calc(80% - 72px);height:32px;pointer-events:none;overflow:visible;z-index:0;" viewBox="0 0 800 32" preserveAspectRatio="none">
+        <defs>
+          <marker id="arr" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+            <polygon points="0 0, 7 3.5, 0 7" fill="rgba(79,142,255,0.35)"/>
+          </marker>
+          <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgba(79,142,255,0.15)"/>
+            <stop offset="50%" style="stop-color:rgba(79,142,255,0.45)"/>
+            <stop offset="100%" style="stop-color:rgba(167,139,250,0.2)"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" y1="16" x2="800" y2="16" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="6 4"/>
+        <polygon points="195,10 210,16 195,22" fill="rgba(79,142,255,0.3)"/>
+        <polygon points="395,10 410,16 395,22" fill="rgba(79,142,255,0.3)"/>
+        <polygon points="595,10 610,16 595,22" fill="rgba(100,120,255,0.25)"/>
+      </svg>
+      <div class="how-step on"><div class="how-circle">📋</div><h4>Import</h4><p>Upload your CSV or search our 100M database by niche, city, and state.</p></div>
+      <div class="how-step on"><div class="how-circle">🤖</div><h4>Prepare</h4><p>Canvass finds each company's contact channel, fills your info, and generates a message.</p></div>
+      <div class="how-step on"><div class="how-circle">🤖</div><h4>Auto-Submit</h4><p>Canvass finds each contact form, fills your info, solves any CAPTCHA, and submits automatically.</p></div>
+      <div class="how-step on"><div class="how-circle">🔍</div><h4>Review Queue</h4><p>Anything unusual — CAPTCHA it can't solve, no form found — routes to your manual queue. Nothing silently drops.</p></div>
+      <div class="how-step on"><div class="how-circle">💬</div><h4>Replies</h4><p>Canvass surfaces every reply. Warm leads push to your CRM automatically.</p></div>
+    </div>
+
+    <div class="how-human-note gb-card" style="background:var(--surface);">
+      <div class="human-icon">⚡</div>
+      <div class="human-note">
+        <p><strong>You control the message. Canvass handles the execution.</strong> Write your outreach template once — Canvass runs the campaign automatically, finding forms, filling fields, and submitting across hundreds of companies. Records that hit unsolvable CAPTCHAs or have no contact form are flagged in a manual review queue — nothing silently fails. You spend your time on replies, not on busywork.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UNDER THE HOOD -->
+<section class="hood-section">
+  <div class="inner">
+    <div class="section-eyebrow">Under the Hood</div>
+    <h2>The technology that makes it work<br/>where simpler tools fail.</h2>
+    <div class="hood-grid">
+      <div class="hood-box">
+        <div class="hood-label">Intelligence</div>
+        <h3>AI Form Detection</h3>
+        <p>Most contact forms aren't standard. Unusual field labels, custom dropdowns, honeypot fields, hidden inputs. Claude AI reads the form and maps your information correctly — dramatically improving fill rate on non-standard layouts.</p>
+        <div class="hood-detail">
+          <div class="hood-row"><div class="hood-dot"></div>Reads field context, not just field names</div>
+          <div class="hood-row"><div class="hood-dot"></div>Handles Gravity Forms, WPForms, CF7, Ninja Forms</div>
+          <div class="hood-row"><div class="hood-dot"></div>Falls back to email if no form is found</div>
+        </div>
+      </div>
+      <div class="hood-box mid">
+        <div class="hood-label">Automation</div>
+        <h3>CAPTCHA Auto-Solve</h3>
+        <p>The #1 reason contact form outreach fails at scale is CAPTCHAs. Canvass integrates 2captcha to solve reCAPTCHA and hCaptcha automatically. Records that can't be solved silently route to your manual queue — nothing gets silently dropped.</p>
+        <div class="hood-detail">
+          <div class="hood-row"><div class="hood-dot"></div>reCAPTCHA v2, v3, and hCaptcha</div>
+          <div class="hood-row"><div class="hood-dot"></div>~$1–3 per 1,000 solves</div>
+          <div class="hood-row"><div class="hood-dot"></div>Unsolvable records flagged for manual review</div>
+        </div>
+      </div>
+      <div class="hood-box">
+        <div class="hood-label">Delivery</div>
+        <h3>Email Fallback via SES</h3>
+        <p>When a business has no contact form but lists an email address, Canvass sends directly via email. Integrated with Amazon SES — $0.10 per 1,000 emails, sent from your own domain, with better deliverability than shared Gmail infrastructure.</p>
+        <div class="hood-detail">
+          <div class="hood-row"><div class="hood-dot"></div>Sends from your own verified domain</div>
+          <div class="hood-row"><div class="hood-dot"></div>$0.10/1,000 — not $400/month</div>
+          <div class="hood-row"><div class="hood-dot"></div>Reply detection on email fallbacks too</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATABASE -->
+<section id="database" class="db-section line-grid" style="position:relative;">
+  <div class="section-accent-line"></div>
+  <div class="inner">
+    <div class="db-grid">
+      <div>
+        <div class="section-eyebrow">The Database</div>
+        <div class="db-num">100<span class="grad-digit">M</span></div>
+        <p class="db-desc">Verified businesses across every niche and industry. Pre-researched and ready to run. No list to buy, no vendor to negotiate with — search, select, and start reaching businesses today.</p>
+        <div class="db-tags">
+          <div class="db-tag">Fence & Gate</div><div class="db-tag">Roofing</div><div class="db-tag">HVAC</div>
+          <div class="db-tag">Plumbing</div><div class="db-tag">Electrical</div><div class="db-tag">Auto Repair</div>
+          <div class="db-tag">Dental</div><div class="db-tag">Law Firms</div><div class="db-tag">Restaurants</div>
+          <div class="db-tag">Salons</div><div class="db-tag">Real Estate</div><div class="db-tag">+ 200 more</div>
+        </div>
+        <div class="db-bullets">
+          <div class="db-bullet"><div class="db-bdot"></div><p><strong>Bring your own list too.</strong> Already have contacts? Import any CSV. The database is an option, not a requirement.</p></div>
+          <div class="db-bullet"><div class="db-bdot"></div><p><strong>Pre-matched to contact channels.</strong> Millions of records already have the outreach channel identified. Canvass starts immediately.</p></div>
+          <div class="db-bullet"><div class="db-bdot"></div><p><strong>Every niche. Every state.</strong> B2B, B2C, trades, services, retail, healthcare, hospitality. The whole map.</p></div>
+        </div>
+      </div>
+      <div class="db-table">
+        <div class="db-head"><div class="db-head-title">Database Preview</div><div class="db-head-sub">Roofing · Southeast US</div></div>
+        <div class="db-row hr"><div>Company</div><div>Location</div><div>Category</div><div>Access</div></div>
+        <div class="db-row"><div class="db-co">Southern Roof Pros</div><div class="db-meta">Atlanta, GA</div><div class="db-meta">Roofing / Res.</div><div><span class="tier t-free">Free</span></div></div>
+        <div class="db-row"><div class="db-co">Sunshine Roofing LLC</div><div class="db-meta">Tampa, FL</div><div class="db-meta">Commercial</div><div><span class="tier t-free">Free</span></div></div>
+        <div class="db-row"><div class="db-co">Gulf States Roofing</div><div class="db-meta">Baton Rouge, LA</div><div class="db-meta">Storm Damage</div><div><span class="tier t-pro">Pro</span></div></div>
+        <div class="db-row"><div class="db-co">Carolina Roof Masters</div><div class="db-meta">Charlotte, NC</div><div class="db-meta">Roofing / Res.</div><div><span class="tier t-pro">Pro</span></div></div>
+        <div class="db-row"><div class="db-co">Lone Star Roofing Co.</div><div class="db-meta">Houston, TX</div><div class="db-meta">All types</div><div><span class="tier t-pro">Pro</span></div></div>
+        <div class="db-foot">+ millions more across every state and industry</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW -->
+<section id="workflow" class="workflow-section dot-grid" style="position:relative;">
+  <div class="inner">
+    <div class="workflow-grid">
+      <div>
+        <div class="section-eyebrow">Full Workflow</div>
+        <h2>The outreach is<br/>just the first step.</h2>
+        <p class="section-sub" style="margin-bottom:40px;">Most tools stop at send. Canvass tracks what happens after — replies, follow-ups, CRM — so nothing falls through the cracks.</p>
+        <div class="workflow-items">
+          <div class="wf-item">
+            <div class="wf-icon">↩</div>
+            <div class="wf-body"><h4>Reply Detection</h4><p>When a business responds to your email fallback, Canvass surfaces it immediately. You always know who replied and from which campaign.</p><div class="new-pill">New</div></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon">↻</div>
+            <div class="wf-body"><h4>Follow-Up Queue</h4><p>Canvass tracks who hasn't replied and queues a follow-up at the right moment. One click — a new outreach goes out to the same company.</p><div class="new-pill">New</div></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon">⬡</div>
+            <div class="wf-body"><h4>CRM Push</h4><p>Warm replies push automatically into HubSpot, Pipedrive, or Salesforce. Top-of-funnel feeds your existing sales workflow without manual data entry.</p><div class="new-pill">New</div></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon">◎</div>
+            <div class="wf-body"><h4>Daily Caps & Pacing</h4><p>Set a daily send limit. Canvass paces responsibly and picks up exactly where it left off — no blasting, no burnout, no deliverability problems.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="workflow-visual">
+        <div class="wv">
+          <div class="wv-head"><div class="wv-title">Replies This Week</div><div class="wv-val">7 total</div></div>
+          <div class="wv-row"><div class="wv-dot wv-g"></div><div class="wv-co">Gulf Coast Fence & Gate</div><div class="wv-st">Replied 11m ago</div></div>
+          <div class="wv-row"><div class="wv-dot wv-g"></div><div class="wv-co">Lone Star Fencing LLC</div><div class="wv-st">Replied 43m ago</div></div>
+          <div class="wv-row"><div class="wv-dot wv-b"></div><div class="wv-co">Carolina Roof Masters</div><div class="wv-st">Follow-up queued</div></div>
+          <div class="wv-row"><div class="wv-dot wv-a"></div><div class="wv-co">Summit Services LLC</div><div class="wv-st">Re-touch in 3 days</div></div>
+          <div class="wv-crm">
+            <div class="wv-crm-dot"></div>
+            <p><strong>3 replies</strong> pushed to HubSpot this week</p>
+          </div>
+        </div>
+        <div class="wv">
+          <div class="wv-head"><div class="wv-title">Campaign: TX Fence Q3</div><div class="wv-val" style="color:var(--mid);">This week</div></div>
+          <div class="wv-stats">
+            <div class="wv-stat"><div class="wv-stat-n">94</div><div class="wv-stat-l">Outreaches Sent</div></div>
+            <div class="wv-stat"><div class="wv-stat-n" style="color:var(--green);">7</div><div class="wv-stat-l">Replies Received</div></div>
+            <div class="wv-stat"><div class="wv-stat-n" style="color:var(--accent);">3</div><div class="wv-stat-l">Pushed to CRM</div></div>
+            <div class="wv-stat"><div class="wv-stat-n">7.4%</div><div class="wv-stat-l">Reply Rate</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEGRATIONS -->
+<section id="integrations" class="integrations-section">
+  <div class="inner">
+    <div class="section-eyebrow">Integrations</div>
+    <h2>Plugs into the tools<br/>your team already uses.</h2>
+    <p class="section-sub">Replied leads flow into your CRM automatically. Canvass also embeds into GoHighLevel and ClickFunnels — so agencies can offer it to every client account.</p>
+
+    <div id="int-cols" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:2px;">
+      <div style="background:var(--surface);padding:32px 28px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">CRM</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,91,0,.1);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#ff5b00;flex-shrink:0;">H</div>
+            <div><div style="font-size:13px;font-weight:700;">HubSpot</div><div style="font-size:11px;color:var(--muted);">Push replied leads on reply</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:rgba(34,197,94,.1);color:var(--green);">Live</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(0,162,255,.1);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#00a2ff;flex-shrink:0;">S</div>
+            <div><div style="font-size:13px;font-weight:700;">Salesforce</div><div style="font-size:11px;color:var(--muted);">AppExchange — create leads automatically</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--accent-dim);color:var(--accent);">Soon</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(0,122,255,.1);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;color:#007aff;flex-shrink:0;">P</div>
+            <div><div style="font-size:13px;font-weight:700;">Pipedrive</div><div style="font-size:11px;color:var(--muted);">Auto-create deals on reply</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:rgba(34,197,94,.1);color:var(--green);">Live</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--surface);padding:32px 28px;border-left:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">Sales Platforms</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(3,177,152,.12);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#03b198;flex-shrink:0;">GL</div>
+            <div><div style="font-size:13px;font-weight:700;">GoHighLevel</div><div style="font-size:11px;color:var(--muted);">Marketplace app — inside every agency account</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--accent-dim);color:var(--accent);">Soon</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(255,75,43,.1);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#ff4b2b;flex-shrink:0;">CF</div>
+            <div><div style="font-size:13px;font-weight:700;">ClickFunnels</div><div style="font-size:11px;color:var(--muted);">Trigger outreach from funnel events</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--accent-dim);color:var(--accent);">Soon</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);">
+            <div style="width:36px;height:36px;border-radius:8px;background:rgba(99,60,180,.1);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:#633cb4;flex-shrink:0;">M</div>
+            <div><div style="font-size:13px;font-weight:700;">Monday.com</div><div style="font-size:11px;color:var(--muted);">Sync records and campaign status</div></div>
+            <div style="margin-left:auto;font-size:10px;font-weight:700;padding:2px 8px;border-radius:100px;background:var(--accent-dim);color:var(--accent);">Soon</div>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--surface);padding:32px 28px;border-left:1px solid var(--border);">
+        <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">API & Custom</div>
+        <div style="padding:16px;background:var(--elevated);border-radius:10px;border:1px solid var(--border);margin-bottom:14px;font-family:monospace;">
+          <div style="font-size:10px;color:var(--muted);margin-bottom:6px;">POST /api/v1/campaign/run</div>
+          <div style="font-size:11px;color:var(--green);">✓ 200 OK — batch queued</div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:14px;">Full REST API. Trigger campaigns, pull results, receive reply webhooks from any platform.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="font-size:13px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">→</span>Webhooks on reply, completion, error</div>
+          <div style="font-size:13px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">→</span>Zapier, Make, and n8n compatible</div>
+          <div style="font-size:13px;color:var(--mid);display:flex;gap:8px;"><span style="color:var(--accent);">→</span>OAuth 2.0 for platform embed</div>
+        </div>
+      </div>
+    </div>
+    <div style="border:1px solid var(--border);border-radius:16px;overflow:hidden;">
+      <div style="background:var(--surface);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:32px;">
+        <div><div style="font-size:14px;font-weight:700;margin-bottom:5px;">Connect anything with Zapier, Make, or n8n</div><div style="font-size:13px;color:var(--muted);">If it has a Zap, it connects to Canvass. Trigger from CRM events, spreadsheet rows, or any of 6,000+ apps.</div></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+          <div style="padding:8px 18px;background:var(--elevated);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;color:var(--mid);">Zapier</div>
+          <div style="padding:8px 18px;background:var(--elevated);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;color:var(--mid);">Make</div>
+          <div style="padding:8px 18px;background:var(--elevated);border:1px solid var(--border);border-radius:8px;font-size:13px;font-weight:700;color:var(--mid);">n8n</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section dot-grid" style="position:relative;">
+  <div class="section-accent-line"></div>
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:0;">
+      <div class="section-eyebrow">What Users Are Saying</div>
+      <h2>Real sales teams. Real results.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Spent three years warming domains. <strong>First week on Canvass — 6 replies from businesses that actually wanted to talk.</strong> It's not even close."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus T." />
+          <div><div class="review-name">Marcus T.</div><div class="review-role">Owner, Tier One Marketing</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"<strong>4–5x better reply rate than cold email</strong> and we haven't thought about deliverability once. Not once."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Rachel K." />
+          <div><div class="review-name">Rachel K.</div><div class="review-role">Sales Director, BuildPath Services</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"500 outreaches on Friday. <strong>11 replies by Monday morning.</strong> My $400/month email list never came close to those numbers."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/men/67.jpg" alt="Danny S." />
+          <div><div class="review-name">Danny S.</div><div class="review-role">Independent Sales Rep</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"I run GHL for 60 clients. <strong>The second Canvass hits their marketplace, it goes into every account.</strong> None of my competitors know this exists yet."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jennifer L." />
+          <div><div class="review-name">Jennifer L.</div><div class="review-role">Owner, Growth Engine Agency</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"We burned through domains every quarter. <strong>Two months on Canvass — zero deliverability issues</strong> because there are no domains to burn."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/men/52.jpg" alt="Carlos M." />
+          <div><div class="review-name">Carlos M.</div><div class="review-role">Sales Manager, National Trade Partners</div></div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Set the template Monday morning. <strong>59 submissions ran while I was in meetings. 6 replies by end of day.</strong> That's what fully automated actually means."</p>
+        <div class="review-person">
+          <img class="review-photo" src="https://randomuser.me/api/portraits/women/29.jpg" alt="Amy B." />
+          <div><div class="review-name">Amy B.</div><div class="review-role">Franchise Development Manager</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="pricing-section">
+  <div class="inner">
+    <div style="text-align:center;">
+      <div class="section-eyebrow reveal">Pricing</div>
+      <h2 class="reveal reveal-delay-1">Replace a $600/mo stack<br/>with one flat price.</h2>
+      <p class="section-sub" style="margin:0 auto 40px;">Database, automation, reply tracking, and CRM push — all included. No data vendor. No warmup tool. No sending infrastructure.</p>
+      <!-- Annual toggle -->
+      <div id="billing-toggle" style="display:inline-flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:40px;padding:6px 16px;margin-bottom:48px;font-size:13px;cursor:pointer;user-select:none;" onclick="toggleBilling()">
+        <span id="lbl-monthly" style="color:var(--text);font-weight:600;">Monthly</span>
+        <div style="width:38px;height:22px;background:var(--accent);border-radius:20px;position:relative;">
+          <div id="toggle-knob" style="width:16px;height:16px;background:#fff;border-radius:50%;position:absolute;top:3px;left:3px;transition:left .2s;"></div>
+        </div>
+        <span id="lbl-annual" style="color:var(--muted);">Annual <span style="color:#22c55e;font-weight:700;margin-left:4px;">Save 20%</span></span>
+      </div>
+      <script>
+        var isAnnual = false;
+        var prices = {
+          growth:  { monthly: 149, annual: 119 },
+          scale:   { monthly: 399, annual: 319 }
+        };
+        function toggleBilling() {
+          isAnnual = !isAnnual;
+          // Move knob
+          document.getElementById('toggle-knob').style.left = isAnnual ? '19px' : '3px';
+          // Swap label colours
+          document.getElementById('lbl-monthly').style.color = isAnnual ? 'var(--muted)' : 'var(--text)';
+          document.getElementById('lbl-monthly').style.fontWeight = isAnnual ? '400' : '600';
+          document.getElementById('lbl-annual').style.color  = isAnnual ? 'var(--text)' : 'var(--muted)';
+          document.getElementById('lbl-annual').style.fontWeight = isAnnual ? '600' : '400';
+          // Update prices
+          ['growth','scale'].forEach(function(plan) {
+            var el = document.getElementById('price-' + plan);
+            if (!el) return;
+            var p = isAnnual ? prices[plan].annual : prices[plan].monthly;
+            el.innerHTML = p;
+          });
+          // Update price-tag sub-copy for growth
+          var gt = document.getElementById('price-tag-growth');
+          if (gt) {
+            gt.innerHTML = isAnnual
+              ? "That's <strong>$0.012 per outreach</strong> billed annually. Cold email costs 40× more per reply."
+              : "That's <strong>$0.015 per outreach</strong>. Cold email costs 40× more per reply.";
+          }
+        }
+      </script>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-box reveal">
+        <div class="price-tier">Starter</div>
+        <div class="price-n"><sup>$</sup>0<sub>/mo</sub></div>
+        <p class="price-tag">Try it with your own list. No credit card, no time limit.</p>
+        <ul class="price-list">
+          <li><span class="ck">✓</span><span><strong>200 outreaches / month</strong></span></li>
+          <li><span class="ck">✓</span><span>1 active campaign</span></li>
+          <li><span class="ck">✓</span><span>Import your own CSV</span></li>
+          <li><span class="ck">✓</span><span>Generic &amp; varied messages</span></li>
+          <li class="dim"><span class="ck">—</span><span>100M business database</span></li>
+          <li class="dim"><span class="ck">—</span><span>Reply detection</span></li>
+          <li class="dim"><span class="ck">—</span><span>CRM push</span></li>
+        </ul>
+        <a href="#" class="price-btn p-g">Start Free — No Card</a>
+      </div>
+      <div class="price-box feat reveal reveal-delay-1">
+        <div class="price-tier">Growth — Most Popular</div>
+        <div class="price-n"><sup>$</sup><span id="price-growth">149</span><sub>/mo</sub></div>
+        <p class="price-tag" id="price-tag-growth">That's <strong>$0.015 per outreach</strong>. Cold email costs 40× more per reply.</p>
+        <div class="price-db"><strong>100M business database included</strong> — up to 10,000 searches/mo</div>
+        <ul class="price-list">
+          <li><span class="ck">✓</span><span><strong>10,000 outreaches / month</strong></span></li>
+          <li><span class="ck">✓</span><span>Unlimited campaigns</span></li>
+          <li><span class="ck">✓</span><span>AI-personalized messages</span></li>
+          <li><span class="ck">✓</span><span>AI form detection + CAPTCHA solving</span></li>
+          <li><span class="ck">✓</span><span>Reply detection + follow-up queue</span></li>
+          <li><span class="ck">✓</span><span>CRM push (HubSpot, Pipedrive)</span></li>
+          <li><span class="ck">✓</span><span>Amazon SES email fallback</span></li>
+        </ul>
+        <a href="#" class="price-btn p-w">Start 14-Day Free Trial</a>
+      </div>
+      <div class="price-box reveal reveal-delay-2">
+        <div class="price-tier">Scale</div>
+        <div class="price-n"><sup>$</sup><span id="price-scale">399</span><sub>/mo</sub></div>
+        <p class="price-tag">For agencies and teams running outreach at full volume.</p>
+        <div class="price-db"><strong>Unlimited database searches</strong> — no monthly cap</div>
+        <ul class="price-list">
+          <li><span class="ck">✓</span><span><strong>Unlimited outreaches</strong></span></li>
+          <li><span class="ck">✓</span><span>Unlimited campaigns + sender profiles</span></li>
+          <li><span class="ck">✓</span><span>5 team seats included</span></li>
+          <li><span class="ck">✓</span><span>VPS-hosted automation engine</span></li>
+          <li><span class="ck">✓</span><span>All CRM integrations</span></li>
+          <li><span class="ck">✓</span><span>API access + webhooks</span></li>
+          <li><span class="ck">✓</span><span>Dedicated onboarding + support</span></li>
+        </ul>
+        <a href="#" class="price-btn p-g">Talk to Sales</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;color:var(--muted);font-size:13px;">
+      <span style="margin-right:24px;">✓ 14-day free trial on Growth</span>
+      <span style="margin-right:24px;">✓ Cancel anytime</span>
+      <span>✓ No domain or infrastructure required</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="eyebrow" style="margin-bottom:28px;">No credit card. No warmup. No waiting.</div>
+  <h2>Your next 200 outreaches<br/>are on us.</h2>
+  <p>Start free with 200 contacts. No domain setup, no warming period, no infrastructure to configure. Import your list and start reaching businesses today.</p>
+  <a href="#" class="btn-white" style="font-size:16px;padding:15px 40px;">Start Free — 200 Outreaches Included →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="#">
+    <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Canvass
+  </a>
+  <p style="color:var(--muted);font-size:13px;">© 2026 Canvass. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Support</a><a href="#">Status</a>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal — IntersectionObserver, no library needed
+(function() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(function(el) { io.observe(el); });
+})();
+</script>
+</body>
+</html>
