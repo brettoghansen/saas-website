@@ -519,95 +519,125 @@ footer p { color: var(--muted); font-size: 13px; }
 /* ── RESPONSIVE ─────────────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Nav */
+  /* Nav — logo + CTA only */
   nav { padding: 0 20px; }
-  nav ul { gap: 16px; }
   nav ul li:not(:last-child) { display: none; }
 
+  /* Shared */
+  h2 { font-size: clamp(30px, 7vw, 44px); letter-spacing: -1.5px; }
+  .section-sub { font-size: 16px; margin-bottom: 40px; }
+
   /* Hero */
-  .hero { padding: 120px 20px 80px; }
-  h1 { font-size: clamp(38px, 10vw, 60px); letter-spacing: -2px; }
-  .hero-sub { font-size: 16px; }
+  .hero { padding: 110px 20px 72px; }
+  h1 { font-size: clamp(40px, 11vw, 62px); letter-spacing: -2.5px; }
+  .hero-sub { font-size: 17px; max-width: 100%; }
   .hero-cta { flex-direction: column; align-items: stretch; }
-  .btn-white, .btn-outline { text-align: center; }
+  .btn-white, .btn-outline { text-align: center; padding: 16px 24px; font-size: 16px; }
 
-  /* Stat strip */
-  .stat-strip { flex-direction: column; border-radius: 10px; }
-  .ss-item { border-right: none; border-bottom: 1px solid var(--border); padding: 14px 20px; }
-  .ss-item:last-child { border-bottom: none; }
+  /* Stat strip — 2×2 grid */
+  .stat-strip { display: grid; grid-template-columns: 1fr 1fr; border-radius: 12px; }
+  .ss-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 16px 12px; }
+  .ss-item:nth-child(odd) { border-right: 1px solid var(--border) !important; }
+  .ss-item:nth-child(3), .ss-item:nth-child(4) { border-bottom: none; }
+  .ssv { font-size: 18px; }
+  .ssl { font-size: 10px; }
 
-  /* Preview cards */
-  .previews-section { padding: 60px 16px; }
-  .preview-cards { grid-template-columns: 1fr; max-width: 420px; }
+  /* Previews */
+  .previews-section { padding: 60px 20px; }
+  .preview-cards { grid-template-columns: 1fr; max-width: 100%; }
+  .preview-card:nth-child(n+2) { display: none; }
 
-  /* Pain */
+  /* Pain — trim body text on mobile */
   .pain-section { padding: 72px 20px; }
+  .pain-lede { font-size: 22px; }
+  .pain-item-body p { display: none; }
+  .pain-item { padding: 16px 0; }
+  .pain-item-body h4 { font-size: 16px; }
+  .pain-callout p { font-size: 16px; }
 
   /* Insight */
   .insight-section { padding: 72px 20px; }
-  .insight-grid { grid-template-columns: 1fr; gap: 48px; }
+  .insight-grid { grid-template-columns: 1fr; gap: 40px; }
 
   /* VS */
   .vs-section { padding: 72px 20px; }
   .vs-grid { grid-template-columns: 1fr; }
   .vs-col.right .vs-row { border-left: none; }
   .vs-col.right .vs-head { border-left: none; border-top: 2px solid var(--border); }
+  .vs-body p { display: none; }
+  .vs-body h4 { font-size: 14px; }
 
   /* How it works */
   .how-section { padding: 72px 20px; }
-  .how-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .how-steps svg { display: none; }
-  .how-step:nth-child(odd):last-child { grid-column: 1 / -1; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .how-steps > svg { display: none; }
+  .how-circle { width: 44px; height: 44px; font-size: 15px; }
+  .how-step h4 { font-size: 13px; }
+  .how-step p { font-size: 11px; }
 
   /* Under the hood */
   .hood-section { padding: 72px 20px; }
   .hood-grid { grid-template-columns: 1fr; }
   .hood-box.mid { border-left: none; border-right: none; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .hood-box p { font-size: 14px; }
 
   /* Database */
   .db-section { padding: 72px 20px; }
-  .db-grid { grid-template-columns: 1fr; gap: 48px; }
-  .db-num { font-size: 80px; }
+  .db-grid { grid-template-columns: 1fr; gap: 40px; }
+  .db-num { font-size: 80px; letter-spacing: -4px; }
+  .db-desc { font-size: 16px; }
 
   /* Workflow */
   .workflow-section { padding: 72px 20px; }
-  .workflow-grid { grid-template-columns: 1fr; gap: 48px; }
+  .workflow-grid { grid-template-columns: 1fr; gap: 40px; }
+  .wf-body p { font-size: 13px; }
 
-  /* Integrations */
+  /* Integrations — id-targeted */
   .integrations-section { padding: 72px 20px; }
-  .integrations-section > .inner > div[style*="grid-template-columns: repeat(3"] {
-    display: flex !important; flex-direction: column !important;
-  }
+  #int-cols { display: flex !important; flex-direction: column !important; border-radius: 12px; }
+  #int-cols > div { border-left: none !important; border-top: 1px solid var(--border) !important; padding: 24px 20px !important; }
+  #int-cols > div:first-child { border-top: none !important; }
 
-  /* Reviews */
+  /* Reviews — first 3 only */
   .reviews-section { padding: 72px 20px; }
   .reviews-grid { grid-template-columns: 1fr; }
+  .review-card:nth-child(n+4) { display: none; }
+  .review-quote { font-size: 15px; }
 
-  /* Pricing */
+  /* Pricing — each box as a card */
   .pricing-section { padding: 72px 20px; }
-  .pricing-grid { grid-template-columns: 1fr; border-radius: 12px; }
-  .price-box.feat { order: -1; }
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    border: none;
+    border-radius: 0;
+    overflow: visible;
+    gap: 14px;
+    max-width: 100%;
+  }
+  .price-box {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+  .price-box.feat {
+    order: -1;
+    border-color: rgba(79,142,255,0.45);
+  }
 
   /* CTA */
   .cta-section { padding: 80px 20px; }
   .cta-section h2 { font-size: clamp(28px, 7vw, 42px); }
+  .cta-section p { font-size: 16px; }
 
   /* Footer */
   footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 16px; }
-
-  /* Shared */
-  h2 { font-size: clamp(28px, 6vw, 42px); letter-spacing: -1.5px; }
-  .section-sub { font-size: 16px; }
-  .inner { padding: 0 4px; }
+  .footer-links { flex-wrap: wrap; gap: 16px; }
 }
 
 @media (max-width: 480px) {
-  nav ul li:nth-last-child(2) { display: none; }
-  .how-steps { grid-template-columns: 1fr; }
-  .preview-cards { grid-template-columns: 1fr; }
-  .wv-stats { grid-template-columns: 1fr 1fr; }
-  .db-row { grid-template-columns: 1fr 1fr; }
-  .db-row > div:nth-child(3) { display: none; }
+  .stat-strip { grid-template-columns: 1fr; }
+  .ss-item { border-right: none !important; }
+  .ss-item:nth-child(3) { border-bottom: 1px solid var(--border) !important; }
+  .ss-item:nth-child(4) { border-bottom: none !important; }
 }
 </style>
 </head>
@@ -1094,7 +1124,7 @@ footer p { color: var(--muted); font-size: 13px; }
     <h2>Plugs into the tools<br/>your team already uses.</h2>
     <p class="section-sub">Replied leads flow into your CRM automatically. Canvass also embeds into GoHighLevel and ClickFunnels — so agencies can offer it to every client account.</p>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:2px;">
+    <div id="int-cols" style="display:grid;grid-template-columns:repeat(3,1fr);gap:2px;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:2px;">
       <div style="background:var(--surface);padding:32px 28px;">
         <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:20px;">CRM</div>
         <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1216,7 +1246,7 @@ footer p { color: var(--muted); font-size: 13px; }
         <p class="review-quote">"Set the template Monday morning. <strong>59 submissions ran while I was in meetings. 6 replies by end of day.</strong> That's what fully automated actually means."</p>
         <div class="review-person">
           <img class="review-photo" src="https://randomuser.me/api/portraits/women/29.jpg" alt="Amy B." />
-          <div><div class="review-name">Amy B.</div><div class="review-role">Owner, Spark Sales Solutions</div></div>
+          <div><div class="review-name">Amy B.</div><div class="review-role">Franchise Development Manager</div></div>
         </div>
       </div>
     </div>
@@ -1240,6 +1270,68 @@ footer p { color: var(--muted); font-size: 13px; }
           <li><span class="ck">✓</span><span>200 outreaches / month</span></li>
           <li><span class="ck">✓</span><span>1 active campaign</span></li>
           <li><span class="ck">✓</span><span>Import your own CSV</span></li>
-          <li><span class="ck">✓</span><span>Generic & varied messages</span></li>
+          <li><span class="ck">✓</span><span>Generic &amp; varied messages</span></li>
           <li class="dim"><span class="ck">—</span><span>Database access</span></li>
-         
+          <li class="dim"><span class="ck">—</span><span>Reply detection</span></li>
+          <li class="dim"><span class="ck">—</span><span>CRM push</span></li>
+        </ul>
+        <a href="#" class="price-btn p-g">Start Free</a>
+      </div>
+      <div class="price-box feat">
+        <div class="price-tier">Growth</div>
+        <div class="price-n"><sup>$</sup>149<sub>/mo</sub></div>
+        <p class="price-tag">Full database. Full workflow. For teams that are serious about volume.</p>
+        <div class="price-db"><strong>100M database included</strong> — up to 10,000 searches/mo</div>
+        <ul class="price-list">
+          <li><span class="ck">✓</span><span><strong>10,000 outreaches / month</strong></span></li>
+          <li><span class="ck">✓</span><span>Unlimited campaigns</span></li>
+          <li><span class="ck">✓</span><span>Personalized messages</span></li>
+          <li><span class="ck">✓</span><span>AI form detection + CAPTCHA solving</span></li>
+          <li><span class="ck">✓</span><span>Reply detection + follow-up queue</span></li>
+          <li><span class="ck">✓</span><span>CRM push (HubSpot, Pipedrive)</span></li>
+          <li><span class="ck">✓</span><span>Amazon SES email fallback</span></li>
+        </ul>
+        <a href="#" class="price-btn p-w">Start 14-Day Trial</a>
+      </div>
+      <div class="price-box">
+        <div class="price-tier">Scale</div>
+        <div class="price-n"><sup>$</sup>399<sub>/mo</sub></div>
+        <p class="price-tag">Unlimited volume. Built for agencies and high-output teams.</p>
+        <div class="price-db"><strong>Unlimited database searches</strong> — no monthly cap</div>
+        <ul class="price-list">
+          <li><span class="ck">✓</span><span><strong>Unlimited outreaches</strong></span></li>
+          <li><span class="ck">✓</span><span>Unlimited campaigns + sender profiles</span></li>
+          <li><span class="ck">✓</span><span>5 team seats</span></li>
+          <li><span class="ck">✓</span><span>VPS-hosted automation engine</span></li>
+          <li><span class="ck">✓</span><span>All CRM integrations</span></li>
+          <li><span class="ck">✓</span><span>API access + webhooks</span></li>
+          <li><span class="ck">✓</span><span>Dedicated onboarding + support</span></li>
+        </ul>
+        <a href="#" class="price-btn p-g">Talk to Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="eyebrow" style="margin-bottom:28px;">Start reaching businesses today</div>
+  <h2>Stop fighting spam filters.<br/>Start getting replies.</h2>
+  <p>100 million businesses. Zero domain warmup. Set your message once — Canvass handles every form, every submission, every reply.</p>
+  <a href="#" class="btn-white" style="font-size:16px;padding:15px 40px;">Start Free — No Credit Card →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="logo" href="#">
+    <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Canvass
+  </a>
+  <p style="color:var(--muted);font-size:13px;">© 2026 Canvass. All rights reserved.</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Support</a><a href="#">Status</a>
+  </div>
+</footer>
+
+</body>
+</html>
