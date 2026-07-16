@@ -98,7 +98,7 @@ nav ul a:hover { color: var(--text); }
 .hero {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 62fr 38fr;
   align-items: center;
   gap: 0;
   padding: 0;
@@ -108,7 +108,7 @@ nav ul a:hover { color: var(--text); }
 
 /* left side */
 .hero-left {
-  padding: 140px 60px 100px 80px;
+  padding: 140px 40px 100px 9vw;
   position: relative; z-index: 2;
 }
 
@@ -1053,7 +1053,7 @@ footer p { color: var(--muted); font-size: 13px; }
       Outbound Sales Platform
     </div>
     <h1 class="reveal reveal-delay-1">
-      Cold email<br>is <span class="grad">broken.</span><br>Here's what<br>replaced it.
+      Cold email is <span class="grad">broken.</span> Here's what replaced it.
     </h1>
     <p class="hero-sub reveal reveal-delay-2">
       Canvass submits your message through every business's own contact form —
@@ -1061,7 +1061,7 @@ footer p { color: var(--muted); font-size: 13px; }
       Set it once. Reach hundreds of businesses while you sleep.
     </p>
     <div class="hero-cta reveal reveal-delay-3">
-      <a href="#" class="btn-primary">Start Free — No Credit Card →</a>
+      <a href="#" class="btn-primary">Start Free — 50 Outreaches →</a>
       <a href="#how" class="btn-ghost">
         See how it works
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
@@ -1143,16 +1143,16 @@ footer p { color: var(--muted); font-size: 13px; }
     <div class="ss-l">Businesses in database</div>
   </div>
   <div class="ss-item reveal reveal-delay-1">
-    <div class="ss-n">$0.015</div>
-    <div class="ss-l">Per outreach. No per-seat pricing.</div>
-  </div>
-  <div class="ss-item reveal reveal-delay-2">
-    <div class="ss-n">75%</div>
+    <div class="ss-n">90%+</div>
     <div class="ss-l">Automated completion rate</div>
   </div>
-  <div class="ss-item reveal reveal-delay-3">
+  <div class="ss-item reveal reveal-delay-2">
     <div class="ss-n blue">0</div>
     <div class="ss-l">Domains needed. Zero warmup.</div>
+  </div>
+  <div class="ss-item reveal reveal-delay-3">
+    <div class="ss-n">Same<br><span style="font-size:0.55em;letter-spacing:-1px;">Day</span></div>
+    <div class="ss-l">Import your list and run today</div>
   </div>
 </div>
 
@@ -1163,9 +1163,8 @@ footer p { color: var(--muted); font-size: 13px; }
 
       <div class="why-left">
         <div class="section-eyebrow reveal">Why It Works</div>
-        <h2 class="s-h2 reveal reveal-delay-1">
-          Every business built a door<br>and left it open.<br>
-          <span class="grad">You're just walking through it.</span>
+        <h2 class="s-h2 reveal reveal-delay-1" style="max-width:620px;">
+          Every business built a door and left it open. <span class="grad">You're just walking through it.</span>
         </h2>
         <p class="s-body reveal reveal-delay-2" style="margin-bottom:40px;">
           Contact forms exist for one reason: so potential customers can reach the business. When you submit through one, your message arrives as a website inquiry — not email, not cold outreach. The business receives it through the same channel their best customers use.
@@ -1428,7 +1427,7 @@ footer p { color: var(--muted); font-size: 13px; }
         </div>
         <div class="bc-eyebrow">Core Feature</div>
         <h3>AI Form Detection &amp; Auto-Fill</h3>
-        <p>Claude Haiku identifies every field on every form — name, email, phone, company, subject, message — and maps your sender profile to each one. Works across Gravity Forms, Contact Form 7, WPForms, Typeform, and 200+ others.</p>
+        <p>AI identifies every field on every form — name, email, phone, company, subject, message — and maps your sender profile to each one automatically. Works across Gravity Forms, Contact Form 7, WPForms, Typeform, and 200+ others.</p>
         <div class="bc-tags">
           <span class="bc-tag">Gravity Forms</span>
           <span class="bc-tag">Contact Form 7</span>
@@ -1453,7 +1452,7 @@ footer p { color: var(--muted); font-size: 13px; }
         <div class="bc-icon bc-icon-amber">🔐</div>
         <div class="bc-eyebrow">Auto-Solve</div>
         <h3>CAPTCHA Handling</h3>
-        <p>reCAPTCHA v2/v3, hCaptcha, and image challenges solved automatically via 2captcha. Blocks don't stop the campaign.</p>
+        <p>reCAPTCHA, hCaptcha, and image challenges solved automatically. A form block doesn't stop the campaign — Canvass handles it and moves on.</p>
       </div>
 
       <!-- Email fallback -->
@@ -1462,8 +1461,8 @@ footer p { color: var(--muted); font-size: 13px; }
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="16" height="12" rx="2"/><path d="M2 8l8 5 8-5"/></svg>
         </div>
         <div class="bc-eyebrow">Email Fallback</div>
-        <h3>Amazon SES Backup</h3>
-        <p>No contact form? Canvass falls back to email via Amazon SES. Your own domain, $0.10/1,000 sends, combined coverage of 90%+ of businesses.</p>
+        <h3>Email Fallback Channel</h3>
+        <p>No contact form? Canvass falls back to email using your own domain. Connect Gmail, Outlook, or any email provider — combined coverage reaches 90%+ of businesses.</p>
       </div>
 
       <!-- Reply detection — wide -->
@@ -1619,8 +1618,8 @@ footer p { color: var(--muted); font-size: 13px; }
       <div class="int-col reveal reveal-delay-2">
         <div class="int-col-label">AI &amp; CAPTCHA</div>
         <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Claude Haiku</div><div class="int-item-sub">Form detection + messaging</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">2captcha</div><div class="int-item-sub">reCAPTCHA v2/v3, hCaptcha</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">AI Form Detection</div><div class="int-item-sub">Field mapping + message generation</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">CAPTCHA Solver</div><div class="int-item-sub">reCAPTCHA, hCaptcha, image</div></div></div>
         </div>
       </div>
       <div class="int-col reveal reveal-delay-3">
@@ -1728,9 +1727,9 @@ footer p { color: var(--muted); font-size: 13px; }
       <div class="price-card reveal">
         <span class="price-badge pb-free">Starter</span>
         <div class="price-amount"><sup>$</sup>0<sub>/mo</sub></div>
-        <div class="price-period">200 outreaches per month. No credit card required. Start today.</div>
+        <div class="price-period">50 outreaches per month. No credit card required. Start today.</div>
         <ul class="price-features">
-          <li><span class="pf-check">✓</span> <span><strong>200 outreaches/month</strong></span></li>
+          <li><span class="pf-check">✓</span> <span><strong>50 outreaches/month</strong></span></li>
           <li><span class="pf-check">✓</span> <span>1 active campaign</span></li>
           <li><span class="pf-check">✓</span> <span>CSV import</span></li>
           <li><span class="pf-check">✓</span> <span>Generic message mode</span></li>
@@ -1793,10 +1792,10 @@ footer p { color: var(--muted); font-size: 13px; }
 <!-- ══ CTA ══ -->
 <section class="cta-section">
   <div class="cta-inner">
-    <div class="cta-eyebrow reveal">No credit card. No warmup. No waiting.</div>
-    <h2 class="reveal reveal-delay-1">Your next <span class="grad">200 outreaches</span><br>are on us.</h2>
-    <p class="reveal reveal-delay-2">Start free with 200 contacts. No domain setup, no warming period, no infrastructure. Import your list and run today.</p>
-    <a href="#" class="cta-btn reveal reveal-delay-3">Start Free — 200 Outreaches Included →</a>
+    <div class="cta-eyebrow reveal">No credit card. No domain. No warmup. No waiting.</div>
+    <h2 class="reveal reveal-delay-1">Your first <span class="grad">50 outreaches</span><br>are on us.</h2>
+    <p class="reveal reveal-delay-2">Start free with 50 contacts. No domain setup, no warming period, no infrastructure. Import your list and run today.</p>
+    <a href="#" class="cta-btn reveal reveal-delay-3">Start Free — 50 Outreaches Included →</a>
   </div>
 </section>
 
