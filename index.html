@@ -29,13 +29,18 @@
   --amber:    #f59e0b;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  max-width: 100%;
+}
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Work Sans', -apple-system, sans-serif;
   font-size: 16px; line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
@@ -328,8 +333,11 @@ nav ul a:hover { color: var(--text); }
   letter-spacing: -3px;
   line-height: 1.04;
   margin-bottom: 20px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
-.s-body { font-size: 17px; color: var(--mid); line-height: 1.85; max-width: 560px; }
+.s-body { font-size: 17px; color: var(--mid); line-height: 1.85; max-width: 560px; word-break: break-word; overflow-wrap: break-word; }
 
 /* ══════════════════════════════════════════
    WHY IT WORKS — full-width, split asymmetric
@@ -365,7 +373,7 @@ nav ul a:hover { color: var(--text); }
 .why-bullet-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
 /* right — inbox visual */
-.why-visual { position: relative; overflow: hidden; }
+.why-visual { position: relative; max-width: 100%; }
 .inbox-card {
   background: var(--surface);
   border: 1px solid rgba(255,255,255,0.1);
