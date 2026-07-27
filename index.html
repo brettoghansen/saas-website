@@ -963,6 +963,56 @@ footer p { color: var(--muted); font-size: 13px; }
 .footer-links a:hover { color: var(--text); }
 
 /* ══════════════════════════════════════════
+   HAMBURGER MENU
+══════════════════════════════════════════ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: transparent; border: none; padding: 4px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; height: 2px; border-radius: 2px;
+  background: var(--mid); transition: transform 0.25s, opacity 0.25s, background 0.15s;
+  width: 22px;
+}
+.nav-hamburger:hover span { background: var(--text); }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-drawer {
+  display: none;
+  position: fixed; top: 58px; left: 0; right: 0;
+  background: rgba(8,8,16,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  z-index: 199;
+  padding: 20px 24px 28px;
+  flex-direction: column; gap: 4px;
+  transform: translateY(-8px); opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-mobile-drawer.open {
+  display: flex; opacity: 1; transform: translateY(0);
+}
+.nav-mobile-drawer a {
+  color: var(--mid); text-decoration: none;
+  font-size: 16px; font-weight: 500; padding: 12px 4px;
+  border-bottom: 1px solid var(--border);
+  display: block; transition: color 0.15s;
+}
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer a:hover { color: var(--text); }
+.nav-mobile-drawer .nav-btn-mobile {
+  margin-top: 12px; background: var(--text); color: var(--bg) !important;
+  border-radius: 8px; text-align: center; font-weight: 700 !important;
+  padding: 14px !important; border-bottom: none !important;
+}
+
+/* ══════════════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 1024px) {
@@ -973,52 +1023,115 @@ footer p { color: var(--muted); font-size: 13px; }
   .hero-left .hero-proof { justify-content: center; }
   .hero-right { display: none; }
   .why-grid { grid-template-columns: 1fr; gap: 48px; }
-  .why-float { left: 0; }
+  .why-float { left: 0; bottom: -10px; }
 }
 
 @media (max-width: 768px) {
+  /* Nav — hamburger */
   nav { padding: 0 20px; }
-  nav ul li:not(:last-child) { display: none; }
-  .hero-left { padding: 100px 20px 60px; }
-  .hero h1 { font-size: clamp(42px, 11vw, 60px); letter-spacing: -2.5px; }
-  .hero-sub { font-size: 16px; }
+  nav ul { display: none; }
+  .nav-hamburger { display: flex; }
 
+  /* Hero */
+  .hero-left { padding: 90px 20px 56px; }
+  .hero h1 { font-size: clamp(38px, 11vw, 58px); letter-spacing: -2px; }
+  .hero-sub { font-size: 15px; }
+  .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+  .btn-primary, .btn-ghost { width: 100%; max-width: 320px; justify-content: center; }
+
+  /* Stats */
   .stats-strip { grid-template-columns: 1fr 1fr; }
   .ss-item { border-right: none !important; border-bottom: 1px solid var(--border); }
   .ss-item:nth-child(odd) { border-right: 1px solid var(--border) !important; }
   .ss-item:nth-child(3), .ss-item:nth-child(4) { border-bottom: none; }
-  .ss-n { font-size: 42px; }
+  .ss-n { font-size: 40px; letter-spacing: -2px; }
 
-  .s-h2 { font-size: clamp(30px, 7vw, 44px); letter-spacing: -2px; }
-  .why-section { padding: 72px 20px; }
-  .vs-section { padding: 72px 20px; }
-  .vs-cols { grid-template-columns: 1fr; }
+  /* Typography */
+  .s-h2 { font-size: clamp(28px, 7vw, 42px); letter-spacing: -1.5px; }
+  .s-body { font-size: 15px; }
+
+  /* Sections */
+  .why-section { padding: 64px 20px; }
+  .why-float { display: none; }
+  .vs-section { padding: 64px 20px; }
+  .vs-cols { grid-template-columns: 1fr; gap: 16px; }
   .vs-item-body p { display: none; }
-  .how-section { padding: 72px 20px; }
-  .how-steps { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
-  .bento-section { padding: 72px 20px; }
-  .bento-grid { grid-template-columns: 1fr; }
-  .bc-large, .bc-wide { grid-column: span 1; }
-  .db-section { padding: 80px 20px; }
-  .db-100m { font-size: clamp(72px, 18vw, 120px); letter-spacing: -6px; }
-  .workflow-section { padding: 72px 20px; }
+
+  /* How it works — 2 col on tablet, 1 col on phone handled below */
+  .how-section { padding: 64px 20px; }
+  .how-steps { grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .how-line { display: none; }
+  .how-note { padding: 18px 20px; flex-direction: column; gap: 10px; }
+
+  /* Bento */
+  .bento-section { padding: 64px 20px; }
+  .bento-grid { grid-template-columns: 1fr; gap: 12px; }
+  .bc-large, .bc-wide, .bc-tall { grid-column: span 1; grid-row: span 1; }
+
+  /* DB */
+  .db-section { padding: 72px 20px; }
+  .db-100m { font-size: clamp(68px, 18vw, 110px); letter-spacing: -5px; }
+
+  /* Workflow */
+  .workflow-section { padding: 64px 20px; }
   .workflow-grid { grid-template-columns: 1fr; gap: 40px; }
-  .int-section { padding: 72px 20px; }
+
+  /* Integrations */
+  .int-section { padding: 64px 20px; }
   .int-grid { grid-template-columns: 1fr 1fr; }
-  .int-col { border-right: none !important; border-bottom: 1px solid var(--border); }
+  .int-col { border-right: none !important; border-bottom: 1px solid var(--border); padding: 24px 20px; }
   .int-col:last-child { border-bottom: none; }
-  .reviews-section { padding: 72px 20px; }
+
+  /* Reviews */
+  .reviews-section { padding: 64px 20px; }
   .reviews-masonry { grid-template-columns: 1fr; }
   .review-card:nth-child(n+4) { display: none; }
-  .pricing-section { padding: 72px 20px; }
+
+  /* Pricing */
+  .pricing-section { padding: 64px 20px; }
   .pricing-cards { grid-template-columns: 1fr; max-width: 460px; }
   .price-card:hover { transform: none; }
-  .cta-section { padding: 80px 20px; }
-  .cta-section h2 { font-size: clamp(32px, 8vw, 48px); letter-spacing: -2px; }
-  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
-  .footer-links { flex-wrap: wrap; gap: 16px; }
-  .how-note { padding: 20px 22px; }
   .pricing-trust { flex-direction: column; gap: 10px; }
+
+  /* CTA / Footer */
+  .cta-section { padding: 72px 20px; }
+  .cta-section h2 { font-size: clamp(30px, 8vw, 48px); letter-spacing: -2px; }
+  .cta-btn { width: 100%; max-width: 320px; justify-content: center; }
+  footer { padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer-links { flex-wrap: wrap; gap: 14px; }
+}
+
+/* ── Small phones (iPhone SE, Galaxy A series) ── */
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(34px, 10vw, 48px); letter-spacing: -1.5px; }
+  .hero-badge { font-size: 11px; }
+  .hero-proof { gap: 6px; }
+  .hero-pill { font-size: 11px; }
+
+  .stats-strip { grid-template-columns: 1fr; }
+  .ss-item { border-right: none !important; border-bottom: 1px solid var(--border) !important; }
+  .ss-item:last-child { border-bottom: none !important; }
+  .ss-n { font-size: 48px; }
+
+  .how-steps { grid-template-columns: 1fr; gap: 24px; }
+  .how-step { flex-direction: row; text-align: left; align-items: flex-start; gap: 16px; }
+  .how-num { width: 44px; height: 44px; font-size: 15px; flex-shrink: 0; margin-bottom: 0; }
+
+  .int-grid { grid-template-columns: 1fr; }
+
+  .vs-card-head { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .vs-tag { align-self: flex-start; }
+
+  .db-100m { font-size: clamp(56px, 18vw, 90px); letter-spacing: -4px; }
+  .db-label { font-size: 18px; }
+
+  .billing-toggle { gap: 10px; }
+  .bt-label { font-size: 13px; }
+
+  .cta-section h2 { letter-spacing: -1.5px; }
+
+  .how-note { font-size: 14px; }
+  .s-h2 { letter-spacing: -1px; }
 }
 </style>
 </head>
@@ -1038,7 +1151,18 @@ footer p { color: var(--muted); font-size: 13px; }
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#" class="nav-btn">Start Free →</a></li>
   </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="#database" onclick="closeMobileNav()">Database</a>
+  <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#" class="nav-btn-mobile" onclick="closeMobileNav()">Start Free →</a>
+</div>
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -1815,6 +1939,25 @@ footer p { color: var(--muted); font-size: 13px; }
 </footer>
 
 <script>
+// ── MOBILE NAV ─────────────────────────────────────
+function toggleMobileNav(btn) {
+  btn.classList.toggle('open');
+  var drawer = document.getElementById('mobileNav');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+}
+function closeMobileNav() {
+  var btn = document.querySelector('.nav-hamburger');
+  var drawer = document.getElementById('mobileNav');
+  if (btn) btn.classList.remove('open');
+  if (drawer) drawer.classList.remove('open');
+  document.body.style.overflow = '';
+}
+// Close drawer on resize back to desktop
+window.addEventListener('resize', function() {
+  if (window.innerWidth > 768) closeMobileNav();
+});
+
 // ── SCROLL REVEAL ──────────────────────────────────
 (function() {
   if (!('IntersectionObserver' in window)) {
