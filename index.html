@@ -357,6 +357,7 @@ nav ul a:hover { color: var(--text); }
 }
 
 .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+.why-left, .why-visual { min-width: 0; }
 
 .why-left .s-h2 { margin-bottom: 24px; }
 .why-left .s-body { margin-bottom: 40px; }
@@ -1026,6 +1027,11 @@ footer p { color: var(--muted); font-size: 13px; }
    RESPONSIVE
 ══════════════════════════════════════════ */
 @media (max-width: 1024px) {
+  /* prevent any element from making the page wider than viewport */
+  html, body { overflow-x: hidden; }
+  section, .stats-strip, footer { overflow-x: hidden; max-width: 100%; }
+  .inner { overflow: hidden; box-sizing: border-box; max-width: 100%; }
+
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding: 120px 40px 60px; text-align: center; }
   .hero-left .hero-sub { margin: 0 auto 44px; }
@@ -1034,7 +1040,8 @@ footer p { color: var(--muted); font-size: 13px; }
   .hero-right { display: none; }
   .why-grid { grid-template-columns: 1fr; gap: 48px; }
   .why-float { display: none; }
-  .why-visual { overflow: visible; }
+  .why-left, .why-visual { min-width: 0; overflow: hidden; }
+  .inbox-card { max-width: 100%; width: 100%; }
 }
 
 @media (max-width: 768px) {
