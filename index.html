@@ -1882,7 +1882,7 @@ footer p { color: var(--muted); font-size: 13px; }
           <li><span class="pf-check">✓</span> <span>CAPTCHA auto-solve</span></li>
           <li><span class="pf-check dim">—</span> <span class="dim">100M database (not included)</span></li>
         </ul>
-        <a href="https://app.loylty.io" target="_blank" class="price-btn pb-ghost">Get Started →</a>
+        <button onclick="startCheckout('starter')" class="price-btn pb-ghost">Get Started →</button>
       </div>
 
       <!-- Pro (featured) -->
@@ -1902,7 +1902,7 @@ footer p { color: var(--muted); font-size: 13px; }
           <li><span class="pf-check">✓</span> <span>HubSpot + Pipedrive push</span></li>
           <li><span class="pf-check">✓</span> <span>Email fallback via any SMTP</span></li>
         </ul>
-        <a href="https://app.loylty.io" target="_blank" class="price-btn pb-solid">Get Started →</a>
+        <button onclick="startCheckout('pro')" class="price-btn pb-solid">Get Started →</button>
       </div>
 
       <!-- Agency -->
@@ -1920,7 +1920,7 @@ footer p { color: var(--muted); font-size: 13px; }
           <li><span class="pf-check">✓</span> <span>Custom CRM integrations</span></li>
           <li><span class="pf-check">✓</span> <span>White-label option</span></li>
         </ul>
-        <a href="https://app.loylty.io" target="_blank" class="price-btn pb-ghost">Get Started →</a>
+        <button onclick="startCheckout('agency')" class="price-btn pb-ghost">Get Started →</button>
       </div>
 
     </div>
@@ -2001,6 +2001,13 @@ var prices = {
   scale:   { monthly: 499, annual: 399 }
 };
 
+// Stripe Price IDs
+var priceIds = {
+  starter: { monthly: 'price_1TzKzoH0ghZaJItui2kAs2TX', annual: 'price_1TzKzoH0ghZaJItukDqOU8bT' },
+  pro:     { monthly: 'price_1TzKzoH0ghZaJItu7tdxyfTu', annual: 'price_1TzKzoH0ghZaJItulVyaKU3f' },
+  agency:  { monthly: 'price_1TzKzpH0ghZaJItuf4Cp33Wj', annual: 'price_1TzKzpH0ghZaJItuAEsleCKl' }
+};
+
 function toggleBilling() {
   isAnnual = !isAnnual;
   var sw = document.getElementById('bt-switch');
@@ -2012,6 +2019,26 @@ function toggleBilling() {
     var el = document.getElementById('price-' + p);
     if (el) el.textContent = isAnnual ? prices[p].annual : prices[p].monthly;
   });
+}
+
+function startCheckout(plan) {
+  var period = isAnnual ? 'annual' : 'monthly';
+  var priceId = priceIds[plan] && priceIds[plan][period];
+  if (!priceId) { alert('Pricing not available. Please contact us.'); return; }
+  var btn = event.target;
+  btn.textContent = 'Loading...';
+  btn.disabled = true;
+  fetch('https://app.loylty.io/api/checkout/public', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ priceId: priceId })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.url) { window.location.href = data.url; }
+    else { alert('Could not start checkout. Please try again.'); btn.textContent = 'Get Started →'; btn.disabled = false; }
+  })
+  .catch(function() { alert('Network error. Please try again.'); btn.textContent = 'Get Started →'; btn.disabled = false; });
 }
 </script>
 </body>
