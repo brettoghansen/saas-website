@@ -636,6 +636,20 @@ nav ul a:hover { color: var(--text); }
 }
 .bbn-l { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
+/* Cost comparison table in bento card */
+.bc-cost-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.bcc-col { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+.bcc-bad  { border-color: rgba(239,68,68,0.2); }
+.bcc-good { border-color: rgba(34,197,94,0.25); }
+.bcc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 14px; background: rgba(255,255,255,0.03); color: var(--mid); border-bottom: 1px solid var(--border); }
+.bcc-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.03); gap: 8px; }
+.bcc-row span:first-child { flex: 1; }
+.bcc-red   { color: #f87171; font-weight: 600; white-space: nowrap; }
+.bcc-green { color: #4ade80; font-weight: 600; white-space: nowrap; }
+.bcc-total { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.03); font-size: 12px; color: var(--mid); gap: 8px; }
+.bcc-total span:first-child { flex: 1; }
+.bcc-total-n { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
+
 /* ══════════════════════════════════════════
    DATABASE — full-width dramatic
 ══════════════════════════════════════════ */
@@ -1165,6 +1179,25 @@ footer p { color: var(--muted); font-size: 13px; }
 
   .how-note { font-size: 14px; }
   .s-h2 { letter-spacing: -1px; }
+}
+
+/* ── Pricing ROI bar ─────────────────────────────── */
+.pricing-roi {
+  display: flex; align-items: center; gap: 0;
+  max-width: 820px; margin: 0 auto 40px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 16px; overflow: hidden;
+}
+.proi-stat { flex: 1; padding: 28px 24px; text-align: center; }
+.proi-n { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -1.5px; color: var(--mid); margin-bottom: 8px; }
+.proi-highlight { background: linear-gradient(135deg, var(--accent), #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.proi-l { font-size: 13px; color: var(--mid); line-height: 1.5; }
+.proi-l span { font-size: 11px; color: var(--muted); display: block; margin-top: 3px; }
+.proi-divider { width: 1px; background: rgba(255,255,255,0.07); align-self: stretch; flex-shrink: 0; }
+@media(max-width:700px) {
+  .pricing-roi { flex-direction: column; }
+  .proi-divider { width: 100%; height: 1px; }
 }
 
 /* ── Video Section ───────────────────────────────── */
@@ -1777,11 +1810,24 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <!-- Stats card -->
       <div class="bc bc-small reveal reveal-delay-2">
         <div class="bc-eyebrow">The Math</div>
-        <h3>What cold email costs vs what this costs.</h3>
-        <div class="bc-big-numbers">
-          <div class="bbn-item"><div class="bbn-n">$0.015</div><div class="bbn-l">Per outreach at Pro plan</div></div>
-          <div class="bbn-item"><div class="bbn-n">40×</div><div class="bbn-l">Cheaper than a cold email stack</div></div>
-          <div class="bbn-item"><div class="bbn-n">$0</div><div class="bbn-l">Domains. Warmup. Sending infra.</div></div>
+        <h3>Your cold email stack costs more than our top plan.</h3>
+        <div class="bc-cost-compare">
+          <div class="bcc-col bcc-bad">
+            <div class="bcc-label">Cold Email Stack / mo</div>
+            <div class="bcc-row"><span>Data provider</span><span class="bcc-red">$150–400</span></div>
+            <div class="bcc-row"><span>Sending platform</span><span class="bcc-red">$97–197</span></div>
+            <div class="bcc-row"><span>Warmup tool</span><span class="bcc-red">$29–49</span></div>
+            <div class="bcc-row"><span>Domain rotation</span><span class="bcc-red">$50–150</span></div>
+            <div class="bcc-total"><span>Before you send one email</span><span class="bcc-red bcc-total-n">$326–796</span></div>
+          </div>
+          <div class="bcc-col bcc-good">
+            <div class="bcc-label">Loylty Pro / mo</div>
+            <div class="bcc-row"><span>Everything above</span><span class="bcc-green">Included</span></div>
+            <div class="bcc-row"><span>CAPTCHA solving</span><span class="bcc-green">Included</span></div>
+            <div class="bcc-row"><span>Reply detection</span><span class="bcc-green">Included</span></div>
+            <div class="bcc-row"><span>CRM push</span><span class="bcc-green">Included</span></div>
+            <div class="bcc-total"><span>9,000 sends / month</span><span class="bcc-green bcc-total-n">$299</span></div>
+          </div>
         </div>
       </div>
 
@@ -2143,6 +2189,23 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <button onclick="startCheckout('agency')" class="price-btn pb-ghost">Get Started →</button>
       </div>
 
+    </div>
+
+    <div class="pricing-roi reveal">
+      <div class="proi-stat">
+        <div class="proi-n">$1.66</div>
+        <div class="proi-l">Cost per inbound reply at Pro<br><span>9,000 sends × 2% reply rate = 180 conversations / $299</span></div>
+      </div>
+      <div class="proi-divider"></div>
+      <div class="proi-stat">
+        <div class="proi-n">$4.44</div>
+        <div class="proi-l">Cost per reply on cold email<br><span>9,000 sends × 1% reply rate = 90 replies / $400 stack</span></div>
+      </div>
+      <div class="proi-divider"></div>
+      <div class="proi-stat">
+        <div class="proi-n proi-highlight">2.7×</div>
+        <div class="proi-l">More replies per dollar<br><span>Same volume. Different channel. Better economics.</span></div>
+      </div>
     </div>
 
     <div class="pricing-trust reveal">
