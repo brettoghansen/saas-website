@@ -588,8 +588,8 @@ nav ul a:hover { color: var(--text); }
   position: relative; overflow: hidden;
   transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
-.bc:hover { border-color: rgba(255,255,255,0.14); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
-.bc::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(79,142,255,0.04) 0%, transparent 55%); pointer-events: none; }
+.bc:hover { border-color: rgba(79,142,255,0.25); transform: translateY(-5px); box-shadow: 0 32px 72px rgba(0,0,0,0.55), 0 0 0 1px rgba(79,142,255,0.08); }
+.bc::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at top left, rgba(79,142,255,0.06) 0%, transparent 60%); pointer-events: none; }
 
 .bc-large { grid-column: span 2; }
 .bc-small { grid-column: span 1; }
@@ -597,18 +597,18 @@ nav ul a:hover { color: var(--text); }
 .bc-tall  { grid-row: span 2; }
 
 .bc-icon {
-  width: 48px; height: 48px; border-radius: 12px;
+  width: 64px; height: 64px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 22px; font-size: 20px;
+  margin-bottom: 28px; font-size: 26px;
 }
-.bc-icon-blue   { background: rgba(79,142,255,0.14); border: 1px solid rgba(79,142,255,0.22); color: var(--accent); }
-.bc-icon-amber  { background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.22); color: var(--amber); }
-.bc-icon-green  { background: rgba(34,197,94,0.12);  border: 1px solid rgba(34,197,94,0.22);  color: var(--green); }
-.bc-icon-purple { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.22); color: #a78bfa; }
+.bc-icon-blue   { background: rgba(79,142,255,0.15); border: 1px solid rgba(79,142,255,0.3); color: var(--accent); box-shadow: 0 8px 24px rgba(79,142,255,0.15); }
+.bc-icon-amber  { background: rgba(245,158,11,0.13); border: 1px solid rgba(245,158,11,0.3); color: var(--amber); box-shadow: 0 8px 24px rgba(245,158,11,0.12); }
+.bc-icon-green  { background: rgba(34,197,94,0.13);  border: 1px solid rgba(34,197,94,0.3);  color: var(--green); box-shadow: 0 8px 24px rgba(34,197,94,0.12); }
+.bc-icon-purple { background: rgba(139,92,246,0.13); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; box-shadow: 0 8px 24px rgba(139,92,246,0.12); }
 
-.bc-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.bc h3 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; }
-.bc p { font-size: 15px; color: var(--mid); line-height: 1.75; }
+.bc-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; opacity: 0.8; }
+.bc h3 { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 16px; }
+.bc p { font-size: 15px; color: var(--mid); line-height: 1.8; }
 .bc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
 .bc-tag { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--muted); }
 
@@ -1328,12 +1328,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       The outbound channel your competitors haven't discovered yet
     </div>
     <h1 class="reveal reveal-delay-1">
-      Cold email is <span class="grad">broken.</span> Here's what replaced it.
+      The outreach channel that <span class="grad">doesn't have a spam folder.</span>
     </h1>
     <p class="hero-sub reveal reveal-delay-2">
       Loylty submits your message through every business's own contact form —
-      <strong>the one channel that never lands in spam.</strong>
-      Works alongside your cold email and LinkedIn — not instead of them.
+      landing in the same inbox where their real customers reach them.
+      <strong>Add it to your stack in 10 minutes. Keep everything else.</strong>
     </p>
     <div class="hero-cta reveal reveal-delay-3">
       <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Start Free — 100 Outreaches →</a>
@@ -1442,28 +1442,28 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
           Every business built a door and left it open. <span class="grad">You're just walking through it.</span>
         </h2>
         <p class="s-body reveal reveal-delay-2" style="margin-bottom:40px;">
-          Contact forms exist for one reason: so potential customers can reach the business. When you submit through one, your message arrives as a website inquiry — not email, not cold outreach. The business receives it through the same channel their best customers use.
+          Contact forms exist so potential customers can reach a business. When you submit through one, your message arrives as a website inquiry — not email, not cold outreach. The business reads it the same way they read messages from their actual customers.
         </p>
         <div class="why-bullets">
           <div class="why-bullet reveal">
             <div class="why-num">01</div>
             <div class="why-bullet-body">
-              <h4>No spam filter. No deliverability problem.</h4>
-              <p>Your message is a POST request to their own web server. There's no inbox to filter it, no domain reputation to destroy, no warming period.</p>
+              <h4>No spam filter. Ever.</h4>
+              <p>Your message is a POST request to their web server — not an email. There's no inbox to filter it, no domain score to worry about, no warming period.</p>
             </div>
           </div>
           <div class="why-bullet reveal reveal-delay-1">
             <div class="why-num">02</div>
             <div class="why-bullet-body">
-              <h4>Lands in their inquiry inbox, not their promotions tab.</h4>
-              <p>The business gets a notification from their own CMS — the same place their real leads come from. They read it.</p>
+              <h4>Lands where their real customers reach them.</h4>
+              <p>The business gets a notification from their own CMS — not their promotions tab, not their spam folder. The same place their best clients contact them from.</p>
             </div>
           </div>
           <div class="why-bullet reveal reveal-delay-2">
             <div class="why-num">03</div>
             <div class="why-bullet-body">
-              <h4>No infrastructure. Starts the same day.</h4>
-              <p>No domain to buy, no DNS records, no 6-week warmup. Import your CSV. Write your message. Run.</p>
+              <h4>Running today. No setup, no waiting.</h4>
+              <p>No domain to buy. No DNS records. No 6-week warmup. Import your list, write your message, hit run. Most users send their first campaign within the hour.</p>
             </div>
           </div>
         </div>
@@ -1549,9 +1549,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 <section class="vs-section">
   <div class="inner">
     <div class="vs-header">
-      <div class="section-eyebrow reveal" style="justify-content:center;">The Comparison</div>
-      <h2 class="s-h2 reveal reveal-delay-1">You've been paying for<br>a broken channel.</h2>
-      <p class="s-body reveal reveal-delay-2">Cold email requires a $600/mo stack, 6 weeks of warmup, and a domain you'll burn through in 3 months. Loylty doesn't need any of it.</p>
+      <div class="section-eyebrow reveal" style="justify-content:center;">Side By Side</div>
+      <h2 class="s-h2 reveal reveal-delay-1">Cold email had a good run.<br><span class="grad">It's done.</span></h2>
+      <p class="s-body reveal reveal-delay-2">A $400–600/mo stack. Six weeks of warmup. A domain you'll burn in a quarter. Loylty doesn't need any of it — and it reaches inboxes cold email never will.</p>
     </div>
 
     <div class="vs-cols">
@@ -1707,9 +1707,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 <section class="bento-section">
   <div class="inner">
     <div class="bento-header">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Under the Hood</div>
-      <h2 class="s-h2 reveal reveal-delay-1">Everything cold email<br>outsources to five tools.</h2>
-      <p class="s-body reveal reveal-delay-2">Built-in data, built-in CAPTCHA solving, built-in reply detection. One price. No stack to assemble.</p>
+      <div class="section-eyebrow reveal" style="justify-content:center;">What's Inside</div>
+      <h2 class="s-h2 reveal reveal-delay-1">Everything you need.<br>Nothing you don't.</h2>
+      <p class="s-body reveal reveal-delay-2">Most outreach tools make you buy five products to do one job. Loylty handles form detection, CAPTCHA solving, message generation, and reply routing — all in one flat price.</p>
     </div>
 
     <div class="bento-grid">
@@ -1719,9 +1719,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <div class="bc-icon bc-icon-blue">
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="16" height="13" rx="2"/><path d="M7 9h8M7 13h5"/></svg>
         </div>
-        <div class="bc-eyebrow">Core Feature</div>
-        <h3>AI Form Detection &amp; Auto-Fill</h3>
-        <p>AI identifies every field on every form — name, email, phone, company, subject, message — and maps your sender profile to each one automatically. Works across Gravity Forms, Contact Form 7, WPForms, Typeform, and 200+ others.</p>
+        <div class="bc-eyebrow">Core Engine</div>
+        <h3>Give it a URL. It handles everything else.</h3>
+        <p>Loylty navigates to the site, finds the contact form, maps every field to your sender profile, and submits — automatically. Name, email, phone, company, message. Works across 200+ form builders including Gravity Forms, WPForms, Typeform, and Contact Form 7. No per-site setup. No manual anything.</p>
         <div class="bc-tags">
           <span class="bc-tag">Gravity Forms</span>
           <span class="bc-tag">Contact Form 7</span>
@@ -1745,8 +1745,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <div class="bc bc-small reveal reveal-delay-1">
         <div class="bc-icon bc-icon-amber">🔐</div>
         <div class="bc-eyebrow">Auto-Solve</div>
-        <h3>CAPTCHA Handling</h3>
-        <p>reCAPTCHA, hCaptcha, and image challenges solved automatically. A form block doesn't stop the campaign — Loylty handles it and moves on.</p>
+        <h3>CAPTCHAs don't stop this campaign.</h3>
+        <p>reCAPTCHA, hCaptcha, image puzzles — all solved in real time. A blocked form is a skipped row. The campaign keeps running.</p>
       </div>
 
       <!-- Email fallback -->
@@ -1754,9 +1754,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <div class="bc-icon bc-icon-green">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="16" height="12" rx="2"/><path d="M2 8l8 5 8-5"/></svg>
         </div>
-        <div class="bc-eyebrow">Email Fallback</div>
-        <h3>Email Fallback Channel</h3>
-        <p>No contact form? Loylty falls back to email using your own domain. Connect Gmail, Outlook, or any email provider — combined coverage reaches 90%+ of businesses.</p>
+        <div class="bc-eyebrow">Fallback</div>
+        <h3>No form? Still reaches them.</h3>
+        <p>When a site has no contact form, Loylty falls back to email via your own SMTP. Connect Gmail, Outlook, or any provider. Combined coverage: 90%+ of businesses on your list.</p>
       </div>
 
       <!-- Reply detection — wide -->
@@ -1765,8 +1765,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 3l-9 9M18 3h-5M18 3v5"/><path d="M10 5H4a2 2 0 00-2 2v9a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>
         </div>
         <div class="bc-eyebrow">Automation</div>
-        <h3>Reply Detection &amp; CRM Push</h3>
-        <p>Loylty monitors for incoming replies and automatically pushes hot leads to HubSpot, Pipedrive, or your inbox. You only look at the ones worth your time.</p>
+        <h3>Replies surface themselves.</h3>
+        <p>Loylty monitors for responses and pushes qualified leads straight to HubSpot or Pipedrive. Your team sees only the ones worth calling. Nothing gets lost in a spreadsheet.</p>
         <div class="bc-live-feed">
           <div class="blf-row"><div class="blf-dot blf-green"></div><strong>Texas Fence &amp; Gate Co.</strong><span>replied 3m ago · HubSpot ✓</span></div>
           <div class="blf-row"><div class="blf-dot blf-green"></div><strong>Premier Fencing Solutions</strong><span>replied 18m ago · pushed</span></div>
@@ -1776,12 +1776,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 
       <!-- Stats card -->
       <div class="bc bc-small reveal reveal-delay-2">
-        <div class="bc-eyebrow">Cost Breakdown</div>
-        <h3>~$12 total for 23,000 outreaches</h3>
+        <div class="bc-eyebrow">The Math</div>
+        <h3>What cold email costs vs what this costs.</h3>
         <div class="bc-big-numbers">
-          <div class="bbn-item"><div class="bbn-n">$0.015</div><div class="bbn-l">Per outreach sent</div></div>
-          <div class="bbn-item"><div class="bbn-n">40×</div><div class="bbn-l">Cheaper than cold email stack</div></div>
-          <div class="bbn-item"><div class="bbn-n">$0</div><div class="bbn-l">Domain. Warmup. Infrastructure.</div></div>
+          <div class="bbn-item"><div class="bbn-n">$0.015</div><div class="bbn-l">Per outreach at Pro plan</div></div>
+          <div class="bbn-item"><div class="bbn-n">40×</div><div class="bbn-l">Cheaper than a cold email stack</div></div>
+          <div class="bbn-item"><div class="bbn-n">$0</div><div class="bbn-l">Domains. Warmup. Sending infra.</div></div>
         </div>
       </div>
 
@@ -2031,8 +2031,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     <div class="affiliate-grid">
       <div class="affiliate-left">
         <div class="section-eyebrow reveal">Partner Program</div>
-        <h2 class="s-h2 reveal reveal-delay-1">Earn 25% recurring commission. Forever.</h2>
-        <p class="reveal reveal-delay-2">Refer a client to Loylty. Every month they stay, you earn. No cap, no expiry. Agencies who refer 5+ active clients unlock 30% and white-label options.</p>
+        <h2 class="s-h2 reveal reveal-delay-1">Your clients need this. Get paid when they use it.</h2>
+        <p class="reveal reveal-delay-2">Refer any business to Loylty and earn 25% of their monthly bill — every month, for as long as they're a customer. No cap, no expiry. Agencies with 5+ referrals unlock 30% and white-label options.</p>
         <div class="affiliate-bullets reveal reveal-delay-3">
           <div class="aff-bullet">
             <div class="aff-icon">💰</div>
@@ -2072,8 +2072,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
   <div class="inner">
     <div class="pricing-header">
       <div class="section-eyebrow reveal" style="justify-content:center;">Pricing</div>
-      <h2 class="s-h2 reveal reveal-delay-1">Replace a $600/mo stack<br>with one flat price.</h2>
-      <p class="s-body reveal reveal-delay-2">No seat pricing. No data add-ons. No sending infrastructure to maintain. Everything in one plan.</p>
+      <h2 class="s-h2 reveal reveal-delay-1">One price. No add-ons.<br>No infrastructure to buy.</h2>
+      <p class="s-body reveal reveal-delay-2">Cold email stacks cost $400–600/mo before you send a single message. Loylty includes everything — data, automation, CAPTCHA solving, reply detection — in one flat monthly rate.</p>
     </div>
 
     <div class="billing-toggle reveal">
@@ -2157,10 +2157,10 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 <!-- ══ CTA ══ -->
 <section class="cta-section">
   <div class="cta-inner">
-    <div class="cta-eyebrow reveal">No credit card. No domain. No warmup. No waiting.</div>
-    <h2 class="reveal reveal-delay-1">Your first <span class="grad">100 outreaches</span><br>are on us.</h2>
-    <p class="reveal reveal-delay-2">Start free with 100 contacts. No domain setup, no warming period, no infrastructure. Import your list and run today.</p>
-    <a href="https://app.loylty.io?view=signup" target="_blank" class="cta-btn reveal reveal-delay-3">Start Free — 100 Outreaches Included →</a>
+    <div class="cta-eyebrow reveal">No credit card. No domain. No warmup. Runs today.</div>
+    <h2 class="reveal reveal-delay-1">Your competitors don't<br>know <span class="grad">this channel exists yet.</span></h2>
+    <p class="reveal reveal-delay-2">100 outreaches free. No domain to buy, no infrastructure to set up, no warmup period. Most users send their first campaign within the hour.</p>
+    <a href="https://app.loylty.io?view=signup" target="_blank" class="cta-btn reveal reveal-delay-3">Start Free — 100 Outreaches On Us →</a>
   </div>
 </section>
 
@@ -2172,7 +2172,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
         Loylty
       </a>
-      <p style="margin-top:14px;">Contact form outreach for B2B sales teams. Reach businesses through the channel that never lands in spam.</p>
+      <p style="margin-top:14px;">The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
     </div>
     <div class="footer-col">
       <div class="footer-col-label">Platform</div>
@@ -2185,21 +2185,21 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     </div>
     <div class="footer-col">
       <div class="footer-col-label">Industries</div>
-      <a href="/niches/roofing">Roofing Contractors</a>
-      <a href="/niches/fence-contractors">Fence Contractors</a>
-      <a href="/niches/hvac">HVAC Companies</a>
-      <a href="/niches/real-estate">Real Estate Agents</a>
-      <a href="/niches/plumbing">Plumbers</a>
-      <a href="/niches/landscaping">Landscaping</a>
-      <a href="/niches/law-firms">Law Firms</a>
-      <a href="/niches/dental">Dental Practices</a>
+      <a href="#">Roofing Contractors</a>
+      <a href="#">Fence Contractors</a>
+      <a href="#">HVAC Companies</a>
+      <a href="#">Real Estate Agents</a>
+      <a href="#">Plumbers</a>
+      <a href="#">Landscaping</a>
+      <a href="#">Law Firms</a>
+      <a href="#">Dental Practices</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-label">Resources</div>
-      <a href="/resources/cold-email-alternative">Cold Email Alternative</a>
-      <a href="/resources/b2b-lead-generation">B2B Lead Generation</a>
-      <a href="/resources/contact-form-marketing">Contact Form Marketing</a>
-      <a href="/resources/outreach-automation">Outreach Automation</a>
+      <a href="#">Cold Email Alternative</a>
+      <a href="#">B2B Lead Generation</a>
+      <a href="#">Contact Form Marketing</a>
+      <a href="#">Outreach Automation</a>
     </div>
   </div>
   <div class="footer-bottom inner">
