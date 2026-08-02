@@ -540,8 +540,8 @@ nav ul a:hover { color: var(--text); }
   box-shadow: 0 0 20px rgba(79,142,255,0.15);
   background: rgba(79,142,255,0.05);
 }
-.how-step h4 { font-size: 14px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.2px; }
-.how-step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+.how-step h4 { font-size: 16px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.2px; }
+.how-step p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
 .how-note {
   max-width: 700px; margin: 60px auto 0;
@@ -584,7 +584,7 @@ nav ul a:hover { color: var(--text); }
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.07);
   border-radius: 20px;
-  padding: 32px 28px;
+  padding: 44px 36px;
   position: relative; overflow: hidden;
   transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
@@ -607,8 +607,8 @@ nav ul a:hover { color: var(--text); }
 .bc-icon-purple { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.22); color: #a78bfa; }
 
 .bc-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
-.bc h3 { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; }
-.bc p { font-size: 14px; color: var(--mid); line-height: 1.75; }
+.bc h3 { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; }
+.bc p { font-size: 15px; color: var(--mid); line-height: 1.75; }
 .bc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
 .bc-tag { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--muted); }
 
@@ -1166,6 +1166,120 @@ footer p { color: var(--muted); font-size: 13px; }
   .how-note { font-size: 14px; }
   .s-h2 { letter-spacing: -1px; }
 }
+
+/* ── Video Section ───────────────────────────────── */
+.video-section { padding: 80px 24px; }
+.video-header { text-align: center; max-width: 640px; margin: 0 auto 48px; }
+.video-header p { font-size: 17px; color: var(--mid); line-height: 1.7; margin-top: 14px; }
+.video-wrap { max-width: 860px; margin: 0 auto; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+.video-placeholder {
+  aspect-ratio: 16/9; width: 100%;
+  background: linear-gradient(135deg, #0d0d1a 0%, #111128 50%, #0d1520 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px;
+  cursor: pointer; position: relative; overflow: hidden;
+}
+.video-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(79,142,255,0.08) 0%, transparent 70%);
+}
+.vp-play {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(79,142,255,0.15); border: 1.5px solid rgba(79,142,255,0.4);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; position: relative; z-index: 1;
+}
+.vp-play:hover { background: rgba(79,142,255,0.28); transform: scale(1.07); }
+.vp-label { font-size: 14px; color: var(--mid); position: relative; z-index: 1; }
+
+/* ── Complement Section ──────────────────────────── */
+.complement-section { padding: 80px 24px; }
+.complement-header { text-align: center; max-width: 620px; margin: 0 auto 56px; }
+.complement-header p { font-size: 17px; color: var(--mid); line-height: 1.75; margin-top: 14px; }
+.complement-cols {
+  display: grid; grid-template-columns: 1fr 60px 1fr;
+  align-items: center; max-width: 860px; margin: 0 auto;
+}
+.cc-col {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px; padding: 36px 32px;
+}
+.cc-col.cc-new { border-color: rgba(79,142,255,0.25); background: rgba(79,142,255,0.04); }
+.cc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 20px; }
+.cc-label.new { color: #4f8eff; }
+.cc-item { font-size: 15px; color: var(--mid); padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+.cc-item:last-of-type { border-bottom: none; }
+.cc-item.cc-highlight { color: #f0f2f8; font-weight: 700; }
+.cc-col.cc-new p { font-size: 14px; color: var(--muted); line-height: 1.7; margin-top: 14px; }
+.cc-plus { text-align: center; font-size: 28px; font-weight: 800; color: rgba(79,142,255,0.5); }
+.complement-note {
+  text-align: center; max-width: 560px; margin: 44px auto 0;
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  padding: 18px 24px; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; background: rgba(255,255,255,0.02);
+}
+@media(max-width:700px) {
+  .complement-cols { grid-template-columns: 1fr; }
+  .cc-plus { padding: 16px 0; }
+}
+
+/* ── Affiliate Section ───────────────────────────── */
+.affiliate-section { padding: 80px 24px; }
+.affiliate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1040px; margin: 0 auto; }
+.affiliate-left .section-eyebrow { justify-content: flex-start; margin-bottom: 16px; }
+.affiliate-left h2 { margin-bottom: 16px; }
+.affiliate-left > p { font-size: 17px; color: var(--mid); line-height: 1.75; margin-bottom: 32px; }
+.affiliate-bullets { display: flex; flex-direction: column; gap: 22px; margin-bottom: 32px; }
+.aff-bullet { display: flex; gap: 16px; align-items: flex-start; }
+.aff-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.aff-bullet strong { font-size: 15px; color: #f0f2f8; display: block; margin-bottom: 3px; }
+.aff-bullet span { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.aff-cta {
+  display: inline-flex; align-items: center;
+  background: linear-gradient(135deg, #4f8eff, #7c6fff);
+  color: #fff; font-weight: 700; font-size: 15px;
+  padding: 14px 28px; border-radius: 10px; text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.aff-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.aff-card {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; padding: 32px; font-size: 14px;
+}
+.aff-card-header { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+.aff-stat-row { display: flex; gap: 24px; margin-bottom: 28px; }
+.aff-stat-n { font-size: 34px; font-weight: 800; color: #f0f2f8; font-family: 'Outfit', sans-serif; letter-spacing: -1px; }
+.aff-stat-l { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.aff-recent { display: flex; flex-direction: column; }
+.aff-recent-row { display: flex; gap: 12px; align-items: center; font-size: 13px; color: var(--mid); padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.aff-green { color: #22c55e; font-weight: 700; flex-shrink: 0; }
+@media(max-width:800px) {
+  .affiliate-grid { grid-template-columns: 1fr; }
+  .affiliate-right { display: none; }
+}
+
+/* ── Footer expansion ────────────────────────────── */
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-top: 20px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-brand img { height: 36px; width: auto; margin-bottom: 16px; display: block; }
+.footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 280px; }
+.footer-col { display: flex; flex-direction: column; gap: 10px; }
+.footer-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 4px; }
+.footer-col a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 13px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media(max-width:900px) {
+  footer { padding: 48px 24px 32px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1/-1; }
+}
+@media(max-width:560px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
@@ -1182,6 +1296,7 @@ footer p { color: var(--muted); font-size: 13px; }
     <li><a href="#how">How It Works</a></li>
     <li><a href="#database">Database</a></li>
     <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#affiliates">Affiliates</a></li>
     <li><a href="https://app.loylty.io" target="_blank" style="color:var(--mid);text-decoration:none;font-size:13.5px;font-weight:500;">Log In</a></li>
     <li><a href="https://app.loylty.io?view=signup" target="_blank" class="nav-btn">Start Free — 100 Contacts →</a></li>
   </ul>
@@ -1195,6 +1310,7 @@ footer p { color: var(--muted); font-size: 13px; }
   <a href="#how" onclick="closeMobileNav()">How It Works</a>
   <a href="#database" onclick="closeMobileNav()">Database</a>
   <a href="#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="#affiliates" onclick="closeMobileNav()">Affiliates</a>
   <a href="https://app.loylty.io" target="_blank" onclick="closeMobileNav()">Log In</a>
   <a href="https://app.loylty.io?view=signup" target="_blank" class="nav-btn-mobile" onclick="closeMobileNav()">Start Free →</a>
 </div>
@@ -1209,7 +1325,7 @@ footer p { color: var(--muted); font-size: 13px; }
   <div class="hero-left">
     <div class="hero-badge reveal">
       <div class="hero-badge-dot"></div>
-      Outbound Sales Platform
+      The outbound channel your competitors haven't discovered yet
     </div>
     <h1 class="reveal reveal-delay-1">
       Cold email is <span class="grad">broken.</span> Here's what replaced it.
@@ -1217,7 +1333,7 @@ footer p { color: var(--muted); font-size: 13px; }
     <p class="hero-sub reveal reveal-delay-2">
       Loylty submits your message through every business's own contact form —
       <strong>the one channel that never lands in spam.</strong>
-      Set it once. Reach hundreds of businesses while you sleep.
+      Works alongside your cold email and LinkedIn — not instead of them.
     </p>
     <div class="hero-cta reveal reveal-delay-3">
       <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Start Free — 100 Outreaches →</a>
@@ -1227,7 +1343,7 @@ footer p { color: var(--muted); font-size: 13px; }
       </a>
     </div>
     <div class="hero-proof reveal reveal-delay-4">
-      <div class="hero-pill"><div class="hp-dot"></div> 100M+ businesses indexed</div>
+      <div class="hero-pill"><div class="hp-dot"></div> 2.3M+ businesses indexed</div>
       <div class="hero-pill"><div class="hp-dot"></div> Zero warmup required</div>
       <div class="hero-pill"><div class="hp-dot"></div> No spam filter</div>
       <div class="hero-pill"><div class="hp-dot"></div> Runs while you sleep</div>
@@ -1285,7 +1401,7 @@ footer p { color: var(--muted); font-size: 13px; }
         <div class="hm-status hm-s-warn"></div>
         <div class="hm-co">Riverside Fence Pros</div>
         <div class="hm-detail">Email fallback</div>
-        <div class="hm-pill hm-pill-skip">SES</div>
+        <div class="hm-pill hm-pill-skip">Email</div>
       </div>
       <div class="hm-footer">
         <div class="hm-live"><div class="live-dot"></div> Live</div>
@@ -1298,7 +1414,7 @@ footer p { color: var(--muted); font-size: 13px; }
 <!-- ══ STATS STRIP ══ -->
 <div class="stats-strip">
   <div class="ss-item reveal">
-    <div class="ss-n blue">100M+</div>
+    <div class="ss-n blue">2.3M+</div>
     <div class="ss-l">Businesses in database</div>
   </div>
   <div class="ss-item reveal reveal-delay-1">
@@ -1540,7 +1656,7 @@ footer p { color: var(--muted); font-size: 13px; }
       <div class="how-step active reveal">
         <div class="how-num">1</div>
         <h4>Import your list</h4>
-        <p>Drop in a CSV of target businesses. Loylty handles the rest — or pull directly from our 100M database.</p>
+        <p>Drop in a CSV of target businesses. Loylty handles the rest — or pull directly from our 2.3M+ database.</p>
       </div>
       <div class="how-step reveal reveal-delay-1">
         <div class="how-num">2</div>
@@ -1563,6 +1679,25 @@ footer p { color: var(--muted); font-size: 13px; }
       <div class="how-note-icon">🛡️</div>
       <div class="how-note-body">
         <strong>Loylty never auto-submits without your review.</strong> You set the campaign parameters and approve the message. The automation handles the mechanical work — you stay in control of what goes out.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ VIDEO ══ -->
+<section class="video-section" id="demo">
+  <div class="inner">
+    <div class="video-header">
+      <div class="section-eyebrow reveal" style="justify-content:center;">See It Live</div>
+      <h2 class="s-h2 reveal reveal-delay-1">Watch a campaign run in real time.</h2>
+      <p class="reveal reveal-delay-2">From list import to first submission in under 60 seconds. No setup, no warmup, no waiting.</p>
+    </div>
+    <div class="video-wrap reveal reveal-delay-3">
+      <div class="video-placeholder">
+        <div class="vp-play">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#4f8eff"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <div class="vp-label">Watch: Loylty sends 100 outreaches in 4 minutes</div>
       </div>
     </div>
   </div>
@@ -1654,14 +1789,42 @@ footer p { color: var(--muted); font-size: 13px; }
   </div>
 </section>
 
+<!-- ══ COMPLEMENT ══ -->
+<section class="complement-section">
+  <div class="inner">
+    <div class="complement-header">
+      <div class="section-eyebrow reveal" style="justify-content:center;">Your Outbound Stack</div>
+      <h2 class="s-h2 reveal reveal-delay-1">A third channel — not a replacement.</h2>
+      <p class="reveal reveal-delay-2">Keep your cold email sequences. Keep your LinkedIn outreach. Loylty adds a third touch through an entirely different path — same prospect, different channel, zero overlap.</p>
+    </div>
+    <div class="complement-cols reveal reveal-delay-3">
+      <div class="cc-col cc-existing">
+        <div class="cc-label">What you're already doing</div>
+        <div class="cc-item">📧 Cold email sequences</div>
+        <div class="cc-item">💼 LinkedIn outreach</div>
+        <div class="cc-item">📞 Cold calls</div>
+      </div>
+      <div class="cc-plus">+</div>
+      <div class="cc-col cc-new">
+        <div class="cc-label new">What Loylty adds</div>
+        <div class="cc-item cc-highlight">📋 Contact form outreach</div>
+        <p>Delivery through the website inbox your targets actually monitor. Zero overlap with your email stack. No extra infrastructure. Starts the same day.</p>
+      </div>
+    </div>
+    <div class="complement-note reveal reveal-delay-4">
+      Multi-channel outreach converts at 3–5× the rate of single-channel. Loylty adds the touch that takes 20 minutes to set up — and runs while you sleep.
+    </div>
+  </div>
+</section>
+
 <!-- ══ DATABASE ══ -->
 <section class="db-section" id="database">
   <div class="db-inner inner">
     <div class="section-eyebrow reveal" style="justify-content:center;">Built-In Data</div>
-    <div class="db-100m reveal reveal-delay-1">100M</div>
+    <div class="db-100m reveal reveal-delay-1">2.3M+</div>
     <div class="db-label reveal reveal-delay-2">businesses. Already found.</div>
     <p class="db-desc reveal reveal-delay-3">
-      No data vendor required. Loylty ships with 100 million indexed businesses — filtered by industry, geography, and business type. The Pro and Agency plans include full access.
+      No data vendor required. Loylty ships with 2.3 million indexed businesses — filtered by industry, geography, and business type. The Pro and Agency plans include full access.
     </p>
     <div class="db-tags reveal reveal-delay-4">
       <span class="db-tag">Fence &amp; Gate</span>
@@ -1695,7 +1858,7 @@ footer p { color: var(--muted); font-size: 13px; }
             <div class="wf-icon-box">📥</div>
             <div class="wf-body">
               <h4>CSV Import or Database Filter</h4>
-              <p>Bring your own list or filter from 100M indexed businesses by industry, state, city, or zip code.</p>
+              <p>Bring your own list or filter from 2.3M+ indexed businesses by industry, state, city, or zip code.</p>
             </div>
           </div>
           <div class="wf-item reveal reveal-delay-1">
@@ -1770,8 +1933,8 @@ footer p { color: var(--muted); font-size: 13px; }
       <div class="int-col reveal reveal-delay-1">
         <div class="int-col-label">Email Sending</div>
         <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Amazon SES</div><div class="int-item-sub">Email fallback channel</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">SMTP (any)</div><div class="int-item-sub">Gmail, Outlook, custom</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Gmail / Outlook</div><div class="int-item-sub">Email fallback channel</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">SMTP (any provider)</div><div class="int-item-sub">Bring your own sender</div></div></div>
         </div>
       </div>
       <div class="int-col reveal reveal-delay-2">
@@ -1862,6 +2025,48 @@ footer p { color: var(--muted); font-size: 13px; }
   </div>
 </section>
 
+<!-- ══ AFFILIATE ══ -->
+<section class="affiliate-section" id="affiliates">
+  <div class="inner">
+    <div class="affiliate-grid">
+      <div class="affiliate-left">
+        <div class="section-eyebrow reveal">Partner Program</div>
+        <h2 class="s-h2 reveal reveal-delay-1">Earn 25% recurring commission. Forever.</h2>
+        <p class="reveal reveal-delay-2">Refer a client to Loylty. Every month they stay, you earn. No cap, no expiry. Agencies who refer 5+ active clients unlock 30% and white-label options.</p>
+        <div class="affiliate-bullets reveal reveal-delay-3">
+          <div class="aff-bullet">
+            <div class="aff-icon">💰</div>
+            <div><strong>25% monthly recurring</strong><span>On every plan, for every month they stay active</span></div>
+          </div>
+          <div class="aff-bullet">
+            <div class="aff-icon">📈</div>
+            <div><strong>Agency tier: 30% + white-label</strong><span>Refer 5+ accounts and unlock higher rates</span></div>
+          </div>
+          <div class="aff-bullet">
+            <div class="aff-icon">🔗</div>
+            <div><strong>Your link, tracked forever</strong><span>Cookie-based attribution with full dashboard reporting</span></div>
+          </div>
+        </div>
+        <a href="https://app.loylty.io?view=signup" target="_blank" class="aff-cta reveal reveal-delay-4">Apply to the Partner Program →</a>
+      </div>
+      <div class="affiliate-right reveal reveal-delay-2">
+        <div class="aff-card">
+          <div class="aff-card-header">Partner Dashboard</div>
+          <div class="aff-stat-row">
+            <div class="aff-stat"><div class="aff-stat-n">$840</div><div class="aff-stat-l">Earned this month</div></div>
+            <div class="aff-stat"><div class="aff-stat-n">12</div><div class="aff-stat-l">Active referrals</div></div>
+          </div>
+          <div class="aff-recent">
+            <div class="aff-recent-row"><span class="aff-green">+$29.70</span><span>roofingpros.io · Pro plan</span></div>
+            <div class="aff-recent-row"><span class="aff-green">+$74.70</span><span>growthagency.co · Agency plan</span></div>
+            <div class="aff-recent-row"><span class="aff-green">+$29.70</span><span>hvacgrowth.io · Pro plan</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ PRICING ══ -->
 <section class="pricing-section" id="pricing">
   <div class="inner">
@@ -1895,7 +2100,7 @@ footer p { color: var(--muted); font-size: 13px; }
           <li><span class="pf-check">✓</span> <span>Contact form detection</span></li>
           <li><span class="pf-check">✓</span> <span>Generic &amp; variation message modes</span></li>
           <li><span class="pf-check">✓</span> <span>CAPTCHA auto-solve</span></li>
-          <li><span class="pf-check dim">—</span> <span class="dim">100M database (not included)</span></li>
+          <li><span class="pf-check dim">—</span> <span class="dim">2.3M+ database (not included)</span></li>
         </ul>
         <button onclick="startCheckout('starter')" class="price-btn pb-ghost">Get Started →</button>
       </div>
@@ -1903,14 +2108,14 @@ footer p { color: var(--muted); font-size: 13px; }
       <!-- Pro (featured) -->
       <div class="price-card feat reveal reveal-delay-1">
         <span class="price-badge pb-popular">Pro · Most Popular</span>
-        <div class="price-amount"><sup>$</sup><span id="price-growth">299</span><sub>/mo</sub></div>
+        <div class="price-amount"><sup>$</sup><span id="price-pro">299</span><sub>/mo</sub></div>
         <div class="price-period"><strong>300 sends/day</strong> · ~9,000 outreaches/month. Everything you need to run serious outreach.</div>
-        <div class="price-db-highlight"><strong>Includes 100M business database</strong> — filter by industry, state, city</div>
+        <div class="price-db-highlight"><strong>Includes 2.3M+ business database</strong> — filter by industry, state, city</div>
         <ul class="price-features">
           <li><span class="pf-check">✓</span> <span><strong>300 sends per day</strong></span></li>
           <li><span class="pf-check">✓</span> <span>~9,000 outreaches/month</span></li>
           <li><span class="pf-check">✓</span> <span><strong>Unlimited campaigns</strong></span></li>
-          <li><span class="pf-check">✓</span> <span><strong>100M business database</strong></span></li>
+          <li><span class="pf-check">✓</span> <span><strong>2.3M+ business database</strong></span></li>
           <li><span class="pf-check">✓</span> <span>AI-personalized messages</span></li>
           <li><span class="pf-check">✓</span> <span>CAPTCHA auto-solve</span></li>
           <li><span class="pf-check">✓</span> <span>Reply detection</span></li>
@@ -1923,7 +2128,7 @@ footer p { color: var(--muted); font-size: 13px; }
       <!-- Agency -->
       <div class="price-card reveal reveal-delay-2">
         <span class="price-badge pb-scale">Agency</span>
-        <div class="price-amount"><sup>$</sup><span id="price-scale">499</span><sub>/mo</sub></div>
+        <div class="price-amount"><sup>$</sup><span id="price-agency">499</span><sub>/mo</sub></div>
         <div class="price-period"><strong>500 sends/day</strong> · ~15,000 outreaches/month. For operators running full-volume daily.</div>
         <ul class="price-features">
           <li><span class="pf-check">✓</span> <span><strong>500 sends per day</strong></span></li>
@@ -1961,16 +2166,50 @@ footer p { color: var(--muted); font-size: 13px; }
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <a class="logo" href="#">
-    <div class="logo-icon"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
-    Loylty
-  </a>
-  <p>© 2026 Loylty. All rights reserved.</p>
-  <div class="footer-links">
-    <a href="#">Privacy</a>
-    <a href="#">Terms</a>
-    <a href="#">Support</a>
-    <a href="#">Status</a>
+  <div class="footer-top inner">
+    <div class="footer-brand">
+      <a href="#" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p style="margin-top:14px;">Contact form outreach for B2B sales teams. Reach businesses through the channel that never lands in spam.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="#how">How It Works</a>
+      <a href="#database">Database</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#affiliates">Affiliates</a>
+      <a href="https://app.loylty.io" target="_blank">Log In</a>
+      <a href="https://app.loylty.io?view=signup" target="_blank">Sign Up Free</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Industries</div>
+      <a href="/niches/roofing">Roofing Contractors</a>
+      <a href="/niches/fence-contractors">Fence Contractors</a>
+      <a href="/niches/hvac">HVAC Companies</a>
+      <a href="/niches/real-estate">Real Estate Agents</a>
+      <a href="/niches/plumbing">Plumbers</a>
+      <a href="/niches/landscaping">Landscaping</a>
+      <a href="/niches/law-firms">Law Firms</a>
+      <a href="/niches/dental">Dental Practices</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Resources</div>
+      <a href="/resources/cold-email-alternative">Cold Email Alternative</a>
+      <a href="/resources/b2b-lead-generation">B2B Lead Generation</a>
+      <a href="/resources/contact-form-marketing">Contact Form Marketing</a>
+      <a href="/resources/outreach-automation">Outreach Automation</a>
+    </div>
+  </div>
+  <div class="footer-bottom inner">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="#">Support</a>
+      <a href="#">Status</a>
+    </div>
   </div>
 </footer>
 
@@ -2012,8 +2251,8 @@ window.addEventListener('resize', function() {
 var isAnnual = false;
 var prices = {
   starter: { monthly: 99,  annual: 79  },
-  growth:  { monthly: 299, annual: 239 },
-  scale:   { monthly: 499, annual: 399 }
+  pro:     { monthly: 299, annual: 239 },
+  agency:  { monthly: 499, annual: 399 }
 };
 
 // Stripe Price IDs
@@ -2030,7 +2269,7 @@ function toggleBilling() {
   var la = document.getElementById('lbl-annual');
   if (isAnnual) { sw.classList.add('on'); lm.classList.remove('active'); la.classList.add('active'); }
   else { sw.classList.remove('on'); lm.classList.add('active'); la.classList.remove('active'); }
-  ['starter','growth','scale'].forEach(function(p) {
+  ['starter','pro','agency'].forEach(function(p) {
     var el = document.getElementById('price-' + p);
     if (el) el.textContent = isAnnual ? prices[p].annual : prices[p].monthly;
   });
