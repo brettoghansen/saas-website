@@ -1025,8 +1025,12 @@ nav ul a:hover { color: var(--text); }
   transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
   text-align: center;
 }
-.pb-solid { background: var(--text); color: var(--bg); }
-.pb-solid:hover { opacity: 0.92; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.35); }
+.pb-solid {
+  background: linear-gradient(135deg, #4f8eff, #7c6fff);
+  color: #fff;
+  box-shadow: 0 0 20px rgba(79,142,255,0.4), 0 4px 16px rgba(79,142,255,0.2);
+}
+.pb-solid:hover { transform: translateY(-2px) !important; box-shadow: 0 0 36px rgba(79,142,255,0.6), 0 8px 24px rgba(79,142,255,0.35) !important; }
 .pb-ghost { border: 1px solid var(--border2); color: var(--text); background: transparent; }
 .pb-ghost:hover { border-color: rgba(255,255,255,0.25); background: rgba(255,255,255,0.04); transform: translateY(-1px); }
 
@@ -1066,14 +1070,16 @@ nav ul a:hover { color: var(--text); }
 .cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 48px; line-height: 1.8; }
 .cta-btn {
   display: inline-flex; align-items: center;
-  background: var(--text); color: var(--bg);
-  padding: 16px 36px; border-radius: 10px;
-  font-size: 16px; font-weight: 700; text-decoration: none;
-  min-height: 56px; letter-spacing: -0.3px;
-  transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
-  box-shadow: 0 0 40px rgba(79,142,255,0.2);
+  background: linear-gradient(135deg, #4f8eff, #7c6fff);
+  color: #fff;
+  padding: 16px 40px; border-radius: 10px;
+  font-size: 17px; font-weight: 700; text-decoration: none;
+  min-height: 56px; letter-spacing: -0.2px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25);
+  animation: btn-glow 3s ease-in-out infinite;
 }
-.cta-btn:hover { opacity: 0.92; transform: translateY(-3px); box-shadow: 0 8px 40px rgba(79,142,255,0.3); }
+.cta-btn:hover { transform: translateY(-3px); box-shadow: 0 0 56px rgba(79,142,255,0.7), 0 12px 40px rgba(79,142,255,0.4); }
 
 /* ══════════════════════════════════════════
    FOOTER
@@ -1111,7 +1117,7 @@ footer p { color: var(--muted); font-size: 13px; }
 
 .nav-mobile-drawer {
   display: none;
-  position: fixed; top: 58px; left: 0; right: 0;
+  position: fixed; top: 68px; left: 0; right: 0;
   background: rgba(8,8,16,0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1134,9 +1140,13 @@ footer p { color: var(--muted); font-size: 13px; }
 .nav-mobile-drawer a:last-child { border-bottom: none; }
 .nav-mobile-drawer a:hover { color: var(--text); }
 .nav-mobile-drawer .nav-btn-mobile {
-  margin-top: 12px; background: var(--text); color: var(--bg) !important;
-  border-radius: 8px; text-align: center; font-weight: 700 !important;
-  padding: 14px !important; border-bottom: none !important;
+  margin-top: 12px;
+  background: linear-gradient(135deg, #4f8eff, #7c6fff) !important;
+  color: #fff !important;
+  border-radius: 10px; text-align: center; font-weight: 700 !important;
+  padding: 16px !important; border-bottom: none !important;
+  box-shadow: 0 0 24px rgba(79,142,255,0.5), 0 6px 20px rgba(79,142,255,0.2);
+  font-size: 16px !important; letter-spacing: -0.2px;
 }
 
 /* ══════════════════════════════════════════
@@ -1163,11 +1173,13 @@ footer p { color: var(--muted); font-size: 13px; }
   .nav-hamburger { display: flex; }
 
   /* Hero */
-  .hero { padding: 120px 24px 80px; }
-  .hero h1 { font-size: clamp(42px, 12vw, 68px); letter-spacing: -2.5px; }
-  .hero-sub { font-size: 18px; }
-  .hero-cta { flex-direction: column; align-items: center; gap: 12px; }
-  .hero-right { margin-top: 48px; }
+  .hero { padding: 96px 24px 56px; justify-content: flex-start; min-height: auto; }
+  .hero h1 { font-size: clamp(38px, 11vw, 64px); letter-spacing: -2px; margin-bottom: 20px; }
+  .hero-badge { margin-bottom: 20px; }
+  .hero-sub { font-size: 17px; margin-bottom: 28px; }
+  .hero-cta { flex-direction: column; align-items: center; gap: 12px; margin-bottom: 28px; }
+  .hero-proof { margin-bottom: 0; }
+  .hero-right { margin-top: 40px; display: flex !important; }
   .btn-primary { width: 100%; max-width: 360px; justify-content: center; font-size: 16px; padding: 16px 28px; }
   .btn-ghost { width: 100%; max-width: 360px; justify-content: center; }
 
@@ -1751,6 +1763,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     </div>
 
   </div>
+
+  <!-- Section CTA -->
+  <div style="text-align:center; margin-top:72px;" class="reveal">
+    <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Start Free — 100 Outreaches →</a>
+    <p style="margin-top:14px; font-size:13px; color:var(--muted);">No credit card required. Cancel anytime.</p>
+  </div>
 </section>
 
 <!-- ══ WHY IT WORKS ══ -->
@@ -1863,6 +1881,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         </div>
       </div>
 
+    </div>
+
+    <!-- Section CTA -->
+    <div style="text-align:center; margin-top:72px; padding-top:64px; border-top:1px solid var(--border);" class="reveal">
+      <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Get Started Free →</a>
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);">Free 100 sends. No CC required.</p>
     </div>
   </div>
 </section>
@@ -2003,6 +2027,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <strong>Loylty never auto-submits without your review.</strong> You set the campaign parameters and approve the message. The automation handles the mechanical work — you stay in control of what goes out.
       </div>
     </div>
+
+    <!-- Section CTA -->
+    <div style="text-align:center; margin-top:64px;" class="reveal">
+      <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Try It Free — 100 Sends →</a>
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);">No credit card required. Cancel anytime.</p>
+    </div>
   </div>
 </section>
 
@@ -2116,6 +2146,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         </div>
       </div>
 
+    </div>
+
+    <!-- Section CTA -->
+    <div style="text-align:center; margin-top:64px;" class="reveal">
+      <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Start Free Today →</a>
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);">Free 100 sends. No CC required.</p>
     </div>
   </div>
 </section>
@@ -2332,6 +2368,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <span class="db-tag">Insurance</span>
     </div>
     <div class="db-etc reveal">+ every other local business category you can think of</div>
+
+    <!-- Section CTA -->
+    <div style="text-align:center; margin-top:64px;" class="reveal">
+      <a href="https://app.loylty.io?view=signup" target="_blank" class="btn-primary">Start Free — Access the Database →</a>
+      <p style="margin-top:14px; font-size:13px; color:var(--muted);">Free 100 sends. No CC required.</p>
+    </div>
   </div>
 </section>
 
