@@ -636,19 +636,6 @@ nav ul a:hover { color: var(--text); }
 }
 .bbn-l { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-/* Cost comparison table in bento card */
-.bc-cost-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
-.bcc-col { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-.bcc-bad  { border-color: rgba(239,68,68,0.2); }
-.bcc-good { border-color: rgba(34,197,94,0.25); }
-.bcc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 14px; background: rgba(255,255,255,0.03); color: var(--mid); border-bottom: 1px solid var(--border); }
-.bcc-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 14px; font-size: 12px; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.03); gap: 8px; }
-.bcc-row span:first-child { flex: 1; }
-.bcc-red   { color: #f87171; font-weight: 600; white-space: nowrap; }
-.bcc-green { color: #4ade80; font-weight: 600; white-space: nowrap; }
-.bcc-total { display: flex; justify-content: space-between; align-items: center; padding: 10px 14px; background: rgba(255,255,255,0.03); font-size: 12px; color: var(--mid); gap: 8px; }
-.bcc-total span:first-child { flex: 1; }
-.bcc-total-n { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.5px; }
 
 /* ══════════════════════════════════════════
    DATABASE — full-width dramatic
@@ -1181,23 +1168,94 @@ footer p { color: var(--muted); font-size: 13px; }
   .s-h2 { letter-spacing: -1px; }
 }
 
-/* ── Pricing ROI bar ─────────────────────────────── */
-.pricing-roi {
-  display: flex; align-items: center; gap: 0;
-  max-width: 820px; margin: 0 auto 40px;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 16px; overflow: hidden;
+/* ── Cost Comparison Section ─────────────────────── */
+.cost-section { padding: 120px 24px; background: var(--bg2); position: relative; overflow: hidden; }
+.cost-section::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(239,68,68,0.04) 0%, transparent 60%);
+  pointer-events: none;
 }
-.proi-stat { flex: 1; padding: 28px 24px; text-align: center; }
-.proi-n { font-family: 'Outfit', sans-serif; font-size: 36px; font-weight: 900; letter-spacing: -1.5px; color: var(--mid); margin-bottom: 8px; }
-.proi-highlight { background: linear-gradient(135deg, var(--accent), #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.proi-l { font-size: 13px; color: var(--mid); line-height: 1.5; }
-.proi-l span { font-size: 11px; color: var(--muted); display: block; margin-top: 3px; }
-.proi-divider { width: 1px; background: rgba(255,255,255,0.07); align-self: stretch; flex-shrink: 0; }
-@media(max-width:700px) {
-  .pricing-roi { flex-direction: column; }
-  .proi-divider { width: 100%; height: 1px; }
+.cost-header { text-align: center; max-width: 720px; margin: 0 auto 64px; }
+.cost-header .s-body { margin: 0 auto; }
+
+/* Table */
+.cost-table {
+  max-width: 960px; margin: 0 auto 64px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px; overflow: hidden;
+}
+.ct-header {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ct-bad-head { border-left: 1px solid rgba(239,68,68,0.15); background: rgba(239,68,68,0.04); }
+.ct-good-head { border-left: 1px solid rgba(34,197,94,0.2); background: rgba(34,197,94,0.04); }
+.ct-head-label { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; padding: 20px 24px 4px; letter-spacing: -0.3px; }
+.ct-bad-head .ct-head-label { color: #f87171; }
+.ct-good-head .ct-head-label { color: #4ade80; }
+.ct-head-sub { font-size: 12px; color: var(--muted); padding: 0 24px 18px; }
+.ct-label-col { padding: 20px 24px; }
+
+.ct-row {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+.ct-row:hover { background: rgba(255,255,255,0.015); }
+.ct-row:last-of-type { border-bottom: none; }
+.ct-col { padding: 16px 24px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+.ct-bad { border-left: 1px solid rgba(239,68,68,0.1); background: rgba(239,68,68,0.02); }
+.ct-good { border-left: 1px solid rgba(34,197,94,0.12); background: rgba(34,197,94,0.02); }
+.ct-label { font-size: 14px; font-weight: 600; color: var(--mid); }
+.ct-note { font-size: 11px; color: var(--muted); line-height: 1.4; }
+.ct-dollar { font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; color: #f87171; letter-spacing: -0.4px; }
+.ct-mo { font-size: 11px; font-weight: 500; opacity: 0.7; margin-left: 1px; }
+.ct-check { font-size: 16px; font-weight: 800; color: #4ade80; }
+.ct-na { font-size: 14px; font-weight: 700; color: #4ade80; }
+.ct-unavail { font-size: 13px; font-weight: 600; color: var(--muted); }
+.ct-pct { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 900; letter-spacing: -0.5px; }
+.ct-pct-bad { color: #f87171; }
+.ct-pct-good { color: #4ade80; }
+.ct-time-bad { font-size: 15px; font-weight: 800; color: #f87171; font-family: 'Outfit', sans-serif; }
+.ct-time-good { font-size: 15px; font-weight: 800; color: #4ade80; font-family: 'Outfit', sans-serif; }
+.ct-risk-bad { font-size: 13px; font-weight: 700; color: #f87171; }
+
+.ct-total-row {
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+  background: rgba(255,255,255,0.03);
+  border-top: 2px solid rgba(255,255,255,0.08);
+}
+.ct-total-label { font-size: 14px; font-weight: 800; color: var(--text); padding: 24px; display: flex; align-items: center; letter-spacing: -0.2px; }
+.ct-total-bad { border-left: 1px solid rgba(239,68,68,0.2); background: rgba(239,68,68,0.05); padding: 20px 24px; }
+.ct-total-good { border-left: 1px solid rgba(34,197,94,0.25); background: rgba(34,197,94,0.05); padding: 20px 24px; }
+.ct-total-n { font-family: 'Outfit', sans-serif; font-size: 26px; font-weight: 900; letter-spacing: -1px; color: #f87171; margin-bottom: 4px; }
+.ct-total-green { color: #4ade80; }
+.ct-total-sub { font-size: 12px; color: var(--muted); }
+
+/* Outcome stats */
+.cost-outcomes {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  max-width: 960px; margin: 0 auto;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px; overflow: hidden;
+}
+.co-stat { padding: 32px 28px; border-right: 1px solid rgba(255,255,255,0.06); }
+.co-stat:last-child { border-right: none; }
+.co-n { font-family: 'Outfit', sans-serif; font-size: 40px; font-weight: 900; letter-spacing: -2px; color: var(--mid); margin-bottom: 8px; }
+.co-n-green { background: linear-gradient(135deg, #4ade80, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.co-label { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+.co-sub { font-size: 12px; color: var(--muted); line-height: 1.6; }
+@media(max-width:900px) {
+  .ct-header, .ct-row, .ct-total-row { grid-template-columns: 1fr 1fr; }
+  .ct-label-col, .ct-total-label { display: none; }
+  .cost-outcomes { grid-template-columns: 1fr 1fr; }
+  .co-stat:nth-child(2) { border-right: none; }
+  .co-stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,0.06); }
+}
+@media(max-width:560px) {
+  .cost-outcomes { grid-template-columns: 1fr; }
+  .co-stat { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
 }
 
 /* ── Video Section ───────────────────────────────── */
@@ -1809,25 +1867,12 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 
       <!-- Stats card -->
       <div class="bc bc-small reveal reveal-delay-2">
-        <div class="bc-eyebrow">The Math</div>
-        <h3>Your cold email stack costs more than our top plan.</h3>
-        <div class="bc-cost-compare">
-          <div class="bcc-col bcc-bad">
-            <div class="bcc-label">Cold Email Stack / mo</div>
-            <div class="bcc-row"><span>Data provider</span><span class="bcc-red">$150–400</span></div>
-            <div class="bcc-row"><span>Sending platform</span><span class="bcc-red">$97–197</span></div>
-            <div class="bcc-row"><span>Warmup tool</span><span class="bcc-red">$29–49</span></div>
-            <div class="bcc-row"><span>Domain rotation</span><span class="bcc-red">$50–150</span></div>
-            <div class="bcc-total"><span>Before you send one email</span><span class="bcc-red bcc-total-n">$326–796</span></div>
-          </div>
-          <div class="bcc-col bcc-good">
-            <div class="bcc-label">Loylty Pro / mo</div>
-            <div class="bcc-row"><span>Everything above</span><span class="bcc-green">Included</span></div>
-            <div class="bcc-row"><span>CAPTCHA solving</span><span class="bcc-green">Included</span></div>
-            <div class="bcc-row"><span>Reply detection</span><span class="bcc-green">Included</span></div>
-            <div class="bcc-row"><span>CRM push</span><span class="bcc-green">Included</span></div>
-            <div class="bcc-total"><span>9,000 sends / month</span><span class="bcc-green bcc-total-n">$299</span></div>
-          </div>
+        <div class="bc-eyebrow">Scale</div>
+        <h3>500 businesses reached before lunch.</h3>
+        <div class="bc-big-numbers">
+          <div class="bbn-item"><div class="bbn-n">15K</div><div class="bbn-l">Outreaches per month on Agency plan</div></div>
+          <div class="bbn-item"><div class="bbn-n">2.3s</div><div class="bbn-l">Average time per form submission</div></div>
+          <div class="bbn-item"><div class="bbn-n">24/7</div><div class="bbn-l">Runs in the background while you work</div></div>
         </div>
       </div>
 
@@ -1860,6 +1905,121 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     <div class="complement-note reveal reveal-delay-4">
       Multi-channel outreach converts at 3–5× the rate of single-channel. Loylty adds the touch that takes 20 minutes to set up — and runs while you sleep.
     </div>
+  </div>
+</section>
+
+<!-- ══ COST COMPARISON ══ -->
+<section class="cost-section" id="cost">
+  <div class="inner">
+
+    <div class="cost-header">
+      <div class="section-eyebrow reveal" style="justify-content:center;">Do The Math</div>
+      <h2 class="s-h2 reveal reveal-delay-1">Your cold email stack costs more<br>than our top plan. Before you send one message.</h2>
+      <p class="s-body reveal reveal-delay-2">Most teams don't realize how much their outbound stack actually costs until they add it up. We did it for you.</p>
+    </div>
+
+    <!-- Main comparison table -->
+    <div class="cost-table reveal reveal-delay-2">
+      <div class="ct-header">
+        <div class="ct-col ct-label-col"></div>
+        <div class="ct-col ct-bad-head">
+          <div class="ct-head-label">Cold Email Stack</div>
+          <div class="ct-head-sub">What you're probably paying now</div>
+        </div>
+        <div class="ct-col ct-good-head">
+          <div class="ct-head-label">Loylty</div>
+          <div class="ct-head-sub">Everything included. One price.</div>
+        </div>
+      </div>
+
+      <div class="ct-row">
+        <div class="ct-col ct-label">Data &amp; lead lists</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$150–400<span class="ct-mo">/mo</span></span><div class="ct-note">Apollo, ZoomInfo, or similar</div></div>
+        <div class="ct-col ct-good"><span class="ct-check">✓</span><div class="ct-note">2.3M+ businesses built in</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Sending platform</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$97–197<span class="ct-mo">/mo</span></span><div class="ct-note">Instantly, Smartlead, or similar</div></div>
+        <div class="ct-col ct-good"><span class="ct-check">✓</span><div class="ct-note">Automation engine included</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Email warmup tool</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$29–49<span class="ct-mo">/mo</span></span><div class="ct-note">Takes 4–6 weeks before you can send</div></div>
+        <div class="ct-col ct-good"><span class="ct-na">Not needed</span><div class="ct-note">Contact forms don't need warming</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Domain &amp; inbox rotation</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$50–150<span class="ct-mo">/mo</span></span><div class="ct-note">Multiple domains + inboxes to avoid blocks</div></div>
+        <div class="ct-col ct-good"><span class="ct-na">Not needed</span><div class="ct-note">No domain reputation involved</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">CAPTCHA solving</div>
+        <div class="ct-col ct-bad"><span class="ct-unavail">Not available</span><div class="ct-note">Cold email doesn't touch forms</div></div>
+        <div class="ct-col ct-good"><span class="ct-check">✓</span><div class="ct-note">reCAPTCHA, hCaptcha, image — all solved</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Reply detection &amp; CRM push</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$50–100<span class="ct-mo">/mo</span></span><div class="ct-note">Usually a separate integration or add-on</div></div>
+        <div class="ct-col ct-good"><span class="ct-check">✓</span><div class="ct-note">HubSpot &amp; Pipedrive push included</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">AI message generation</div>
+        <div class="ct-col ct-bad"><span class="ct-dollar">$20–50<span class="ct-mo">/mo</span></span><div class="ct-note">Separate AI writing tool required</div></div>
+        <div class="ct-col ct-good"><span class="ct-check">✓</span><div class="ct-note">Generic, variation, or personalized per company</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Spam deliverability rate</div>
+        <div class="ct-col ct-bad"><span class="ct-pct ct-pct-bad">20–30%</span><div class="ct-note">Never reaches the inbox</div></div>
+        <div class="ct-col ct-good"><span class="ct-pct ct-pct-good">0%</span><div class="ct-note">Contact forms have no spam filter</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Time to first send</div>
+        <div class="ct-col ct-bad"><span class="ct-time-bad">4–6 weeks</span><div class="ct-note">Domain warmup before anything goes out</div></div>
+        <div class="ct-col ct-good"><span class="ct-time-good">Today</span><div class="ct-note">Import list, write message, run</div></div>
+      </div>
+      <div class="ct-row">
+        <div class="ct-col ct-label">Domain burning risk</div>
+        <div class="ct-col ct-bad"><span class="ct-risk-bad">Every quarter</span><div class="ct-note">Aggressive sends kill your domain score</div></div>
+        <div class="ct-col ct-good"><span class="ct-na">Zero</span><div class="ct-note">No domain involved. Ever.</div></div>
+      </div>
+
+      <div class="ct-total-row">
+        <div class="ct-col ct-total-label">Monthly total</div>
+        <div class="ct-col ct-total-bad">
+          <div class="ct-total-n">$396–946<span class="ct-mo">/mo</span></div>
+          <div class="ct-total-sub">Before you send a single message</div>
+        </div>
+        <div class="ct-col ct-total-good">
+          <div class="ct-total-n ct-total-green">$99–499<span class="ct-mo">/mo</span></div>
+          <div class="ct-total-sub">Everything included. Cancel anytime.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Outcome stats row -->
+    <div class="cost-outcomes reveal reveal-delay-3">
+      <div class="co-stat">
+        <div class="co-n co-n-green">2.7×</div>
+        <div class="co-label">More replies per dollar</div>
+        <div class="co-sub">Same volume, better inbox placement, fraction of the cost</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-n">$1.66</div>
+        <div class="co-label">Cost per inbound reply</div>
+        <div class="co-sub">Pro plan · 9K sends · 2% reply rate · vs $4.44 on cold email</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-n co-n-green">0</div>
+        <div class="co-label">Domains burned</div>
+        <div class="co-sub">In 12 months of use. No domain reputation at risk. Ever.</div>
+      </div>
+      <div class="co-stat">
+        <div class="co-n">Day 1</div>
+        <div class="co-label">Time to first campaign</div>
+        <div class="co-sub">Cold email needs 6 weeks of warmup. Loylty starts now.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -2189,23 +2349,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <button onclick="startCheckout('agency')" class="price-btn pb-ghost">Get Started →</button>
       </div>
 
-    </div>
-
-    <div class="pricing-roi reveal">
-      <div class="proi-stat">
-        <div class="proi-n">$1.66</div>
-        <div class="proi-l">Cost per inbound reply at Pro<br><span>9,000 sends × 2% reply rate = 180 conversations / $299</span></div>
-      </div>
-      <div class="proi-divider"></div>
-      <div class="proi-stat">
-        <div class="proi-n">$4.44</div>
-        <div class="proi-l">Cost per reply on cold email<br><span>9,000 sends × 1% reply rate = 90 replies / $400 stack</span></div>
-      </div>
-      <div class="proi-divider"></div>
-      <div class="proi-stat">
-        <div class="proi-n proi-highlight">2.7×</div>
-        <div class="proi-l">More replies per dollar<br><span>Same volume. Different channel. Better economics.</span></div>
-      </div>
     </div>
 
     <div class="pricing-trust reveal">
