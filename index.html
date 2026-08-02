@@ -101,16 +101,23 @@ nav {
   flex-shrink: 0;
 }
 .logo-icon svg { width: 14px; height: 14px; fill: #fff; }
-nav ul { display: flex; align-items: center; gap: 32px; list-style: none; }
-nav ul a { color: var(--mid); text-decoration: none; font-size: 13.5px; font-weight: 500; transition: color 0.15s; letter-spacing: -0.1px; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; letter-spacing: -0.1px; }
 nav ul a:hover { color: var(--text); }
 .nav-btn {
-  background: var(--text); color: var(--bg) !important;
-  padding: 8px 18px; border-radius: 6px; font-weight: 700 !important;
-  font-size: 13px !important; transition: opacity 0.15s, transform 0.15s !important;
-  min-height: 34px; display: inline-flex; align-items: center;
+  background: var(--accent); color: #fff !important;
+  padding: 10px 20px; border-radius: 8px; font-weight: 700 !important;
+  font-size: 14px !important; transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s !important;
+  min-height: 38px; display: inline-flex; align-items: center;
+  box-shadow: 0 4px 16px rgba(79,142,255,0.35);
 }
-.nav-btn:hover { opacity: 0.9 !important; transform: translateY(-1px) !important; }
+.nav-btn:hover { opacity: 0.9 !important; transform: translateY(-1px) !important; box-shadow: 0 6px 22px rgba(79,142,255,0.45) !important; }
+.nav-btn-ghost {
+  color: var(--mid) !important; text-decoration: none;
+  font-size: 15px !important; font-weight: 500 !important;
+  transition: color 0.15s;
+}
+.nav-btn-ghost:hover { color: var(--text) !important; }
 
 /* ══════════════════════════════════════════
    HERO — full-width centered
@@ -319,54 +326,59 @@ nav ul a:hover { color: var(--text); }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 .who-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 36px 28px;
+  border-radius: 20px;
+  padding: 40px 32px;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 .who-card:hover {
   border-color: var(--border2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.45);
 }
 .who-icon {
-  width: 52px; height: 52px; border-radius: 14px;
+  width: 56px; height: 56px; border-radius: 16px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; margin-bottom: 24px;
+  font-size: 26px; margin-bottom: 28px;
 }
 .who-icon-orange { background: rgba(249,115,22,0.15); }
 .who-icon-blue   { background: rgba(79,142,255,0.15); }
 .who-icon-green  { background: rgba(34,197,94,0.15); }
 .who-icon-purple { background: rgba(139,92,246,0.15); }
+.who-icon-amber  { background: rgba(245,158,11,0.15); }
+.who-icon-teal   { background: rgba(20,184,166,0.15); }
+.who-icon-rose   { background: rgba(244,63,94,0.15); }
+.who-icon-cyan   { background: rgba(6,182,212,0.15); }
 .who-card h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 20px; font-weight: 800;
+  font-size: 22px; font-weight: 800;
   letter-spacing: -0.5px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .who-card p {
-  font-size: 15px; color: var(--mid); line-height: 1.75;
-  margin-bottom: 24px;
+  font-size: 16px; color: var(--mid); line-height: 1.8;
+  margin-bottom: 28px;
 }
-.who-checks { display: flex; flex-direction: column; gap: 8px; }
+.who-checks { display: flex; flex-direction: column; gap: 10px; }
 .who-check {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: var(--mid);
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 14px; color: var(--mid); line-height: 1.5;
 }
 .who-check::before {
   content: '✓'; color: var(--accent);
-  font-size: 13px; font-weight: 700; flex-shrink: 0;
+  font-size: 14px; font-weight: 700; flex-shrink: 0; margin-top: 1px;
 }
-@media (max-width: 900px) {
-  .who-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 1100px) {
+  .who-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 540px) {
   .who-grid { grid-template-columns: 1fr; }
+  .who-card { padding: 32px 24px; }
 }
 
 /* ══════════════════════════════════════════
@@ -455,8 +467,8 @@ nav ul a:hover { color: var(--text); }
   font-size: 13px; font-weight: 800; color: var(--accent);
   width: 28px; flex-shrink: 0; line-height: 1.6;
 }
-.why-bullet-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; letter-spacing: -0.2px; }
-.why-bullet-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.why-bullet-body h4 { font-size: 17px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.2px; }
+.why-bullet-body p { font-size: 16px; color: var(--muted); line-height: 1.75; }
 
 /* right — inbox visual */
 .why-visual { position: relative; max-width: 100%; }
@@ -676,9 +688,9 @@ nav ul a:hover { color: var(--text); }
 .bc-icon-green  { background: rgba(34,197,94,0.13);  border: 1px solid rgba(34,197,94,0.3);  color: var(--green); box-shadow: 0 8px 24px rgba(34,197,94,0.12); }
 .bc-icon-purple { background: rgba(139,92,246,0.13); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; box-shadow: 0 8px 24px rgba(139,92,246,0.12); }
 
-.bc-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; opacity: 0.8; }
-.bc h3 { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 16px; }
-.bc p { font-size: 15px; color: var(--mid); line-height: 1.8; }
+.bc-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; opacity: 0.8; }
+.bc h3 { font-family: 'Outfit', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.6px; line-height: 1.15; margin-bottom: 18px; }
+.bc p { font-size: 17px; color: var(--mid); line-height: 1.8; }
 .bc-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 20px; }
 .bc-tag { background: rgba(255,255,255,0.04); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; font-size: 11px; color: var(--muted); }
 
@@ -1457,15 +1469,15 @@ footer p { color: var(--muted); font-size: 13px; }
 footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-top: 20px; }
 .footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .footer-brand img { height: 36px; width: auto; margin-bottom: 16px; display: block; }
-.footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 280px; }
-.footer-col { display: flex; flex-direction: column; gap: 10px; }
-.footer-col-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 4px; }
-.footer-col a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
 .footer-col a:hover { color: #f0f2f8; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; }
-.footer-bottom p { font-size: 13px; color: var(--muted); }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
 .footer-links-row { display: flex; gap: 24px; }
-.footer-links-row a { font-size: 13px; color: var(--muted); text-decoration: none; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
 .footer-links-row a:hover { color: #f0f2f8; }
 @media(max-width:900px) {
   footer { padding: 48px 24px 32px; }
@@ -1493,8 +1505,8 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     <li><a href="#database">Database</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#affiliates">Affiliates</a></li>
-    <li><a href="https://app.loylty.io" target="_blank" style="color:var(--mid);text-decoration:none;font-size:13.5px;font-weight:500;">Log In</a></li>
-    <li><a href="https://app.loylty.io?view=signup" target="_blank" class="nav-btn">Start Free — 100 Contacts →</a></li>
+    <li><a href="https://app.loylty.io" target="_blank" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="https://app.loylty.io?view=signup" target="_blank" class="nav-btn">Start Free →</a></li>
   </ul>
   <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
     <span></span><span></span><span></span>
@@ -1631,50 +1643,99 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 <section class="who-section">
   <div class="who-header reveal">
     <div class="section-eyebrow">👥 Who it's for</div>
-    <h2 class="s-h2">Built for Growth-Focused Teams</h2>
-    <p class="s-body" style="margin: 0 auto;">Loylty powers outreach for every type of B2B team.</p>
+    <h2 class="s-h2">Built for Anyone Who Needs to Reach Businesses Fast</h2>
+    <p class="s-body" style="margin: 0 auto;">Whether you're running outbound for a Fortune 500 or validating an idea solo, Loylty puts your message in front of the right businesses — at scale.</p>
   </div>
   <div class="who-grid">
+
     <div class="who-card reveal">
-      <div class="who-icon who-icon-orange">💼</div>
+      <div class="who-icon who-icon-orange">📣</div>
       <h3>B2B Marketers</h3>
-      <p>Add a high-volume contact form channel to your outbound mix. Reach thousands of businesses your cold email list can't touch.</p>
+      <p>Your cold email list is hitting spam filters. Contact forms bypass every inbox algorithm and land where real customers do — directly in the business's own inbox.</p>
       <div class="who-checks">
-        <div class="who-check">Multi-channel outbound strategy</div>
-        <div class="who-check">AI-personalized messaging</div>
-        <div class="who-check">Pay only for delivered messages</div>
+        <div class="who-check">New outbound channel, zero domain risk</div>
+        <div class="who-check">AI writes a message using their own site</div>
+        <div class="who-check">Stack on top of your existing campaigns</div>
       </div>
     </div>
+
     <div class="who-card reveal reveal-delay-1">
-      <div class="who-icon who-icon-blue">🏛️</div>
-      <h3>Agencies</h3>
-      <p>Run massive campaigns for multiple clients from one dashboard. Save client configurations as presets and switch instantly.</p>
+      <div class="who-icon who-icon-blue">🏢</div>
+      <h3>Outbound Agencies</h3>
+      <p>One dashboard. Unlimited clients. Run separate campaigns with different messaging, sender profiles, and pacing for every client — all without switching accounts.</p>
       <div class="who-checks">
-        <div class="who-check">Multi-client campaign management</div>
-        <div class="who-check">Scalable volume by plan</div>
-        <div class="who-check">White-label ready workflow</div>
+        <div class="who-check">Separate campaigns per client</div>
+        <div class="who-check">Custom sender profiles per account</div>
+        <div class="who-check">Agency-tier volume up to 500/day</div>
       </div>
     </div>
+
     <div class="who-card reveal reveal-delay-2">
-      <div class="who-icon who-icon-green">🎧</div>
-      <h3>Sales Outbound Teams</h3>
-      <p>Prospect at scale without a larger SDR headcount. Upload your target list, configure once, and let the system do the outreach.</p>
+      <div class="who-icon who-icon-green">🎯</div>
+      <h3>Sales Teams</h3>
+      <p>Stop spending SDR hours manually researching and typing. Upload your ICP list, set your message once, and have hundreds of touches running before your first stand-up.</p>
       <div class="who-checks">
-        <div class="who-check">Automated prospecting at volume</div>
-        <div class="who-check">Dynamic personalization tokens</div>
-        <div class="who-check">Pause &amp; adjust live campaigns</div>
+        <div class="who-check">Runs while your team works other deals</div>
+        <div class="who-check">Pause, adjust, and relaunch anytime</div>
+        <div class="who-check">Every submission logged automatically</div>
       </div>
     </div>
+
     <div class="who-card reveal reveal-delay-3">
-      <div class="who-icon who-icon-purple">🗄️</div>
+      <div class="who-icon who-icon-purple">📋</div>
       <h3>Data Providers</h3>
-      <p>Turn raw website lists into outreach campaigns instantly. CSV columns map directly to campaign fields — no reformatting required.</p>
+      <p>You already have the lists. Drop your CSV in and Loylty figures out the rest — URL detection, field mapping, deduplication. Raw data becomes a live campaign in minutes.</p>
       <div class="who-checks">
-        <div class="who-check">Direct CSV column mapping</div>
-        <div class="who-check">Auto URL detection in any format</div>
-        <div class="who-check">Bulk deduplication built in</div>
+        <div class="who-check">Smart CSV column auto-mapping</div>
+        <div class="who-check">Handles messy URL formats automatically</div>
+        <div class="who-check">Built-in deduplication across imports</div>
       </div>
     </div>
+
+    <div class="who-card reveal">
+      <div class="who-icon who-icon-amber">⚡</div>
+      <h3>Solopreneurs</h3>
+      <p>You don't have a sales team, a big budget, or time to waste. Import a list, write one message, and wake up to replies from businesses you've never spoken to.</p>
+      <div class="who-checks">
+        <div class="who-check">Free plan — 100 outreaches to start</div>
+        <div class="who-check">No setup fees, no annual contracts</div>
+        <div class="who-check">Run it yourself in under 10 minutes</div>
+      </div>
+    </div>
+
+    <div class="who-card reveal reveal-delay-1">
+      <div class="who-icon who-icon-teal">🔬</div>
+      <h3>Market Researchers</h3>
+      <p>Need to know if a market wants what you're selling? Send a test message to 500 businesses in a specific category and city. Real responses in 24 hours, not 2 weeks.</p>
+      <div class="who-checks">
+        <div class="who-check">Target by category, city, and state</div>
+        <div class="who-check">Test multiple messages simultaneously</div>
+        <div class="who-check">Real reply data — not survey guesses</div>
+      </div>
+    </div>
+
+    <div class="who-card reveal reveal-delay-2">
+      <div class="who-icon who-icon-rose">🧪</div>
+      <h3>Offer Testers</h3>
+      <p>Before you build the landing page, run the pitch. Send your offer to 200 real businesses in your target niche and let the reply rate tell you if you've got something.</p>
+      <div class="who-checks">
+        <div class="who-check">Validate before you invest in ads</div>
+        <div class="who-check">Compare offers with message variations</div>
+        <div class="who-check">Filter by niche for clean test data</div>
+      </div>
+    </div>
+
+    <div class="who-card reveal reveal-delay-3">
+      <div class="who-icon who-icon-cyan">🤝</div>
+      <h3>Recruiters &amp; Staffing</h3>
+      <p>Reach hiring managers at thousands of small businesses that never post on LinkedIn. Contact forms go straight to the owner — the person who actually makes the call.</p>
+      <div class="who-checks">
+        <div class="who-check">Bypass HR gatekeepers at SMBs</div>
+        <div class="who-check">Target by industry and geography</div>
+        <div class="who-check">Scale outreach without more headcount</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
