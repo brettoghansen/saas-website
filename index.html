@@ -53,7 +53,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Work Sans', -apple-system, sans-serif;
-  font-size: 16px; line-height: 1.6;
+  font-size: 18px; line-height: 1.65;
   overflow-x: hidden;
   max-width: 100%;
   -webkit-font-smoothing: antialiased;
@@ -113,30 +113,34 @@ nav ul a:hover { color: var(--text); }
 .nav-btn:hover { opacity: 0.9 !important; transform: translateY(-1px) !important; }
 
 /* ══════════════════════════════════════════
-   HERO — split layout
+   HERO — full-width centered
 ══════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 62fr 38fr;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0;
-  padding: 0;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 24px 100px;
   position: relative;
   overflow: hidden;
 }
 
 /* left side */
 .hero-left {
-  padding: 140px 40px 100px 9vw;
   position: relative; z-index: 2;
+  max-width: 860px;
+  width: 100%;
 }
 
 /* right side */
 .hero-right {
   position: relative; z-index: 2;
-  padding: 140px 80px 100px 0;
-  display: flex; align-items: center; justify-content: flex-start;
+  width: 100%;
+  max-width: 780px;
+  margin-top: 64px;
+  display: flex; align-items: center; justify-content: center;
 }
 
 /* background blobs */
@@ -180,20 +184,20 @@ nav ul a:hover { color: var(--text); }
 
 .hero h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(52px, 5.5vw, 80px);
+  font-size: clamp(52px, 6.5vw, 96px);
   font-weight: 900;
   letter-spacing: -4px;
   line-height: 0.95;
-  margin-bottom: 28px;
+  margin-bottom: 32px;
 }
 
 .hero-sub {
-  font-size: 17px; color: var(--mid); line-height: 1.8;
-  max-width: 480px; margin-bottom: 44px;
+  font-size: 20px; color: var(--mid); line-height: 1.75;
+  max-width: 640px; margin: 0 auto 48px;
 }
 .hero-sub strong { color: var(--text); font-weight: 600; }
 
-.hero-cta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 52px; }
+.hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
 
 .btn-primary {
   background: var(--text); color: var(--bg);
@@ -216,7 +220,7 @@ nav ul a:hover { color: var(--text); }
 .btn-ghost:hover svg { opacity: 1; transform: translateX(3px); }
 
 /* hero proof pills */
-.hero-proof { display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-proof { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .hero-pill {
   display: flex; align-items: center; gap: 7px;
   padding: 6px 12px; border-radius: 100px;
@@ -229,16 +233,15 @@ nav ul a:hover { color: var(--text); }
 /* hero right — product mockup */
 .hero-mockup {
   width: 100%;
-  max-width: 520px;
+  max-width: 700px;
   background: var(--surface);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
-  transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
   transition: transform 0.4s ease;
 }
-.hero-mockup:hover { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); }
+.hero-mockup:hover { transform: translateY(-4px); }
 
 .hm-titlebar {
   display: flex; align-items: center; gap: 10px;
@@ -300,6 +303,73 @@ nav ul a:hover { color: var(--text); }
 .hm-rate { color: var(--muted); }
 
 /* ══════════════════════════════════════════
+   WHO IT'S FOR
+══════════════════════════════════════════ */
+.who-section {
+  padding: 120px 24px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.who-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.who-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.who-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 36px 28px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.who-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+.who-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 24px;
+}
+.who-icon-orange { background: rgba(249,115,22,0.15); }
+.who-icon-blue   { background: rgba(79,142,255,0.15); }
+.who-icon-green  { background: rgba(34,197,94,0.15); }
+.who-icon-purple { background: rgba(139,92,246,0.15); }
+.who-card h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px; font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 14px;
+}
+.who-card p {
+  font-size: 15px; color: var(--mid); line-height: 1.75;
+  margin-bottom: 24px;
+}
+.who-checks { display: flex; flex-direction: column; gap: 8px; }
+.who-check {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--mid);
+}
+.who-check::before {
+  content: '✓'; color: var(--accent);
+  font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .who-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 540px) {
+  .who-grid { grid-template-columns: 1fr; }
+}
+
+/* ══════════════════════════════════════════
    STATS MARQUEE / NUMBERS STRIP
 ══════════════════════════════════════════ */
 .stats-strip {
@@ -352,7 +422,7 @@ nav ul a:hover { color: var(--text); }
   overflow-wrap: break-word;
   max-width: 100%;
 }
-.s-body { font-size: 17px; color: var(--mid); line-height: 1.85; max-width: 560px; word-break: break-word; overflow-wrap: break-word; }
+.s-body { font-size: 19px; color: var(--mid); line-height: 1.85; max-width: 560px; word-break: break-word; overflow-wrap: break-word; }
 
 /* ══════════════════════════════════════════
    WHY IT WORKS — full-width, split asymmetric
@@ -1078,10 +1148,11 @@ footer p { color: var(--muted); font-size: 13px; }
   .nav-hamburger { display: flex; }
 
   /* Hero */
-  .hero-left { padding: 90px 20px 56px; }
+  .hero { padding: 100px 20px 64px; }
   .hero h1 { font-size: clamp(38px, 11vw, 58px); letter-spacing: -2px; }
-  .hero-sub { font-size: 15px; }
+  .hero-sub { font-size: 16px; }
   .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+  .hero-right { margin-top: 40px; }
   .btn-primary, .btn-ghost { width: 100%; max-width: 320px; justify-content: center; }
 
   /* Stats */
@@ -1484,7 +1555,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
           <div class="hm-dot hm-dot-y"></div>
           <div class="hm-dot hm-dot-g"></div>
         </div>
-        <div class="hm-title">Loylty — Campaign: Fence Contractors Q3</div>
+        <div class="hm-title">Loylty — Campaign: B2B Outreach Q3</div>
       </div>
       <div class="hm-header">
         <div class="hm-header-l">Running campaign</div>
@@ -1500,31 +1571,31 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       </div>
       <div class="hm-row">
         <div class="hm-status hm-s-ok"></div>
-        <div class="hm-co">Texas Fence &amp; Gate Co.</div>
-        <div class="hm-detail">texasfence.com</div>
+        <div class="hm-co">Apex Roofing Solutions</div>
+        <div class="hm-detail">apexroofing.com</div>
         <div class="hm-pill hm-pill-ok">Submitted</div>
       </div>
       <div class="hm-row">
         <div class="hm-status hm-s-run"></div>
-        <div class="hm-co">Premier Fencing Solutions</div>
-        <div class="hm-detail">premierfencing.com</div>
+        <div class="hm-co">Greenfield Landscaping Co.</div>
+        <div class="hm-detail">greenfieldlandscaping.com</div>
         <div class="hm-pill hm-pill-run">Running</div>
       </div>
       <div class="hm-row">
         <div class="hm-status hm-s-ok"></div>
-        <div class="hm-co">Lone Star Fence Works</div>
-        <div class="hm-detail">lonestarfence.com</div>
+        <div class="hm-co">Metro HVAC Services</div>
+        <div class="hm-detail">metrohvac.com</div>
         <div class="hm-pill hm-pill-ok">Submitted</div>
       </div>
       <div class="hm-row">
         <div class="hm-status hm-s-ok"></div>
-        <div class="hm-co">Alpha Fence &amp; Deck</div>
-        <div class="hm-detail">alphafencedeck.net</div>
+        <div class="hm-co">Prestige Plumbing Group</div>
+        <div class="hm-detail">prestigeplumbing.net</div>
         <div class="hm-pill hm-pill-ok">Submitted</div>
       </div>
       <div class="hm-row">
         <div class="hm-status hm-s-warn"></div>
-        <div class="hm-co">Riverside Fence Pros</div>
+        <div class="hm-co">Summit Electrical Contractors</div>
         <div class="hm-detail">Email fallback</div>
         <div class="hm-pill hm-pill-skip">Email</div>
       </div>
@@ -1555,6 +1626,57 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     <div class="ss-l">Import your list and run today</div>
   </div>
 </div>
+
+<!-- ══ WHO IT'S FOR ══ -->
+<section class="who-section">
+  <div class="who-header reveal">
+    <div class="section-eyebrow">👥 Who it's for</div>
+    <h2 class="s-h2">Built for Growth-Focused Teams</h2>
+    <p class="s-body" style="margin: 0 auto;">Loylty powers outreach for every type of B2B team.</p>
+  </div>
+  <div class="who-grid">
+    <div class="who-card reveal">
+      <div class="who-icon who-icon-orange">💼</div>
+      <h3>B2B Marketers</h3>
+      <p>Add a high-volume contact form channel to your outbound mix. Reach thousands of businesses your cold email list can't touch.</p>
+      <div class="who-checks">
+        <div class="who-check">Multi-channel outbound strategy</div>
+        <div class="who-check">AI-personalized messaging</div>
+        <div class="who-check">Pay only for delivered messages</div>
+      </div>
+    </div>
+    <div class="who-card reveal reveal-delay-1">
+      <div class="who-icon who-icon-blue">🏛️</div>
+      <h3>Agencies</h3>
+      <p>Run massive campaigns for multiple clients from one dashboard. Save client configurations as presets and switch instantly.</p>
+      <div class="who-checks">
+        <div class="who-check">Multi-client campaign management</div>
+        <div class="who-check">Scalable volume by plan</div>
+        <div class="who-check">White-label ready workflow</div>
+      </div>
+    </div>
+    <div class="who-card reveal reveal-delay-2">
+      <div class="who-icon who-icon-green">🎧</div>
+      <h3>Sales Outbound Teams</h3>
+      <p>Prospect at scale without a larger SDR headcount. Upload your target list, configure once, and let the system do the outreach.</p>
+      <div class="who-checks">
+        <div class="who-check">Automated prospecting at volume</div>
+        <div class="who-check">Dynamic personalization tokens</div>
+        <div class="who-check">Pause &amp; adjust live campaigns</div>
+      </div>
+    </div>
+    <div class="who-card reveal reveal-delay-3">
+      <div class="who-icon who-icon-purple">🗄️</div>
+      <h3>Data Providers</h3>
+      <p>Turn raw website lists into outreach campaigns instantly. CSV columns map directly to campaign fields — no reformatting required.</p>
+      <div class="who-checks">
+        <div class="who-check">Direct CSV column mapping</div>
+        <div class="who-check">Auto URL detection in any format</div>
+        <div class="who-check">Bulk deduplication built in</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ══ WHY IT WORKS ══ -->
 <section class="why-section" id="why">
