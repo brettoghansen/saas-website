@@ -2792,6 +2792,9 @@ var prices = {
 var priceIds = {
   starter: { monthly: 'price_1TzKzoH0ghZaJItui2kAs2TX', annual: 'price_1TzKzoH0ghZaJItukDqOU8bT' },
   pro:     { monthly: 'price_1TzKzoH0ghZaJItu7tdxyfTu', annual: 'price_1TzKzoH0ghZaJItulVyaKU3f' },
+  agency:  { monthly: 'price_1TzKzpH0ghZaJItuf4Cp33Wj', annual: 'price_1TzKzpH0ghZaJItuAEsleCKl' },
+},
+  pro:     { monthly: 'price_1TzKzoH0ghZaJItu7tdxyfTu', annual: 'price_1TzKzoH0ghZaJItulVyaKU3f' },
   agency:  { monthly: 'price_1TzKzpH0ghZaJItuf4Cp33Wj', annual: 'price_1TzKzpH0ghZaJItuAEsleCKl' }
 };
 
@@ -2827,6 +2830,22 @@ function startCheckout(plan) {
   })
   .catch(function() { alert('Network error. Please try again.'); btn.textContent = 'Get Started →'; btn.disabled = false; });
 }
+
+// ── REFERRAL PASS-THROUGH ──────────────────────────────────────────────────
+// If someone lands via an affiliate link (?ref=REF-XXXXXX), forward the code
+// to every signup link so it survives the hop from loylty.io → app.loylty.io
+(function() {
+  var ref = new URLSearchParams(window.location.search).get('ref');
+  if (!ref) return;
+  // Rewrite every link pointing to the signup page
+  document.querySelectorAll('a[href*="app.loylty.io"]').forEach(function(el) {
+    var url = new URL(el.href);
+    url.searchParams.set('ref', ref);
+    el.href = url.toString();
+  });
+  // Also store in sessionStorage so it survives any redirect
+  try { sessionStorage.setItem('loylty_ref', ref); } catch(_) {}
+})();
 </script>
 </body>
 </html>
