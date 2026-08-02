@@ -616,13 +616,16 @@ nav ul a:hover { color: var(--text); }
 .bc-stat-n { font-family: 'Outfit', sans-serif; font-size: 28px; font-weight: 900; letter-spacing: -1px; color: var(--accent); }
 .bc-stat-l { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-.bc-modes { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-.bcm-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; }
-.bcm-badge { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 100px; flex-shrink: 0; margin-top: 1px; }
-.bcm-generic  { background: rgba(255,255,255,0.07); color: var(--mid); }
-.bcm-varied   { background: rgba(79,142,255,0.15); color: var(--accent); }
-.bcm-personal { background: rgba(34,197,94,0.15); color: var(--green); }
-.bcm-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+/* Message mode card */
+.bc-mode-rows { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.bc-mode-row { padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; }
+.bc-mode-row-ai { border-color: rgba(79,142,255,0.15); background: rgba(79,142,255,0.04); }
+.bc-mode-label-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.bc-mode-label { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.bc-mode-label-ai { color: var(--accent); margin-bottom: 0; }
+.bc-mode-cs-badge { font-size: 9px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; padding: 3px 8px; border-radius: 100px; background: rgba(79,142,255,0.15); color: var(--accent); border: 1px solid rgba(79,142,255,0.25); }
+.bc-mode-desc { font-size: 12px; color: var(--mid); line-height: 1.6; }
+
 
 .bc-live-feed { margin-top: 20px; background: rgba(0,0,0,0.3); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
 .blf-row { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 12px; }
@@ -1896,22 +1899,22 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         </div>
       </div>
 
-      <!-- Stats card -->
+      <!-- Message mode card -->
       <div class="bc bc-small reveal reveal-delay-2">
-        <div class="bc-eyebrow">AI Writing</div>
-        <h3>One message. Written three ways. Automatically.</h3>
-        <div class="bc-modes">
-          <div class="bcm-item">
-            <div class="bcm-badge bcm-generic">Generic</div>
-            <div class="bcm-desc">Clean, professional template. Same message, every company. Fast to set up, works at any volume.</div>
+        <div class="bc-icon bc-icon-blue">✍️</div>
+        <div class="bc-eyebrow">Message Mode</div>
+        <h3>Template or AI. Most tools fake personalization. This one reads the site.</h3>
+        <div class="bc-mode-rows">
+          <div class="bc-mode-row">
+            <div class="bc-mode-label">Template</div>
+            <div class="bc-mode-desc">Your message, sent exactly as written. Fast, consistent, works at any volume. Every plan.</div>
           </div>
-          <div class="bcm-item">
-            <div class="bcm-badge bcm-varied">Varied</div>
-            <div class="bcm-desc">AI rewrites your core message with different phrasing per batch. Avoids pattern detection without extra work.</div>
-          </div>
-          <div class="bcm-item">
-            <div class="bcm-badge bcm-personal">Personalized</div>
-            <div class="bcm-desc">AI reads each company's website and writes a custom opening line for them specifically. Highest reply rate.</div>
+          <div class="bc-mode-row bc-mode-row-ai">
+            <div class="bc-mode-label-wrap">
+              <div class="bc-mode-label bc-mode-label-ai">AI Mode</div>
+              <div class="bc-mode-cs-badge">Coming Soon</div>
+            </div>
+            <div class="bc-mode-desc">While we're already on their page, we read their title, description, and headline — then write a message that references what they actually do. Not a domain name. Their business. Pro &amp; Agency, included.</div>
           </div>
         </div>
       </div>
