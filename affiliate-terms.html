@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Affiliate Agreement — Loylty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #111118;
+      --text: #f0f0f5;
+      --mid: #a0a0b8;
+      --muted: #6060780;
+      --accent: #4f8eff;
+      --purple: #7b5cf0;
+      --border: rgba(255,255,255,0.07);
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.8; }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 64px;
+      background: rgba(10,10,15,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg,var(--accent),var(--purple)); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 16px; color: #fff; }
+    .nav-logo-text { font-weight: 800; font-size: 18px; color: var(--text); }
+    .nav-back { font-size: 14px; color: var(--mid); text-decoration: none; }
+    .nav-back:hover { color: var(--text); }
+
+    .page-wrap { max-width: 760px; margin: 0 auto; padding: 72px 24px 120px; }
+
+    .page-label { font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+    h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: -1.5px; color: var(--text); margin-bottom: 12px; }
+    .effective { font-size: 14px; color: var(--mid); margin-bottom: 48px; }
+
+    .toc { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 56px; }
+    .toc-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 16px; }
+    .toc ol { padding-left: 20px; }
+    .toc li { margin-bottom: 6px; }
+    .toc a { color: var(--accent); text-decoration: none; font-size: 14px; }
+    .toc a:hover { text-decoration: underline; }
+
+    section { margin-bottom: 52px; }
+    section h2 { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    p { color: var(--mid); margin-bottom: 16px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { color: var(--mid); padding-left: 20px; margin-bottom: 16px; }
+    li { margin-bottom: 8px; }
+    strong { color: var(--text); font-weight: 600; }
+
+    .highlight-box { background: rgba(79,142,255,0.06); border: 1px solid rgba(79,142,255,0.2); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+    .highlight-box p { color: var(--text); margin: 0; font-size: 15px; }
+
+    .warning-box { background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; }
+    .warning-box p { color: #fca5a5; margin: 0; font-size: 15px; }
+
+    footer { border-top: 1px solid var(--border); padding: 32px 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--mid); }
+    footer a { color: var(--mid); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark">L</div>
+      <span class="nav-logo-text">Loylty</span>
+    </a>
+    <a href="/affiliates.html" class="nav-back">← Back to Affiliate Program</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <div class="page-label">Legal</div>
+    <h1>Affiliate Agreement</h1>
+    <p class="effective">Effective Date: August 1, 2026 &nbsp;·&nbsp; Last Updated: August 1, 2026</p>
+
+    <div class="highlight-box">
+      <p>By signing up for the Loylty Affiliate Program, generating a referral link, or receiving any commission payment, you agree to be bound by this Agreement in full. Please read it carefully before participating.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#s1">Parties and Definitions</a></li>
+        <li><a href="#s2">Eligibility</a></li>
+        <li><a href="#s3">Program Enrollment</a></li>
+        <li><a href="#s4">Referral Tracking and Attribution</a></li>
+        <li><a href="#s5">Commission Structure</a></li>
+        <li><a href="#s6">Payout Terms</a></li>
+        <li><a href="#s7">Tax Obligations and W-9 Requirement</a></li>
+        <li><a href="#s8">Prohibited Conduct</a></li>
+        <li><a href="#s9">Program Modifications and Termination</a></li>
+        <li><a href="#s10">Termination of Your Participation</a></li>
+        <li><a href="#s11">Intellectual Property</a></li>
+        <li><a href="#s12">Representations and Warranties</a></li>
+        <li><a href="#s13">Limitation of Liability</a></li>
+        <li><a href="#s14">Indemnification</a></li>
+        <li><a href="#s15">Governing Law and Disputes</a></li>
+        <li><a href="#s16">Entire Agreement</a></li>
+        <li><a href="#s17">Contact</a></li>
+      </ol>
+    </div>
+
+    <section id="s1">
+      <h2>1. Parties and Definitions</h2>
+      <p><strong>"Loylty," "we," "us," or "Company"</strong> refers to Loylty, operated by its owner(s).</p>
+      <p><strong>"Affiliate," "you," or "Partner"</strong> refers to any individual or entity that participates in the Loylty Affiliate Program.</p>
+      <p><strong>"Referred Customer"</strong> means a new Loylty subscriber who signed up through your unique referral link and whose account is attributed to you in our system.</p>
+      <p><strong>"Commission"</strong> means the percentage of a Referred Customer's qualifying payment that Loylty credits to your affiliate balance.</p>
+      <p><strong>"Program"</strong> means the Loylty Affiliate Program described in this Agreement.</p>
+    </section>
+
+    <section id="s2">
+      <h2>2. Eligibility</h2>
+      <p>To participate in the Program, you must:</p>
+      <ul>
+        <li>Be at least 18 years of age;</li>
+        <li>Have a valid Loylty account in good standing;</li>
+        <li>Be legally able to enter into a binding agreement in your jurisdiction;</li>
+        <li>Not be a current employee, contractor, or owner of Loylty;</li>
+        <li>Comply with all applicable laws, including those governing advertising, endorsements, and taxation.</li>
+      </ul>
+      <p>Loylty reserves the right to decline or revoke participation for any reason at its sole discretion.</p>
+    </section>
+
+    <section id="s3">
+      <h2>3. Program Enrollment</h2>
+      <p>Enrollment is automatic upon creation of a Loylty account. Your referral link is generated and available in your Affiliates dashboard immediately. No application or approval process is required to receive a referral link.</p>
+      <p>However, <strong>no commission payment will be released until tax documentation is completed</strong> as described in Section 7.</p>
+    </section>
+
+    <section id="s4">
+      <h2>4. Referral Tracking and Attribution</h2>
+      <p>Attribution is determined solely by our tracking system. A Referred Customer must sign up for a Loylty account directly through your unique referral link for attribution to be recorded. Attribution is tracked via URL parameter at the time of account creation.</p>
+      <p>The following rules apply:</p>
+      <ul>
+        <li>Attribution is recorded at account creation, not at the time of first payment.</li>
+        <li>If a customer signs up without your referral link and later claims they were referred by you, no retroactive attribution will be applied.</li>
+        <li>Self-referrals — using your own referral link to sign up for a new account — are prohibited and will result in forfeiture of all commissions and termination from the Program.</li>
+        <li>Loylty's tracking records are final and conclusive in any attribution dispute.</li>
+      </ul>
+    </section>
+
+    <section id="s5">
+      <h2>5. Commission Structure</h2>
+      <p>As of the effective date of this Agreement, the commission rate is <strong>20% of each qualifying payment</strong> made by a Referred Customer, recurring for as long as that customer remains an active paying subscriber.</p>
+      <p><strong>Qualifying payments</strong> include monthly and annual subscription fees for any paid Loylty plan (currently Starter, Pro, and Agency).</p>
+      <p><strong>Non-qualifying events</strong> include:</p>
+      <ul>
+        <li>Free plan signups that never convert to paid;</li>
+        <li>Refunded or charged-back payments (commissions on refunded payments will be reversed);</li>
+        <li>Payments made after your affiliate account has been terminated;</li>
+        <li>Any payment attributed to a self-referral.</li>
+      </ul>
+      <div class="warning-box">
+        <p><strong>Important:</strong> Commission rates, qualifying plan definitions, and the commission structure itself are subject to change at any time in accordance with Section 9. The rate published in your affiliate dashboard at the time of each payment is the applicable rate for that payment.</p>
+      </div>
+    </section>
+
+    <section id="s6">
+      <h2>6. Payout Terms</h2>
+      <p>Payouts are processed manually via Wise (formerly TransferWise). The following terms apply:</p>
+      <ul>
+        <li><strong>Minimum payout threshold:</strong> $25.00 USD. Balances below this threshold will not be paid out and will roll over to the following period.</li>
+        <li><strong>Payout request process:</strong> To request a payout, email <a href="mailto:brettoghansen@gmail.com" style="color:var(--accent);">brettoghansen@gmail.com</a> with "Affiliate Payout Request" in the subject line and include your Wise account details.</li>
+        <li><strong>Processing time:</strong> Payouts will be sent within 30 days of receiving a valid payout request, provided all tax documentation on file is complete.</li>
+        <li><strong>Currency:</strong> All payouts are made in USD.</li>
+        <li><strong>Wise account required:</strong> You must have an active Wise account to receive payment. Loylty is not responsible for fees charged by Wise or any intermediary financial institution.</li>
+        <li><strong>Chargebacks and refunds:</strong> If a Referred Customer successfully charges back or receives a refund after a commission has been credited, the corresponding commission will be deducted from your balance. If your balance is insufficient, the deficit will be deducted from future earnings.</li>
+      </ul>
+    </section>
+
+    <section id="s7">
+      <h2>7. Tax Obligations and W-9 Requirement</h2>
+      <div class="highlight-box">
+        <p>No payout will be released until required tax documentation is on file. This is a legal requirement, not optional.</p>
+      </div>
+      <p><strong>US-based affiliates:</strong> You must submit a completed IRS Form W-9 before your first payout is processed. We are required by law to issue a Form 1099-NEC to any affiliate who earns $600 or more in a calendar year. Failure to provide a W-9 will result in your payout being held until documentation is received.</p>
+      <p><strong>International affiliates:</strong> You must submit a completed IRS Form W-8BEN (for individuals) or W-8BEN-E (for entities) before your first payout is processed.</p>
+      <p>You are solely responsible for:</p>
+      <ul>
+        <li>Accurately reporting all commission income to the appropriate tax authorities in your jurisdiction;</li>
+        <li>Paying all taxes, duties, and levies owed on commissions received;</li>
+        <li>Notifying us promptly of any change in your tax status or residency that affects the documentation on file.</li>
+      </ul>
+      <p>Loylty does not provide tax advice. Consult a qualified tax professional with questions about your tax obligations.</p>
+    </section>
+
+    <section id="s8">
+      <h2>8. Prohibited Conduct</h2>
+      <p>The following are strictly prohibited and will result in immediate termination and forfeiture of all unpaid commissions:</p>
+      <ul>
+        <li><strong>Self-referrals</strong> — signing up for Loylty through your own referral link;</li>
+        <li><strong>Cookie stuffing or link hijacking</strong> — any technical method of forcing referral attribution without genuine user action;</li>
+        <li><strong>Spam</strong> — promoting your referral link via unsolicited bulk email or messages;</li>
+        <li><strong>Misleading claims</strong> — making false or unsubstantiated claims about Loylty's features, pricing, or results;</li>
+        <li><strong>Bidding on branded terms</strong> — running paid search ads on "Loylty" or variations thereof;</li>
+        <li><strong>Coupon and cashback sites</strong> — listing your referral link on coupon, deal, or cashback sites without prior written approval;</li>
+        <li><strong>Impersonation</strong> — representing yourself as an employee, owner, or official spokesperson of Loylty;</li>
+        <li><strong>Incentivized sign-ups</strong> — offering your own cash or gifts to people who sign up through your link, unless approved in writing by Loylty.</li>
+      </ul>
+    </section>
+
+    <section id="s9">
+      <h2>9. Program Modifications and Termination</h2>
+      <div class="warning-box">
+        <p>Loylty reserves the right to modify, suspend, or permanently discontinue the Affiliate Program — including commission rates, payout terms, eligible plans, and minimum thresholds — at any time, for any reason, in its sole discretion.</p>
+      </div>
+      <p>In the event of a material change (defined as a reduction in commission rate, increase in minimum threshold, or full program termination), Loylty will provide <strong>at least 30 days' written notice</strong> via email to the address on your Loylty account.</p>
+      <p>Commissions earned and credited to your balance before the effective date of any change will remain payable under the terms in effect at the time they were earned, provided your account remains in good standing and tax documentation is on file.</p>
+      <p>Loylty is not liable for any lost anticipated earnings resulting from program changes or termination. Participation in the Program does not create any expectation of continued earnings or a contractual right to future commissions.</p>
+    </section>
+
+    <section id="s10">
+      <h2>10. Termination of Your Participation</h2>
+      <p>Either party may terminate participation in the Program at any time:</p>
+      <ul>
+        <li><strong>You</strong> may opt out by emailing <a href="mailto:brettoghansen@gmail.com" style="color:var(--accent);">brettoghansen@gmail.com</a> requesting removal from the Program. Any unpaid balance above the minimum threshold at the time of termination will be paid out in the normal course, provided tax documentation is on file.</li>
+        <li><strong>Loylty</strong> may terminate your participation immediately and without notice for violation of this Agreement, suspected fraud, abuse, or any conduct deemed harmful to the Company or its customers. Termination for cause results in forfeiture of all unpaid commissions.</li>
+      </ul>
+      <p>Upon termination, your referral link will be deactivated and no new referrals will be attributed to you. Referred Customers already attributed to you prior to termination will not generate future commissions.</p>
+    </section>
+
+    <section id="s11">
+      <h2>11. Intellectual Property</h2>
+      <p>Loylty grants you a limited, non-exclusive, non-transferable, revocable license to use the Loylty name and approved marketing materials solely for the purpose of promoting the Program in accordance with this Agreement.</p>
+      <p>You may not:</p>
+      <ul>
+        <li>Alter, modify, or create derivative works of any Loylty logo, trademark, or branding;</li>
+        <li>Use Loylty's name or marks in any way that implies endorsement, partnership, or sponsorship beyond participation in the Program;</li>
+        <li>Register any domain name containing "Loylty" or any confusingly similar term.</li>
+      </ul>
+      <p>This license terminates automatically upon termination of your participation in the Program.</p>
+    </section>
+
+    <section id="s12">
+      <h2>12. Representations and Warranties</h2>
+      <p>By participating in the Program, you represent and warrant that:</p>
+      <ul>
+        <li>You have the full legal authority to enter into this Agreement;</li>
+        <li>Your participation in the Program does not violate any other agreement to which you are a party;</li>
+        <li>All information you provide to Loylty, including tax documentation, is accurate and complete;</li>
+        <li>You will comply with all applicable laws and regulations, including FTC endorsement guidelines, CAN-SPAM, GDPR, and any other applicable advertising or marketing regulations in your jurisdiction;</li>
+        <li>You will disclose your affiliate relationship with Loylty clearly and conspicuously in any promotional content, as required by applicable law.</li>
+      </ul>
+    </section>
+
+    <section id="s13">
+      <h2>13. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Loylty's total liability to you arising out of or related to this Agreement or the Program shall not exceed the total commissions paid to you in the 90 days immediately preceding the event giving rise to the claim.</p>
+      <p>In no event shall Loylty be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to lost profits, lost revenue, or loss of anticipated earnings, even if advised of the possibility of such damages.</p>
+    </section>
+
+    <section id="s14">
+      <h2>14. Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless Loylty and its owners, officers, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or in any way connected with:</p>
+      <ul>
+        <li>Your participation in the Program;</li>
+        <li>Your violation of this Agreement;</li>
+        <li>Your violation of any law or the rights of any third party;</li>
+        <li>Any content you publish in connection with promoting Loylty.</li>
+      </ul>
+    </section>
+
+    <section id="s15">
+      <h2>15. Governing Law and Disputes</h2>
+      <p>This Agreement is governed by and construed in accordance with the laws of the United States. Any dispute arising out of or relating to this Agreement that cannot be resolved informally shall be submitted to binding arbitration conducted by a mutually agreed-upon arbitrator. You waive any right to participate in a class action lawsuit or class-wide arbitration against Loylty.</p>
+    </section>
+
+    <section id="s16">
+      <h2>16. Entire Agreement</h2>
+      <p>This Agreement constitutes the entire agreement between you and Loylty with respect to the Affiliate Program and supersedes all prior agreements, representations, and understandings of any kind. If any provision of this Agreement is found to be unenforceable, the remaining provisions will continue in full force and effect.</p>
+      <p>Loylty may update this Agreement at any time. Material changes will be communicated via email to your Loylty account address. Continued participation in the Program after the effective date of any update constitutes your acceptance of the revised terms.</p>
+    </section>
+
+    <section id="s17">
+      <h2>17. Contact</h2>
+      <p>Questions about this Agreement or the Affiliate Program can be directed to:</p>
+      <p><a href="mailto:brettoghansen@gmail.com" style="color:var(--accent);">brettoghansen@gmail.com</a></p>
+    </section>
+
+  </div>
+
+  <footer>
+    <div>© 2026 Loylty. All rights reserved.</div>
+    <div style="display:flex; gap:28px; flex-wrap:wrap;">
+      <a href="/">Home</a>
+      <a href="/affiliates.html">Affiliates</a>
+      <a href="/affiliate-terms.html">Affiliate Agreement</a>
+      <a href="mailto:brettoghansen@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+</body>
+</html>
