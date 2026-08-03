@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Affiliate Program — Loylty</title>
+  <meta name="description" content="Earn 20% every month, forever. Share Loylty and get paid recurring commissions for every user you refer — for as long as they stay subscribed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07070f;
+      --bg2: #0c0c1a;
+      --bg3: #0e0e1c;
+      --border: rgba(255,255,255,0.07);
+      --text: #f0f2f8;
+      --muted: #606880;
+      --accent: #4f8eff;
+      --purple: #7b5cf0;
+      --green: #22c55e;
+      --gold: #f59e0b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 68px;
+      background: rgba(7,7,15,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px; color: #fff;
+      box-shadow: 0 4px 16px rgba(79,142,255,0.35);
+    }
+    .nav-logo-text { font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+    .nav-cta {
+      display: inline-flex; align-items: center;
+      padding: 9px 22px; border-radius: 24px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      color: #fff; font-weight: 700; font-size: 14px; text-decoration: none;
+      box-shadow: 0 0 20px rgba(79,142,255,0.4);
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,142,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 20px;
+      background: rgba(79,142,255,0.1); border: 1px solid rgba(79,142,255,0.25);
+      color: #7eb3ff; font-size: 13px; font-weight: 600;
+      margin-bottom: 32px;
+    }
+    .hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 88px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -3px;
+      max-width: 900px;
+      margin-bottom: 28px;
+    }
+    .grad {
+      background: linear-gradient(90deg, var(--accent) 0%, var(--purple) 50%, #f472b6 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--muted); max-width: 560px; margin-bottom: 48px; line-height: 1.7;
+    }
+    .hero-cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 36px; border-radius: 50px;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      color: #fff; font-weight: 800; font-size: 16px; text-decoration: none;
+      box-shadow: 0 0 40px rgba(79,142,255,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: glow 3s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100% { box-shadow: 0 0 40px rgba(79,142,255,0.45); }
+      50% { box-shadow: 0 0 60px rgba(79,142,255,0.7), 0 0 100px rgba(123,92,240,0.3); }
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 36px; border-radius: 50px;
+      background: transparent; border: 1px solid rgba(255,255,255,0.15);
+      color: var(--text); font-weight: 700; font-size: 16px; text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.04); }
+
+    .hero-stats {
+      display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat-n { font-size: 36px; font-weight: 900; letter-spacing: -1.5px; color: var(--text); }
+    .hero-stat-l { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ── Section base ── */
+    section { padding: 100px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+      letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px;
+    }
+    .section-sub { font-size: 18px; color: var(--muted); max-width: 560px; line-height: 1.7; }
+
+    /* ── How it works ── */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 64px; }
+    .step {
+      background: var(--bg3); padding: 40px 36px;
+      position: relative; overflow: hidden;
+    }
+    .step:first-child { border-radius: 20px 0 0 20px; }
+    .step:last-child { border-radius: 0 20px 20px 0; }
+    .step::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--purple));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .step:hover::before { opacity: 1; }
+    .step-num {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.15em; color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .step-icon { font-size: 36px; margin-bottom: 20px; }
+    .step h3 { font-size: 20px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.5px; }
+    .step p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+
+    /* ── Calculator ── */
+    .calc-section { background: var(--bg2); }
+    .calc-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 24px; padding: 56px; margin-top: 56px;
+    }
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .calc-label { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+    .calc-slider-row { margin-bottom: 36px; }
+    input[type=range] {
+      width: 100%; -webkit-appearance: none; height: 4px;
+      background: rgba(79,142,255,0.2); border-radius: 2px; outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--purple));
+      cursor: pointer; box-shadow: 0 0 12px rgba(79,142,255,0.5);
+    }
+    .calc-val { font-size: 28px; font-weight: 900; color: var(--text); margin-bottom: 4px; letter-spacing: -1px; }
+    .calc-result { }
+    .calc-result-card {
+      background: rgba(79,142,255,0.06); border: 1px solid rgba(79,142,255,0.18);
+      border-radius: 16px; padding: 32px; margin-bottom: 16px;
+    }
+    .calc-result-label { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
+    .calc-result-n { font-size: 48px; font-weight: 900; letter-spacing: -2px; }
+    .calc-result-sub { font-size: 13px; color: var(--muted); margin-top: 6px; }
+    .calc-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); }
+    .calc-row:last-child { border-bottom: none; }
+    .calc-row-label { font-size: 14px; color: var(--muted); }
+    .calc-row-val { font-size: 14px; font-weight: 700; color: var(--text); }
+
+    /* ── Why ── */
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 56px; }
+    .why-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px;
+      transition: border-color 0.2s;
+    }
+    .why-card:hover { border-color: rgba(79,142,255,0.25); }
+    .why-icon { font-size: 32px; margin-bottom: 16px; }
+    .why-card h3 { font-size: 18px; font-weight: 800; margin-bottom: 10px; letter-spacing: -0.3px; }
+    .why-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── Payout ── */
+    .payout-section { background: var(--bg2); }
+    .payout-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+    .payout-card {
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 20px; padding: 36px; text-align: center;
+    }
+    .payout-card-n { font-size: 40px; font-weight: 900; letter-spacing: -2px; margin-bottom: 8px; }
+    .payout-card-l { font-size: 14px; color: var(--muted); }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 56px; display: flex; flex-direction: column; gap: 2px; }
+    .faq-item {
+      background: var(--bg3); border-radius: 0; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child { border-radius: 16px 16px 0 0; }
+    .faq-item:last-child { border-radius: 0 0 16px 16px; border-bottom: none; }
+    .faq-q {
+      width: 100%; background: none; border: none; color: var(--text);
+      font-size: 16px; font-weight: 700; padding: 24px 28px;
+      text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+      font-family: inherit;
+    }
+    .faq-q:hover { background: rgba(255,255,255,0.02); }
+    .faq-chevron { font-size: 18px; color: var(--muted); transition: transform 0.2s; flex-shrink: 0; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 28px 24px; font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── Bottom CTA ── */
+    .bottom-cta {
+      text-align: center; padding: 120px 24px;
+      background: linear-gradient(180deg, var(--bg) 0%, #0a0a1a 100%);
+      position: relative; overflow: hidden;
+    }
+    .bottom-cta::before {
+      content: '';
+      position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,92,240,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bottom-cta h2 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; letter-spacing: -2.5px; margin-bottom: 20px; }
+    .bottom-cta p { font-size: 18px; color: var(--muted); margin-bottom: 48px; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 40px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 13px; color: var(--muted);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .steps { grid-template-columns: 1fr; gap: 2px; }
+      .step:first-child { border-radius: 20px 20px 0 0; }
+      .step:last-child { border-radius: 0 0 20px 20px; }
+      .calc-grid { grid-template-columns: 1fr; gap: 36px; }
+      .calc-card { padding: 32px 24px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .payout-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark">L</div>
+      <span class="nav-logo-text">Loylty</span>
+    </a>
+    <a href="https://app.loylty.io?view=signup" class="nav-cta">Start Earning →</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      Affiliate Program — Now Open
+    </div>
+    <h1>Earn <span class="grad">20% Every Month.</span><br />Forever.</h1>
+    <p class="hero-sub">
+      Refer a contractor to Loylty. Every time they pay their subscription — monthly, annually, forever — you get 20% of that bill. No cap. No expiry.
+    </p>
+    <div class="hero-cta-row">
+      <a href="https://app.loylty.io?view=signup" class="btn-primary">Get Your Referral Link →</a>
+      <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:#4f8eff">20%</div>
+        <div class="hero-stat-l">Recurring Commission</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:#22c55e">$0</div>
+        <div class="hero-stat-l">To Join</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-n" style="color:#f59e0b">∞</div>
+        <div class="hero-stat-l">No Expiry</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three steps.<br />That's it.</h2>
+      <p class="section-sub">Sign up, share your link, get paid every month someone you referred stays subscribed.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔗</div>
+          <h3>Get Your Link</h3>
+          <p>Create a free Loylty account. Your personal referral link is waiting in the Affiliates tab the moment you sign up. No approval process, no waiting.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-icon">📣</div>
+          <h3>Share Anywhere</h3>
+          <p>Drop your link in a YouTube description, a Facebook group, a blog post, a newsletter, a DM. Anyone who signs up through your link is tied to you permanently.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-icon">💸</div>
+          <h3>Get Paid Monthly</h3>
+          <p>Every month your referral pays their Loylty bill, 20% lands in your commission balance. Request a payout via Wise once you hit $25. We send it within 30 days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Calculator -->
+  <section class="calc-section">
+    <div class="container">
+      <div class="section-label">Earnings Calculator</div>
+      <h2 class="section-title">See what you could earn.</h2>
+      <p class="section-sub">Move the sliders. Watch the numbers grow. These are real payouts — not projections dressed up as guarantees.</p>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div>
+            <div class="calc-slider-row">
+              <div class="calc-label">Referrals You Send Per Month</div>
+              <div class="calc-val" id="ref-val">10 referrals</div>
+              <input type="range" id="ref-slider" min="1" max="200" value="10" />
+            </div>
+            <div class="calc-slider-row">
+              <div class="calc-label">Average Plan They Choose</div>
+              <div class="calc-val" id="plan-val">$79 / mo (Pro)</div>
+              <input type="range" id="plan-slider" min="0" max="2" value="1" step="1" />
+            </div>
+            <div class="calc-slider-row">
+              <div class="calc-label">Estimated Conversion Rate</div>
+              <div class="calc-val" id="conv-val">20%</div>
+              <input type="range" id="conv-slider" min="5" max="50" value="20" step="5" />
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-card">
+              <div class="calc-result-label">Monthly Recurring Income</div>
+              <div class="calc-result-n grad" id="monthly-result">$0</div>
+              <div class="calc-result-sub" id="monthly-sub">from 0 paying referrals</div>
+            </div>
+            <div>
+              <div class="calc-row">
+                <span class="calc-row-label">After 6 months</span>
+                <span class="calc-row-val" id="r6">$0</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-row-label">After 12 months</span>
+                <span class="calc-row-val" id="r12">$0</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-row-label">After 24 months</span>
+                <span class="calc-row-val" id="r24">$0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Loylty -->
+  <section>
+    <div class="container">
+      <div class="section-label">Why This Works</div>
+      <h2 class="section-title">We built the affiliate program<br />we wished existed.</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">♾️</div>
+          <h3>Recurring for Life</h3>
+          <p>Most affiliate programs pay you once on the first sale. Ours pays 20% every single month your referral stays subscribed. One referral who stays 2 years pays you 24 months of commissions.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🎯</div>
+          <h3>Easy to Sell</h3>
+          <p>Loylty has a free tier with 100 sends included — no credit card required. You're sending people to a free product that pays for itself. The hardest part of affiliate marketing (overcoming purchase friction) doesn't apply here.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📊</div>
+          <h3>Full Transparency</h3>
+          <p>Your affiliate dashboard shows every referral, every commission, and every payout in real time. No black-box reporting, no delayed data, no "trust us."</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🏗️</div>
+          <h3>A Product That Retains</h3>
+          <p>Loylty automates contractor outreach — something contractors need to do every single month. High retention means your commissions compound instead of churn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payout Details -->
+  <section class="payout-section">
+    <div class="container">
+      <div class="section-label">Payouts</div>
+      <h2 class="section-title">Simple. Transparent. Reliable.</h2>
+      <p class="section-sub">Payouts go out via Wise. No PayPal fees, no wire delays, no nonsense.</p>
+      <div class="payout-grid">
+        <div class="payout-card">
+          <div class="payout-card-n grad">20%</div>
+          <div class="payout-card-l">Of every payment your referral makes — monthly or annual — forever</div>
+        </div>
+        <div class="payout-card">
+          <div class="payout-card-n" style="color:#22c55e">$25</div>
+          <div class="payout-card-l">Minimum payout threshold — easy to hit in your first month</div>
+        </div>
+        <div class="payout-card">
+          <div class="payout-card-n" style="color:#f59e0b">30d</div>
+          <div class="payout-card-l">Payouts sent within 30 days of your request via Wise transfer</div>
+        </div>
+      </div>
+      <div style="margin-top:32px; padding:28px 32px; background:var(--bg3); border:1px solid var(--border); border-radius:16px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <div style="font-size:28px;">💡</div>
+        <div>
+          <div style="font-weight:700; margin-bottom:4px;">How to Request a Payout</div>
+          <div style="font-size:14px; color:var(--muted);">Once your balance hits $25, email your Wise address to <a href="mailto:brettoghansen@gmail.com?subject=Affiliate Payout Request" style="color:var(--accent);">brettoghansen@gmail.com</a> with "Affiliate Payout Request" in the subject. We'll send it within 30 days.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Everything you need to know.</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is there a cost to join the affiliate program?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">Zero. Create a free Loylty account and your referral code is waiting for you in the Affiliates tab. No application, no approval, no fee.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How long does the 20% last?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">Forever. As long as the person you referred keeps paying for Loylty, you earn 20% of every payment they make. Month 1, month 24, month 60 — the commission never expires.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What if they sign up for free and upgrade later?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">You still get credit. When they upgrade to a paid plan, the referral is already recorded in our system from the moment they signed up through your link. The commission kicks in on their first payment.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What plans does the commission apply to?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">All paid plans — Starter ($29/mo), Pro ($79/mo), and Agency ($199/mo). Annual plans earn the commission on the full annual payment when it's made, rather than split monthly.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I track my referrals?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">Log into your Loylty account and go to the Affiliates tab. You'll see every referral, their status, every commission earned, and your total payout history — all in real time.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What is Wise and do I need an account?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">Wise (formerly TransferWise) is a low-fee international money transfer service. You'll need a free Wise account to receive your payout. Sign up at wise.com — it takes about 5 minutes.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I refer other affiliates?
+            <span class="faq-chevron">▾</span>
+          </button>
+          <div class="faq-a">Right now the program is single-tier — you earn on users you refer directly, not on affiliates you recruit. We may add a second tier in the future.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom CTA -->
+  <section class="bottom-cta">
+    <div class="container">
+      <h2>Start earning <span class="grad">today.</span></h2>
+      <p>Free to join. Your referral link is ready the moment you sign up.</p>
+      <a href="https://app.loylty.io?view=signup" class="btn-primary" style="font-size:18px; padding:18px 48px;">
+        Get My Referral Link →
+      </a>
+      <div style="margin-top:32px; font-size:14px; color:var(--muted);">
+        Already have an account? <a href="https://app.loylty.io" style="color:var(--accent);">Log in and go to Affiliates →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2026 Loylty. All rights reserved.</div>
+    <div style="display:flex; gap:28px;">
+      <a href="/">Home</a>
+      <a href="/affiliates.html">Affiliates</a>
+      <a href="mailto:brettoghansen@gmail.com">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    // Calculator
+    var plans = [
+      { label: '$29 / mo (Starter)', price: 29 },
+      { label: '$79 / mo (Pro)', price: 79 },
+      { label: '$199 / mo (Agency)', price: 199 },
+    ]
+
+    function fmt(n) {
+      if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'k'
+      return '$' + Math.round(n)
+    }
+
+    function calcUpdate() {
+      var refs = parseInt(document.getElementById('ref-slider').value)
+      var planIdx = parseInt(document.getElementById('plan-slider').value)
+      var conv = parseInt(document.getElementById('conv-slider').value)
+      var plan = plans[planIdx]
+
+      document.getElementById('ref-val').textContent = refs + ' referral' + (refs === 1 ? '' : 's') + ' / mo'
+      document.getElementById('plan-val').textContent = plan.label
+      document.getElementById('conv-val').textContent = conv + '%'
+
+      var paying = Math.round(refs * (conv / 100))
+      var monthly = paying * plan.price * 0.20
+
+      document.getElementById('monthly-result').textContent = fmt(monthly)
+      document.getElementById('monthly-sub').textContent = 'from ' + paying + ' paying referral' + (paying === 1 ? '' : 's')
+
+      // Cumulative — assumes referrals compound month over month
+      var total6 = 0, total12 = 0, total24 = 0
+      for (var m = 1; m <= 24; m++) {
+        var inc = m * paying * plan.price * 0.20
+        if (m <= 6) total6 += inc
+        if (m <= 12) total12 += inc
+        if (m <= 24) total24 += inc
+      }
+      document.getElementById('r6').textContent = fmt(total6)
+      document.getElementById('r12').textContent = fmt(total12)
+      document.getElementById('r24').textContent = fmt(total24)
+    }
+
+    document.getElementById('ref-slider').addEventListener('input', calcUpdate)
+    document.getElementById('plan-slider').addEventListener('input', calcUpdate)
+    document.getElementById('conv-slider').addEventListener('input', calcUpdate)
+    calcUpdate()
+
+    // FAQ
+    function toggleFaq(btn) {
+      var item = btn.parentElement
+      item.classList.toggle('open')
+    }
+  </script>
+
+</body>
+</html>
