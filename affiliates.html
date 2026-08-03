@@ -302,7 +302,7 @@
     </div>
     <h1>Earn <span class="grad">20% Every Month.</span><br />Forever.</h1>
     <p class="hero-sub">
-      Refer a contractor to Loylty. Every time they pay their subscription — monthly, annually, forever — you get 20% of that bill. No cap. No expiry.
+      Refer a business to Loylty. Every time they pay their subscription — monthly, annually, forever — you get 20% of that bill. No cap. No expiry.
     </p>
     <div class="hero-cta-row">
       <a href="https://app.loylty.io?view=signup" class="btn-primary">Get Your Referral Link →</a>
@@ -324,6 +324,80 @@
     </div>
   </section>
 
+  <!-- Calculator -->
+  <section class="calc-section">
+    <div class="container">
+      <div class="section-label">Earnings Calculator</div>
+      <h2 class="section-title">What's one referral worth?</h2>
+      <p class="section-sub">Every paying customer you send earns you 20% of their bill — every month, forever. See exactly what that adds up to.</p>
+
+      <!-- Per referral value cards -->
+      <div style="display:flex; gap:16px; margin:40px 0; flex-wrap:wrap;">
+        <div style="flex:1; min-width:160px; background:var(--bg3); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:24px; text-align:center;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Per Starter Referral</div>
+          <div style="font-size:34px; font-weight:900; letter-spacing:-2px; color:var(--text);">$19.80</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:6px;">every month, forever</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">20% of $99/mo</div>
+        </div>
+        <div style="flex:1; min-width:160px; background:linear-gradient(135deg,rgba(79,142,255,0.08),rgba(123,92,240,0.08)); border:1px solid rgba(79,142,255,0.3); border-radius:16px; padding:24px; text-align:center; position:relative;">
+          <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;font-size:10px;font-weight:800;padding:3px 12px;border-radius:10px;letter-spacing:0.08em;">MOST POPULAR</div>
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Per Pro Referral</div>
+          <div style="font-size:34px; font-weight:900; letter-spacing:-2px; color:var(--text);">$59.80</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:6px;">every month, forever</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">20% of $299/mo</div>
+        </div>
+        <div style="flex:1; min-width:160px; background:linear-gradient(135deg,rgba(123,92,240,0.08),rgba(79,142,255,0.05)); border:1px solid rgba(123,92,240,0.25); border-radius:16px; padding:24px; text-align:center;">
+          <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--purple); text-transform:uppercase; margin-bottom:10px;">Per Agency Referral</div>
+          <div style="font-size:34px; font-weight:900; letter-spacing:-2px; color:var(--text);">$99.80</div>
+          <div style="font-size:13px; color:var(--muted); margin-top:6px;">every month, forever</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">20% of $499/mo</div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-grid">
+          <div>
+            <div style="margin-bottom:28px;">
+              <div class="calc-label">Plan</div>
+              <div style="display:flex; gap:8px; margin-top:10px;">
+                <button id="plan-starter" onclick="setPlan('starter')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:var(--bg);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Starter<br/><span style="font-size:11px;font-weight:500;">$99/mo</span></button>
+                <button id="plan-pro" onclick="setPlan('pro')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid var(--accent);background:rgba(79,142,255,0.1);color:var(--text);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Pro<br/><span style="font-size:11px;font-weight:500;">$299/mo</span></button>
+                <button id="plan-agency" onclick="setPlan('agency')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:var(--bg);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Agency<br/><span style="font-size:11px;font-weight:500;">$499/mo</span></button>
+              </div>
+            </div>
+            <div class="calc-slider-row">
+              <div class="calc-label">Paying Customers You Refer</div>
+              <div class="calc-val" id="ref-val">5 customers</div>
+              <input type="range" id="ref-slider" min="1" max="50" value="5" />
+              <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:6px;"><span>1</span><span>25</span><span>50</span></div>
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-card">
+              <div class="calc-result-label">Your Monthly Recurring Income</div>
+              <div class="calc-result-n grad" id="monthly-result">$299</div>
+              <div class="calc-result-sub" id="monthly-sub">from 5 paying Pro customers</div>
+            </div>
+            <div>
+              <div class="calc-row">
+                <span class="calc-row-label">Per referral / per month</span>
+                <span class="calc-row-val" id="per-ref">$59.80</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-row-label">Year 1 total</span>
+                <span class="calc-row-val" id="r12">$3,588</span>
+              </div>
+              <div class="calc-row">
+                <span class="calc-row-label">Year 2 total (if they stay)</span>
+                <span class="calc-row-val" id="r24">$7,176</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- How It Works -->
   <section id="how-it-works">
     <div class="container">
@@ -341,65 +415,13 @@
           <div class="step-num">02</div>
           <div class="step-icon">📣</div>
           <h3>Share Anywhere</h3>
-          <p>Drop your link in a YouTube description, a Facebook group, a blog post, a newsletter, a DM. Anyone who signs up through your link is tied to you permanently.</p>
+          <p>Drop your link in a YouTube description, a LinkedIn post, a blog, a newsletter, a DM. Any business that signs up through your link is tied to you permanently.</p>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <div class="step-icon">💸</div>
           <h3>Get Paid Monthly</h3>
           <p>Every month your referral pays their Loylty bill, 20% lands in your commission balance. Request a payout via Wise once you hit $25. We send it within 30 days.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Calculator -->
-  <section class="calc-section">
-    <div class="container">
-      <div class="section-label">Earnings Calculator</div>
-      <h2 class="section-title">See what you could earn.</h2>
-      <p class="section-sub">Move the sliders. Watch the numbers grow. These are real payouts — not projections dressed up as guarantees.</p>
-
-      <div class="calc-card">
-        <div class="calc-grid">
-          <div>
-            <div class="calc-slider-row">
-              <div class="calc-label">Referrals You Send Per Month</div>
-              <div class="calc-val" id="ref-val">10 referrals</div>
-              <input type="range" id="ref-slider" min="1" max="200" value="10" />
-            </div>
-            <div class="calc-slider-row">
-              <div class="calc-label">Average Plan They Choose</div>
-              <div class="calc-val" id="plan-val">$79 / mo (Pro)</div>
-              <input type="range" id="plan-slider" min="0" max="2" value="1" step="1" />
-            </div>
-            <div class="calc-slider-row">
-              <div class="calc-label">Estimated Conversion Rate</div>
-              <div class="calc-val" id="conv-val">20%</div>
-              <input type="range" id="conv-slider" min="5" max="50" value="20" step="5" />
-            </div>
-          </div>
-          <div class="calc-result">
-            <div class="calc-result-card">
-              <div class="calc-result-label">Monthly Recurring Income</div>
-              <div class="calc-result-n grad" id="monthly-result">$0</div>
-              <div class="calc-result-sub" id="monthly-sub">from 0 paying referrals</div>
-            </div>
-            <div>
-              <div class="calc-row">
-                <span class="calc-row-label">After 6 months</span>
-                <span class="calc-row-val" id="r6">$0</span>
-              </div>
-              <div class="calc-row">
-                <span class="calc-row-label">After 12 months</span>
-                <span class="calc-row-val" id="r12">$0</span>
-              </div>
-              <div class="calc-row">
-                <span class="calc-row-label">After 24 months</span>
-                <span class="calc-row-val" id="r24">$0</span>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -419,7 +441,7 @@
         <div class="why-card">
           <div class="why-icon">🎯</div>
           <h3>Easy to Sell</h3>
-          <p>Loylty has a free tier with 100 sends included — no credit card required. You're sending people to a free product that pays for itself. The hardest part of affiliate marketing (overcoming purchase friction) doesn't apply here.</p>
+          <p>Loylty has a free tier with 100 sends included — no credit card required. You're sending businesses to a free product that proves its value immediately. The hardest part of affiliate marketing (overcoming purchase friction) doesn't apply here.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">📊</div>
@@ -429,7 +451,7 @@
         <div class="why-card">
           <div class="why-icon">🏗️</div>
           <h3>A Product That Retains</h3>
-          <p>Loylty automates contractor outreach — something contractors need to do every single month. High retention means your commissions compound instead of churn.</p>
+          <p>Loylty automates B2B outreach at scale — something businesses need to do every single month to keep growing. High retention means your commissions compound instead of churn.</p>
         </div>
       </div>
     </div>
@@ -497,7 +519,7 @@
             What plans does the commission apply to?
             <span class="faq-chevron">▾</span>
           </button>
-          <div class="faq-a">All paid plans — Starter ($29/mo), Pro ($79/mo), and Agency ($199/mo). Annual plans earn the commission on the full annual payment when it's made, rather than split monthly.</div>
+          <div class="faq-a">All paid plans — Starter ($99/mo), Pro ($299/mo), and Agency ($499/mo). Annual plans earn the commission on the full annual payment when it's made, rather than split monthly.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
@@ -550,49 +572,50 @@
 
   <script>
     // Calculator
-    var plans = [
-      { label: '$29 / mo (Starter)', price: 29 },
-      { label: '$79 / mo (Pro)', price: 79 },
-      { label: '$199 / mo (Agency)', price: 199 },
-    ]
+    var currentPlan = 'pro'
+    var prices = { starter: 99, pro: 299, agency: 499 }
+    var planLabels = { starter: 'Starter', pro: 'Pro', agency: 'Agency' }
 
     function fmt(n) {
+      if (n >= 10000) return '$' + (n/1000).toFixed(0) + 'k'
       if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'k'
-      return '$' + Math.round(n)
+      return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })
+    }
+
+    function setPlan(plan) {
+      currentPlan = plan
+      var btnIds = ['plan-starter', 'plan-pro', 'plan-agency']
+      btnIds.forEach(function(id) {
+        var btn = document.getElementById(id)
+        btn.style.background = 'var(--bg)'
+        btn.style.borderColor = 'rgba(255,255,255,0.1)'
+        btn.style.color = 'var(--muted)'
+      })
+      var active = document.getElementById('plan-' + plan)
+      active.style.background = 'rgba(79,142,255,0.1)'
+      active.style.borderColor = 'var(--accent)'
+      active.style.color = 'var(--text)'
+      calcUpdate()
     }
 
     function calcUpdate() {
       var refs = parseInt(document.getElementById('ref-slider').value)
-      var planIdx = parseInt(document.getElementById('plan-slider').value)
-      var conv = parseInt(document.getElementById('conv-slider').value)
-      var plan = plans[planIdx]
+      var price = prices[currentPlan]
+      var commission = price * 0.20
+      var monthly = refs * commission
 
-      document.getElementById('ref-val').textContent = refs + ' referral' + (refs === 1 ? '' : 's') + ' / mo'
-      document.getElementById('plan-val').textContent = plan.label
-      document.getElementById('conv-val').textContent = conv + '%'
-
-      var paying = Math.round(refs * (conv / 100))
-      var monthly = paying * plan.price * 0.20
-
+      document.getElementById('ref-val').textContent = refs + ' customer' + (refs === 1 ? '' : 's')
+      document.getElementById('per-ref').textContent = '$' + commission.toFixed(2) + '/mo'
       document.getElementById('monthly-result').textContent = fmt(monthly)
-      document.getElementById('monthly-sub').textContent = 'from ' + paying + ' paying referral' + (paying === 1 ? '' : 's')
+      document.getElementById('monthly-sub').textContent = 'from ' + refs + ' paying ' + planLabels[currentPlan] + ' customer' + (refs === 1 ? '' : 's')
 
-      // Cumulative — assumes referrals compound month over month
-      var total6 = 0, total12 = 0, total24 = 0
-      for (var m = 1; m <= 24; m++) {
-        var inc = m * paying * plan.price * 0.20
-        if (m <= 6) total6 += inc
-        if (m <= 12) total12 += inc
-        if (m <= 24) total24 += inc
-      }
-      document.getElementById('r6').textContent = fmt(total6)
-      document.getElementById('r12').textContent = fmt(total12)
-      document.getElementById('r24').textContent = fmt(total24)
+      var year1 = monthly * 12
+      var year2 = monthly * 24
+      document.getElementById('r12').textContent = fmt(year1)
+      document.getElementById('r24').textContent = fmt(year2)
     }
 
     document.getElementById('ref-slider').addEventListener('input', calcUpdate)
-    document.getElementById('plan-slider').addEventListener('input', calcUpdate)
-    document.getElementById('conv-slider').addEventListener('input', calcUpdate)
     calcUpdate()
 
     // FAQ
