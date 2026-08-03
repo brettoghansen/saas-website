@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation — Loylty</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c14;
+      --bg-surface:#0f172a;
+      --bg-card:   #141e30;
+      --bg-code:   #0a0f1a;
+      --border:    rgba(255,255,255,0.07);
+      --border-mid:rgba(255,255,255,0.12);
+      --text:      #e8edf5;
+      --text-muted:#6b7a99;
+      --text-dim:  #94a3b8;
+      --accent:    #4f8eff;
+      --accent2:   #6a5acd;
+      --success:   #22c55e;
+      --warning:   #f59e0b;
+      --danger:    #ef4444;
+      --sidebar-w: 268px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 58px;
+      background: rgba(8,12,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 28px;
+      gap: 24px;
+    }
+    .topbar-logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #4f8eff, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .topbar-divider { width: 1px; height: 20px; background: var(--border-mid); }
+    .topbar-label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links { margin-left: auto; display: flex; gap: 20px; }
+    .topbar-links a { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links a:hover { color: var(--text); text-decoration: none; }
+    .topbar-cta {
+      background: linear-gradient(135deg, #4f8eff, #6a5acd);
+      color: #fff !important;
+      padding: 7px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .layout {
+      display: flex;
+      margin-top: 58px;
+      min-height: calc(100vh - 58px);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      position: sticky;
+      top: 58px;
+      height: calc(100vh - 58px);
+      overflow-y: auto;
+      border-right: 1px solid var(--border);
+      padding: 24px 0 48px;
+      background: var(--bg-surface);
+    }
+    .sidebar::-webkit-scrollbar { width: 4px; }
+    .sidebar::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 2px; }
+
+    .sidebar-search {
+      margin: 0 14px 20px;
+      position: relative;
+    }
+    .sidebar-search input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 8px;
+      padding: 8px 12px 8px 34px;
+      color: var(--text);
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+    }
+    .sidebar-search input:focus { border-color: var(--accent); }
+    .sidebar-search input::placeholder { color: var(--text-muted); }
+    .sidebar-search-icon {
+      position: absolute; left: 10px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted); font-size: 14px;
+    }
+
+    .sidebar-section { margin-bottom: 6px; }
+    .sidebar-section-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+      color: var(--text-muted); text-transform: uppercase;
+      padding: 6px 18px 4px;
+    }
+    .sidebar-link {
+      display: block;
+      padding: 6px 18px;
+      font-size: 13px;
+      color: var(--text-dim);
+      font-weight: 500;
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all 0.12s;
+    }
+    .sidebar-link:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      text-decoration: none;
+    }
+    .sidebar-link.active {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(79,142,255,0.06);
+    }
+    .sidebar-sub {
+      padding: 5px 18px 5px 30px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: block;
+      text-decoration: none;
+      transition: color 0.12s;
+    }
+    .sidebar-sub:hover { color: var(--text); text-decoration: none; }
+
+    /* ── Content ── */
+    .content {
+      flex: 1;
+      min-width: 0;
+      padding: 52px 64px 100px 64px;
+      max-width: 860px;
+    }
+
+    /* ── Sections ── */
+    .doc-section {
+      margin-bottom: 72px;
+      scroll-margin-top: 80px;
+    }
+    .doc-subsection {
+      margin-bottom: 44px;
+      scroll-margin-top: 80px;
+    }
+
+    h1 {
+      font-size: 34px; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 12px; line-height: 1.2;
+    }
+    h2 {
+      font-size: 24px; font-weight: 700; letter-spacing: -0.01em;
+      margin-bottom: 12px; margin-top: 0;
+      display: flex; align-items: center; gap: 10px;
+    }
+    h2 .section-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: linear-gradient(135deg, rgba(79,142,255,0.2), rgba(106,90,205,0.2));
+      border: 1px solid rgba(79,142,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    h3 {
+      font-size: 17px; font-weight: 700;
+      margin-bottom: 10px; margin-top: 0;
+      color: var(--text);
+    }
+    h4 {
+      font-size: 14px; font-weight: 700;
+      color: var(--text-dim); margin-bottom: 8px; margin-top: 0;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    p { margin-bottom: 16px; color: var(--text-dim); }
+    p:last-child { margin-bottom: 0; }
+
+    .lead {
+      font-size: 16px; color: var(--text-dim); margin-bottom: 32px;
+      line-height: 1.75;
+    }
+
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 56px 0;
+    }
+
+    /* ── Callout boxes ── */
+    .callout {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { color: var(--text-dim); line-height: 1.6; }
+    .callout-body strong { color: var(--text); }
+    .callout-tip    { background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.2); }
+    .callout-warn   { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+    .callout-danger { background: rgba(239,68,68,0.08);  border: 1px solid rgba(239,68,68,0.2); }
+    .callout-good   { background: rgba(34,197,94,0.08);  border: 1px solid rgba(34,197,94,0.2); }
+
+    /* ── Code ── */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      background: var(--bg-code);
+      border: 1px solid var(--border-mid);
+      padding: 2px 6px; border-radius: 5px;
+      color: #93c5fd;
+    }
+    pre {
+      background: var(--bg-code);
+      border: 1px solid var(--border-mid);
+      border-radius: 10px;
+      padding: 18px 20px;
+      overflow-x: auto;
+      margin: 16px 0;
+    }
+    pre code {
+      background: none; border: none; padding: 0;
+      font-size: 13px; color: #cbd5e1; line-height: 1.7;
+    }
+    .code-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--text-muted); text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    /* ── Tables ── */
+    .doc-table {
+      width: 100%; border-collapse: collapse;
+      margin: 20px 0; font-size: 14px;
+    }
+    .doc-table th {
+      text-align: left; padding: 10px 14px;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-mid);
+      color: var(--text-muted); font-size: 12px;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .doc-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim); vertical-align: top;
+    }
+    .doc-table tr:last-child td { border-bottom: none; }
+    .doc-table td:first-child { color: var(--text); font-weight: 500; }
+    .doc-table code { font-size: 12px; }
+
+    /* ── Status badges ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 100px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    }
+    .badge-new      { background: rgba(79,142,255,0.15);  color: #93c5fd; }
+    .badge-done     { background: rgba(34,197,94,0.15);   color: #86efac; }
+    .badge-manual   { background: rgba(245,158,11,0.15);  color: #fcd34d; }
+    .badge-skip     { background: rgba(100,116,139,0.15); color: #94a3b8; }
+    .badge-error    { background: rgba(239,68,68,0.15);   color: #fca5a5; }
+    .badge-noform   { background: rgba(245,158,11,0.12);  color: #fbbf24; }
+    .badge-beta     { background: rgba(245,158,11,0.12);  color: #f59e0b; border: 1px solid rgba(245,158,11,0.25); }
+
+    /* ── Step list ── */
+    .steps { list-style: none; padding: 0; margin: 20px 0; }
+    .steps li {
+      display: flex; gap: 16px; align-items: flex-start;
+      margin-bottom: 18px;
+    }
+    .step-num {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, #4f8eff, #6a5acd);
+      color: #fff; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .step-body { color: var(--text-dim); line-height: 1.65; }
+    .step-body strong { color: var(--text); }
+
+    /* ── Field list ── */
+    .field-list { margin: 16px 0; }
+    .field-item {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 16px; align-items: start;
+    }
+    .field-item:last-child { border-bottom: none; }
+    .field-name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .field-hint { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .field-desc { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+    /* ── Hero intro ── */
+    .doc-hero {
+      margin-bottom: 52px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-hero-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .doc-hero h1 {
+      background: linear-gradient(135deg, #fff 40%, #94a3b8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ── CSV columns highlight ── */
+    .csv-col { color: #86efac; }
+    .csv-opt { color: #fcd34d; }
+    .csv-comment { color: #475569; }
+
+    /* ── Inline required badge ── */
+    .req { font-size: 10px; font-weight: 700; color: #ef4444; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
+    .opt-badge { font-size: 10px; font-weight: 700; color: #94a3b8; background: rgba(148,163,184,0.1); border: 1px solid rgba(148,163,184,0.2); padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .content { padding: 32px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<nav class="topbar">
+  <a class="topbar-logo" href="index.html">Loylty</a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-label">Documentation</span>
+  <div class="topbar-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#pricing">Pricing</a>
+    <a href="index.html?view=signup" class="topbar-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <span class="sidebar-search-icon">⌕</span>
+      <input type="text" placeholder="Search docs…" />
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Getting Started</div>
+      <a class="sidebar-link active" href="#what-is-loylty">What is Loylty?</a>
+      <a class="sidebar-sub" href="#how-it-works">How It Works</a>
+      <a class="sidebar-link" href="#quick-start">Quick Start Guide</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Sender Profiles</div>
+      <a class="sidebar-link" href="#sender-profiles">Overview</a>
+      <a class="sidebar-sub" href="#sender-fields">Contact Fields</a>
+      <a class="sidebar-sub" href="#ai-detection">AI Form Detection</a>
+      <a class="sidebar-sub" href="#captcha">CAPTCHA Auto-Solve</a>
+      <a class="sidebar-sub" href="#smtp">Email Fallback (SMTP)</a>
+      <a class="sidebar-sub" href="#proxy">Residential Proxy</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Campaigns</div>
+      <a class="sidebar-link" href="#campaigns">Creating a Campaign</a>
+      <a class="sidebar-sub" href="#csv-import">Importing Records</a>
+      <a class="sidebar-sub" href="#csv-format">CSV Format Reference</a>
+      <a class="sidebar-sub" href="#running">Running a Campaign</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Message Templates</div>
+      <a class="sidebar-link" href="#templates">Writing Messages</a>
+      <a class="sidebar-sub" href="#template-tags">Template Tags</a>
+      <a class="sidebar-sub" href="#variations">Message Variations</a>
+      <a class="sidebar-sub" href="#ai-mode">AI Personalization</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Database</div>
+      <a class="sidebar-link" href="#database">Searching & Filtering</a>
+      <a class="sidebar-sub" href="#pulling">Pulling Records</a>
+      <a class="sidebar-sub" href="#db-beta">Beta Limitations</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Queue & Statuses</div>
+      <a class="sidebar-link" href="#queue">Status Reference</a>
+      <a class="sidebar-sub" href="#needs-manual">Needs Manual</a>
+      <a class="sidebar-sub" href="#retrying">Retrying Failures</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Settings</div>
+      <a class="sidebar-link" href="#settings">Performance Tuning</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Billing</div>
+      <a class="sidebar-link" href="#billing">Plans & Pricing</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-label">Help</div>
+      <a class="sidebar-link" href="#faq">FAQ</a>
+      <a class="sidebar-link" href="#troubleshooting">Troubleshooting</a>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+
+    <!-- Hero -->
+    <div class="doc-hero">
+      <div class="doc-hero-eyebrow">Documentation</div>
+      <h1>Everything you need to know</h1>
+      <p class="lead">
+        Loylty is a B2B outreach platform that fills and queues contact forms on contractor websites — automatically. This guide covers every feature from setup to your first live campaign.
+      </p>
+      <div class="callout callout-tip">
+        <span class="callout-icon">💡</span>
+        <div class="callout-body"><strong>New here?</strong> Start with the <a href="#quick-start">Quick Start Guide</a> — you can have your first campaign running in under 10 minutes.</div>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════
+         WHAT IS LOYLTY
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="what-is-loylty">
+      <h2><span class="section-icon">🎯</span> What is Loylty?</h2>
+      <p>Loylty is a B2B outreach automation tool designed for businesses that sell products or services to contractors. Instead of cold emails that land in spam, Loylty finds and fills the contact forms directly on each contractor's website — putting your message exactly where they'll see it.</p>
+
+      <p>You provide a list of target companies (or pull them from the built-in database), write your outreach message once, and Loylty handles the rest: opening each contact page, identifying the form fields, pre-filling your information, and queueing everything for your final review before anything gets sent.</p>
+
+      <div class="callout callout-warn">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>You are always in control.</strong> Loylty never automatically submits a form. Every record is reviewed and submitted by you. The platform handles the tedious work of finding and filling forms — the final send is always a human decision.</div>
+      </div>
+
+      <div class="doc-subsection" id="how-it-works">
+        <h3>How It Works</h3>
+        <ul class="steps">
+          <li>
+            <div class="step-num">1</div>
+            <div class="step-body"><strong>Import your list.</strong> Upload a CSV of target companies, or pull contacts directly from the Loylty database of 1.6M+ contractor businesses across the US.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div class="step-body"><strong>Write your message.</strong> Create one or more message templates using simple tags like <code>{{company_name}}</code> and <code>{{city}}</code>. Loylty rotates variations automatically so your outreach doesn't look templated.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div class="step-body"><strong>Run the campaign.</strong> Loylty opens each contact page in an automated browser, maps the form fields (Name, Email, Phone, Message), pre-fills your sender info, and generates the outreach message.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div class="step-body"><strong>Review and send.</strong> Records that need your attention surface as <span class="badge badge-manual">Needs Manual</span> — you review, edit if needed, and click Submit. You're in control of every send.</div>
+          </li>
+          <li>
+            <div class="step-num">5</div>
+            <div class="step-body"><strong>Track results.</strong> The activity log and queue give you a full picture of what's been processed, what succeeded, and what needs follow-up.</div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════════════
+         QUICK START
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="quick-start">
+      <h2><span class="section-icon">🚀</span> Quick Start Guide</h2>
+      <p>From a fresh account to your first campaign in under 10 minutes.</p>
+
+      <div class="doc-subsection">
+        <h3>Step 1 — Create a Sender Profile</h3>
+        <p>Go to <strong>Sender Profiles</strong> in the sidebar and click <strong>+</strong> to create your first profile. Fill in your name, email, phone, and company. This is the information that gets pre-filled into contact forms on your behalf.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">You can have multiple sender profiles — one per sales rep, territory, or brand. Campaigns are assigned to a specific profile.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Step 2 — Create a Campaign</h3>
+        <p>From the <strong>Dashboard</strong>, click <strong>New Campaign</strong>. Give it a name and assign it to your sender profile. The campaign is your container for a list of target companies and the message templates you want to send them.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Step 3 — Add Records</h3>
+        <p>You have two options:</p>
+        <ul class="steps">
+          <li>
+            <div class="step-num">A</div>
+            <div class="step-body"><strong>Import a CSV.</strong> Go to the campaign's Queue tab and click <strong>Import CSV</strong>. Your file needs at minimum a <code>company_name</code> and <code>website_url</code> column. See the <a href="#csv-format">CSV Format Reference</a> for all supported columns.</div>
+          </li>
+          <li>
+            <div class="step-num">B</div>
+            <div class="step-body"><strong>Pull from the Database.</strong> Go to the <strong>Database</strong> page in the sidebar. Search by industry, state, or city — then select records and click Pull to add them directly to your campaign.</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Step 4 — Write Your Templates</h3>
+        <p>Go to the <strong>Templates</strong> tab inside your campaign. Write at least one message. Keep it concise — 3 to 5 sentences works best. Use <code>{{company_name}}</code> and <code>{{city}}</code> to personalize automatically.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Step 5 — Run the Campaign</h3>
+        <p>From the campaign overview, click <strong>Start</strong>. Loylty will begin processing records in the background. You can monitor progress on the Dashboard or watch the queue update in real time under the Queue tab.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         SENDER PROFILES
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="sender-profiles">
+      <h2><span class="section-icon">👤</span> Sender Profiles</h2>
+      <p>A sender profile stores the contact information that gets pre-filled into contact forms. Each campaign is linked to one sender profile, so you can run separate campaigns for different brands, regions, or team members.</p>
+
+      <div class="doc-subsection" id="sender-fields">
+        <h3>Contact Fields</h3>
+        <div class="field-list">
+          <div class="field-item">
+            <div><div class="field-name">Full Name <span class="req">REQUIRED</span></div><div class="field-hint">Mapped to name fields</div></div>
+            <div class="field-desc">Your first and last name, or a sales rep's name. This appears in the "Name" field on contact forms.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Email <span class="req">REQUIRED</span></div><div class="field-hint">Mapped to email fields</div></div>
+            <div class="field-desc">The reply-to email address. This is where contractors will respond when they reply to your outreach.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Phone <span class="opt-badge">OPTIONAL</span></div><div class="field-hint">Auto-formatted</div></div>
+            <div class="field-desc">10-digit US phone number. Loylty formats it automatically (e.g. <code>(555) 555-5555</code>) to match most form expectations.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Company <span class="opt-badge">OPTIONAL</span></div><div class="field-hint">Mapped to company fields</div></div>
+            <div class="field-desc">Your company or brand name. Appears in "Company" or "Organization" form fields.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Website <span class="opt-badge">OPTIONAL</span></div><div class="field-hint">Mapped to website fields</div></div>
+            <div class="field-desc">Your website URL. Improves credibility when contact forms include a website field.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Address / City / State / Zip <span class="opt-badge">OPTIONAL</span></div><div class="field-hint">Mapped to address fields</div></div>
+            <div class="field-desc">Used when forms include address or location fields. Having a local address improves trust — especially when targeting contractors in a specific region.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="ai-detection">
+        <h3>AI Form Detection</h3>
+        <p>Contact forms vary enormously in their field labels and structure. Standard CSS selectors catch the common patterns (name, email, message), but unusual fields — "Your Industry", "Project Budget", "How did you hear about us?" — are missed without AI assistance.</p>
+        <p>When an Anthropic API key is added to your sender profile, Loylty uses AI to read the visible form and map unknown fields to the best available value from your sender info. This dramatically improves fill rates on custom or complex forms.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">🧠</span>
+          <div class="callout-body">Get your API key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>. AI detection is per-profile — you can enable it on some campaigns and not others.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="captcha">
+        <h3>CAPTCHA Auto-Solve</h3>
+        <p>Some contact forms include CAPTCHAs that block automated browsers. With a CAPTCHA solving API key configured, Loylty automatically solves them instead of routing the record to your manual queue.</p>
+        <p>CAPTCHA solving costs approximately $1–3 per 1,000 solves. For most campaigns the cost is negligible.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">🤖</span>
+          <div class="callout-body">Without a CAPTCHA key, records with CAPTCHAs are automatically marked <span class="badge badge-manual">Needs Manual</span> so you can handle them yourself.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="smtp">
+        <h3>Email Fallback (SMTP)</h3>
+        <p>When a contact page has no form but lists a <code>mailto:</code> email address, Loylty can send your message directly via email instead of skipping the record. Configure your outgoing mail server (SMTP) to enable this.</p>
+        <p>Works with Gmail, Outlook, Yahoo, and any provider that supports SMTP. For Gmail, use a 16-character App Password generated at <a href="https://myaccount.google.com" target="_blank">myaccount.google.com</a> rather than your regular password.</p>
+        <table class="doc-table">
+          <thead><tr><th>Provider</th><th>SMTP Host</th><th>Port</th></tr></thead>
+          <tbody>
+            <tr><td>Gmail</td><td><code>smtp.gmail.com</code></td><td>587</td></tr>
+            <tr><td>Outlook / Hotmail</td><td><code>smtp-mail.outlook.com</code></td><td>587</td></tr>
+            <tr><td>Yahoo</td><td><code>smtp.mail.yahoo.com</code></td><td>587</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-subsection" id="proxy">
+        <h3>Residential Proxy</h3>
+        <p>Some websites detect and block data center IP addresses. A residential proxy routes your browser traffic through real residential IPs, making your automated sessions indistinguishable from normal web browsing.</p>
+        <p>Recommended for campaigns over 500 submissions/day or in industries where websites are more likely to block bots. Compatible with IPRoyal, Smartproxy, Brightdata, and any provider that supports username/password proxy authentication.</p>
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body">The proxy is used selectively on sites that exhibit bot-detection behavior — not on every request. Enabling it doesn't slow down unprotected sites.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         CAMPAIGNS
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="campaigns">
+      <h2><span class="section-icon">📋</span> Campaigns</h2>
+      <p>A campaign is the core unit of work in Loylty. It ties together a list of target companies, a sender profile, and a set of message templates. You can run multiple campaigns simultaneously — by geography, niche, or offer.</p>
+
+      <div class="doc-subsection" id="csv-import">
+        <h3>Importing Records</h3>
+        <p>From inside a campaign, go to the <strong>Queue</strong> tab and click <strong>Import CSV</strong>. Loylty accepts standard comma-separated files. Column headers are matched case-insensitively, so <code>Company Name</code> and <code>company_name</code> both work.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">You can import the same CSV into multiple campaigns, or import additional records into an existing campaign at any time. Loylty skips duplicates automatically.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="csv-format">
+        <h3>CSV Format Reference</h3>
+        <p>Required columns are marked <span class="req">REQUIRED</span>. All other columns are optional but improve fill rates and personalization.</p>
+        <div class="code-label">Example CSV</div>
+        <pre><code><span class="csv-col">company_name</span>,<span class="csv-col">website_url</span>,<span class="csv-opt">contact_page_url</span>,<span class="csv-opt">contact_email</span>,<span class="csv-opt">city</span>,<span class="csv-opt">state</span>,<span class="csv-opt">category</span>
+<span class="csv-comment">"Acme Fence Co","https://acmefence.com","https://acmefence.com/contact","info@acmefence.com","Austin","TX","Fence Contractor"</span>
+<span class="csv-comment">"Southwest Fencing","https://swfencing.com","","","Phoenix","AZ","Fence Contractor"</span></code></pre>
+
+        <table class="doc-table">
+          <thead><tr><th>Column</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>company_name</code> <span class="req">REQUIRED</span></td><td>The business name. Used in template tags and form fields.</td></tr>
+            <tr><td><code>website_url</code> <span class="req">REQUIRED</span></td><td>The company's main website. Used to find the contact page if none is provided.</td></tr>
+            <tr><td><code>contact_page_url</code></td><td>Direct URL to the contact page. If provided, Loylty goes here first instead of crawling the site.</td></tr>
+            <tr><td><code>contact_email</code></td><td>A known contact email. Used for email fallback if no form is found.</td></tr>
+            <tr><td><code>facebook_url</code></td><td>Facebook business page URL. Used as a fallback contact method.</td></tr>
+            <tr><td><code>city</code></td><td>City name. Enables the <code>{{city}}</code> template tag for local personalization.</td></tr>
+            <tr><td><code>state</code></td><td>2-letter state abbreviation (e.g. <code>TX</code>). Enables the <code>{{state}}</code> tag.</td></tr>
+            <tr><td><code>category</code></td><td>Business type or vertical. Enables the <code>{{category}}</code> tag.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="doc-subsection" id="running">
+        <h3>Running a Campaign</h3>
+        <p>From the campaign overview, click <strong>Start</strong> to begin processing. Loylty runs records in the background — you can navigate away, work on other campaigns, or close the tab without interrupting it.</p>
+        <p>Use <strong>Pause</strong> to stop processing after the current record completes. <strong>Resume</strong> picks up from where it left off. Records that are already in progress when you pause will complete before stopping.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">Concurrent browsers and submission delay are configured in <a href="#settings">Settings</a>. Start conservatively (3 browsers, 3–5 second delay) and increase only if your connection is stable.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         TEMPLATES
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="templates">
+      <h2><span class="section-icon">✍️</span> Message Templates</h2>
+      <p>Templates are the outreach messages that get filled into the "Message" field of each contact form. A well-written template is concise, specific, and gives the contractor a clear reason to respond.</p>
+
+      <div class="doc-subsection" id="template-tags">
+        <h3>Template Tags</h3>
+        <p>Tags are replaced with real data from each record at send time. This lets one template feel personalized across thousands of companies.</p>
+        <table class="doc-table">
+          <thead><tr><th>Tag</th><th>Replaced With</th><th>Example Output</th></tr></thead>
+          <tbody>
+            <tr><td><code>{{company_name}}</code></td><td>The company's name</td><td>Acme Fence Co</td></tr>
+            <tr><td><code>{{city}}</code></td><td>The company's city</td><td>Austin</td></tr>
+            <tr><td><code>{{state}}</code></td><td>The company's state</td><td>TX</td></tr>
+            <tr><td><code>{{category}}</code></td><td>Business type/vertical</td><td>Fence Contractor</td></tr>
+            <tr><td><code>{{website_url}}</code></td><td>The company's website</td><td>https://acmefence.com</td></tr>
+          </tbody>
+        </table>
+        <div class="code-label">Example template using tags</div>
+        <pre><code>Hi {{company_name}} team,
+
+I'm reaching out because we work with {{category}}s across {{state}} and
+I think there might be a great fit here.
+
+We supply commercial-grade fencing materials at contractor pricing —
+typically 15–20% below retail. Would love to connect and see if we
+can help {{company_name}} save on your next job.
+
+– [Your Name]</code></pre>
+      </div>
+
+      <div class="doc-subsection" id="variations">
+        <h3>Message Variations</h3>
+        <p>You can create multiple message templates within a single campaign. Loylty rotates through them evenly — so if you have 3 templates and 300 records, each template gets used roughly 100 times.</p>
+        <p>Variation prevents your outreach from looking mass-produced if multiple contractors in the same area compare notes. It also lets you A/B test different angles or offers over time.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">Aim for 2–4 variations per campaign. More than that and the differences become negligible. Give each variation a distinct angle, opening line, or call to action.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="ai-mode">
+        <h3>AI Personalization</h3>
+        <p>When AI mode is enabled on a campaign, Loylty reads visible content from the contractor's website — their specialty, recent projects, location — and uses it to write a personalized opening sentence for your message.</p>
+        <p>The result: outreach that references their actual business instead of generic tags. Response rates improve significantly when the recipient can tell the message was written specifically for them.</p>
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body">AI Personalization requires an Anthropic API key in your sender profile and slightly increases processing time per record. Best used on high-value target lists where personalization ROI is highest.</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         DATABASE
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="database">
+      <h2><span class="section-icon">🗃️</span> The Database <span class="badge badge-beta" style="font-size:11px;vertical-align:middle;margin-left:4px;">BETA</span></h2>
+      <p>The Loylty database contains 1.6M+ contractor businesses across the United States, pulled from public sources and updated regularly. It's available on Starter and Pro plans for finding new prospects without building your own list.</p>
+
+      <p>Search by industry vertical, state, city, or keyword. Filter by whether the business has a known email, phone number, or Google rating. Sort by rating or review count to prioritize the most established businesses.</p>
+
+      <div class="doc-subsection" id="pulling">
+        <h3>Pulling Records into a Campaign</h3>
+        <p>Once you've filtered to a set of prospects you want to target, select them using the row checkboxes or use the count input to pull a specific number from the current filter. Then choose the destination campaign and click <strong>Pull Records</strong>.</p>
+        <p>Loylty pulls up to <strong>500 records per pull</strong>. For larger lists, pull in batches or use different filter combinations across multiple pulls.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">Records already in your campaign are automatically skipped on re-pull so you won't create duplicates by accident.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="db-beta">
+        <h3>Beta Limitations</h3>
+        <p>The database is in active development. Current known limitations:</p>
+        <ul style="margin: 12px 0 16px 20px; color: var(--text-dim); line-height: 2;">
+          <li>Some category names have duplicates (e.g. "Roofer" and "Roofers") — being cleaned up</li>
+          <li>Geographic coverage is stronger in major metro areas than rural regions</li>
+          <li>Contact page URLs and emails may be outdated for businesses that have changed their website</li>
+          <li>Not all businesses have phone, email, or Google rating data</li>
+        </ul>
+        <p>We're continuously expanding coverage and cleaning data. If you need records for a specific region or vertical that seems thin, <a href="mailto:brett@crossarm.com">contact us</a> — we prioritize based on demand.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         QUEUE & STATUSES
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="queue">
+      <h2><span class="section-icon">📊</span> Queue &amp; Statuses</h2>
+      <p>Every record in a campaign has a status that reflects where it is in the outreach process. The Queue tab lets you filter, manage, and take action on records by status.</p>
+
+      <table class="doc-table">
+        <thead><tr><th>Status</th><th>Meaning</th><th>What to do</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="badge badge-new">New</span></td>
+            <td>Hasn't been processed yet. Waiting in line to run.</td>
+            <td>Nothing — it'll process when you start or resume the campaign.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-done">Completed</span></td>
+            <td>The form was found, filled, and submitted successfully.</td>
+            <td>Nothing required. This is the happy path.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-manual">Needs Manual</span></td>
+            <td>The form was found but couldn't be submitted automatically — requires human action.</td>
+            <td>Click <strong>Open</strong> to review in the browser, then submit manually.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-skip">Skipped</span></td>
+            <td>You chose to skip this record during manual review.</td>
+            <td>No action needed. Retry if you change your mind.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-error">Error</span></td>
+            <td>Something went wrong during processing — site was down, timeout, browser crash.</td>
+            <td>Use <strong>Retry All Errors</strong> to reset these back to New for another attempt.</td>
+          </tr>
+          <tr>
+            <td><span class="badge badge-noform">No Form Found</span></td>
+            <td>Loylty crawled the site but couldn't find a contact form anywhere.</td>
+            <td>Check the URL manually. Some sites use third-party form tools that aren't crawlable.</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:rgba(100,116,139,0.15);color:#94a3b8;">No Contact</span></td>
+            <td>The website returned no usable contact method — no form, no email, no Facebook.</td>
+            <td>No action available. This business may have a broken or missing contact page.</td>
+          </tr>
+          <tr>
+            <td><span class="badge" style="background:rgba(100,116,139,0.12);color:#64748b;">Dead Website</span></td>
+            <td>The website was unreachable — domain may be expired or server is down.</td>
+            <td>Retry after some time or remove the record.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="doc-subsection" id="needs-manual">
+        <h3>Handling Needs Manual Records</h3>
+        <p>Records land in <span class="badge badge-manual">Needs Manual</span> when Loylty successfully opened the contact page and pre-filled the form, but can't complete submission automatically — most often due to CAPTCHAs, unusual form structures, or bot detection.</p>
+        <p>Click <strong>Open</strong> next to any Needs Manual record to open the browser window directly to the pre-filled form. Review the fields, make any edits, solve the CAPTCHA if present, and click Submit yourself. Then mark it Done in the queue.</p>
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div class="callout-body">Adding a <a href="#captcha">CAPTCHA solving API key</a> to your sender profile significantly reduces the number of records that land here.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection" id="retrying">
+        <h3>Retrying Failures</h3>
+        <p>Use the <strong>↺ Retry All</strong> button when viewing any error-type status filter (Error, No Form Found, Dead Website, Skipped, Needs Manual). This resets all matching records back to <span class="badge badge-new">New</span> so they run again on the next campaign start.</p>
+        <p>Useful after fixing a configuration issue, adding a CAPTCHA key, or retrying sites that were temporarily down.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         SETTINGS
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="settings">
+      <h2><span class="section-icon">⚙️</span> Settings</h2>
+
+      <div class="doc-subsection">
+        <h3>Performance Tuning</h3>
+        <p>Two knobs control how aggressively Loylty processes records:</p>
+
+        <div class="field-list">
+          <div class="field-item">
+            <div><div class="field-name">Concurrent Browsers</div><div class="field-hint">Range: 1–10, Default: 3</div></div>
+            <div class="field-desc">How many browser sessions run in parallel. More browsers = faster processing, but also more load on your network and a higher chance of triggering IP-based rate limits on targeted websites. <strong>Keep at 3</strong> unless you have a fast, stable connection and a residential proxy configured.</div>
+          </div>
+          <div class="field-item">
+            <div><div class="field-name">Delay Between Submissions</div><div class="field-hint">Range: 1–10 seconds, Default: 3s</div></div>
+            <div class="field-desc">How long Loylty waits between form submissions. Longer delays look more human and reduce bot detection, but slow overall throughput. <strong>3–5 seconds</strong> is the recommended range for most campaigns.</div>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <span class="callout-icon">⚠️</span>
+          <div class="callout-body">Setting concurrency above 5 without a residential proxy significantly increases the risk of your IP being blocked by targeted websites. Start low and increase gradually.</div>
+        </div>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Business Information</h3>
+        <p>The business info fields in Settings are for your internal records only — your legal name, DBA, address, EIN. This information is never shared with anyone or pre-filled into outreach forms. Outreach sender info lives in <a href="#sender-profiles">Sender Profiles</a>.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         BILLING
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="billing">
+      <h2><span class="section-icon">💳</span> Billing &amp; Plans</h2>
+      <table class="doc-table">
+        <thead><tr><th>Plan</th><th>Daily Limit</th><th>Monthly Est.</th><th>Price</th></tr></thead>
+        <tbody>
+          <tr><td>Starter</td><td>100 submissions/day</td><td>~3,000/month</td><td>$99/mo</td></tr>
+          <tr><td>Pro</td><td>300 submissions/day</td><td>~9,000/month</td><td>$299/mo</td></tr>
+          <tr><td>Agency</td><td>500 submissions/day</td><td>~15,000/month</td><td>$499/mo</td></tr>
+        </tbody>
+      </table>
+      <p>All plans include unlimited campaigns, template rotation, the activity log, and email support. The Database is available on Starter and above (currently in beta). Annual billing saves 20%.</p>
+      <p>To upgrade, downgrade, or cancel, go to <strong>Billing</strong> in the sidebar and click <strong>Manage Plan</strong>. You'll be taken to the Stripe customer portal where you can make changes instantly. Cancellations take effect at the end of the current billing period — you keep full access until then.</p>
+      <div class="callout callout-good">
+        <span class="callout-icon">✅</span>
+        <div class="callout-body">All plans include a <strong>7-day money-back guarantee</strong>. If Loylty isn't the right fit, email <a href="mailto:brett@crossarm.com">brett@crossarm.com</a> within 7 days of your first charge for a full refund — no questions asked.</div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         FAQ
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="faq">
+      <h2><span class="section-icon">❓</span> FAQ</h2>
+
+      <div class="doc-subsection">
+        <h3>Does Loylty ever submit forms without my approval?</h3>
+        <p>No. Never. Loylty fills forms and queues records for your review, but the final submit is always a human action. This is a core design principle and will not change.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>What happens if a website doesn't have a contact form?</h3>
+        <p>Loylty tries multiple approaches in order: the provided contact page URL, crawling the site for a contact page, a mailto link. If none are found, the record is marked <span class="badge badge-noform">No Form Found</span>. If you have SMTP configured and the site has a mailto link, Loylty sends via email instead.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>How many records can I have in a campaign?</h3>
+        <p>There's no hard limit on records per campaign. Practically, most users run campaigns of 200–2,000 records per batch. Larger lists are best broken into multiple campaigns by state or category for easier tracking and template tuning.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Can I run multiple campaigns at the same time?</h3>
+        <p>Yes. All running campaigns share the concurrent browser pool configured in Settings. If you have 3 browsers and 2 running campaigns, they compete for those 3 slots. Increase concurrency in Settings if you want to run several campaigns in parallel without them slowing each other down.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Why does a record keep landing in Needs Manual even after I retry it?</h3>
+        <p>The most common causes are: a CAPTCHA that isn't being solved (add a CAPTCHA key to your sender profile), bot-detection JavaScript that blocks the browser (add a residential proxy), or a form that requires a non-standard interaction like a file upload or multi-step process (these require manual handling).</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Is there an affiliate program?</h3>
+        <p>Yes. You earn 20% monthly recurring commission for every paying customer you refer — for as long as they stay subscribed. Find your unique referral link in the <strong>Affiliates</strong> section of the app.</p>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+
+    <!-- ══════════════════════════════════════════════
+         TROUBLESHOOTING
+    ══════════════════════════════════════════════ -->
+    <section class="doc-section" id="troubleshooting">
+      <h2><span class="section-icon">🔧</span> Troubleshooting</h2>
+
+      <div class="doc-subsection">
+        <h3>Campaign starts but records immediately go to Error</h3>
+        <p>This usually means the browser couldn't load the target URL. Check that the website URLs in your CSV are valid and reachable. Try opening a few of them manually. If they work in your browser but not in Loylty, the site may be using bot detection — add a residential proxy to your sender profile.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>All my records are No Form Found</h3>
+        <p>This can happen when your CSV's <code>website_url</code> column contains homepages but the contact page is buried under a non-standard URL. Try adding a <code>contact_page_url</code> column with direct links to the contact page for each company. The Database records include contact page URLs where known.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>The Database industry dropdown shows only a few options</h3>
+        <p>The dropdown loads verticals from the database. If it appears to be loading slowly or showing limited results, try refreshing the page. If the issue persists, <a href="mailto:brett@crossarm.com">contact support</a>.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>I'm getting a lot of CAPTCHA failures</h3>
+        <p>Add a CAPTCHA solving API key to your sender profile. Records with unsolvable CAPTCHAs route to <span class="badge badge-manual">Needs Manual</span> rather than failing outright — so you can still submit them manually. Long-term, a residential proxy reduces the frequency of CAPTCHAs being triggered in the first place.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Template tags aren't being replaced</h3>
+        <p>Check that your CSV columns match the expected tag names exactly: <code>company_name</code>, <code>city</code>, <code>state</code>, <code>category</code>, <code>website_url</code>. If a column is missing or blank for a record, the tag is left empty in the message — so a template with <code>Hi {{company_name}}</code> becomes <code>Hi</code> if the column is absent. Fill in the data or remove the tag from the template.</p>
+      </div>
+
+      <div class="doc-subsection">
+        <h3>Still stuck?</h3>
+        <p>Email <a href="mailto:brett@crossarm.com">brett@crossarm.com</a> and describe what you're seeing. Include the campaign name, which status the records are landing in, and a sample URL from your list if relevant. We typically respond within one business day.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // Highlight active sidebar link on scroll
+  const links = document.querySelectorAll('.sidebar-link, .sidebar-sub')
+  const sections = document.querySelectorAll('[id]')
+
+  function updateActive() {
+    let current = ''
+    sections.forEach(s => {
+      if (window.scrollY + 100 >= s.offsetTop) current = s.id
+    })
+    links.forEach(l => {
+      l.classList.toggle('active', l.getAttribute('href') === '#' + current)
+    })
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true })
+  updateActive()
+
+  // Simple sidebar search filter
+  const searchInput = document.querySelector('.sidebar-search input')
+  searchInput.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase()
+    links.forEach(l => {
+      const match = l.textContent.toLowerCase().includes(q)
+      l.style.display = q && !match ? 'none' : ''
+    })
+    document.querySelectorAll('.sidebar-section-label').forEach(label => {
+      const section = label.parentElement
+      const visible = [...section.querySelectorAll('.sidebar-link, .sidebar-sub')].some(l => l.style.display !== 'none')
+      section.style.display = q && !visible ? 'none' : ''
+    })
+  })
+</script>
+
+</body>
+</html>
