@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loylty vs Clay: Contact Form Outreach vs Data Enrichment | Loylty</title>
+<meta name="description" content="Loylty vs Clay compared. Clay enriches prospect data and automates workflows. Loylty sends contact form outreach. They're very different tools — here's how they fit together." />
+<meta name="keywords" content="loylty vs clay, clay alternative, clay io comparison, data enrichment vs outreach, clay for outreach" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://loylty.io/loylty-vs-clay" />
+<meta property="og:title" content="Loylty vs Clay: Contact Form Outreach vs Data Enrichment | Loylty" />
+<meta property="og:description" content="Loylty vs Clay compared. Clay enriches prospect data and automates workflows. Loylty sends contact form outreach. They're very different tools — here's how they fit together." />
+<meta property="og:image" content="https://loylty.io/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --bg2: #080810; --surface: #0e0e1a; --elevated: #141424;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --accent: #4f8eff; --purple: #8b5cf6; --accent-dim: rgba(79,142,255,0.10);
+  --text: #eef0f8; --muted: #42465e; --mid: #7a86a8;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Work Sans', -apple-system, sans-serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 76px; }
+.grad { background: linear-gradient(130deg, var(--accent) 20%, var(--purple) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 76px; background: rgba(5,5,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 16px rgba(79,142,255,0.4); }
+.logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; }
+nav ul a:hover { color: var(--text); }
+.nav-btn { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff !important; padding: 11px 24px; border-radius: 9px; font-weight: 700 !important; font-size: 15px !important; min-height: 44px; display: inline-flex; align-items: center; box-shadow: 0 0 20px rgba(79,142,255,0.45); transition: transform 0.15s !important; }
+.nav-btn:hover { transform: translateY(-2px) !important; }
+.nav-btn-ghost { color: var(--mid) !important; text-decoration: none; font-size: 15px !important; font-weight: 500 !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; }
+.nav-hamburger span { display: block; height: 2px; border-radius: 2px; background: var(--mid); width: 22px; transition: transform 0.25s, opacity 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-drawer { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(8,8,16,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; padding: 20px 24px 28px; flex-direction: column; gap: 4px; }
+.nav-mobile-drawer.open { display: flex; }
+.nav-mobile-drawer a { color: var(--mid); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 4px; border-bottom: 1px solid var(--border); display: block; }
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer .nav-btn-mobile { margin-top: 12px; background: linear-gradient(135deg, #4f8eff, #7c6fff) !important; color: #fff !important; border-radius: 10px; text-align: center; font-weight: 700 !important; padding: 16px !important; border-bottom: none !important; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); }
+.page-hero { padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); width: 800px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,255,0.03) 1px,transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); }
+.page-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 100px; background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.22); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.page-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -3px; line-height: 1.05; max-width: 900px; margin: 0 auto 24px; }
+.page-hero .lead { font-size: 19px; color: var(--mid); max-width: 680px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-primary { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; min-height: 56px; display: inline-flex; align-items: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25); }
+.btn-primary:hover { transform: translateY(-3px); }
+.content-section { padding: 80px 24px; }
+.content-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.content-inner { max-width: 860px; margin: 0 auto; }
+.content-inner h2 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+.content-inner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; margin-top: 40px; }
+.content-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 28px; }
+.content-inner p { color: var(--mid); line-height: 1.85; margin-bottom: 18px; font-size: 17px; }
+.content-inner p strong { color: var(--text); }
+.content-inner ul { color: var(--mid); font-size: 17px; line-height: 1.85; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.content-inner ul li { padding-left: 24px; position: relative; }
+.content-inner ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.content-inner li strong { color: var(--text); }
+.tldr-box { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-left: 3px solid var(--accent); border-radius: 12px; padding: 28px 32px; margin: 40px 0; }
+.tldr-box h3 { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; margin-top: 0; }
+.tldr-box p { font-size: 16px; color: var(--mid); line-height: 1.8; margin: 0; }
+.compare-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 16px; border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.compare-table th { background: var(--surface); padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-align: left; border-bottom: 1px solid var(--border2); color: var(--text); }
+.compare-table th.winner { color: var(--accent); background: rgba(79,142,255,0.06); }
+.compare-table td { padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; color: var(--mid); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 700; color: var(--text); font-size: 13px; }
+.compare-table td.winner-cell { background: rgba(79,142,255,0.03); color: var(--text); }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.choice-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.choice-card.loylty-card { border-color: rgba(79,142,255,0.3); background: rgba(79,142,255,0.04); }
+.choice-card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 12px; margin-top: 0; }
+.choice-card p { font-size: 15px; color: var(--mid); line-height: 1.75; margin: 0 0 16px; }
+.choice-card ul { margin: 0; }
+.choice-card ul li { font-size: 14px; }
+.callout { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-size: 16px; color: var(--mid); line-height: 1.8; }
+.callout strong { color: var(--text); }
+.cta-section { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, rgba(79,142,255,0.04) 50%, var(--bg) 100%); }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.10) 0%, transparent 70%); pointer-events: none; }
+.cta-section::after { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), rgba(139,92,246,0.5), transparent); }
+.cta-inner { position: relative; z-index: 2; }
+.cta-section h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1240px; margin: 0 auto; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; margin-top: 14px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media (max-width: 900px) { footer { padding: 48px 24px 32px; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+@media (max-width: 768px) { nav { padding: 0 24px; height: 68px; } nav ul { display: none; } .nav-hamburger { display: flex; } body { padding-top: 68px; } .page-hero { padding: 60px 24px 48px; } .two-col { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://loylty.io">
+    <div class="logo-icon"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Loylty
+  </a>
+  <ul>
+    <li><a href="https://loylty.io#how">How It Works</a></li>
+    <li><a href="https://loylty.io#database">Database</a></li>
+    <li><a href="https://loylty.io#pricing">Pricing</a></li>
+    <li><a href="https://loylty.io#affiliates">Affiliates</a></li>
+    <li><a href="coming-soon.html" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="coming-soon.html" class="nav-btn">Get Early Access →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="https://loylty.io#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="https://loylty.io#database" onclick="closeMobileNav()">Database</a>
+  <a href="https://loylty.io#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://loylty.io#affiliates" onclick="closeMobileNav()">Affiliates</a>
+  <a href="coming-soon.html" onclick="closeMobileNav()">Log In</a>
+  <a href="coming-soon.html" class="nav-btn-mobile" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-badge">
+    <span class="badge-dot"></span>
+    Tool Comparison
+  </div>
+  <h1>Loylty vs Clay: <span class="grad">Outreach Tool vs Workflow Automation Platform</span></h1>
+  <p class="lead">Clay and Loylty are solving completely different problems. Clay is a data enrichment and workflow automation platform for building highly personalized outreach lists. Loylty is a contact form outreach tool for reaching those businesses through their own website forms. Comparing them head-to-head misses the point — but understanding how they fit together is genuinely useful.</p>
+  <a href="coming-soon.html" class="btn-primary">Try Loylty Free →</a>
+</section>
+
+<!-- TL;DR -->
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="tldr-box">
+      <h3>TL;DR</h3>
+      <p>Clay is a powerful workflow automation platform that pulls data from dozens of sources — Apollo, LinkedIn, Clearbit, Hunter, and 75+ others — to build and enrich prospect lists, score leads, and automate multi-step data workflows. It's complex, technical, and excellent for teams that need highly enriched outreach data. Loylty is a focused execution tool: you bring a list of businesses (or use Loylty's built-in database), and Loylty submits contact form outreach to each one. The two tools are genuinely complementary — Clay builds the enriched list, Loylty contacts them through forms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="content-section">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Feature Comparison</div>
+    <h2>Side-by-Side Breakdown</h2>
+    <p>These two tools overlap very little. Here's a direct look at what each one does — and doesn't do.</p>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Clay</th>
+            <th class="winner">Loylty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Function</td>
+            <td>Data enrichment + workflow automation</td>
+            <td class="winner-cell">Contact form outreach execution</td>
+          </tr>
+          <tr>
+            <td>Learning Curve</td>
+            <td>Steep — powerful but complex</td>
+            <td class="winner-cell">Minimal — same-day setup</td>
+          </tr>
+          <tr>
+            <td>Outreach Execution</td>
+            <td><span class="cross">✗</span> Feeds data to outreach tools</td>
+            <td class="winner-cell"><span class="check">✓</span> Yes — core product</td>
+          </tr>
+          <tr>
+            <td>Contact Form Submissions</td>
+            <td><span class="cross">✗</span> No</td>
+            <td class="winner-cell"><span class="check">✓</span> Yes — only platform that does this</td>
+          </tr>
+          <tr>
+            <td>Data Enrichment</td>
+            <td><span class="check">✓</span> Yes — 75+ integrations</td>
+            <td>No (basic business data from own database)</td>
+          </tr>
+          <tr>
+            <td>Email Outreach</td>
+            <td><span class="partial">~</span> Via integration (not built-in)</td>
+            <td><span class="cross">✗</span> No</td>
+          </tr>
+          <tr>
+            <td>Spam Filter Risk</td>
+            <td>N/A</td>
+            <td class="winner-cell"><span class="check">✓</span> None — contact forms bypass filters</td>
+          </tr>
+          <tr>
+            <td>Built-in Prospect Database</td>
+            <td><span class="cross">✗</span> Connects to external sources</td>
+            <td class="winner-cell"><span class="check">✓</span> Yes — 2.3M+ businesses</td>
+          </tr>
+          <tr>
+            <td>Pricing</td>
+            <td>$149+/month (credit-based, scales with usage)</td>
+            <td class="winner-cell">Free — $499/month</td>
+          </tr>
+          <tr>
+            <td>Best For</td>
+            <td>Teams needing enriched, complex prospect data</td>
+            <td class="winner-cell">Teams needing contact form outreach execution</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE: CLAY -->
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Deep Dive</div>
+    <h2>What Clay Actually Does</h2>
+    <p>Clay is a workflow automation platform that connects to 75+ data sources — Apollo, LinkedIn, Hunter.io, Clearbit, People Data Labs, and dozens more. You build "tables" that pull and enrich prospect data from multiple sources simultaneously.</p>
+    <p>A typical Clay workflow might look like this: pull a list of prospects from Apollo, enrich each one with LinkedIn data to verify job title and company size, find email addresses via Hunter, score each record by firmographic criteria, then automatically push the finished list to your email sequence tool. All without writing code.</p>
+    <p>Clay's "Claygent" feature uses AI to perform research tasks across the web — checking company websites, summarizing LinkedIn profiles, verifying niche-specific details — at scale. For teams doing highly personalized outreach, this kind of enrichment is what separates a 3% reply rate from a 12% reply rate.</p>
+    <p><strong>What Clay is genuinely excellent at:</strong></p>
+    <ul>
+      <li><strong>Multi-source data enrichment</strong> — combining data points from 75+ providers into a single record</li>
+      <li><strong>AI research at scale</strong> — Claygent can answer custom questions about each prospect automatically</li>
+      <li><strong>Workflow automation</strong> — complex conditional logic, scoring, and routing without engineering resources</li>
+      <li><strong>Integration with every outreach tool</strong> — pushes data to email tools, CRMs, LinkedIn tools, and more</li>
+    </ul>
+    <p><strong>Honest limitations:</strong> Clay is not an outreach tool. It builds the list and enriches it — it doesn't send anything. The learning curve is real. Understanding Clay's workflow model takes time, and pricing scales significantly with credit usage at high volumes. If you need simple prospecting without complex enrichment, Clay can feel like overkill.</p>
+  </div>
+</section>
+
+<!-- DEEP DIVE: LOYLTY -->
+<section class="content-section">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Deep Dive</div>
+    <h2>What Loylty Actually Does</h2>
+    <p>Loylty is a contact form outreach platform. Instead of sending cold emails, it submits outreach messages through the contact forms on business websites — the same form a customer would use to ask a question or request a quote.</p>
+    <p>Here's how a Loylty campaign works: you select businesses from Loylty's database of 2.3M+ SMBs (filterable by industry, location, and more), or upload your own CSV of business URLs. Loylty's crawler visits each website, detects the contact form, and maps the relevant fields. Its AI generates a personalized outreach message for each business. Before anything sends, every submission goes through a mandatory human review queue — you (or your team) approve each one. Once approved, Loylty submits the form.</p>
+    <p><strong>What Loylty is genuinely excellent at:</strong></p>
+    <ul>
+      <li><strong>Zero spam filter exposure</strong> — contact form submissions arrive in the business's website inquiry inbox, not their email inbox</li>
+      <li><strong>No domain infrastructure</strong> — no warmup, no sending domains, no reputation management needed</li>
+      <li><strong>Human review before every send</strong> — built-in quality control that cold email platforms don't have</li>
+      <li><strong>Built-in SMB database</strong> — 2.3M+ businesses, no third-party data source required for getting started</li>
+      <li><strong>Simple setup</strong> — no complex workflows; import a list and start reviewing submissions the same day</li>
+    </ul>
+    <p><strong>Honest limitations:</strong> Loylty is not a data enrichment tool. It doesn't find individual contact emails, do multi-source enrichment, or run complex scoring workflows. It's a single-channel execution tool — one submission per business, no multi-step sequences. Best suited for SMB and local business targeting rather than enterprise sales where named contact data is critical.</p>
+  </div>
+</section>
+
+<!-- WHEN TO CHOOSE -->
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Decision Guide</div>
+    <h2>When to Choose Each Tool</h2>
+    <div class="two-col">
+      <div class="choice-card">
+        <h4>Choose Clay when...</h4>
+        <p>You need to build highly enriched, multi-source prospect lists and automate complex data workflows.</p>
+        <ul>
+          <li>You're doing enterprise outreach where individual contact data (emails, titles, company data) matters</li>
+          <li>You need AI research workflows that can answer custom questions about each prospect</li>
+          <li>You're feeding enriched data into email sequences, LinkedIn tools, or a CRM</li>
+          <li>You have technical resources to build and maintain Clay workflows</li>
+          <li>Your outreach quality depends on highly personalized, multi-data-point messaging</li>
+        </ul>
+      </div>
+      <div class="choice-card loylty-card">
+        <h4>Choose Loylty when...</h4>
+        <p>You want to reach businesses through their contact forms — with zero spam filter risk and built-in review.</p>
+        <ul>
+          <li>You want to reach businesses through their website contact forms</li>
+          <li>You have a list of business URLs and want to run outreach without building a complex enrichment workflow</li>
+          <li>You're targeting SMBs and local businesses at volume</li>
+          <li>You want zero spam filter exposure regardless of message volume</li>
+          <li>You want mandatory human review before every outreach submission</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>The strongest case for using both together:</strong> Clay to build and enrich your target list — pulling verified website URLs, business names, and niche-specific data from multiple sources — then export to Loylty via CSV and run a contact form campaign against the same businesses you're already reaching through email and LinkedIn. Three channels. One list. Clay feeds all three: your email tool, your LinkedIn tool, and Loylty for contact forms. The teams running outreach at the highest reply rates are the ones not relying on a single channel.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="section-eyebrow">Get Started</div>
+    <h2>Add the Channel <span class="grad">Clay Can't Send</span></h2>
+    <p>Clay builds the list. Loylty submits the contact forms. Start with 100 free outreaches — no credit card, no domain warmup, no infrastructure required.</p>
+    <a href="coming-soon.html" class="btn-primary">Try Loylty Free →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://loylty.io" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p>The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="https://loylty.io#how">How It Works</a>
+      <a href="https://loylty.io#database">Database</a>
+      <a href="https://loylty.io#pricing">Pricing</a>
+      <a href="https://loylty.io#affiliates">Affiliates</a>
+      <a href="coming-soon.html">Log In</a>
+      <a href="coming-soon.html">Get Early Access</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outreach</div>
+      <a href="contact-form-marketing.html">Contact Form Marketing</a>
+      <a href="contact-form-outreach.html">Contact Form Outreach</a>
+      <a href="contact-form-lead-generation.html">Lead Generation</a>
+      <a href="contact-form-automation.html">Form Automation</a>
+      <a href="contact-form-prospecting.html">Form Prospecting</a>
+      <a href="contact-form-campaigns.html">Form Campaigns</a>
+      <a href="contact-form-sales.html">Contact Form Sales</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Compare</div>
+      <a href="loylty-vs-cold-email.html">vs Cold Email</a>
+      <a href="loylty-vs-instantly.html">vs Instantly</a>
+      <a href="loylty-vs-apollo.html">vs Apollo</a>
+      <a href="loylty-vs-clay.html">vs Clay</a>
+      <a href="best-cold-email-alternatives.html">Best Alternatives</a>
+      <a href="best-outreach-software.html">Best Outreach Tools</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="status.html">Status</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav(btn) { btn.classList.toggle('open'); var d=document.getElementById('mobileNav'); d.classList.toggle('open'); }
+function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=document.getElementById('mobileNav'); if(b)b.classList.remove('open'); if(d)d.classList.remove('open'); }
+window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
+(function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
+</script>
+</body>
+</html>

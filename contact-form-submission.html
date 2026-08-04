@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Form Submission Software — Bulk Form Submission at Scale | Loylty</title>
+<meta name="description" content="Loylty is contact form submission software that lets you submit outreach messages to thousands of business websites — with human review before every send." />
+<meta name="keywords" content="contact form submission software, bulk form submission, automated form submission, contact form tool" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://loylty.io/contact-form-submission" />
+<meta property="og:title" content="Contact Form Submission Software — Bulk Form Submission at Scale | Loylty" />
+<meta property="og:description" content="Loylty is contact form submission software that lets you submit outreach messages to thousands of business websites — with human review before every send." />
+<meta property="og:image" content="https://loylty.io/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --bg2: #080810; --surface: #0e0e1a; --elevated: #141424;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --accent: #4f8eff; --purple: #8b5cf6; --accent-dim: rgba(79,142,255,0.10);
+  --text: #eef0f8; --muted: #42465e; --mid: #7a86a8;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Work Sans', -apple-system, sans-serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 76px; }
+.grad { background: linear-gradient(130deg, var(--accent) 20%, var(--purple) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 76px; background: rgba(5,5,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 16px rgba(79,142,255,0.4); }
+.logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; }
+nav ul a:hover { color: var(--text); }
+.nav-btn { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff !important; padding: 11px 24px; border-radius: 9px; font-weight: 700 !important; font-size: 15px !important; min-height: 44px; display: inline-flex; align-items: center; box-shadow: 0 0 20px rgba(79,142,255,0.45), 0 4px 16px rgba(79,142,255,0.2); transition: transform 0.15s !important; }
+.nav-btn:hover { transform: translateY(-2px) !important; }
+.nav-btn-ghost { color: var(--mid) !important; text-decoration: none; font-size: 15px !important; font-weight: 500 !important; transition: color 0.15s; }
+.nav-btn-ghost:hover { color: var(--text) !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; flex-shrink: 0; }
+.nav-hamburger span { display: block; height: 2px; border-radius: 2px; background: var(--mid); transition: transform 0.25s, opacity 0.25s; width: 22px; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-drawer { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(8,8,16,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; padding: 20px 24px 28px; flex-direction: column; gap: 4px; }
+.nav-mobile-drawer.open { display: flex; }
+.nav-mobile-drawer a { color: var(--mid); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 4px; border-bottom: 1px solid var(--border); display: block; transition: color 0.15s; }
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer .nav-btn-mobile { margin-top: 12px; background: linear-gradient(135deg, #4f8eff, #7c6fff) !important; color: #fff !important; border-radius: 10px; text-align: center; font-weight: 700 !important; padding: 16px !important; border-bottom: none !important; font-size: 16px !important; }
+.inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); }
+.page-hero { padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 800px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(79,142,255,0.03) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.8) 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.8) 0%, transparent 75%); }
+.page-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 100px; background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.22); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 28px; letter-spacing: 0.02em; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.page-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -3px; line-height: 1.05; max-width: 900px; margin: 0 auto 24px; }
+.page-hero .lead { font-size: 19px; color: var(--mid); max-width: 680px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-primary { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; min-height: 56px; display: inline-flex; align-items: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25); letter-spacing: -0.2px; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 56px rgba(79,142,255,0.7), 0 12px 40px rgba(79,142,255,0.4); }
+.content-section { padding: 80px 24px; }
+.content-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.content-inner { max-width: 860px; margin: 0 auto; }
+.content-inner h2 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+.content-inner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; margin-top: 40px; }
+.content-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 28px; color: var(--text); }
+.content-inner p { color: var(--mid); line-height: 1.85; margin-bottom: 18px; font-size: 17px; }
+.content-inner p strong { color: var(--text); }
+.content-inner ul, .content-inner ol { color: var(--mid); font-size: 17px; line-height: 1.85; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.content-inner ul li, .content-inner ol li { padding-left: 24px; position: relative; }
+.content-inner ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.content-inner ol { counter-reset: item; }
+.content-inner ol li { counter-increment: item; }
+.content-inner ol li::before { content: counter(item) '.'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 15px; }
+.content-inner li strong { color: var(--text); }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 40px 0; }
+.stat-cell { padding: 32px 24px; text-align: center; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-n { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 4vw, 52px); font-weight: 900; letter-spacing: -2px; color: var(--accent); }
+.stat-l { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.compare-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 16px; border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.compare-table th { background: var(--surface); padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-align: left; border-bottom: 1px solid var(--border2); color: var(--text); }
+.compare-table th.winner { color: var(--accent); background: rgba(79,142,255,0.06); }
+.compare-table td { padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; color: var(--mid); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 700; color: var(--text); font-size: 13px; }
+.compare-table td.winner-cell { background: rgba(79,142,255,0.03); color: var(--text); }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin: 32px 0; }
+.info-card h3 { margin-top: 0; }
+.callout { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-size: 16px; color: var(--mid); line-height: 1.8; }
+.callout strong { color: var(--text); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; }
+.feature-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.feature-card h4 { margin-top: 0; font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+.feature-card p { font-size: 15px; color: var(--mid); line-height: 1.75; margin: 0; }
+.feature-icon { font-size: 28px; margin-bottom: 16px; }
+.cta-section { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, rgba(79,142,255,0.04) 50%, var(--bg) 100%); }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.10) 0%, transparent 70%); pointer-events: none; }
+.cta-section::after { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), rgba(139,92,246,0.5), transparent); }
+.cta-inner { position: relative; z-index: 2; }
+.cta-section h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1240px; margin: 0 auto; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; margin-top: 14px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media (max-width: 900px) { footer { padding: 48px 24px 32px; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+@media (max-width: 768px) { nav { padding: 0 24px; height: 68px; } nav ul { display: none; } .nav-hamburger { display: flex; } body { padding-top: 68px; } .page-hero { padding: 60px 24px 48px; } .two-col { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://loylty.io">
+    <div class="logo-icon"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Loylty
+  </a>
+  <ul>
+    <li><a href="https://loylty.io#how">How It Works</a></li>
+    <li><a href="https://loylty.io#database">Database</a></li>
+    <li><a href="https://loylty.io#pricing">Pricing</a></li>
+    <li><a href="https://loylty.io#affiliates">Affiliates</a></li>
+    <li><a href="coming-soon.html" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="coming-soon.html" class="nav-btn">Get Early Access →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="https://loylty.io#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="https://loylty.io#database" onclick="closeMobileNav()">Database</a>
+  <a href="https://loylty.io#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://loylty.io#affiliates" onclick="closeMobileNav()">Affiliates</a>
+  <a href="coming-soon.html" onclick="closeMobileNav()">Log In</a>
+  <a href="coming-soon.html" class="nav-btn-mobile" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="inner" style="position:relative;z-index:2;">
+    <div class="page-hero-badge reveal">
+      <span class="badge-dot"></span>
+      Submission Software
+    </div>
+    <h1 class="reveal reveal-delay-1">Contact Form Submission Software: <span class="grad">The Fastest Way to Reach Businesses Online</span></h1>
+    <p class="lead reveal reveal-delay-2">Loylty automates the entire contact form submission process — URL validation, form detection, field mapping, AI message generation, and delivery — while keeping a human in the loop before every send.</p>
+    <a href="coming-soon.html" class="btn-primary reveal reveal-delay-2">Try Bulk Form Submission Free →</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="content-section" style="padding:0 24px 60px;">
+  <div class="content-inner">
+    <div class="stats-row reveal">
+      <div class="stat-cell">
+        <div class="stat-n">90%+</div>
+        <div class="stat-l">Automated completion rate across campaigns</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">2.3M</div>
+        <div class="stat-l">Businesses indexed in Loylty's database</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">3–5 min</div>
+        <div class="stat-l">Manual time per form — eliminated by Loylty</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 1: What Contact Form Submission Software Does (alt) -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">The Category Explained</div>
+    <h2 class="reveal">What Contact Form Submission Software Does</h2>
+    <p class="reveal">Contact form submission software automates the process of visiting business websites, finding their contact forms, filling in form fields with your message and contact information, and submitting — at scale. Without software, doing this manually takes 3–5 minutes per business. With Loylty, the mechanical work is fully automated, leaving only the human judgment step: reviewing each prepared submission before it sends.</p>
+    <p class="reveal">What specifically gets automated:</p>
+    <ul class="reveal">
+      <li><strong>URL validation and website crawling</strong> — Loylty confirms the URL resolves before attempting anything else.</li>
+      <li><strong>Contact page discovery</strong> — The crawler navigates from the homepage to the contact page automatically.</li>
+      <li><strong>Form field detection and classification</strong> — HTML form elements are identified and labeled by type.</li>
+      <li><strong>Smart field mapping</strong> — Your sender data is matched to the correct form fields based on field labels and structure.</li>
+      <li><strong>AI message generation or template insertion</strong> — Your message is written per-business or inserted from your template.</li>
+      <li><strong>Rate limiting and pacing</strong> — Submissions go out at a controlled cadence, not all at once.</li>
+      <li><strong>Submission execution, status logging, and response tracking</strong> — Every submission is recorded with its outcome.</li>
+    </ul>
+    <p class="reveal">This is fundamentally different from email marketing software, which operates within your own infrastructure. Contact form submission software operates on the open web, visiting real business websites the same way any human visitor would — just faster and at scale. You don't need a domain, an email sending reputation, or a list of opted-in contacts. You need a target niche, a message, and a Loylty account.</p>
+    <div class="callout reveal">
+      <strong>The key distinction:</strong> Loylty doesn't replace the human judgment call. Every submission is queued for your review before it sends. The software handles the mechanical work; you handle the decision to send.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2: The Difference Between Spam and Legitimate Outreach (normal) -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">The Question Everyone Asks</div>
+    <h2 class="reveal">The Difference Between Spam and Legitimate Outreach</h2>
+    <p class="reveal">This is the question everyone asks, and it deserves a direct answer.</p>
+    <p class="reveal">Spam is unsolicited, untargeted, high-volume communication designed to overwhelm the recipient's filtering systems. Spam uses fake sender information, deceptive subject lines, and no mechanism for opting out. Spam is illegal in most jurisdictions under laws like CAN-SPAM, GDPR, and CASL.</p>
+    <p class="reveal">Legitimate contact form outreach is different on every dimension:</p>
+    <ul class="reveal">
+      <li><strong>Targeted:</strong> You choose specific businesses you want to reach, not random mass blasting. A fence contractor in Texas is a deliberate choice, not a random entry in a harvested list.</li>
+      <li><strong>Identified:</strong> Your real name, email, and company are included in every submission. The business can reply, opt out, or ignore — just like any unsolicited business call. There is no hiding behind a fake identity.</li>
+      <li><strong>Human-reviewed:</strong> Loylty requires you to review and approve every submission before it sends. You cannot bulk-approve without reading. This isn't just good practice — it's built into the product.</li>
+      <li><strong>Purposeful:</strong> You're reaching businesses through the channel they built for exactly this purpose — hearing from people who might want to work with them. The contact form was put there intentionally.</li>
+    </ul>
+    <p class="reveal">The legal landscape: contact forms are public-facing communication channels. Filling out a contact form is not illegal. It's what the form is for. The relevant legal question is whether the content is deceptive or harassing — not whether it's automated. Loylty's terms of service prohibit deceptive, harassing, or fraudulent outreach. Violators are removed from the platform.</p>
+    <div class="callout reveal">
+      <strong>The core test:</strong> If you would be embarrassed to have your message shown publicly next to your name and company, don't send it. If it's a genuine, identifiable business inquiry, you're in the clear.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: How Bulk Form Submission Works Technically (alt) -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Under the Hood</div>
+    <h2 class="reveal">How Bulk Form Submission Works Technically</h2>
+    <p class="reveal">Loylty uses Playwright, a browser automation framework, to visit each business website in a real browser environment. This means the crawl looks like real human traffic — not a bot. A real browser renders the page, executes JavaScript, and interacts with the form exactly as a human would. This is why Loylty achieves high submission success rates even on sites with basic bot detection.</p>
+    <h3 class="reveal">Form Detection</h3>
+    <p class="reveal">Loylty looks for HTML form elements with fields commonly used in contact forms — text inputs for name and email, a textarea for messages, and a submit button. When multiple forms are found on a page, the system identifies the most likely contact form using field count, field labels, and page context. A newsletter signup form and a contact form can both live on the same page; Loylty distinguishes between them based on field structure.</p>
+    <h3 class="reveal">Field Mapping</h3>
+    <p class="reveal">Once the form is detected, Loylty maps your data to form fields automatically. Name fields get your name. Email fields get your email. The message textarea gets your outreach message. If there's a phone field, your phone number fills it. If there's a company field, your company name fills it. Confidence scoring flags uncertain mappings for human review — so if a field is ambiguous, you'll see it flagged in your review queue rather than having the wrong data submitted silently.</p>
+    <h3 class="reveal">Message Insertion</h3>
+    <p class="reveal">Depending on your campaign settings, the message is either pulled from your static template, generated by Loylty's AI based on the business's website content, or a hybrid of both. AI-generated messages are unique per business — they reference what the business actually does, rather than sending the same generic text to every form.</p>
+    <div class="info-card reveal">
+      <h3>What Loylty Does Not Do</h3>
+      <p>Loylty does not bypass CAPTCHA through third-party solvers that violate terms of service. It does not submit to forms on government websites. It does not allow fake sender information. And it does not allow submissions to proceed without human review of at least the first batch of messages in any campaign.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Submission Success Rates (normal) -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Performance</div>
+    <h2 class="reveal">Submission Success Rates and What Affects Them</h2>
+    <p class="reveal">Loylty achieves an automated completion rate of 90%+ across campaigns. The 10% that don't complete automatically fall into three categories:</p>
+    <ol class="reveal">
+      <li><strong>CAPTCHA-protected forms (approximately 5–8%):</strong> Google reCAPTCHA v2 and v3, hCaptcha, and similar challenges. Loylty detects these and routes them to a human-assisted flow rather than silently failing.</li>
+      <li><strong>JavaScript-heavy forms (approximately 2–3%):</strong> Multi-step forms, forms with unusual submission logic, or forms embedded in iframes from third-party tools like HubSpot, Typeform, or Gravity Forms. These require additional handling time.</li>
+      <li><strong>Broken or missing forms (approximately 1–2%):</strong> The business's contact page exists but the form is down, the page has an error, or the URL resolves to a 404. These are logged and excluded from your campaign count.</li>
+    </ol>
+    <p class="reveal">Factors that improve success rate: verified URLs (Loylty validates URLs before processing), clean data (minimal malformed URLs), and targeting businesses with standard website setups rather than complex enterprise sites with custom form infrastructure.</p>
+    <div class="compare-table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Scenario</th>
+            <th>Completion Method</th>
+            <th class="winner">Expected Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Standard HTML contact form</td>
+            <td>Fully automated</td>
+            <td class="winner-cell"><span class="check">✓</span> ~95%</td>
+          </tr>
+          <tr>
+            <td>reCAPTCHA v3 (score-based)</td>
+            <td>Automated with human-like behavior signals</td>
+            <td class="winner-cell"><span class="check">✓</span> ~80%</td>
+          </tr>
+          <tr>
+            <td>reCAPTCHA v2 (checkbox / image)</td>
+            <td>Human-assisted CAPTCHA flow</td>
+            <td class="winner-cell"><span class="partial">~</span> Completable, slower</td>
+          </tr>
+          <tr>
+            <td>Third-party embedded form (HubSpot, Typeform)</td>
+            <td>Extended browser handling</td>
+            <td class="winner-cell"><span class="partial">~</span> ~70%</td>
+          </tr>
+          <tr>
+            <td>Broken or missing contact page</td>
+            <td>Skipped and logged</td>
+            <td class="winner-cell"><span class="cross">✗</span> N/A — excluded</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: CAPTCHA Handling (alt) -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Technical Detail</div>
+    <h2 class="reveal">CAPTCHA Handling</h2>
+    <p class="reveal">CAPTCHA is the biggest technical challenge in contact form submission. It's a deliberate mechanism designed to prevent automated form interactions. Loylty handles it in three ways, with a strong preference for approaches that don't compromise submission quality.</p>
+    <h3 class="reveal">1. Early Detection</h3>
+    <p class="reveal">Before attempting submission, Loylty detects whether a CAPTCHA is present on the form. Forms with CAPTCHA are flagged separately in your queue so you have full visibility into what's protected and what isn't. Detection happens during the crawl phase, before any data is filled in.</p>
+    <h3 class="reveal">2. Behavioral Scoring for reCAPTCHA v3</h3>
+    <p class="reveal">reCAPTCHA v3 is score-based — it doesn't require the user to do anything visible, but it scores the session based on behavior patterns like mouse movement, scrolling, dwell time, and navigation history. Loylty's browser behavior mimics human interaction patterns throughout the session, which typically achieves passing scores without any user intervention. This handles the majority of CAPTCHA-protected forms encountered in campaigns targeting local business websites.</p>
+    <h3 class="reveal">3. Human-Assisted Flow for Visible Challenges</h3>
+    <p class="reveal">For visible CAPTCHA challenges — the v2 checkbox, image selection puzzles, and audio challenges — Loylty routes these to a human-assisted flow. The CAPTCHA is completed by a human operator before the prepared submission is executed. This adds processing time but ensures the submission is completed correctly. Loylty charges no additional fees for CAPTCHA-assisted submissions.</p>
+    <div class="callout reveal">
+      <strong>The result:</strong> most CAPTCHA-protected forms are still completable. The presence of CAPTCHA on a business's contact form doesn't mean you can't reach them through Loylty — it just means that specific submission takes slightly longer to process.
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: Who Uses Contact Form Submission Software (normal) -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Use Cases</div>
+    <h2 class="reveal">Who Uses Contact Form Submission Software</h2>
+    <p class="reveal">Loylty is built for anyone who needs to reach businesses at scale through a channel that isn't cold email. The use cases span industries and team sizes.</p>
+    <div class="two-col reveal">
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <h4>B2B Agencies</h4>
+        <p>Running outreach campaigns for multiple clients simultaneously. Need campaign isolation, separate sender profiles, and volume controls per client. Loylty's campaign system handles all of it under one account.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h4>Sales Teams</h4>
+        <p>SDRs using contact form outreach as a third channel alongside email and LinkedIn. Supplement cold email sequences without adding domain risk — your email reputation is never touched.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <h4>Solo Founders</h4>
+        <p>Validating offers with real prospect feedback before spending on ads. The 100 free submissions included with every account is enough to get meaningful signal on a new offer or market.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💼</div>
+        <h4>Consultants</h4>
+        <p>Reaching niche verticals — law firms, dental practices, fence contractors — that are underserved by other outreach channels. The contact form is often the most-monitored communication channel for owner-operated businesses.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h4>Local Business Agencies</h4>
+        <p>Local businesses answer contact form submissions. They built the form to hear from people. They check it regularly. Agencies selling to local businesses consistently see higher response rates from this channel than from cold email.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🗂️</div>
+        <h4>Data Providers</h4>
+        <p>Already have lists of business URLs. Loylty turns those URLs into an active outreach campaign without requiring any new data sourcing. CSV import works directly with existing datasets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="reveal">Try Bulk Form Submission <span class="grad">Free</span></h2>
+    <p class="reveal">Start with 100 free submissions. No credit card required. See exactly how the submission process works before you spend a dollar.</p>
+    <a href="coming-soon.html" class="btn-primary reveal">Get Early Access →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://loylty.io" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p>The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="https://loylty.io#how">How It Works</a>
+      <a href="https://loylty.io#database">Database</a>
+      <a href="https://loylty.io#pricing">Pricing</a>
+      <a href="https://loylty.io#affiliates">Affiliates</a>
+      <a href="coming-soon.html">Log In</a>
+      <a href="coming-soon.html">Get Early Access</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outreach</div>
+      <a href="contact-form-marketing.html">Contact Form Marketing</a>
+      <a href="contact-form-outreach.html">Contact Form Outreach</a>
+      <a href="contact-form-lead-generation.html">Lead Generation</a>
+      <a href="contact-form-automation.html">Form Automation</a>
+      <a href="contact-form-prospecting.html">Form Prospecting</a>
+      <a href="contact-form-campaigns.html">Form Campaigns</a>
+      <a href="contact-form-sales.html">Contact Form Sales</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Compare</div>
+      <a href="loylty-vs-cold-email.html">vs Cold Email</a>
+      <a href="loylty-vs-instantly.html">vs Instantly</a>
+      <a href="loylty-vs-apollo.html">vs Apollo</a>
+      <a href="loylty-vs-clay.html">vs Clay</a>
+      <a href="best-cold-email-alternatives.html">Best Alternatives</a>
+      <a href="best-outreach-software.html">Best Outreach Tools</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="status.html">Status</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav(btn) { btn.classList.toggle('open'); var d=document.getElementById('mobileNav'); d.classList.toggle('open'); }
+function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=document.getElementById('mobileNav'); if(b)b.classList.remove('open'); if(d)d.classList.remove('open'); }
+window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
+(function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
+</script>
+</body>
+</html>

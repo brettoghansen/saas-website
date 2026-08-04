@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loylty vs Apollo: Outreach Automation vs Sales Intelligence | Loylty</title>
+<meta name="description" content="Loylty vs Apollo compared. Apollo is a sales intelligence and email/LinkedIn platform. Loylty is a contact form outreach tool. Here's how they're different and how they work together." />
+<meta name="keywords" content="loylty vs apollo, apollo alternative, apollo io comparison, sales intelligence vs contact form outreach" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://loylty.io/loylty-vs-apollo" />
+<meta property="og:title" content="Loylty vs Apollo: Outreach Automation vs Sales Intelligence | Loylty" />
+<meta property="og:description" content="Loylty vs Apollo compared. Apollo is a sales intelligence and email/LinkedIn platform. Loylty is a contact form outreach tool. Here's how they're different and how they work together." />
+<meta property="og:image" content="https://loylty.io/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --bg2: #080810; --surface: #0e0e1a; --elevated: #141424;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --accent: #4f8eff; --purple: #8b5cf6; --accent-dim: rgba(79,142,255,0.10);
+  --text: #eef0f8; --muted: #42465e; --mid: #7a86a8;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Work Sans', -apple-system, sans-serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 76px; }
+.grad { background: linear-gradient(130deg, var(--accent) 20%, var(--purple) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 76px; background: rgba(5,5,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 16px rgba(79,142,255,0.4); }
+.logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; }
+nav ul a:hover { color: var(--text); }
+.nav-btn { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff !important; padding: 11px 24px; border-radius: 9px; font-weight: 700 !important; font-size: 15px !important; min-height: 44px; display: inline-flex; align-items: center; box-shadow: 0 0 20px rgba(79,142,255,0.45); transition: transform 0.15s !important; }
+.nav-btn:hover { transform: translateY(-2px) !important; }
+.nav-btn-ghost { color: var(--mid) !important; text-decoration: none; font-size: 15px !important; font-weight: 500 !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; }
+.nav-hamburger span { display: block; height: 2px; border-radius: 2px; background: var(--mid); width: 22px; transition: transform 0.25s, opacity 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-drawer { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(8,8,16,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; padding: 20px 24px 28px; flex-direction: column; gap: 4px; }
+.nav-mobile-drawer.open { display: flex; }
+.nav-mobile-drawer a { color: var(--mid); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 4px; border-bottom: 1px solid var(--border); display: block; }
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer .nav-btn-mobile { margin-top: 12px; background: linear-gradient(135deg, #4f8eff, #7c6fff) !important; color: #fff !important; border-radius: 10px; text-align: center; font-weight: 700 !important; padding: 16px !important; border-bottom: none !important; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); }
+.page-hero { padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); width: 800px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,255,0.03) 1px,transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); }
+.page-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 100px; background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.22); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.page-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -3px; line-height: 1.05; max-width: 900px; margin: 0 auto 24px; }
+.page-hero .lead { font-size: 19px; color: var(--mid); max-width: 680px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-primary { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; min-height: 56px; display: inline-flex; align-items: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25); }
+.btn-primary:hover { transform: translateY(-3px); }
+.content-section { padding: 80px 24px; }
+.content-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.content-inner { max-width: 860px; margin: 0 auto; }
+.content-inner h2 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+.content-inner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; margin-top: 40px; }
+.content-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 28px; }
+.content-inner p { color: var(--mid); line-height: 1.85; margin-bottom: 18px; font-size: 17px; }
+.content-inner p strong { color: var(--text); }
+.content-inner ul { color: var(--mid); font-size: 17px; line-height: 1.85; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.content-inner ul li { padding-left: 24px; position: relative; }
+.content-inner ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.content-inner li strong { color: var(--text); }
+.tldr-box { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-left: 3px solid var(--accent); border-radius: 12px; padding: 28px 32px; margin: 40px 0; }
+.tldr-box h3 { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; margin-top: 0; }
+.tldr-box p { font-size: 16px; color: var(--mid); line-height: 1.8; margin: 0; }
+.compare-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 16px; border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.compare-table th { background: var(--surface); padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-align: left; border-bottom: 1px solid var(--border2); color: var(--text); }
+.compare-table th.winner { color: var(--accent); background: rgba(79,142,255,0.06); }
+.compare-table td { padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; color: var(--mid); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 700; color: var(--text); font-size: 13px; }
+.compare-table td.winner-cell { background: rgba(79,142,255,0.03); color: var(--text); }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.choice-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.choice-card.loylty-card { border-color: rgba(79,142,255,0.3); background: rgba(79,142,255,0.04); }
+.choice-card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 12px; margin-top: 0; }
+.choice-card p { font-size: 15px; color: var(--mid); line-height: 1.75; margin: 0 0 16px; }
+.choice-card ul { margin: 0; }
+.choice-card ul li { font-size: 14px; }
+.callout { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-size: 16px; color: var(--mid); line-height: 1.8; }
+.callout strong { color: var(--text); }
+.cta-section { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, rgba(79,142,255,0.04) 50%, var(--bg) 100%); }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.10) 0%, transparent 70%); pointer-events: none; }
+.cta-section::after { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), rgba(139,92,246,0.5), transparent); }
+.cta-inner { position: relative; z-index: 2; }
+.cta-section h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1240px; margin: 0 auto; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; margin-top: 14px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media (max-width: 900px) { footer { padding: 48px 24px 32px; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+@media (max-width: 768px) { nav { padding: 0 24px; height: 68px; } nav ul { display: none; } .nav-hamburger { display: flex; } body { padding-top: 68px; } .page-hero { padding: 60px 24px 48px; } .two-col { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://loylty.io">
+    <div class="logo-icon"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Loylty
+  </a>
+  <ul>
+    <li><a href="https://loylty.io#how">How It Works</a></li>
+    <li><a href="https://loylty.io#database">Database</a></li>
+    <li><a href="https://loylty.io#pricing">Pricing</a></li>
+    <li><a href="https://loylty.io#affiliates">Affiliates</a></li>
+    <li><a href="coming-soon.html" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="coming-soon.html" class="nav-btn">Get Early Access →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="https://loylty.io#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="https://loylty.io#database" onclick="closeMobileNav()">Database</a>
+  <a href="https://loylty.io#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://loylty.io#affiliates" onclick="closeMobileNav()">Affiliates</a>
+  <a href="coming-soon.html" onclick="closeMobileNav()">Log In</a>
+  <a href="coming-soon.html" class="nav-btn-mobile" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-badge reveal">
+    <span class="badge-dot"></span>
+    Tool Comparison
+  </div>
+  <h1 class="reveal reveal-delay-1">Loylty vs Apollo:<br><span class="grad">Different Tools for Different Outreach Problems</span></h1>
+  <p class="lead reveal">Apollo is a powerful sales intelligence platform with a built-in email and LinkedIn outreach layer. Loylty is a contact form outreach platform. They're not head-to-head — Apollo is a data and multi-channel outreach platform, Loylty is a specialized channel. Understanding when each wins is the key.</p>
+  <a href="coming-soon.html" class="btn-primary reveal">Try Loylty Free →</a>
+</section>
+
+<!-- TL;DR -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="tldr-box reveal">
+      <h3>TL;DR</h3>
+      <p>Apollo is a sales intelligence platform with a large B2B contact database, email outreach, LinkedIn automation, and CRM integrations. It's strong for teams that need both data enrichment and multi-channel outreach in one tool, and it scales to enterprise. Loylty is a focused tool that does one thing: reaches businesses through their own contact forms. It doesn't have Apollo's database depth for individual contacts, CRM integrations, or LinkedIn capability — but it has zero spam filter exposure and includes its own business database for SMB targeting.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Feature Comparison</div>
+    <h2 class="reveal">Apollo vs Loylty: Side by Side</h2>
+    <p class="reveal">Apollo and Loylty operate in different layers of the outreach stack. Here's an honest look at what each does.</p>
+    <div class="compare-table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Apollo</th>
+            <th class="winner">Loylty</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Primary Use</td>
+            <td>Sales intelligence + multi-channel outreach</td>
+            <td class="winner-cell">Contact form outreach — specialized, single channel</td>
+          </tr>
+          <tr>
+            <td>Contact Database</td>
+            <td><span class="check">275M+</span> individual B2B contacts — people-level data</td>
+            <td class="winner-cell">2.3M+ businesses — company-level, SMB-focused</td>
+          </tr>
+          <tr>
+            <td>Email Outreach</td>
+            <td><span class="check">Yes</span> — strong sequences</td>
+            <td class="winner-cell"><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>LinkedIn Outreach</td>
+            <td><span class="check">Yes</span></td>
+            <td class="winner-cell"><span class="cross">No</span></td>
+          </tr>
+          <tr>
+            <td>Contact Form Outreach</td>
+            <td><span class="cross">No</span></td>
+            <td class="winner-cell"><span class="check">Yes</span> — the only platform built for this</td>
+          </tr>
+          <tr>
+            <td>Spam Filter Exposure</td>
+            <td><span class="partial">Yes</span> — email-based outreach</td>
+            <td class="winner-cell"><span class="check">None</span></td>
+          </tr>
+          <tr>
+            <td>Domain Warmup Required</td>
+            <td><span class="cross">Yes</span> — for email sending</td>
+            <td class="winner-cell"><span class="check">No</span></td>
+          </tr>
+          <tr>
+            <td>Pricing</td>
+            <td>$49–$149+/month per user — significant at enterprise scale</td>
+            <td class="winner-cell">Free — $499/month flat</td>
+          </tr>
+          <tr>
+            <td>CRM Integrations</td>
+            <td><span class="check">Yes</span> — deep (Salesforce, HubSpot, Pipedrive)</td>
+            <td class="winner-cell"><span class="partial">Coming soon</span></td>
+          </tr>
+          <tr>
+            <td>Human Review Before Send</td>
+            <td><span class="cross">No</span></td>
+            <td class="winner-cell"><span class="check">Yes</span> — required for every submission</td>
+          </tr>
+          <tr>
+            <td>Target Market</td>
+            <td>Mid-market to enterprise B2B</td>
+            <td class="winner-cell">SMB, local business, agency</td>
+          </tr>
+          <tr>
+            <td>Setup Complexity</td>
+            <td>Moderate to high — domain setup, CRM config, sequence building</td>
+            <td class="winner-cell">Minimal — same day start</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE: APOLLO -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Deep Dive</div>
+    <h2 class="reveal">What Is Apollo?</h2>
+    <p class="reveal">Apollo is a comprehensive sales intelligence platform. Its core value is the contact database — 275M+ individual contacts with verified email addresses, job titles, company firmographics, and intent signals. The outreach layer sits on top: email sequences, LinkedIn automation, and CRM sync. Apollo is built for SDR teams and enterprise sales organizations that need verified contact data, multi-channel outreach, and team collaboration in one platform.</p>
+    <p class="reveal">The breadth of Apollo's data is its most significant competitive advantage. You can search for contacts by company, job title, industry, company size, geography, funding stage, technology stack, and dozens of other filters. This makes it well-suited for account-based outreach where you need to reach specific people at specific companies — not just companies in general.</p>
+
+    <h3 class="reveal">Apollo's Strengths</h3>
+    <ul class="reveal">
+      <li><strong>Contact-level data at scale.</strong> 275M+ verified individual contacts with email addresses, job titles, and intent data. For enterprise ABM outreach, nothing else touches this.</li>
+      <li><strong>Email + LinkedIn in one platform.</strong> The ability to run coordinated email and LinkedIn sequences from a single tool reduces the complexity of multi-channel outreach.</li>
+      <li><strong>Advanced filtering and search.</strong> Industry, company size, technology used, funding stage, geography, job seniority — Apollo's search layer lets you build precisely targeted lists.</li>
+      <li><strong>Intent data.</strong> Apollo surfaces companies that are actively researching topics related to your product, allowing for more timely outreach.</li>
+      <li><strong>CRM sync.</strong> Native integrations with Salesforce, HubSpot, and Pipedrive push contact and activity data into your pipeline automatically.</li>
+      <li><strong>Team collaboration.</strong> Built for SDR teams — sequence templates, shared contact data, team analytics, and admin controls.</li>
+    </ul>
+
+    <h3 class="reveal">Apollo's Honest Limitations</h3>
+    <ul class="reveal">
+      <li><strong>Expensive at scale.</strong> Per-seat pricing with credits for contact exports adds up quickly for larger teams. Apollo can become a significant line item in your sales stack budget.</li>
+      <li><strong>Still operates in the email layer.</strong> Apollo's outreach runs on email and LinkedIn. Both channels face deliverability challenges and inbox competition that Apollo can manage but not eliminate.</li>
+      <li><strong>Not designed for SMB or local business targeting.</strong> Apollo's database depth is strongest for named accounts and individual professionals. For reaching local service businesses that don't have LinkedIn-active decision makers, Apollo is less useful.</li>
+      <li><strong>No contact form channel.</strong> Apollo has no capability for submitting outreach through website contact forms. It operates exclusively in the email/LinkedIn layer.</li>
+      <li><strong>Complexity overhead.</strong> Setup involves domain configuration, CRM connection, sequence building, and team onboarding. The learning curve is real.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DEEP DIVE: LOYLTY -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Deep Dive</div>
+    <h2 class="reveal">What Is Loylty?</h2>
+    <p class="reveal">Loylty is a contact form outreach platform. It doesn't need individual contact email addresses — instead, it finds the contact form on a business's website and submits your message through it. The message arrives in whatever inbox the business uses to receive website inquiries, bypassing every email spam filter in the process.</p>
+    <p class="reveal">Loylty targets businesses as entities, not individuals within them. This makes it fundamentally different from Apollo's contact-centric approach. Where Apollo asks "who at this company should I email?", Loylty asks "what is this company's website contact form, and how do I reach them through it?" The answers lead to very different outreach channels and very different audiences.</p>
+
+    <h3 class="reveal">Loylty's Strengths</h3>
+    <ul class="reveal">
+      <li><strong>Zero spam filter exposure.</strong> Contact form submissions route through the target business's own website infrastructure. This is a categorically different channel from email.</li>
+      <li><strong>Built-in business database for SMB outreach.</strong> Loylty's 2.3M+ business database is built for targeting companies — local contractors, service businesses, small retailers — not necessarily for finding the Director of IT at a Fortune 500 company.</li>
+      <li><strong>No infrastructure required.</strong> No domain purchase, no email warmup, no CRM configuration to start. Upload a CSV or pull from the database and go.</li>
+      <li><strong>Human review queue.</strong> Every submission is reviewed before sending. This quality control step produces more careful, intentional outreach.</li>
+      <li><strong>AI personalization per business.</strong> Messages are generated for each specific target business, not filled from merge-field templates.</li>
+      <li><strong>Free tier.</strong> 100 outreaches included with no credit card — meaningful enough to test a campaign and validate an offer before spending anything.</li>
+    </ul>
+
+    <h3 class="reveal">Loylty's Honest Limitations vs Apollo</h3>
+    <ul class="reveal">
+      <li><strong>No individual contact data.</strong> Apollo's 275M+ individual contacts with verified emails is a capability Loylty doesn't have and isn't trying to replicate. Loylty targets businesses, not named individuals.</li>
+      <li><strong>No LinkedIn outreach.</strong> Apollo's LinkedIn automation is a genuine channel that Loylty doesn't touch.</li>
+      <li><strong>No sequences.</strong> Apollo's multi-step sequences across email and LinkedIn have no equivalent in Loylty. One submission per business is the current limit.</li>
+      <li><strong>No CRM integration yet.</strong> Apollo's deep CRM sync is a workflow advantage that Loylty's roadmap hasn't reached.</li>
+      <li><strong>SMB and local business focused.</strong> Loylty's database and approach are optimized for companies that have website contact forms — which skews toward local and regional businesses rather than enterprise accounts.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHEN TO CHOOSE -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Decision Guide</div>
+    <h2 class="reveal">When to Choose Each — and When to Use Both</h2>
+    <p class="reveal">Apollo and Loylty aren't alternatives. They solve different problems at different market segments. Here's the honest breakdown.</p>
+
+    <div class="two-col reveal">
+      <div class="choice-card">
+        <h4>Choose Apollo When...</h4>
+        <p>You're doing enterprise or mid-market ABM and need contact-level intelligence across email and LinkedIn.</p>
+        <ul>
+          <li><strong>You're targeting enterprise or mid-market companies</strong></li>
+          <li><strong>You need individual contact data</strong> — specific people at specific companies</li>
+          <li><strong>You want email + LinkedIn sequences</strong> in one platform</li>
+          <li><strong>You have budget</strong> for a premium sales intelligence tool</li>
+          <li><strong>Your targets are at named accounts</strong> with LinkedIn-active decision makers</li>
+          <li><strong>You need intent data</strong> to prioritize outreach timing</li>
+        </ul>
+      </div>
+      <div class="choice-card loylty-card">
+        <h4 class="grad">Choose Loylty When...</h4>
+        <p>You're targeting local or regional businesses and want a channel that bypasses every spam filter.</p>
+        <ul>
+          <li><strong>You're targeting local or SMB businesses</strong></li>
+          <li><strong>You need zero deliverability risk</strong></li>
+          <li><strong>You don't have individual contact emails</strong> — just companies</li>
+          <li><strong>You want to supplement Apollo campaigns</strong> with a third touchpoint</li>
+          <li><strong>You're a solo founder or small team</strong> without Apollo's budget</li>
+          <li><strong>You want to start the same day</strong> without infrastructure setup</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>The case for using both:</strong> Apollo for identifying and contacting key individuals at target accounts via email and LinkedIn. Loylty for reaching the same companies through their contact forms with a different message and sender identity. Three channels (email, LinkedIn, contact form) to the same prospect pool — each one independent, each one adding reach the others can't guarantee.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="justify-content:center;" aria-hidden="true">Get Started Free</div>
+    <h2 class="reveal">Try Loylty Free</h2>
+    <p class="reveal">100 outreaches included. No credit card. No warmup.</p>
+    <a href="coming-soon.html" class="btn-primary reveal">Get Early Access →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://loylty.io" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p>The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="https://loylty.io#how">How It Works</a>
+      <a href="https://loylty.io#database">Database</a>
+      <a href="https://loylty.io#pricing">Pricing</a>
+      <a href="https://loylty.io#affiliates">Affiliates</a>
+      <a href="coming-soon.html">Log In</a>
+      <a href="coming-soon.html">Get Early Access</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outreach</div>
+      <a href="contact-form-marketing.html">Contact Form Marketing</a>
+      <a href="contact-form-outreach.html">Contact Form Outreach</a>
+      <a href="contact-form-lead-generation.html">Lead Generation</a>
+      <a href="contact-form-automation.html">Form Automation</a>
+      <a href="contact-form-prospecting.html">Form Prospecting</a>
+      <a href="contact-form-campaigns.html">Form Campaigns</a>
+      <a href="contact-form-sales.html">Contact Form Sales</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Compare</div>
+      <a href="loylty-vs-cold-email.html">vs Cold Email</a>
+      <a href="loylty-vs-instantly.html">vs Instantly</a>
+      <a href="loylty-vs-apollo.html">vs Apollo</a>
+      <a href="loylty-vs-clay.html">vs Clay</a>
+      <a href="best-cold-email-alternatives.html">Best Alternatives</a>
+      <a href="best-outreach-software.html">Best Outreach Tools</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="status.html">Status</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav(btn) { btn.classList.toggle('open'); var d=document.getElementById('mobileNav'); d.classList.toggle('open'); }
+function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=document.getElementById('mobileNav'); if(b)b.classList.remove('open'); if(d)d.classList.remove('open'); }
+window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
+(function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
+</script>
+</body>
+</html>

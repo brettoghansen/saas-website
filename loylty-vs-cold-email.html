@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Loylty vs Cold Email: Contact Forms vs Email Outreach in 2026 | Loylty</title>
+<meta name="description" content="An honest comparison of contact form outreach (Loylty) vs cold email in 2026. See when each channel wins, what the data says about deliverability, and how to combine them." />
+<meta name="keywords" content="loylty vs cold email, contact form vs cold email, cold email alternative, outreach channel comparison" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://loylty.io/loylty-vs-cold-email" />
+<meta property="og:title" content="Loylty vs Cold Email: Contact Forms vs Email Outreach in 2026 | Loylty" />
+<meta property="og:description" content="An honest comparison of contact form outreach (Loylty) vs cold email in 2026. See when each channel wins, what the data says about deliverability, and how to combine them." />
+<meta property="og:image" content="https://loylty.io/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --bg2: #080810; --surface: #0e0e1a; --elevated: #141424;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --accent: #4f8eff; --purple: #8b5cf6; --accent-dim: rgba(79,142,255,0.10);
+  --text: #eef0f8; --muted: #42465e; --mid: #7a86a8;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Work Sans', -apple-system, sans-serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 76px; }
+.grad { background: linear-gradient(130deg, var(--accent) 20%, var(--purple) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 76px; background: rgba(5,5,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 16px rgba(79,142,255,0.4); }
+.logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; }
+nav ul a:hover { color: var(--text); }
+.nav-btn { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff !important; padding: 11px 24px; border-radius: 9px; font-weight: 700 !important; font-size: 15px !important; min-height: 44px; display: inline-flex; align-items: center; box-shadow: 0 0 20px rgba(79,142,255,0.45); transition: transform 0.15s !important; }
+.nav-btn:hover { transform: translateY(-2px) !important; }
+.nav-btn-ghost { color: var(--mid) !important; text-decoration: none; font-size: 15px !important; font-weight: 500 !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; }
+.nav-hamburger span { display: block; height: 2px; border-radius: 2px; background: var(--mid); width: 22px; transition: transform 0.25s, opacity 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-drawer { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(8,8,16,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; padding: 20px 24px 28px; flex-direction: column; gap: 4px; }
+.nav-mobile-drawer.open { display: flex; }
+.nav-mobile-drawer a { color: var(--mid); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 4px; border-bottom: 1px solid var(--border); display: block; }
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer .nav-btn-mobile { margin-top: 12px; background: linear-gradient(135deg, #4f8eff, #7c6fff) !important; color: #fff !important; border-radius: 10px; text-align: center; font-weight: 700 !important; padding: 16px !important; border-bottom: none !important; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); }
+.page-hero { padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); width: 800px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,255,0.03) 1px,transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%,rgba(0,0,0,0.8) 0%,transparent 75%); }
+.page-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 100px; background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.22); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 28px; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.page-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -3px; line-height: 1.05; max-width: 900px; margin: 0 auto 24px; }
+.page-hero .lead { font-size: 19px; color: var(--mid); max-width: 680px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-primary { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; min-height: 56px; display: inline-flex; align-items: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25); }
+.btn-primary:hover { transform: translateY(-3px); }
+.content-section { padding: 80px 24px; }
+.content-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.content-inner { max-width: 860px; margin: 0 auto; }
+.content-inner h2 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+.content-inner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; margin-top: 40px; }
+.content-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 28px; }
+.content-inner p { color: var(--mid); line-height: 1.85; margin-bottom: 18px; font-size: 17px; }
+.content-inner p strong { color: var(--text); }
+.content-inner ul { color: var(--mid); font-size: 17px; line-height: 1.85; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.content-inner ul li { padding-left: 24px; position: relative; }
+.content-inner ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.content-inner li strong { color: var(--text); }
+.tldr-box { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-left: 3px solid var(--accent); border-radius: 12px; padding: 28px 32px; margin: 40px 0; }
+.tldr-box h3 { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; margin-top: 0; }
+.tldr-box p { font-size: 16px; color: var(--mid); line-height: 1.8; margin: 0; }
+.compare-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 16px; border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 560px; }
+.compare-table th { background: var(--surface); padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-align: left; border-bottom: 1px solid var(--border2); color: var(--text); }
+.compare-table th.winner { color: var(--accent); background: rgba(79,142,255,0.06); }
+.compare-table td { padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; color: var(--mid); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 700; color: var(--text); font-size: 13px; }
+.compare-table td.winner-cell { background: rgba(79,142,255,0.03); color: var(--text); }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.choice-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+.choice-card.loylty-card { border-color: rgba(79,142,255,0.3); background: rgba(79,142,255,0.04); }
+.choice-card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; margin-bottom: 12px; margin-top: 0; }
+.choice-card p { font-size: 15px; color: var(--mid); line-height: 1.75; margin: 0 0 16px; }
+.choice-card ul { margin: 0; }
+.choice-card ul li { font-size: 14px; }
+.callout { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-size: 16px; color: var(--mid); line-height: 1.8; }
+.callout strong { color: var(--text); }
+.cta-section { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, rgba(79,142,255,0.04) 50%, var(--bg) 100%); }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.10) 0%, transparent 70%); pointer-events: none; }
+.cta-section::after { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), rgba(139,92,246,0.5), transparent); }
+.cta-inner { position: relative; z-index: 2; }
+.cta-section h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1240px; margin: 0 auto; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; margin-top: 14px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media (max-width: 900px) { footer { padding: 48px 24px 32px; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+@media (max-width: 768px) { nav { padding: 0 24px; height: 68px; } nav ul { display: none; } .nav-hamburger { display: flex; } body { padding-top: 68px; } .page-hero { padding: 60px 24px 48px; } .two-col { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://loylty.io">
+    <div class="logo-icon"><svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+    Loylty
+  </a>
+  <ul>
+    <li><a href="https://loylty.io#how">How It Works</a></li>
+    <li><a href="https://loylty.io#database">Database</a></li>
+    <li><a href="https://loylty.io#pricing">Pricing</a></li>
+    <li><a href="https://loylty.io#affiliates">Affiliates</a></li>
+    <li><a href="coming-soon.html" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="coming-soon.html" class="nav-btn">Get Early Access →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="https://loylty.io#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="https://loylty.io#database" onclick="closeMobileNav()">Database</a>
+  <a href="https://loylty.io#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://loylty.io#affiliates" onclick="closeMobileNav()">Affiliates</a>
+  <a href="coming-soon.html" onclick="closeMobileNav()">Log In</a>
+  <a href="coming-soon.html" class="nav-btn-mobile" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="page-hero-badge reveal">
+    <span class="badge-dot"></span>
+    Channel Comparison
+  </div>
+  <h1 class="reveal reveal-delay-1">Loylty vs Cold Email:<br><span class="grad">Why Outreach Has a New Best Channel</span></h1>
+  <p class="lead reveal">Cold email has been the default B2B outreach channel for a decade. It still works. But deliverability has gotten harder every year, and a new channel — contact form outreach — operates outside the spam filter entirely. Here's an honest look at how they compare.</p>
+  <a href="coming-soon.html" class="btn-primary reveal">Try Loylty Free →</a>
+</section>
+
+<!-- TL;DR -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="tldr-box reveal">
+      <h3>TL;DR</h3>
+      <p>Cold email is a mature, well-understood outreach channel with proven infrastructure, large sending volume potential, and widespread tooling. Deliverability is its Achilles heel — spam filters intercept an estimated 85% of cold B2B email before it's seen. Loylty is a new category: contact form outreach. It reaches businesses through their own website contact forms, bypassing every spam filter. Lower volume ceiling than cold email, but zero deliverability friction. Use cold email for scale; use Loylty when deliverability matters more than volume.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Feature Comparison</div>
+    <h2 class="reveal">How They Stack Up</h2>
+    <p class="reveal">A direct look at what each channel does well and where it falls short.</p>
+    <div class="compare-table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Cold Email</th>
+            <th class="winner">Loylty (Contact Forms)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Spam Filter Risk</td>
+            <td><span class="cross">High</span> — major inbox providers filter aggressively</td>
+            <td class="winner-cell"><span class="check">None</span> — forms bypass all email spam filters</td>
+          </tr>
+          <tr>
+            <td>Daily Volume Ceiling</td>
+            <td>500–2,000 with a warmed sending domain</td>
+            <td class="winner-cell">Up to 500/day (Agency plan)</td>
+          </tr>
+          <tr>
+            <td>Setup Time</td>
+            <td><span class="cross">4–6 weeks</span> — domain purchase, DNS setup, warmup period</td>
+            <td class="winner-cell"><span class="check">Same day</span> — no infrastructure needed</td>
+          </tr>
+          <tr>
+            <td>Cost to Start</td>
+            <td><span class="cross">$50–$300/month</span> — domain, warmup tool, sending platform</td>
+            <td class="winner-cell"><span class="check">Free</span> — 100 outreaches included</td>
+          </tr>
+          <tr>
+            <td>Domain Reputation Risk</td>
+            <td><span class="cross">High</span> — burned domains are expensive to replace</td>
+            <td class="winner-cell"><span class="check">None</span> — no sending domain required</td>
+          </tr>
+          <tr>
+            <td>Message Personalization</td>
+            <td>Template-based with merge fields</td>
+            <td class="winner-cell">AI-personalized per business</td>
+          </tr>
+          <tr>
+            <td>Human Review Before Send</td>
+            <td><span class="cross">No</span></td>
+            <td class="winner-cell"><span class="check">Yes</span> — required for every submission</td>
+          </tr>
+          <tr>
+            <td>Prospect Database Included</td>
+            <td><span class="cross">No</span> — need a separate data tool</td>
+            <td class="winner-cell"><span class="check">Yes</span> — 2.3M+ businesses included</td>
+          </tr>
+          <tr>
+            <td>Response Tracking</td>
+            <td><span class="check">Yes</span> — open tracking, click tracking, reply detection</td>
+            <td class="winner-cell"><span class="partial">Manual</span> — replies go to your email</td>
+          </tr>
+          <tr>
+            <td>Sequence / Follow-up</td>
+            <td><span class="check">Yes</span> — multi-step sequences are standard</td>
+            <td class="winner-cell"><span class="cross">No</span> — single submission per business</td>
+          </tr>
+          <tr>
+            <td>Best For</td>
+            <td>Scale, sequences, warmer audiences</td>
+            <td class="winner-cell">Cold outreach to local and SMB businesses</td>
+          </tr>
+          <tr>
+            <td>Industry Adoption</td>
+            <td>Mainstream — everyone's doing it</td>
+            <td class="winner-cell">Early adopter advantage — low competition</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- DEEP DIVE: LOYLTY -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Deep Dive</div>
+    <h2 class="reveal">What Is Loylty?</h2>
+    <p class="reveal">Loylty is a contact form outreach platform. Instead of sending emails to addresses in a prospect database, Loylty finds the contact form on a business's own website and submits your message through it. The message lands in whatever inbox the business uses to receive website inquiries — with no spam filter in the path, because it was submitted directly through their own form.</p>
+    <p class="reveal">Here's how a campaign works: you upload a CSV of target businesses (or pull from Loylty's built-in database of 2.3M+ companies), Loylty automatically detects the contact form on each site, maps the form fields, and generates an AI-personalized message for that specific business. Before anything is submitted, you review every single outreach in a review queue. Nothing sends without your approval.</p>
+
+    <h3 class="reveal">Loylty's Strengths</h3>
+    <ul class="reveal">
+      <li><strong>Zero spam filter exposure.</strong> Contact form submissions are routed through the business's own website, not through email servers. Gmail, Outlook, and Google Postmaster have no visibility into this channel.</li>
+      <li><strong>No infrastructure required.</strong> No domain purchase. No DNS configuration. No warmup period. You can start the same day.</li>
+      <li><strong>No domain reputation at risk.</strong> Because you're not sending email, there's no sending domain to burn. Your business email is never used as a sending address.</li>
+      <li><strong>Built-in business database.</strong> Loylty includes a database of 2.3M+ businesses so you don't need to purchase prospect data separately.</li>
+      <li><strong>Human review as a quality gate.</strong> Every submission is reviewed before it's sent. This produces higher-quality outreach and reduces the risk of sending a bad message to a prospect.</li>
+      <li><strong>AI personalization per business.</strong> Messages are generated individually for each target business, not filled from templates with merge fields.</li>
+    </ul>
+
+    <h3 class="reveal">Loylty's Honest Limitations</h3>
+    <ul class="reveal">
+      <li><strong>No sequences.</strong> Loylty sends one submission per business. If there's no reply, there's no automated follow-up.</li>
+      <li><strong>Single submission per business.</strong> Unlike cold email where you can send 3–5 touches to the same contact, Loylty does one touchpoint per company.</li>
+      <li><strong>Lower max volume than cold email at scale.</strong> Cold email platforms can send thousands of emails per day with multiple sending domains. Loylty's Agency plan caps at 500/day.</li>
+      <li><strong>Relies on businesses having working contact forms.</strong> If a target business's form is broken, embedded in a way that's undetectable, or uses an unusual implementation, that submission may not complete.</li>
+      <li><strong>Response tracking is manual.</strong> When a business replies to your contact form submission, that reply goes to whatever email address you provided in the form. There's no built-in reply tracking dashboard.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- DEEP DIVE: COLD EMAIL -->
+<section class="content-section">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Deep Dive</div>
+    <h2 class="reveal">What Is Cold Email?</h2>
+    <p class="reveal">Cold email is sending unsolicited outreach emails to business prospects using their email addresses. It's been the dominant B2B outreach channel for the past decade. The infrastructure is mature: you configure a sending domain, warm it up over 4–6 weeks to build sender reputation, then use a sending platform (Instantly, Lemlist, Smartlead, etc.) to send sequences to your prospect list.</p>
+    <p class="reveal">Cold email's power is in sequences. You can send 3–5 touches to the same contact over 2–3 weeks, testing different subject lines, value propositions, and calls to action. Platforms offer detailed analytics — open rates, click rates, reply rates — that let you optimize over time.</p>
+
+    <h3 class="reveal">Cold Email's Strengths</h3>
+    <ul class="reveal">
+      <li><strong>High volume potential.</strong> With multiple warmed sending domains and inbox rotation, you can send thousands of emails per day.</li>
+      <li><strong>Multi-step sequences.</strong> The ability to follow up automatically over multiple touchpoints is cold email's most powerful feature. Most replies happen on the second or third touch.</li>
+      <li><strong>Mature tooling ecosystem.</strong> Instantly, Lemlist, Smartlead, Woodpecker, and others offer sophisticated sequence builders, A/B testing, analytics, and CRM integrations.</li>
+      <li><strong>Excellent analytics.</strong> Open tracking, click tracking, reply detection, and unsubscribe management are all standard.</li>
+      <li><strong>CRM integration.</strong> Cold email tools integrate directly with HubSpot, Salesforce, Pipedrive, and others, making it easy to sync reply data into your pipeline.</li>
+      <li><strong>Works for any business with an email address.</strong> If you have a contact's email, you can reach them — regardless of whether they have a website.</li>
+    </ul>
+
+    <h3 class="reveal">Cold Email's Honest Limitations</h3>
+    <ul class="reveal">
+      <li><strong>Deliverability is getting harder every year.</strong> Google and Microsoft have aggressively tightened spam filters for cold email since 2023. An estimated 85% of cold B2B email never reaches the primary inbox.</li>
+      <li><strong>Domain infrastructure is expensive and fragile.</strong> Building and maintaining warm sending domains requires time and money. A burned domain takes months to recover or must be replaced entirely.</li>
+      <li><strong>Inbox placement is unpredictable.</strong> Even well-configured sending infrastructure can't guarantee primary inbox placement. Algorithm changes at Gmail and Outlook can tank deliverability overnight.</li>
+      <li><strong>Competition is extremely high.</strong> Every B2B sales team is doing cold email. The average business decision-maker receives dozens of cold emails per day, and most are ignored.</li>
+      <li><strong>Setup time is significant.</strong> The 4–6 week warmup period before you can safely send at volume is a real barrier to getting started quickly.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- WHEN TO CHOOSE -->
+<section class="content-section alt">
+  <div class="content-inner">
+    <div class="section-eyebrow reveal">Decision Guide</div>
+    <h2 class="reveal">When to Choose Each Channel</h2>
+    <p class="reveal">These two channels solve different problems. Here's how to think about when each one wins.</p>
+
+    <div class="two-col reveal">
+      <div class="choice-card loylty-card">
+        <h4 class="grad">Choose Loylty When...</h4>
+        <p>You want to reach businesses without email infrastructure, deliverability risk, or a 6-week warmup period.</p>
+        <ul>
+          <li><strong>You don't want to manage email infrastructure</strong></li>
+          <li><strong>You're targeting local or regional SMBs</strong></li>
+          <li><strong>Your cold email deliverability is struggling</strong></li>
+          <li><strong>You want human review before every outreach</strong></li>
+          <li><strong>You're testing a new offer and want fast signal</strong> without warmup time</li>
+          <li><strong>You need to start today</strong>, not in six weeks</li>
+        </ul>
+      </div>
+      <div class="choice-card">
+        <h4>Choose Cold Email When...</h4>
+        <p>You need sequences, high volume, or are targeting audiences where email is the primary communication channel.</p>
+        <ul>
+          <li><strong>You need multi-step sequences</strong> with automated follow-ups</li>
+          <li><strong>You're reaching SaaS or tech companies</strong> where email is primary</li>
+          <li><strong>You have existing email infrastructure</strong> that's working well</li>
+          <li><strong>You need volume above 500/day</strong></li>
+          <li><strong>You want detailed open and click analytics</strong></li>
+          <li><strong>Your prospects may not have a website</strong> with a contact form</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout reveal">
+      <strong>The case for running both:</strong> Many teams use cold email for sequence volume and Loylty as a third-channel touchpoint for the same prospect list. Different channel, different message, different timing — and one of them bypasses the spam filter entirely.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="section-eyebrow" style="justify-content:center;" aria-hidden="true">Get Started Free</div>
+    <h2 class="reveal">Try Loylty Free</h2>
+    <p class="reveal">No domain needed. No warmup. Start today.</p>
+    <a href="coming-soon.html" class="btn-primary reveal">Get Early Access →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://loylty.io" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p>The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="https://loylty.io#how">How It Works</a>
+      <a href="https://loylty.io#database">Database</a>
+      <a href="https://loylty.io#pricing">Pricing</a>
+      <a href="https://loylty.io#affiliates">Affiliates</a>
+      <a href="coming-soon.html">Log In</a>
+      <a href="coming-soon.html">Get Early Access</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outreach</div>
+      <a href="contact-form-marketing.html">Contact Form Marketing</a>
+      <a href="contact-form-outreach.html">Contact Form Outreach</a>
+      <a href="contact-form-lead-generation.html">Lead Generation</a>
+      <a href="contact-form-automation.html">Form Automation</a>
+      <a href="contact-form-prospecting.html">Form Prospecting</a>
+      <a href="contact-form-campaigns.html">Form Campaigns</a>
+      <a href="contact-form-sales.html">Contact Form Sales</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Compare</div>
+      <a href="loylty-vs-cold-email.html">vs Cold Email</a>
+      <a href="loylty-vs-instantly.html">vs Instantly</a>
+      <a href="loylty-vs-apollo.html">vs Apollo</a>
+      <a href="loylty-vs-clay.html">vs Clay</a>
+      <a href="best-cold-email-alternatives.html">Best Alternatives</a>
+      <a href="best-outreach-software.html">Best Outreach Tools</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="status.html">Status</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav(btn) { btn.classList.toggle('open'); var d=document.getElementById('mobileNav'); d.classList.toggle('open'); }
+function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=document.getElementById('mobileNav'); if(b)b.classList.remove('open'); if(d)d.classList.remove('open'); }
+window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
+(function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
+</script>
+</body>
+</html>

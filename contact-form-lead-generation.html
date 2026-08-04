@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact Form Lead Generation — B2B Lead Gen at Scale | Loylty</title>
+<meta name="description" content="Generate B2B leads by submitting contact forms on business websites. No cold email lists, no spam filters. Loylty automates contact form lead generation." />
+<meta name="keywords" content="contact form lead generation, B2B lead generation, lead gen, outbound lead generation, cold email alternative" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://loylty.io/contact-form-lead-generation" />
+<meta property="og:title" content="Contact Form Lead Generation — B2B Lead Gen at Scale | Loylty" />
+<meta property="og:description" content="Generate B2B leads by submitting contact forms on business websites. No cold email lists, no spam filters. Loylty automates contact form lead generation." />
+<meta property="og:image" content="https://loylty.io/og-image.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --bg2: #080810; --surface: #0e0e1a; --elevated: #141424;
+  --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.13);
+  --accent: #4f8eff; --purple: #8b5cf6; --accent-dim: rgba(79,142,255,0.10);
+  --text: #eef0f8; --muted: #42465e; --mid: #7a86a8;
+  --green: #22c55e; --red: #ef4444; --amber: #f59e0b;
+}
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Work Sans', -apple-system, sans-serif; font-size: 18px; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; padding-top: 76px; }
+.grad { background: linear-gradient(130deg, var(--accent) 20%, var(--purple) 80%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 76px; background: rgba(5,5,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+.logo { font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; display: flex; align-items: center; gap: 11px; }
+.logo-icon { width: 38px; height: 38px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--purple)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 16px rgba(79,142,255,0.4); }
+.logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+nav ul { display: flex; align-items: center; gap: 36px; list-style: none; }
+nav ul a { color: var(--mid); text-decoration: none; font-size: 15px; font-weight: 500; transition: color 0.15s; }
+nav ul a:hover { color: var(--text); }
+.nav-btn { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff !important; padding: 11px 24px; border-radius: 9px; font-weight: 700 !important; font-size: 15px !important; min-height: 44px; display: inline-flex; align-items: center; box-shadow: 0 0 20px rgba(79,142,255,0.45), 0 4px 16px rgba(79,142,255,0.2); transition: transform 0.15s !important; }
+.nav-btn:hover { transform: translateY(-2px) !important; }
+.nav-btn-ghost { color: var(--mid) !important; text-decoration: none; font-size: 15px !important; font-weight: 500 !important; transition: color 0.15s; }
+.nav-btn-ghost:hover { color: var(--text) !important; }
+.nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; flex-shrink: 0; }
+.nav-hamburger span { display: block; height: 2px; border-radius: 2px; background: var(--mid); transition: transform 0.25s, opacity 0.25s; width: 22px; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-mobile-drawer { display: none; position: fixed; top: 76px; left: 0; right: 0; background: rgba(8,8,16,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); z-index: 199; padding: 20px 24px 28px; flex-direction: column; gap: 4px; }
+.nav-mobile-drawer.open { display: flex; }
+.nav-mobile-drawer a { color: var(--mid); text-decoration: none; font-size: 16px; font-weight: 500; padding: 12px 4px; border-bottom: 1px solid var(--border); display: block; transition: color 0.15s; }
+.nav-mobile-drawer a:last-child { border-bottom: none; }
+.nav-mobile-drawer .nav-btn-mobile { margin-top: 12px; background: linear-gradient(135deg, #4f8eff, #7c6fff) !important; color: #fff !important; border-radius: 10px; text-align: center; font-weight: 700 !important; padding: 16px !important; border-bottom: none !important; font-size: 16px !important; }
+.inner { max-width: 1100px; margin: 0 auto; width: 100%; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; }
+.section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; background: var(--accent); }
+.page-hero { padding: 80px 24px 72px; text-align: center; position: relative; overflow: hidden; }
+.page-hero::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 800px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.08) 0%, transparent 65%); pointer-events: none; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(79,142,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(79,142,255,0.03) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.8) 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0,0,0,0.8) 0%, transparent 75%); }
+.page-hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px 5px 8px; border-radius: 100px; background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.22); font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 28px; letter-spacing: 0.02em; }
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.page-hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: -3px; line-height: 1.05; max-width: 900px; margin: 0 auto 24px; }
+.page-hero .lead { font-size: 19px; color: var(--mid); max-width: 680px; margin: 0 auto 40px; line-height: 1.75; }
+.btn-primary { background: linear-gradient(135deg, #4f8eff, #7c6fff); color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 17px; font-weight: 700; text-decoration: none; min-height: 56px; display: inline-flex; align-items: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 0 28px rgba(79,142,255,0.5), 0 8px 32px rgba(79,142,255,0.25); letter-spacing: -0.2px; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 56px rgba(79,142,255,0.7), 0 12px 40px rgba(79,142,255,0.4); }
+.content-section { padding: 80px 24px; }
+.content-section.alt { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.content-inner { max-width: 860px; margin: 0 auto; }
+.content-inner h2 { font-family: 'Outfit', sans-serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; letter-spacing: -2px; line-height: 1.1; margin-bottom: 20px; }
+.content-inner h3 { font-family: 'Outfit', sans-serif; font-size: clamp(22px, 2.5vw, 30px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 14px; margin-top: 40px; }
+.content-inner h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; margin-top: 28px; color: var(--text); }
+.content-inner p { color: var(--mid); line-height: 1.85; margin-bottom: 18px; font-size: 17px; }
+.content-inner p strong { color: var(--text); }
+.content-inner ul, .content-inner ol { color: var(--mid); font-size: 17px; line-height: 1.85; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.content-inner ul li, .content-inner ol li { padding-left: 24px; position: relative; }
+.content-inner ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.content-inner ol { counter-reset: item; }
+.content-inner ol li { counter-increment: item; }
+.content-inner ol li::before { content: counter(item) '.'; position: absolute; left: 0; color: var(--accent); font-weight: 700; font-size: 15px; }
+.content-inner li strong { color: var(--text); }
+.section-divider { border: none; border-top: 1px solid var(--border); margin: 56px 0; }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin: 40px 0; }
+.stat-cell { padding: 32px 24px; text-align: center; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-n { font-family: 'Outfit', sans-serif; font-size: clamp(36px, 4vw, 52px); font-weight: 900; letter-spacing: -2px; color: var(--accent); }
+.stat-l { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.compare-table-wrap { overflow-x: auto; margin: 32px 0; border-radius: 16px; border: 1px solid var(--border); }
+.compare-table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.compare-table th { background: var(--surface); padding: 16px 20px; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; text-align: left; border-bottom: 1px solid var(--border2); color: var(--text); }
+.compare-table th.winner { color: var(--accent); background: rgba(79,142,255,0.06); }
+.compare-table td { padding: 13px 20px; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 14px; color: var(--mid); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(255,255,255,0.015); }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table td:first-child { font-weight: 700; color: var(--text); font-size: 13px; }
+.compare-table td.winner-cell { background: rgba(79,142,255,0.03); color: var(--text); }
+.check { color: var(--green); font-weight: 700; }
+.cross { color: var(--red); }
+.partial { color: var(--amber); }
+.info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin: 32px 0; }
+.info-card h3 { margin-top: 0; }
+.callout { background: rgba(79,142,255,0.05); border: 1px solid rgba(79,142,255,0.2); border-radius: 12px; padding: 20px 24px; margin: 28px 0; font-size: 16px; color: var(--mid); line-height: 1.8; }
+.callout strong { color: var(--text); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: border-color 0.2s, transform 0.2s; }
+.feature-card:hover { border-color: var(--border2); transform: translateY(-3px); }
+.feature-card h4 { margin-top: 0; font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+.feature-card p { font-size: 15px; color: var(--mid); line-height: 1.75; margin: 0; }
+.feature-icon { font-size: 28px; margin-bottom: 16px; }
+.cta-section { padding: 100px 24px; text-align: center; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg) 0%, rgba(79,142,255,0.04) 50%, var(--bg) 100%); }
+.cta-section::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(79,142,255,0.10) 0%, transparent 70%); pointer-events: none; }
+.cta-section::after { content: ''; position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(79,142,255,0.5), rgba(139,92,246,0.5), transparent); }
+.cta-inner { position: relative; z-index: 2; }
+.cta-section h2 { font-family: 'Outfit', sans-serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; letter-spacing: -3px; line-height: 1; margin-bottom: 20px; }
+.cta-section p { color: var(--mid); font-size: 18px; max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
+.footer-top { display: grid; grid-template-columns: 1.8fr 1fr 1.4fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); max-width: 1240px; margin: 0 auto; }
+.footer-brand p { font-size: 15px; color: var(--muted); line-height: 1.8; max-width: 300px; margin-top: 14px; }
+.footer-col { display: flex; flex-direction: column; gap: 12px; }
+.footer-col-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mid); margin-bottom: 6px; }
+.footer-col a { font-size: 15px; color: var(--muted); text-decoration: none; transition: color 0.15s; line-height: 1.5; }
+.footer-col a:hover { color: #f0f2f8; }
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; flex-wrap: wrap; gap: 12px; max-width: 1240px; margin: 0 auto; }
+.footer-bottom p { font-size: 14px; color: var(--muted); }
+.footer-links-row { display: flex; gap: 24px; }
+.footer-links-row a { font-size: 14px; color: var(--muted); text-decoration: none; }
+.footer-links-row a:hover { color: #f0f2f8; }
+@media (max-width: 900px) { footer { padding: 48px 24px 32px; } .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: 1/-1; } }
+@media (max-width: 768px) { nav { padding: 0 24px; height: 68px; } nav ul { display: none; } .nav-hamburger { display: flex; } body { padding-top: 68px; } .page-hero { padding: 60px 24px 48px; } .page-hero h1 { letter-spacing: -2px; } .page-hero .lead { font-size: 17px; } .two-col { grid-template-columns: 1fr; } .stats-row { grid-template-columns: 1fr; } .stat-cell { border-right: none; border-bottom: 1px solid var(--border); } .stat-cell:last-child { border-bottom: none; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://loylty.io">
+    <div class="logo-icon">
+      <svg viewBox="0 0 14 14"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg>
+    </div>
+    Loylty
+  </a>
+  <ul>
+    <li><a href="https://loylty.io#how">How It Works</a></li>
+    <li><a href="https://loylty.io#database">Database</a></li>
+    <li><a href="https://loylty.io#pricing">Pricing</a></li>
+    <li><a href="https://loylty.io#affiliates">Affiliates</a></li>
+    <li><a href="coming-soon.html" class="nav-btn-ghost">Log In</a></li>
+    <li><a href="coming-soon.html" class="nav-btn">Get Early Access →</a></li>
+  </ul>
+  <button class="nav-hamburger" aria-label="Open menu" onclick="toggleMobileNav(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile-drawer" id="mobileNav">
+  <a href="https://loylty.io#how" onclick="closeMobileNav()">How It Works</a>
+  <a href="https://loylty.io#database" onclick="closeMobileNav()">Database</a>
+  <a href="https://loylty.io#pricing" onclick="closeMobileNav()">Pricing</a>
+  <a href="https://loylty.io#affiliates" onclick="closeMobileNav()">Affiliates</a>
+  <a href="coming-soon.html" onclick="closeMobileNav()">Log In</a>
+  <a href="coming-soon.html" class="nav-btn-mobile" onclick="closeMobileNav()">Get Early Access →</a>
+</div>
+
+<section class="page-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="inner reveal">
+    <div class="page-hero-badge"><span class="badge-dot"></span> Fill Your Pipeline</div>
+    <h1>Contact Form Lead Generation:<br><span class="grad">Fill Your Pipeline Without Cold Email</span></h1>
+    <p class="lead">Generate consistent B2B leads by reaching businesses through their own website contact forms. No email infrastructure. No domain warmup. No spam filters. Just replies from businesses who are actually interested.</p>
+    <a href="coming-soon.html" class="btn-primary">Start Generating Leads Free →</a>
+  </div>
+</section>
+
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">The Economics</div>
+    <h2>The Lead Gen Math</h2>
+    <p>Let's compare what it actually costs to generate outbound leads across the three major channels:</p>
+    <p><strong>Cold email infrastructure</strong> runs $100–300/month before you send a single email — dedicated domain, warmup service, sending platform. Then you wait 4–6 weeks to build domain reputation before you can safely send volume. That's two months of cost before your first real campaign.</p>
+    <p><strong>LinkedIn Sales Navigator</strong> costs $100+/month for basic access. You're limited to 20–40 InMails per month, and LinkedIn's engagement rates have declined every year as the platform has become more promotional. To run meaningful outreach volume, you need multiple accounts.</p>
+    <p><strong>Paid ads</strong> on Google or LinkedIn can cost $50–200 per qualified lead in competitive B2B verticals. The leads are warm, but the unit economics are punishing at scale for most small and mid-size teams.</p>
+    <p><strong>Contact form lead generation with Loylty starts at $99/month</strong> with 100 free outreaches to start. No domain to buy. No warmup period. No ad spend. The economics are different because you're using existing infrastructure — every business website you contact has already built and maintains their own contact form.</p>
+
+    <div class="stats-row">
+      <div class="stat-cell">
+        <div class="stat-n">$99</div>
+        <div class="stat-l">starting price per month</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">0 days</div>
+        <div class="stat-l">warmup period required</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-n">100</div>
+        <div class="stat-l">free outreaches to start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Competitive Advantage</div>
+    <h2>Why Contact Form Lead Gen Has Lower Competition</h2>
+    <p>Because contact form outreach at scale requires browser automation technology that hasn't been broadly available until recently, it's a dramatically less competitive channel. Your prospects are not getting 30 contact form inquiries per day the way they're getting 30 cold emails.</p>
+    <p>When your message arrives via their contact form, you're often one of a handful of website inquiries that week — not competing with dozens of cold emails in an already-full inbox. The psychological context of receiving a contact form notification is entirely different from receiving yet another cold email sequence. The business reads it as an inbound inquiry. That framing matters.</p>
+    <div class="callout">
+      <strong>The window is compressing.</strong> As more businesses discover contact form outreach, this channel advantage will narrow. Right now, the saturation level is dramatically lower than email or LinkedIn. Teams running contact form lead generation today are getting the early-mover benefit that cold emailers had in 2015 — before everyone was doing it.
+    </div>
+    <p>This doesn't mean contact form lead gen will stop working when it becomes more common — it means the advantage is greatest right now, and it's worth using before it shrinks. The underlying channel mechanic (businesses responding to contact form inquiries as genuine leads) will persist even as volume increases.</p>
+  </div>
+</section>
+
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Building Your List</div>
+    <h2>Building Your Target List</h2>
+    <p>Contact form lead generation starts with knowing who you want to reach. Loylty gives you three ways to build your target list:</p>
+    <ol>
+      <li><strong>Upload your own CSV.</strong> Any list of businesses with website URLs works. Loylty maps your columns intelligently — business name, website URL, location, industry. If you already have a prospect list, you can import it directly and start running campaigns within minutes.</li>
+      <li><strong>Use Loylty's built-in prospect database.</strong> Search by business category, city, and state to find businesses ready to contact. 2.3M+ businesses indexed and searchable. Target "fence contractors in Texas" or "HVAC companies in Florida" and get a verified list ready for your campaign — no separate lead list purchase required.</li>
+      <li><strong>Combine both approaches.</strong> Import a curated list of your highest-priority targets and supplement with database searches to fill in volume. Many users run a core list of hand-picked prospects alongside a broader database campaign in the same niche.</li>
+    </ol>
+    <p>The database is particularly valuable for local business targeting. You can filter by city, state, and industry to find exactly the type of business you're looking for — whether that's "roofing companies in Arizona" or "law firms in Chicago" — and build a campaign-ready list in under five minutes.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Messaging</div>
+    <h2>Writing Messages That Get Responses</h2>
+    <p>The biggest mistake in contact form lead generation is sending generic messages. <em>"Hi, I have a service that could help your business grow"</em> lands flat regardless of what channel it arrives through. Generic copy is the fastest way to generate zero responses from an otherwise effective channel.</p>
+    <p><strong>What actually works:</strong></p>
+    <ul>
+      <li><strong>Specificity about their industry.</strong> Mention something relevant to their specific type of business — their niche, their common challenges, or their typical customer. Loylty's AI reads each business's website and incorporates relevant details automatically.</li>
+      <li><strong>A concrete and believable offer.</strong> Vague offers get ignored. "I can help you get more leads" means nothing. "We help roofing companies book 10–15 additional estimates per month through contact form outreach" means something.</li>
+      <li><strong>A clear and low-friction ask.</strong> Don't ask for a 30-minute call in your first message. Ask for something smaller: "I'd love to send you our pricing guide" or "Do you have 5 minutes this week to hear one specific idea?"</li>
+      <li><strong>3–5 sentences total.</strong> Short messages get read. Long messages get skimmed or ignored. Every sentence should earn its place.</li>
+      <li><strong>Your real contact information.</strong> Include your name, company, and a real email address so they can reply directly. Contact form responses go back to your email — you want to make it easy for them to reach you.</li>
+    </ul>
+    <p>The review queue in Loylty is your quality control layer. If a generated message looks generic, reject it and adjust your template. Over time, you'll develop a clear picture of which message angles perform best for your specific niche and offer.</p>
+  </div>
+</section>
+
+<section class="content-section alt">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Quality Control</div>
+    <h2>The Review-Before-Submit Workflow</h2>
+    <p>Every submission Loylty prepares goes into a review queue before it sends. You see the generated message, the target business, and the mapped form fields. You approve or reject each one. <strong>Nothing reaches a real business without your explicit approval.</strong></p>
+    <p>This quality control layer is what separates Loylty from spam. You're not blindly blasting thousands of generic messages — you're reviewing each outreach before it reaches a real business. The review step takes about 15–30 seconds per submission. At 50 submissions per day, that's under 25 minutes of review time — and you end the day confident that every message you sent was something you'd be comfortable with as a business owner receiving it.</p>
+
+    <div class="two-col">
+      <div class="feature-card">
+        <div class="feature-icon">👁</div>
+        <h4>Full Visibility</h4>
+        <p>See the exact message, the target business, and the mapped form fields before anything sends. No surprises, no unknowns.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h4>Approve or Reject</h4>
+        <p>One click to approve a great message. One click to reject and regenerate. Full control over what reaches real businesses.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h4>Improving Over Time</h4>
+        <p>The review process teaches you what works. You learn which messages get approved, which industries respond, which message angles land.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <h4>Brand Protection</h4>
+        <p>Your name and contact info are on every submission. The review queue ensures you'd be comfortable receiving each message yourself.</p>
+      </div>
+    </div>
+
+    <p>This also means your data gets better over time. You learn which messages get approved at a high rate, which businesses get the best responses, and which industries are most receptive to your specific offer. That learning compounds.</p>
+  </div>
+</section>
+
+<section class="content-section">
+  <div class="content-inner reveal">
+    <div class="section-eyebrow">Growing Your Campaign</div>
+    <h2>Scaling Up: From 10 to 500 Submissions Per Day</h2>
+    <p>Contact form lead generation rewards a methodical scaling approach. The teams that see the best results don't start at max volume — they build up deliberately, learning at each stage.</p>
+    <p><strong>Stage 1: Calibration (10–25/day).</strong> Start here while you dial in your messaging and targeting. Review every single submission. Reject anything that looks generic or off-target. When you're seeing consistent approvals and your first replies coming in, you're ready to scale.</p>
+    <p><strong>Stage 2: Scaling (50–100/day).</strong> At this volume, patterns start to emerge. Which industries respond most? Which message formats work? Which regions or business types are most receptive? Use these insights to sharpen your targeting and messaging before pushing further.</p>
+    <p><strong>Stage 3: Full throughput (200–500/day).</strong> At this stage, you have a refined playbook. Your message templates are proven, your target criteria are sharp, and you're generating consistent pipeline from contact form outreach as a primary channel.</p>
+
+    <div class="callout">
+      <strong>Plan guidance:</strong> The Starter plan (100 submissions/day) is enough to generate meaningful pipeline for most individual sales reps, consultants, and small agencies. The Pro plan (200/day) suits teams running multiple campaigns. The Agency plan (500/day) is for teams running contact form lead gen as a primary outbound channel across multiple clients or verticals.
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2>Start Generating Leads <span class="grad">Free</span></h2>
+    <p>First 100 outreaches included. No credit card. No domain to configure. Your first campaign can be live today.</p>
+    <a href="coming-soon.html" class="btn-primary">Get Early Access →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="https://loylty.io" style="display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;letter-spacing:-0.3px;text-decoration:none;color:#f0f2f8;">
+        <div class="logo-icon" style="width:28px;height:28px;flex-shrink:0;"><svg viewBox="0 0 14 14" fill="white"><path d="M1 3h12v2H1zM1 7h8v2H1zM1 11h5v2H1z"/></svg></div>
+        Loylty
+      </a>
+      <p>The third outreach channel for agencies and B2B sales teams. Reaches businesses through their own contact forms — the inbox that never has a spam folder.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Platform</div>
+      <a href="https://loylty.io#how">How It Works</a>
+      <a href="https://loylty.io#database">Database</a>
+      <a href="https://loylty.io#pricing">Pricing</a>
+      <a href="https://loylty.io#affiliates">Affiliates</a>
+      <a href="coming-soon.html">Log In</a>
+      <a href="coming-soon.html">Get Early Access</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Outreach</div>
+      <a href="contact-form-marketing.html">Contact Form Marketing</a>
+      <a href="contact-form-outreach.html">Contact Form Outreach</a>
+      <a href="contact-form-lead-generation.html">Lead Generation</a>
+      <a href="contact-form-automation.html">Form Automation</a>
+      <a href="contact-form-prospecting.html">Form Prospecting</a>
+      <a href="contact-form-campaigns.html">Form Campaigns</a>
+      <a href="contact-form-sales.html">Contact Form Sales</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-label">Compare</div>
+      <a href="loylty-vs-cold-email.html">vs Cold Email</a>
+      <a href="loylty-vs-instantly.html">vs Instantly</a>
+      <a href="loylty-vs-apollo.html">vs Apollo</a>
+      <a href="loylty-vs-clay.html">vs Clay</a>
+      <a href="best-cold-email-alternatives.html">Best Alternatives</a>
+      <a href="best-outreach-software.html">Best Outreach Tools</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Loylty. All rights reserved.</p>
+    <div class="footer-links-row">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="support.html">Support</a>
+      <a href="status.html">Status</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleMobileNav(btn) { btn.classList.toggle('open'); var d=document.getElementById('mobileNav'); d.classList.toggle('open'); }
+function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=document.getElementById('mobileNav'); if(b)b.classList.remove('open'); if(d)d.classList.remove('open'); }
+window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
+(function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
+</script>
+</body>
+</html>
