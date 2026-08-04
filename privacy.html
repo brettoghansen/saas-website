@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Loylty</title>
+  <meta name="description" content="Privacy Policy for Loylty by Industry Registry Network LLC. Learn how we collect, use, and protect your information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c14;
+      --bg-surface:#0f172a;
+      --bg-card:   #141e30;
+      --bg-code:   #0a0f1a;
+      --border:    rgba(255,255,255,0.07);
+      --border-mid:rgba(255,255,255,0.12);
+      --text:      #e8edf5;
+      --text-muted:#6b7a99;
+      --text-dim:  #94a3b8;
+      --accent:    #4f8eff;
+      --accent2:   #6a5acd;
+      --success:   #22c55e;
+      --warning:   #f59e0b;
+      --danger:    #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 58px;
+      background: rgba(8,12,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 28px;
+      gap: 24px;
+    }
+    .topbar-logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #4f8eff, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .topbar-divider { width: 1px; height: 20px; background: var(--border-mid); }
+    .topbar-label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links { margin-left: auto; display: flex; gap: 20px; }
+    .topbar-links a { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links a:hover { color: var(--text); text-decoration: none; }
+    .topbar-cta {
+      background: linear-gradient(135deg, #4f8eff, #6a5acd);
+      color: #fff !important;
+      padding: 7px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      margin-top: 58px;
+      min-height: calc(100vh - 58px);
+      padding: 52px 24px 100px;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      margin-bottom: 52px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: 34px; font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.2; margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 40%, #94a3b8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-hero .meta {
+      font-size: 13px; color: var(--text-muted);
+    }
+
+    /* ── Sections ── */
+    .doc-section {
+      margin-bottom: 48px;
+      scroll-margin-top: 80px;
+    }
+
+    h2 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+      margin-bottom: 12px; margin-top: 0;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 8px; margin-top: 0;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 14px; color: var(--text-dim); }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 10px 0 14px 20px;
+      color: var(--text-dim);
+    }
+    ul li { margin-bottom: 6px; line-height: 1.65; }
+
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    .callout {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { color: var(--text-dim); line-height: 1.6; }
+    .callout-body strong { color: var(--text); }
+    .callout-tip  { background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.2); }
+    .callout-good { background: rgba(34,197,94,0.08);  border: 1px solid rgba(34,197,94,0.2); }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc ol {
+      margin: 0; padding-left: 20px;
+      color: var(--text-dim);
+    }
+    .toc ol li { margin-bottom: 4px; font-size: 14px; }
+    .toc ol li a { color: var(--accent); }
+
+    /* ── Footer ── */
+    .page-footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .page-footer a { color: var(--text-muted); }
+    .page-footer a:hover { color: var(--text); }
+
+    @media (max-width: 700px) {
+      .topbar-label { display: none; }
+      .topbar-links a:not(.topbar-cta) { display: none; }
+      .page-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<nav class="topbar">
+  <a class="topbar-logo" href="https://loylty.io">Loylty</a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-label">Privacy Policy</span>
+  <div class="topbar-links">
+    <a href="https://loylty.io">Home</a>
+    <a href="https://loylty.io/#pricing">Pricing</a>
+    <a href="https://app.loylty.io" class="topbar-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="content">
+
+    <div class="page-hero">
+      <div class="page-hero-eyebrow">Legal</div>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Industry Registry Network LLC &nbsp;·&nbsp; Effective August 4, 2026</p>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#information-we-collect">Information We Collect</a></li>
+        <li><a href="#how-we-use">How We Use Your Information</a></li>
+        <li><a href="#third-party-services">Third-Party Services</a></li>
+        <li><a href="#data-retention">Data Retention</a></li>
+        <li><a href="#gdpr">Your Rights (GDPR)</a></li>
+        <li><a href="#ccpa">Your Rights (CCPA)</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#childrens-privacy">Children's Privacy</a></li>
+        <li><a href="#data-security">Data Security</a></li>
+        <li><a href="#changes">Changes to This Policy</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Introduction -->
+    <section class="doc-section" id="introduction">
+      <h2>1. Introduction</h2>
+      <p>Industry Registry Network LLC ("Company", "we", "us", or "our") operates Loylty, a B2B outreach automation platform accessible at <a href="https://loylty.io" target="_blank">loylty.io</a> and <a href="https://app.loylty.io" target="_blank">app.loylty.io</a>. This Privacy Policy explains what information we collect when you use Loylty, how we use it, who we share it with, and what choices you have.</p>
+      <p>By creating an account or using Loylty, you agree to the collection and use of information in accordance with this policy. If you do not agree with any part of this policy, do not use the service.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 2. Information We Collect -->
+    <section class="doc-section" id="information-we-collect">
+      <h2>2. Information We Collect</h2>
+
+      <h3>Account Information</h3>
+      <p>When you register for a Loylty account, we collect your name, email address, and password. Passwords are hashed using bcrypt before storage — we never store your password in plain text and cannot read it.</p>
+
+      <h3>Google OAuth</h3>
+      <p>If you choose to sign in using Google, we receive your name and email address from Google. We do not receive your Google password or any other Google account data beyond what is needed to create and authenticate your Loylty account.</p>
+
+      <h3>Usage Data</h3>
+      <p>We collect information about how you use the platform, including:</p>
+      <ul>
+        <li>Campaigns created, modified, and deleted</li>
+        <li>Records imported and processed</li>
+        <li>Sender profiles configured</li>
+        <li>Activity logs and submission history</li>
+        <li>Feature interactions and page views within the application</li>
+      </ul>
+
+      <h3>Payment Information</h3>
+      <p>All payment processing is handled by Stripe. When you enter billing information, it goes directly to Stripe — we never see or store your card number, CVV, or full billing address. We do receive and store a Stripe customer ID and subscription status to manage your plan.</p>
+
+      <h3>Communications</h3>
+      <p>If you email us at support@loylty.io or contact us through any other channel, we retain those communications to help resolve your inquiry and improve the service.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 3. How We Use -->
+    <section class="doc-section" id="how-we-use">
+      <h2>3. How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li><strong>Provide the service</strong> — operate your account, process campaigns, deliver features, and maintain the platform.</li>
+        <li><strong>Improve the service</strong> — analyze usage patterns to understand what's working and prioritize product improvements.</li>
+        <li><strong>Send transactional emails</strong> — deliver welcome emails, password reset instructions, billing confirmations, and service notifications. We do not send marketing emails unless you opt in.</li>
+        <li><strong>Prevent fraud and abuse</strong> — detect patterns that suggest unauthorized access, misuse of the platform, or violation of our Terms of Service.</li>
+        <li><strong>Comply with legal obligations</strong> — retain billing records, respond to lawful requests from government authorities, and enforce our agreements.</li>
+      </ul>
+      <p>We do not sell your personal information, use it to build advertising profiles, or share it with third parties for their marketing purposes.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 4. Third-Party Services -->
+    <section class="doc-section" id="third-party-services">
+      <h2>4. Third-Party Services We Use</h2>
+      <p>We rely on the following third-party providers to operate Loylty. Each has its own privacy practices governing your data:</p>
+      <ul>
+        <li><strong>Stripe</strong> — Payment processing. Stripe handles all credit card transactions. Privacy policy: <a href="https://stripe.com/privacy" target="_blank">stripe.com/privacy</a></li>
+        <li><strong>Brevo (formerly Sendinblue)</strong> — Transactional email delivery (welcome emails, password resets, billing notifications). Privacy policy: <a href="https://www.brevo.com/legal/privacypolicy/" target="_blank">brevo.com/legal/privacypolicy</a></li>
+        <li><strong>Google OAuth</strong> — Optional sign-in via Google. If you use this feature, Google's privacy practices apply. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+        <li><strong>Supabase</strong> — Database infrastructure for storing prospect records and campaign data. Privacy policy: <a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a></li>
+        <li><strong>Hetzner Online</strong> — Server hosting (EU-based data centers). Privacy policy: <a href="https://www.hetzner.com/legal/privacy-policy" target="_blank">hetzner.com/legal/privacy-policy</a></li>
+      </ul>
+      <p>We select providers that meet appropriate data security standards and, where required, execute data processing agreements with them.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 5. Data Retention -->
+    <section class="doc-section" id="data-retention">
+      <h2>5. Data Retention</h2>
+      <p>We retain your account data for as long as your account is active. If you cancel your account, your data is retained for 30 days and then deleted, giving you time to retrieve anything you need.</p>
+      <p>You may request deletion of your account and associated data at any time by emailing <a href="mailto:support@loylty.io">support@loylty.io</a>. We will process your request within 30 days.</p>
+      <p>Billing records — invoices, payment history, and subscription records — are retained for 7 years as required by applicable accounting and tax law, regardless of account status.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 6. GDPR -->
+    <section class="doc-section" id="gdpr">
+      <h2>6. Your Rights (GDPR)</h2>
+      <p>If you are located in the European Economic Area (EEA), you have the following rights regarding your personal data under the General Data Protection Regulation:</p>
+      <ul>
+        <li><strong>Right of access</strong> — You may request a copy of the personal data we hold about you.</li>
+        <li><strong>Right to rectification</strong> — You may request that we correct any inaccurate or incomplete data.</li>
+        <li><strong>Right to erasure ("right to be forgotten")</strong> — You may request that we delete your personal data, subject to legal retention requirements.</li>
+        <li><strong>Right to data portability</strong> — You may request your data in a structured, machine-readable format so you can transfer it to another service.</li>
+        <li><strong>Right to object</strong> — You may object to processing of your personal data where we rely on legitimate interests as the legal basis.</li>
+        <li><strong>Right to restrict processing</strong> — In certain circumstances, you may request that we limit how we use your data.</li>
+      </ul>
+      <p>To exercise any of these rights, email <a href="mailto:support@loylty.io">support@loylty.io</a>. We will respond within 30 days. You also have the right to lodge a complaint with your local data protection authority.</p>
+      <p>Our legal basis for processing your data is contract performance (providing the service you signed up for), legitimate interests (security, fraud prevention, service improvement), and legal obligation (billing record retention).</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 7. CCPA -->
+    <section class="doc-section" id="ccpa">
+      <h2>7. Your Rights (CCPA)</h2>
+      <p>California residents have the following rights under the California Consumer Privacy Act:</p>
+      <ul>
+        <li><strong>Right to know</strong> — You may request details about the categories and specific pieces of personal information we have collected about you in the past 12 months.</li>
+        <li><strong>Right to delete</strong> — You may request deletion of personal information we have collected from you, subject to certain exceptions.</li>
+        <li><strong>Right to opt out of sale</strong> — We do not sell personal information. There is nothing to opt out of.</li>
+        <li><strong>Right to non-discrimination</strong> — We will not discriminate against you for exercising your privacy rights.</li>
+      </ul>
+      <p>To submit a CCPA request, email <a href="mailto:support@loylty.io">support@loylty.io</a> with the subject line "CCPA Request." We will respond within 45 days.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 8. Cookies -->
+    <section class="doc-section" id="cookies">
+      <h2>8. Cookies</h2>
+      <p>Loylty uses essential cookies to keep you signed in. Specifically, we store a session token in a cookie so your browser remains authenticated between visits. This cookie is required for the application to function — without it, you would be logged out on every page load.</p>
+      <p>We do not use tracking cookies, advertising cookies, or third-party analytics cookies. We do not use cookies to build behavioral profiles or share any data with ad networks.</p>
+      <p>You can configure your browser to block or delete cookies. Blocking our session cookie will prevent you from staying logged in to Loylty, but will not affect your ability to browse our marketing pages.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 9. Children's Privacy -->
+    <section class="doc-section" id="childrens-privacy">
+      <h2>9. Children's Privacy</h2>
+      <p>Loylty is a business-to-business software platform intended for use by adults running commercial operations. It is not directed to children under the age of 13, and we do not knowingly collect personal information from anyone under 13.</p>
+      <p>If you believe we have inadvertently collected information from a child under 13, please contact us at <a href="mailto:support@loylty.io">support@loylty.io</a> and we will delete it promptly.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 10. Data Security -->
+    <section class="doc-section" id="data-security">
+      <h2>10. Data Security</h2>
+      <p>We take the security of your data seriously and employ the following measures:</p>
+      <ul>
+        <li><strong>Encryption in transit</strong> — All data transmitted between your browser and our servers is encrypted using HTTPS/TLS.</li>
+        <li><strong>Password hashing</strong> — Passwords are hashed using bcrypt with a strong work factor. We cannot recover your password — only reset it.</li>
+        <li><strong>Access controls</strong> — Access to production systems is restricted to authorized personnel only.</li>
+        <li><strong>Infrastructure security</strong> — Our servers are hosted at Hetzner Online, which maintains SOC 2 equivalent physical and network security controls.</li>
+      </ul>
+      <p>No security system is perfect, and we cannot guarantee the absolute security of your data. In the event of a data breach that affects your personal information, we will notify you via email within 72 hours of becoming aware of it, in compliance with applicable breach notification laws.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 11. Changes -->
+    <section class="doc-section" id="changes">
+      <h2>11. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time as our practices change or as required by law. When we make material changes, we will notify you by sending an email to the address on file for your account and by posting a prominent notice on the site.</p>
+      <p>Changes take effect on the effective date stated at the top of the updated policy. Continued use of Loylty after that date constitutes your acceptance of the updated policy.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 12. Contact -->
+    <section class="doc-section" id="contact">
+      <h2>12. Contact</h2>
+      <p>If you have questions about this Privacy Policy or want to exercise any of your rights, please contact us:</p>
+      <div class="callout callout-tip">
+        <span class="callout-icon">✉️</span>
+        <div class="callout-body">
+          <strong>Industry Registry Network LLC</strong><br />
+          State of Florida<br />
+          Email: <a href="mailto:support@loylty.io">support@loylty.io</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <span>© 2026 Industry Registry Network LLC</span>
+      <span>
+        <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+        <a href="support.html">Support</a> &nbsp;·&nbsp;
+        <a href="https://loylty.io">loylty.io</a>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

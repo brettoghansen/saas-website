@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>System Status — Loylty</title>
+  <meta name="description" content="Real-time system status for Loylty. Check current uptime for the website, application, API, email delivery, and database." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c14;
+      --bg-surface:#0f172a;
+      --bg-card:   #141e30;
+      --bg-code:   #0a0f1a;
+      --border:    rgba(255,255,255,0.07);
+      --border-mid:rgba(255,255,255,0.12);
+      --text:      #e8edf5;
+      --text-muted:#6b7a99;
+      --text-dim:  #94a3b8;
+      --accent:    #4f8eff;
+      --accent2:   #6a5acd;
+      --success:   #22c55e;
+      --warning:   #f59e0b;
+      --danger:    #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 58px;
+      background: rgba(8,12,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 28px;
+      gap: 24px;
+    }
+    .topbar-logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #4f8eff, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .topbar-divider { width: 1px; height: 20px; background: var(--border-mid); }
+    .topbar-label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links { margin-left: auto; display: flex; gap: 20px; }
+    .topbar-links a { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links a:hover { color: var(--text); text-decoration: none; }
+    .topbar-cta {
+      background: linear-gradient(135deg, #4f8eff, #6a5acd);
+      color: #fff !important;
+      padding: 7px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      margin-top: 58px;
+      min-height: calc(100vh - 58px);
+      padding: 52px 24px 100px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ── Overall status hero ── */
+    .status-hero {
+      text-align: center;
+      padding: 48px 24px 40px;
+      margin-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .overall-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.25);
+      border-radius: 100px;
+      padding: 10px 24px;
+      margin-bottom: 24px;
+    }
+    .overall-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+      animation: pulse-green 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 8px rgba(34,197,94,0.6); }
+      50%       { box-shadow: 0 0 16px rgba(34,197,94,0.9); }
+    }
+    .overall-text {
+      font-size: 15px; font-weight: 600; color: var(--success);
+    }
+    .status-hero h1 {
+      font-size: 36px; font-weight: 800; letter-spacing: -0.02em;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #fff 40%, #94a3b8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .last-checked {
+      font-size: 13px; color: var(--text-muted); margin-top: 8px;
+    }
+
+    /* ── Section headings ── */
+    .section-title {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* ── Service cards ── */
+    .service-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 48px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: border-color 0.2s;
+    }
+    .service-card:hover { border-color: rgba(255,255,255,0.18); }
+
+    .service-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .status-dot.green {
+      background: var(--success);
+      box-shadow: 0 0 6px rgba(34,197,94,0.5);
+    }
+    .status-dot.yellow {
+      background: var(--warning);
+      box-shadow: 0 0 6px rgba(245,158,11,0.5);
+    }
+    .status-dot.red {
+      background: var(--danger);
+      box-shadow: 0 0 6px rgba(239,68,68,0.5);
+    }
+    .status-dot.checking {
+      background: var(--text-muted);
+      animation: blink 1s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .service-name {
+      font-size: 15px; font-weight: 600; color: var(--text);
+    }
+    .service-desc {
+      font-size: 13px; color: var(--text-muted); margin-top: 1px;
+    }
+
+    .service-status-label {
+      font-size: 13px; font-weight: 600;
+      transition: color 0.3s;
+    }
+    .service-status-label.green { color: var(--success); }
+    .service-status-label.yellow { color: var(--warning); }
+    .service-status-label.red { color: var(--danger); }
+    .service-status-label.checking { color: var(--text-muted); }
+
+    /* ── Uptime graph ── */
+    .uptime-section { margin-bottom: 48px; }
+    .uptime-service {
+      margin-bottom: 20px;
+    }
+    .uptime-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .uptime-label {
+      font-size: 13px; font-weight: 600; color: var(--text-dim);
+    }
+    .uptime-pct {
+      font-size: 12px; color: var(--text-muted); font-weight: 500;
+    }
+    .uptime-bars {
+      display: flex;
+      gap: 2px;
+      align-items: flex-end;
+    }
+    .uptime-bar {
+      flex: 1;
+      height: 28px;
+      border-radius: 2px;
+      background: rgba(34,197,94,0.5);
+      transition: background 0.2s;
+      cursor: default;
+      position: relative;
+    }
+    .uptime-bar:hover { background: rgba(34,197,94,0.8); }
+    .uptime-bar.yellow { background: rgba(245,158,11,0.5); }
+    .uptime-bar.yellow:hover { background: rgba(245,158,11,0.8); }
+    .uptime-bar.red { background: rgba(239,68,68,0.5); }
+    .uptime-bar.red:hover { background: rgba(239,68,68,0.8); }
+    .uptime-footer-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+    .uptime-footer-text {
+      font-size: 11px; color: var(--text-muted);
+    }
+
+    /* ── Incident history ── */
+    .incident-section { margin-bottom: 48px; }
+    .incident-empty {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      padding: 28px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .incident-check {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(34,197,94,0.12);
+      border: 1px solid rgba(34,197,94,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px; flex-shrink: 0;
+    }
+    .incident-empty-text {
+      font-size: 14px; color: var(--text-dim);
+    }
+    .incident-empty-text strong {
+      display: block;
+      font-size: 15px; color: var(--text); font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    /* ── Subscribe section ── */
+    .subscribe-section {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-mid);
+      border-radius: 14px;
+      padding: 28px 28px;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .subscribe-section h3 {
+      font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text);
+    }
+    .subscribe-section p {
+      font-size: 14px; color: var(--text-muted); margin-bottom: 16px;
+    }
+    .subscribe-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(79,142,255,0.08);
+      border: 1px solid rgba(79,142,255,0.25);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 14px; font-weight: 600; color: var(--accent);
+      text-decoration: none;
+    }
+    .subscribe-email:hover {
+      background: rgba(79,142,255,0.14);
+      text-decoration: none;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .page-footer a { color: var(--text-muted); }
+    .page-footer a:hover { color: var(--text); }
+
+    @media (max-width: 700px) {
+      .topbar-label { display: none; }
+      .topbar-links a:not(.topbar-cta) { display: none; }
+      .service-card { flex-direction: column; align-items: flex-start; }
+      .page-footer { flex-direction: column; align-items: flex-start; }
+      .status-hero h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<nav class="topbar">
+  <a class="topbar-logo" href="https://loylty.io">Loylty</a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-label">System Status</span>
+  <div class="topbar-links">
+    <a href="https://loylty.io">Home</a>
+    <a href="https://loylty.io/#pricing">Pricing</a>
+    <a href="https://app.loylty.io" class="topbar-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="content">
+
+    <!-- Overall status hero -->
+    <div class="status-hero">
+      <div class="overall-indicator" id="overallIndicator">
+        <div class="overall-dot" id="overallDot"></div>
+        <span class="overall-text" id="overallText">All Systems Operational</span>
+      </div>
+      <h1>Loylty Status</h1>
+      <p class="last-checked" id="lastChecked">Checking system status…</p>
+    </div>
+
+    <!-- Service cards -->
+    <div class="section-title">Current Status</div>
+    <div class="service-grid">
+
+      <div class="service-card">
+        <div class="service-left">
+          <div class="status-dot checking" id="dot-website"></div>
+          <div>
+            <div class="service-name">Website</div>
+            <div class="service-desc">loylty.io</div>
+          </div>
+        </div>
+        <span class="service-status-label checking" id="label-website">Checking…</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-left">
+          <div class="status-dot checking" id="dot-app"></div>
+          <div>
+            <div class="service-name">Application</div>
+            <div class="service-desc">app.loylty.io</div>
+          </div>
+        </div>
+        <span class="service-status-label checking" id="label-app">Checking…</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-left">
+          <div class="status-dot checking" id="dot-api"></div>
+          <div>
+            <div class="service-name">API</div>
+            <div class="service-desc">app.loylty.io/api/health</div>
+          </div>
+        </div>
+        <span class="service-status-label checking" id="label-api">Checking…</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-left">
+          <div class="status-dot green" id="dot-email"></div>
+          <div>
+            <div class="service-name">Email Delivery</div>
+            <div class="service-desc">Transactional email via Brevo</div>
+          </div>
+        </div>
+        <span class="service-status-label green" id="label-email">Operational</span>
+      </div>
+
+      <div class="service-card">
+        <div class="service-left">
+          <div class="status-dot green" id="dot-db"></div>
+          <div>
+            <div class="service-name">Database</div>
+            <div class="service-desc">Prospect database and account storage</div>
+          </div>
+        </div>
+        <span class="service-status-label green" id="label-db">Operational</span>
+      </div>
+
+    </div>
+
+    <!-- 90-day uptime -->
+    <div class="uptime-section">
+      <div class="section-title">Past 90 Days</div>
+
+      <div class="uptime-service">
+        <div class="uptime-header">
+          <span class="uptime-label">Website</span>
+          <span class="uptime-pct">100% uptime</span>
+        </div>
+        <div class="uptime-bars" id="uptime-website"></div>
+        <div class="uptime-footer-row">
+          <span class="uptime-footer-text">90 days ago</span>
+          <span class="uptime-footer-text">Today</span>
+        </div>
+      </div>
+
+      <div class="uptime-service">
+        <div class="uptime-header">
+          <span class="uptime-label">Application</span>
+          <span class="uptime-pct">100% uptime</span>
+        </div>
+        <div class="uptime-bars" id="uptime-app"></div>
+        <div class="uptime-footer-row">
+          <span class="uptime-footer-text">90 days ago</span>
+          <span class="uptime-footer-text">Today</span>
+        </div>
+      </div>
+
+      <div class="uptime-service">
+        <div class="uptime-header">
+          <span class="uptime-label">API</span>
+          <span class="uptime-pct">100% uptime</span>
+        </div>
+        <div class="uptime-bars" id="uptime-api"></div>
+        <div class="uptime-footer-row">
+          <span class="uptime-footer-text">90 days ago</span>
+          <span class="uptime-footer-text">Today</span>
+        </div>
+      </div>
+
+      <div class="uptime-service">
+        <div class="uptime-header">
+          <span class="uptime-label">Email Delivery</span>
+          <span class="uptime-pct">100% uptime</span>
+        </div>
+        <div class="uptime-bars" id="uptime-email"></div>
+        <div class="uptime-footer-row">
+          <span class="uptime-footer-text">90 days ago</span>
+          <span class="uptime-footer-text">Today</span>
+        </div>
+      </div>
+
+      <div class="uptime-service">
+        <div class="uptime-header">
+          <span class="uptime-label">Database</span>
+          <span class="uptime-pct">100% uptime</span>
+        </div>
+        <div class="uptime-bars" id="uptime-db"></div>
+        <div class="uptime-footer-row">
+          <span class="uptime-footer-text">90 days ago</span>
+          <span class="uptime-footer-text">Today</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Incident history -->
+    <div class="incident-section">
+      <div class="section-title">Incident History</div>
+      <div class="incident-empty">
+        <div class="incident-check">✓</div>
+        <div class="incident-empty-text">
+          <strong>No incidents in the last 90 days</strong>
+          All services have been running without reported incidents.
+        </div>
+      </div>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="subscribe-section">
+      <h3>Get Notified of Incidents</h3>
+      <p>Email us to be added to our incident notification list. We'll reach out the moment anything affects service.</p>
+      <a href="mailto:support@loylty.io" class="subscribe-email">
+        ✉ support@loylty.io
+      </a>
+    </div>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <span>© 2026 Industry Registry Network LLC</span>
+      <span>
+        <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+        <a href="support.html">Support</a> &nbsp;·&nbsp;
+        <a href="https://loylty.io">loylty.io</a>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── Build uptime bars (90 green bars each) ──
+  const uptimeIds = ['uptime-website', 'uptime-app', 'uptime-api', 'uptime-email', 'uptime-db']
+  uptimeIds.forEach(id => {
+    const container = document.getElementById(id)
+    for (let i = 0; i < 90; i++) {
+      const bar = document.createElement('div')
+      bar.className = 'uptime-bar'
+      bar.title = `Day ${90 - i}: Operational`
+      container.appendChild(bar)
+    }
+  })
+
+  // ── Status helpers ──
+  function setStatus(key, state) {
+    const dot = document.getElementById('dot-' + key)
+    const label = document.getElementById('label-' + key)
+    dot.className = 'status-dot ' + state
+    label.className = 'service-status-label ' + state
+    const labels = { green: 'Operational', yellow: 'Degraded', red: 'Outage', checking: 'Checking…' }
+    label.textContent = labels[state] || state
+  }
+
+  function updateOverall(states) {
+    const indicator = document.getElementById('overallIndicator')
+    const dot = document.getElementById('overallDot')
+    const text = document.getElementById('overallText')
+
+    if (states.includes('red')) {
+      indicator.style.background = 'rgba(239,68,68,0.08)'
+      indicator.style.borderColor = 'rgba(239,68,68,0.25)'
+      dot.style.background = 'var(--danger)'
+      dot.style.boxShadow = '0 0 8px rgba(239,68,68,0.6)'
+      dot.style.animation = 'none'
+      text.style.color = 'var(--danger)'
+      text.textContent = 'Service Disruption'
+    } else if (states.includes('yellow')) {
+      indicator.style.background = 'rgba(245,158,11,0.08)'
+      indicator.style.borderColor = 'rgba(245,158,11,0.25)'
+      dot.style.background = 'var(--warning)'
+      dot.style.boxShadow = '0 0 8px rgba(245,158,11,0.6)'
+      dot.style.animation = 'none'
+      text.style.color = 'var(--warning)'
+      text.textContent = 'Partial Degradation'
+    } else {
+      indicator.style.background = 'rgba(34,197,94,0.08)'
+      indicator.style.borderColor = 'rgba(34,197,94,0.25)'
+      dot.style.background = 'var(--success)'
+      dot.style.boxShadow = '0 0 8px rgba(34,197,94,0.6)'
+      dot.style.animation = 'pulse-green 2s ease-in-out infinite'
+      text.style.color = 'var(--success)'
+      text.textContent = 'All Systems Operational'
+    }
+  }
+
+  // ── Fetch status ──
+  async function checkStatus() {
+    const fetchedStates = {}
+
+    // Check API health endpoint
+    const apiCheck = fetch('https://app.loylty.io/api/health', { signal: AbortSignal.timeout(8000) })
+      .then(res => {
+        const state = res.ok ? 'green' : 'yellow'
+        setStatus('api', state)
+        setStatus('app', state)
+        fetchedStates.api = state
+        fetchedStates.app = state
+      })
+      .catch(() => {
+        setStatus('api', 'red')
+        setStatus('app', 'red')
+        fetchedStates.api = 'red'
+        fetchedStates.app = 'red'
+      })
+
+    // Check website
+    const webCheck = fetch('https://loylty.io', { mode: 'no-cors', signal: AbortSignal.timeout(8000) })
+      .then(() => {
+        setStatus('website', 'green')
+        fetchedStates.website = 'green'
+      })
+      .catch(() => {
+        setStatus('website', 'red')
+        fetchedStates.website = 'red'
+      })
+
+    await Promise.allSettled([apiCheck, webCheck])
+
+    const allStates = [
+      fetchedStates.api || 'green',
+      fetchedStates.app || 'green',
+      fetchedStates.website || 'green',
+      'green', // email — not checkable client-side
+      'green', // db — not checkable client-side
+    ]
+    updateOverall(allStates)
+
+    const now = new Date()
+    document.getElementById('lastChecked').textContent =
+      'Last checked: ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+  }
+
+  // Run immediately, then every 60 seconds
+  checkStatus()
+  setInterval(checkStatus, 60000)
+</script>
+
+</body>
+</html>

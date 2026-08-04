@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — Loylty</title>
+  <meta name="description" content="Terms of Service for Loylty by Industry Registry Network LLC. The binding agreement governing your use of the platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080c14;
+      --bg-surface:#0f172a;
+      --bg-card:   #141e30;
+      --bg-code:   #0a0f1a;
+      --border:    rgba(255,255,255,0.07);
+      --border-mid:rgba(255,255,255,0.12);
+      --text:      #e8edf5;
+      --text-muted:#6b7a99;
+      --text-dim:  #94a3b8;
+      --accent:    #4f8eff;
+      --accent2:   #6a5acd;
+      --success:   #22c55e;
+      --warning:   #f59e0b;
+      --danger:    #ef4444;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top bar ── */
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 58px;
+      background: rgba(8,12,20,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 28px;
+      gap: 24px;
+    }
+    .topbar-logo {
+      font-size: 18px; font-weight: 800; letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #4f8eff, #a78bfa);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+    .topbar-divider { width: 1px; height: 20px; background: var(--border-mid); }
+    .topbar-label { font-size: 14px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links { margin-left: auto; display: flex; gap: 20px; }
+    .topbar-links a { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+    .topbar-links a:hover { color: var(--text); text-decoration: none; }
+    .topbar-cta {
+      background: linear-gradient(135deg, #4f8eff, #6a5acd);
+      color: #fff !important;
+      padding: 7px 18px; border-radius: 8px;
+      font-size: 13px; font-weight: 600;
+    }
+
+    /* ── Layout ── */
+    .page-wrap {
+      margin-top: 58px;
+      min-height: calc(100vh - 58px);
+      padding: 52px 24px 100px;
+    }
+
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* ── Hero ── */
+    .page-hero {
+      margin-bottom: 52px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .page-hero-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: 34px; font-weight: 800; letter-spacing: -0.02em;
+      line-height: 1.2; margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 40%, #94a3b8);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-hero .meta {
+      font-size: 13px; color: var(--text-muted);
+    }
+
+    /* ── Sections ── */
+    .doc-section {
+      margin-bottom: 48px;
+      scroll-margin-top: 80px;
+    }
+
+    h2 {
+      font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+      margin-bottom: 12px; margin-top: 0;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 16px; font-weight: 600;
+      margin-bottom: 8px; margin-top: 0;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 14px; color: var(--text-dim); }
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      margin: 10px 0 14px 20px;
+      color: var(--text-dim);
+    }
+    ul li { margin-bottom: 6px; line-height: 1.65; }
+
+    /* All-caps legal blocks */
+    .legal-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .section-divider {
+      border: none; border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    .callout {
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 14px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+    .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .callout-body { color: var(--text-dim); line-height: 1.6; }
+    .callout-body strong { color: var(--text); }
+    .callout-tip  { background: rgba(79,142,255,0.08); border: 1px solid rgba(79,142,255,0.2); }
+    .callout-warn { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2); }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border-mid);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+    }
+    .toc-title {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .toc ol {
+      margin: 0; padding-left: 20px;
+      color: var(--text-dim);
+    }
+    .toc ol li { margin-bottom: 4px; font-size: 14px; }
+    .toc ol li a { color: var(--accent); }
+
+    /* ── Footer ── */
+    .page-footer {
+      margin-top: 72px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .page-footer a { color: var(--text-muted); }
+    .page-footer a:hover { color: var(--text); }
+
+    @media (max-width: 700px) {
+      .topbar-label { display: none; }
+      .topbar-links a:not(.topbar-cta) { display: none; }
+      .page-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<nav class="topbar">
+  <a class="topbar-logo" href="https://loylty.io">Loylty</a>
+  <div class="topbar-divider"></div>
+  <span class="topbar-label">Terms of Service</span>
+  <div class="topbar-links">
+    <a href="https://loylty.io">Home</a>
+    <a href="https://loylty.io/#pricing">Pricing</a>
+    <a href="https://app.loylty.io" class="topbar-cta">Get Started Free</a>
+  </div>
+</nav>
+
+<div class="page-wrap">
+  <div class="content">
+
+    <div class="page-hero">
+      <div class="page-hero-eyebrow">Legal</div>
+      <h1>Terms of Service</h1>
+      <p class="meta">Industry Registry Network LLC &nbsp;·&nbsp; Effective August 4, 2026</p>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc">
+      <div class="toc-title">Table of Contents</div>
+      <ol>
+        <li><a href="#agreement">Agreement to Terms</a></li>
+        <li><a href="#service-description">Service Description</a></li>
+        <li><a href="#acceptable-use">Acceptable Use</a></li>
+        <li><a href="#account-registration">Account Registration</a></li>
+        <li><a href="#free-tier">Free Tier</a></li>
+        <li><a href="#payment-terms">Payment Terms</a></li>
+        <li><a href="#intellectual-property">Intellectual Property</a></li>
+        <li><a href="#disclaimer">Disclaimer of Warranties</a></li>
+        <li><a href="#limitation">Limitation of Liability</a></li>
+        <li><a href="#termination">Termination</a></li>
+        <li><a href="#governing-law">Governing Law</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </div>
+
+    <!-- 1. Agreement -->
+    <section class="doc-section" id="agreement">
+      <h2>1. Agreement to Terms</h2>
+      <p>By accessing or using Loylty (the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, you may not access or use the Service.</p>
+      <p>These Terms constitute a legally binding agreement between you ("User" or "you") and Industry Registry Network LLC ("Company", "we", "us", or "our"), a limited liability company incorporated under the laws of the State of Florida. The Service is operated at <a href="https://loylty.io" target="_blank">loylty.io</a> and <a href="https://app.loylty.io" target="_blank">app.loylty.io</a>.</p>
+      <p>We may update these Terms from time to time. Continued use of the Service after any update constitutes acceptance of the revised Terms. We will provide notice of material changes as described in Section 12.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 2. Service Description -->
+    <section class="doc-section" id="service-description">
+      <h2>2. Service Description</h2>
+      <p>Loylty is a B2B outreach automation platform that enables users to find, fill, and submit contact forms on business websites at scale. The Service includes prospect database access, campaign management, message templating, AI-assisted personalization, and related features.</p>
+      <p>You are solely responsible for all outreach messages you send through the platform, including their content, accuracy, and compliance with applicable laws. The Company acts as a technology provider only — we do not review, edit, or take responsibility for the individual outreach messages you compose or send.</p>
+      <div class="callout callout-warn">
+        <span class="callout-icon">⚠️</span>
+        <div class="callout-body"><strong>Your responsibility.</strong> Loylty is a tool. How you use it is your decision. You are responsible for ensuring your outreach complies with CAN-SPAM, TCPA, GDPR, and all other applicable laws in the jurisdictions where you operate and where your recipients are located.</div>
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 3. Acceptable Use -->
+    <section class="doc-section" id="acceptable-use">
+      <h2>3. Acceptable Use</h2>
+      <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. Specifically, you agree to:</p>
+      <ul>
+        <li>Comply with all applicable federal, state, and local laws, including but not limited to CAN-SPAM, TCPA, GDPR, and applicable state privacy laws.</li>
+        <li>Only contact businesses you have a legitimate commercial reason to contact.</li>
+        <li>Ensure your outreach messages are truthful, clearly identify you as the sender, and include an accurate return address or contact method.</li>
+        <li>Honor opt-out or unsubscribe requests promptly.</li>
+      </ul>
+      <p>You agree not to use the Service to:</p>
+      <ul>
+        <li>Send spam, unsolicited bulk messages, or messages with deceptive or misleading content.</li>
+        <li>Harass, threaten, or intimidate any individual or business.</li>
+        <li>Engage in fraudulent activity or impersonate any person or entity.</li>
+        <li>Attempt to reverse engineer, decompile, or circumvent any part of the Service.</li>
+        <li>Use the Service in any manner that could harm our infrastructure or the experience of other users.</li>
+        <li>Resell or sublicense access to the Service without our prior written consent.</li>
+      </ul>
+      <p>We reserve the right to investigate suspected violations and to suspend or terminate accounts without notice if we determine that a violation has occurred. We are the sole judge of what constitutes a violation.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 4. Account Registration -->
+    <section class="doc-section" id="account-registration">
+      <h2>4. Account Registration</h2>
+      <p>To use Loylty, you must register for an account. You agree to provide accurate, current, and complete information during registration and to keep that information up to date.</p>
+      <p>You are responsible for maintaining the confidentiality of your account credentials, including your password. You are responsible for all activity that occurs under your account, whether or not you authorized it.</p>
+      <p>If you become aware of any unauthorized access to your account, you must notify us immediately at <a href="mailto:support@loylty.io">support@loylty.io</a>. We are not liable for any losses arising from unauthorized use of your account that occurs before notification.</p>
+      <p>You may not create an account on behalf of another person without their express consent. Business accounts may be used by authorized employees of that business only.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 5. Free Tier -->
+    <section class="doc-section" id="free-tier">
+      <h2>5. Free Tier</h2>
+      <p>Free accounts receive 100 outreach submissions to evaluate the Service. After 100 submissions have been used, a paid subscription plan is required to continue sending outreach through the platform.</p>
+      <p>The features and limits of the free tier may change at any time at our discretion. We will provide reasonable notice of changes that materially reduce the value of the free tier to existing users who have not yet used their 100 submissions.</p>
+      <p>Free tier access does not guarantee continued availability of any specific feature and should not be relied upon for mission-critical business operations.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 6. Payment Terms -->
+    <section class="doc-section" id="payment-terms">
+      <h2>6. Payment Terms</h2>
+      <p>Paid plans are billed on a monthly or annual basis, depending on the plan you select. All billing is processed securely through Stripe. By subscribing, you authorize us to charge your payment method on a recurring basis at the applicable plan rate.</p>
+      <p>Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can cancel at any time through the Billing section of the application or by emailing <a href="mailto:support@loylty.io">support@loylty.io</a>. Cancellation takes effect at the end of the current billing period — you retain full access until then.</p>
+      <p>Refunds are not provided for partial billing periods or unused portions of a subscription. If you cancel mid-period, your access continues through the end of the period you have already paid for.</p>
+      <p>We reserve the right to change pricing with 30 days' advance notice. Price changes will not affect your current billing period — they take effect at the next renewal after the notice period has elapsed. Continued use of the Service after a price change takes effect constitutes acceptance of the new pricing.</p>
+      <p>Accounts with failed payments will be given a grace period of 7 days before access is restricted. We will attempt to notify you by email before restricting access.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 7. Intellectual Property -->
+    <section class="doc-section" id="intellectual-property">
+      <h2>7. Intellectual Property</h2>
+      <p>Loylty, its software, user interface, design, documentation, and all underlying technology are owned by Industry Registry Network LLC and are protected by applicable intellectual property laws. All rights not expressly granted in these Terms are reserved by the Company.</p>
+      <p>You retain full ownership of your data — the outreach messages you write, the prospect lists you import, and the campaign results you generate. Nothing in these Terms transfers ownership of your data to us.</p>
+      <p>You grant us a limited, non-exclusive, royalty-free license to store, process, and transmit your data solely to the extent necessary to provide the Service to you. We do not use your data for any other purpose.</p>
+      <p>You may not copy, modify, distribute, sell, or create derivative works based on the Loylty platform without our prior written consent.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 8. Disclaimer -->
+    <section class="doc-section" id="disclaimer">
+      <h2>8. Disclaimer of Warranties</h2>
+      <div class="legal-block">
+        THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, INDUSTRY REGISTRY NETWORK LLC EXPRESSLY DISCLAIMS ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+        <br /><br />
+        WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. WE DO NOT WARRANT THAT OUTREACH SUBMISSIONS WILL BE SUCCESSFUL, THAT CONTACT FORMS WILL BE FOUND OR FILLED CORRECTLY, OR THAT ANY PARTICULAR BUSINESS OUTCOME WILL RESULT FROM YOUR USE OF THE SERVICE.
+        <br /><br />
+        THE PROSPECT DATA IN THE LOYLTY DATABASE IS PROVIDED FOR INFORMATIONAL PURPOSES. WE MAKE NO REPRESENTATIONS REGARDING ITS ACCURACY, COMPLETENESS, OR CURRENCY.
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 9. Limitation of Liability -->
+    <section class="doc-section" id="limitation">
+      <h2>9. Limitation of Liability</h2>
+      <div class="legal-block">
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, INDUSTRY REGISTRY NETWORK LLC AND ITS OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, LOSS OF DATA, LOSS OF GOODWILL, BUSINESS INTERRUPTION, OR COST OF SUBSTITUTE SERVICES, ARISING OUT OF OR RELATING TO YOUR USE OF OR INABILITY TO USE THE SERVICE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+        <br /><br />
+        OUR TOTAL CUMULATIVE LIABILITY TO YOU FOR ANY AND ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE TOTAL AMOUNT YOU PAID TO US IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
+        <br /><br />
+        SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OR LIMITATION OF INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATIONS MAY NOT APPLY TO YOU IN FULL.
+      </div>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 10. Termination -->
+    <section class="doc-section" id="termination">
+      <h2>10. Termination</h2>
+      <p>You may cancel your account at any time by going to the Billing section of the application or by emailing <a href="mailto:support@loylty.io">support@loylty.io</a>. Upon cancellation, your subscription will not renew and your access will continue through the end of the current billing period.</p>
+      <p>We may suspend or terminate your account immediately, without prior notice, if we determine that you have violated these Terms, engaged in fraudulent activity, or that continued access poses a risk to the Service or other users. We will provide an explanation where possible.</p>
+      <p>Upon termination of your account for any reason, your data will be retained for 30 days, during which time you may request an export at <a href="mailto:support@loylty.io">support@loylty.io</a>. After 30 days, your account data will be permanently deleted. Billing records subject to legal retention requirements will be retained as described in our Privacy Policy.</p>
+      <p>Sections 7 (Intellectual Property), 8 (Disclaimer of Warranties), 9 (Limitation of Liability), and 11 (Governing Law) survive termination of these Terms.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 11. Governing Law -->
+    <section class="doc-section" id="governing-law">
+      <h2>11. Governing Law</h2>
+      <p>These Terms are governed by and construed in accordance with the laws of the State of Florida, without regard to its conflict of law principles.</p>
+      <p>Any dispute arising out of or relating to these Terms or the Service that cannot be resolved informally shall be submitted to the exclusive jurisdiction of the state and federal courts located in Florida. You consent to personal jurisdiction and venue in those courts.</p>
+      <p>Before filing any formal legal claim, you agree to contact us at <a href="mailto:support@loylty.io">support@loylty.io</a> and give us 30 days to attempt to resolve the dispute informally. This requirement does not apply to claims for injunctive or other equitable relief.</p>
+    </section>
+
+    <hr class="section-divider" />
+
+    <!-- 12. Contact -->
+    <section class="doc-section" id="contact">
+      <h2>12. Contact</h2>
+      <p>If you have questions about these Terms, please contact us:</p>
+      <div class="callout callout-tip">
+        <span class="callout-icon">✉️</span>
+        <div class="callout-body">
+          <strong>Industry Registry Network LLC</strong><br />
+          State of Florida<br />
+          Email: <a href="mailto:support@loylty.io">support@loylty.io</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="page-footer">
+      <span>© 2026 Industry Registry Network LLC</span>
+      <span>
+        <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+        <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+        <a href="support.html">Support</a> &nbsp;·&nbsp;
+        <a href="https://loylty.io">loylty.io</a>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
