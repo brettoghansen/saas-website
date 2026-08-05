@@ -1494,7 +1494,7 @@ footer p { color: var(--muted); font-size: 13px; }
   </div>
   <script>
     (function(){
-      if (!localStorage.getItem('cookie_consent')) {
+      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') { document.getElementById('cookie-banner').style.display = 'none'; } else if (!localStorage.getItem('cookie_consent')) {
         document.getElementById('cookie-banner').style.display = 'flex';
       }
     })();
