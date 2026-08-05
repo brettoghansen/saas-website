@@ -118,6 +118,29 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; }
 </style>
 </head>
 <body>
+  <!-- Launch Special Banner -->
+  <div id="launch-banner" style="display:none;position:relative;z-index:10000;background:linear-gradient(90deg,#1a0a3e 0%,#0f1a3e 40%,#0a1a2e 100%);border-bottom:1px solid rgba(79,142,255,0.3);padding:11px 20px;font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;">
+    <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;">
+      <span style="font-size:15px;">🚀</span>
+      <span style="font-size:13.5px;color:#c8d8ff;font-weight:500;line-height:1.5;">
+        <strong style="color:#fff;font-weight:700;">Launch Special:</strong>
+        Join any paid plan by <strong style="color:#a78bfa;">September 30</strong> and earn
+        <strong style="color:#4f8eff;">20% lifetime commissions</strong> on every referral — forever.
+      </span>
+      <a href="/affiliates" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#4f8eff,#7b5cf0);color:#fff;text-decoration:none;padding:6px 16px;border-radius:20px;font-size:12.5px;font-weight:700;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 12px rgba(79,142,255,0.35);">
+        Learn more →
+      </a>
+    </div>
+    <button onclick="document.getElementById('launch-banner').style.display='none';localStorage.setItem('launch_banner_dismissed','1')" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(200,216,255,0.45);font-size:18px;cursor:pointer;line-height:1;padding:4px 6px;" aria-label="Dismiss">×</button>
+  </div>
+  <script>
+    (function(){
+      if(!localStorage.getItem('launch_banner_dismissed')){
+        document.getElementById('launch-banner').style.display='block';
+      }
+    })();
+  </script>
+
 
 <nav>
   <a class="logo" href="https://loylty.io">
