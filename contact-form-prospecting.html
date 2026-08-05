@@ -480,5 +480,16 @@ function closeMobileNav() { var b=document.querySelector('.nav-hamburger'),d=doc
 window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobileNav(); });
 (function(){ if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('visible');});return;} var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:0.10,rootMargin:'0px 0px -32px 0px'}); document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);}); })();
 </script>
+
+  <!-- Scroll to top -->
+  <button id="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" style="display:none;position:fixed;bottom:28px;right:28px;z-index:9999;width:44px;height:44px;border-radius:50%;border:none;cursor:pointer;background:linear-gradient(135deg,#4f8eff 0%,#7c3aed 100%);box-shadow:0 4px 20px rgba(79,142,255,0.45);color:#fff;font-size:18px;line-height:1;transition:opacity 0.2s,transform 0.2s;">&#8679;</button>
+  <script>
+    (function(){
+      var btn = document.getElementById("stt");
+      window.addEventListener("scroll", function(){ btn.style.display = window.scrollY > 400 ? "block" : "none"; }, {passive:true});
+      btn.addEventListener("mouseenter", function(){ this.style.transform="translateY(-2px)"; this.style.boxShadow="0 8px 28px rgba(79,142,255,0.6)"; });
+      btn.addEventListener("mouseleave", function(){ this.style.transform="translateY(0)"; this.style.boxShadow="0 4px 20px rgba(79,142,255,0.45)"; });
+    })();
+  </script>
 </body>
 </html>
