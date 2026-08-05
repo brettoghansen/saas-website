@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Core -->
+  <url><loc>https://loylty.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://loylty.io/docs</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/affiliates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/support</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://loylty.io/status</loc><changefreq>daily</changefreq><priority>0.5</priority></url>
+  <url><loc>https://loylty.io/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://loylty.io/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://loylty.io/affiliate-terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- SEO / comparison pages -->
+  <url><loc>https://loylty.io/best-b2b-prospecting-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/best-cold-email-alternatives</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/best-outreach-software</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-automation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-campaigns</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-lead-generation</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-marketing</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-outreach</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-prospecting</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-sales</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/contact-form-submission</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-apollo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-clay</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-cold-email</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-instantly</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-lemlist</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://loylty.io/loylty-vs-smartlead</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+</urlset>

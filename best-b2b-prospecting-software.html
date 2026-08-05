@@ -395,5 +395,32 @@ window.addEventListener('resize',function(){ if(window.innerWidth>768)closeMobil
       btn.addEventListener("mouseleave", function(){ this.style.transform="translateY(0)"; this.style.boxShadow="0 4px 20px rgba(79,142,255,0.45)"; });
     })();
   </script>
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#0d0f1e;border-top:1px solid rgba(79,142,255,0.25);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;">
+    <p style="margin:0;font-size:13px;color:#8a94b0;line-height:1.5;flex:1;min-width:240px;">
+      We use cookies to improve your experience and analyze site usage. By continuing, you agree to our
+      <a href="/privacy" style="color:#4f8eff;text-decoration:underline;">Privacy Policy</a>.
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="dismissCookies()" style="padding:8px 20px;border-radius:7px;border:1px solid rgba(79,142,255,0.3);background:transparent;color:#8a94b0;font-size:13px;cursor:pointer;font-family:inherit;">Decline</button>
+      <button onclick="acceptCookies()" style="padding:8px 20px;border-radius:7px;border:none;background:linear-gradient(135deg,#4f8eff 0%,#7c3aed 100%);color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;">Accept</button>
+    </div>
+  </div>
+  <script>
+    (function(){
+      if (!localStorage.getItem('cookie_consent')) {
+        document.getElementById('cookie-banner').style.display = 'flex';
+      }
+    })();
+    function acceptCookies() {
+      localStorage.setItem('cookie_consent', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+    function dismissCookies() {
+      localStorage.setItem('cookie_consent', 'declined');
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
 </body>
 </html>

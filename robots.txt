@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Disallow: /coming-soon
+
+Sitemap: https://loylty.io/sitemap.xml

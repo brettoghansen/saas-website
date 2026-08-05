@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page Not Found — Loylty</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #05050a; --surface: #0e0e1a; --border: rgba(255,255,255,0.07);
+  --accent: #4f8eff; --purple: #8b5cf6; --text: #eef0f8;
+  --muted: #42465e; --mid: #7a86a8;
+}
+html, body { min-height: 100vh; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  display: flex; flex-direction: column;
+}
+nav {
+  padding: 20px 40px; display: flex; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: linear-gradient(135deg, #4f8eff, #7b5cf0);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 17px; color: #fff;
+  box-shadow: 0 4px 14px rgba(79,142,255,0.35);
+}
+.logo-text { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 20px; color: var(--text); }
+main {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 60px 24px; text-align: center;
+}
+.code {
+  font-family: 'Outfit', sans-serif; font-size: 120px; font-weight: 900; line-height: 1;
+  background: linear-gradient(135deg, #4f8eff 0%, #8b5cf6 60%, #4f8eff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+  margin-bottom: 24px;
+  letter-spacing: -4px;
+}
+@keyframes shimmer { to { background-position: 200% center; } }
+h1 { font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 28px; margin-bottom: 14px; }
+p { color: var(--mid); font-size: 16px; max-width: 400px; line-height: 1.7; margin-bottom: 40px; }
+.actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+.btn-primary {
+  padding: 12px 28px; border-radius: 9px; border: none; cursor: pointer;
+  background: linear-gradient(135deg, #4f8eff, #7b5cf0);
+  color: #fff; font-size: 15px; font-weight: 600;
+  font-family: inherit; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(79,142,255,0.3);
+  transition: opacity 0.15s, transform 0.15s;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-secondary {
+  padding: 12px 28px; border-radius: 9px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--mid); font-size: 15px; font-weight: 500;
+  font-family: inherit; text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--accent); color: var(--text); }
+.links {
+  margin-top: 56px; display: flex; gap: 28px; flex-wrap: wrap;
+  justify-content: center; border-top: 1px solid var(--border); padding-top: 40px;
+}
+.links a { color: var(--mid); font-size: 14px; text-decoration: none; transition: color 0.15s; }
+.links a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-mark">L</div>
+    <span class="logo-text">Loylty</span>
+  </a>
+</nav>
+
+<main>
+  <div class="code">404</div>
+  <h1>Page not found</h1>
+  <p>This page doesn't exist — or it moved. Either way, let's get you back on track.</p>
+  <div class="actions">
+    <a href="/" class="btn-primary">Back to Home</a>
+    <a href="/?view=signup" class="btn-secondary">Start Free</a>
+  </div>
+  <div class="links">
+    <a href="/docs">Documentation</a>
+    <a href="/support">Support</a>
+    <a href="/affiliates">Affiliates</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/terms">Terms</a>
+    <a href="/privacy">Privacy</a>
+  </div>
+</main>
+
+</body>
+</html>
