@@ -1522,19 +1522,19 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center;">
       <span style="font-size:15px;">🚀</span>
       <span style="font-size:13.5px;color:#c8d8ff;font-weight:500;line-height:1.5;">
-        <strong style="color:#fff;font-weight:700;">Launch Special:</strong>
-        Join any paid plan by <strong style="color:#a78bfa;">September 30</strong> and earn
-        <strong style="color:#4f8eff;">20% lifetime commissions</strong> on every referral — forever.
+        <strong style="color:#fff;font-weight:700;">Affiliate Program:</strong>
+        Refer anyone to Loylty and earn
+        <strong style="color:#4f8eff;">20% lifetime commissions</strong> on every referral — as long as they stay.
       </span>
       <a href="/affiliates" style="display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#4f8eff,#7b5cf0);color:#fff;text-decoration:none;padding:6px 16px;border-radius:20px;font-size:12.5px;font-weight:700;white-space:nowrap;flex-shrink:0;box-shadow:0 2px 12px rgba(79,142,255,0.35);">
         Learn more →
       </a>
     </div>
-    <button onclick="document.getElementById('launch-banner').style.display='none';localStorage.setItem('launch_banner_dismissed','1')" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(200,216,255,0.45);font-size:18px;cursor:pointer;line-height:1;padding:4px 6px;" aria-label="Dismiss">×</button>
+    <button onclick="document.getElementById('launch-banner').style.display='none';localStorage.setItem('lbv3_dismissed','1')" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(200,216,255,0.45);font-size:18px;cursor:pointer;line-height:1;padding:4px 6px;" aria-label="Dismiss">×</button>
   </div>
   <script>
     (function(){
-      if(!localStorage.getItem('launch_banner_dismissed')){
+      if(!localStorage.getItem('lbv3_dismissed')){
         document.getElementById('launch-banner').style.display='block';
       }
     })();
@@ -1688,111 +1688,94 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
   </div>
 </div>
 
-<!-- ══ WHO IT'S FOR ══ -->
-<section class="who-section">
-  <div class="who-header reveal">
-    <div class="section-eyebrow">👥 Who it's for</div>
-    <h2 class="s-h2">Built for Anyone Who Needs to Reach Businesses Fast</h2>
-    <p class="s-body" style="margin: 0 auto;">Whether you're running outbound for a Fortune 500 or validating an idea solo, Loylty puts your message in front of the right businesses — at scale.</p>
-  </div>
-  <div class="who-grid">
+<!-- ══ INTEGRATIONS ══ -->
+<section class="int-section" id="integrations">
+  <div class="inner">
+    <div class="int-header">
+      <div class="section-eyebrow reveal" style="justify-content:center;">Lead Sources</div>
+      <h2 class="s-h2 reveal reveal-delay-1">Three ways to fill a campaign.</h2>
+      <p class="s-body reveal reveal-delay-2">Your own data, our database, or scrape Google Maps and Yellow Pages in one click. Never run out of prospects.</p>
+    </div>
 
-    <div class="who-card reveal">
-      <div class="who-icon who-icon-orange">📣</div>
-      <h3>B2B Marketers</h3>
-      <p>Your cold email list is hitting spam filters. Contact forms bypass every inbox algorithm and land where real customers do — directly in the business's own inbox.</p>
-      <div class="who-checks">
-        <div class="who-check">New outbound channel, zero domain risk</div>
-        <div class="who-check">AI writes a message using their own site</div>
-        <div class="who-check">Stack on top of your existing campaigns</div>
+    <!-- Lead source cards -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;" class="reveal reveal-delay-1">
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 22px;">
+        <div style="font-size:28px;margin-bottom:12px;">📁</div>
+        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Your Data</div>
+        <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;">CSV Import</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Already have a list? Drop in a CSV. Loylty auto-maps columns, deduplicates, and loads every record into your campaign — no reformatting required.</p>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Smart column auto-mapping</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Built-in deduplication</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Any format · every plan</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 22px;">
+        <div style="font-size:28px;margin-bottom:12px;">🗄️</div>
+        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Built-In</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+          <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;">Business Database</div>
+          <span style="font-size:10px;background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:0.05em;white-space:nowrap;">BETA</span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">2.3M+ businesses indexed and searchable. Filter by industry, state, and city. Pull exactly the prospects you want without touching a spreadsheet.</p>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Filter by category + location</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> One-click import to campaign</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Pro &amp; Agency plans</div>
+        </div>
+      </div>
+
+      <div style="background:var(--surface);border:1px solid rgba(79,142,255,0.25);border-radius:14px;padding:24px 22px;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4f8eff,#7c6fff);border-radius:14px 14px 0 0;"></div>
+        <div style="font-size:28px;margin-bottom:12px;">⚡</div>
+        <div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Scraping Integrations</div>
+        <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;">Google Maps + Yellow Pages</div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Type a category and location, slide to a number, hit run. Pulls real listings directly from Google Maps and Yellow Pages into your campaign in minutes.</p>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Any category, any city or state</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Up to 1,000 results per run</div>
+          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Powered by Apify · ~$3–4 per 1k</div>
+        </div>
       </div>
     </div>
 
-    <div class="who-card reveal reveal-delay-1">
-      <div class="who-icon who-icon-blue">🏢</div>
-      <h3>Outbound Agencies</h3>
-      <p>One dashboard. Unlimited clients. Run separate campaigns with different messaging, sender profiles, and pacing for every client — all without switching accounts.</p>
-      <div class="who-checks">
-        <div class="who-check">Separate campaigns per client</div>
-        <div class="who-check">Custom sender profiles per account</div>
-        <div class="who-check">Agency-tier volume up to 500/day</div>
+    <div class="int-grid">
+      <div class="int-col reveal">
+        <div class="int-col-label">Email Sending</div>
+        <div class="int-items">
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Gmail / Outlook</div><div class="int-item-sub">Email fallback channel</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">SMTP (any provider)</div><div class="int-item-sub">Bring your own sender</div></div></div>
+        </div>
+      </div>
+      <div class="int-col reveal reveal-delay-1">
+        <div class="int-col-label">AI &amp; CAPTCHA</div>
+        <div class="int-items">
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">AI Form Detection</div><div class="int-item-sub">Field mapping + message generation</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">CAPTCHA Solver</div><div class="int-item-sub">reCAPTCHA, hCaptcha, image</div></div></div>
+        </div>
+      </div>
+      <div class="int-col reveal reveal-delay-2">
+        <div class="int-col-label">Scraping</div>
+        <div class="int-items">
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Google Maps</div><div class="int-item-sub">Local business scraper</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Yellow Pages</div><div class="int-item-sub">Category + location scraper</div></div></div>
+          <div class="int-item"><div class="int-dot" style="background:var(--border);box-shadow:none;"></div><div><div class="int-item-name">More scrapers</div><div class="int-item-sub">Yelp, Angi, and more</div></div><span class="int-coming">Soon</span></div>
+        </div>
+      </div>
+      <div class="int-col reveal reveal-delay-3">
+        <div class="int-col-label">Data &amp; Export</div>
+        <div class="int-items">
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">CSV Import / Export</div><div class="int-item-sub">Any format</div></div></div>
+          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Activity Log</div><div class="int-item-sub">Full history for every record</div></div></div>
+          <div class="int-item"><div class="int-dot" style="background:var(--border);box-shadow:none;"></div><div><div class="int-item-name">REST API</div><div class="int-item-sub">Coming Agency plan</div></div><span class="int-coming">Soon</span></div>
+        </div>
       </div>
     </div>
-
-    <div class="who-card reveal reveal-delay-2">
-      <div class="who-icon who-icon-green">🎯</div>
-      <h3>Sales Teams</h3>
-      <p>Stop spending SDR hours manually researching and typing. Upload your ICP list, set your message once, and have hundreds of touches running before your first stand-up.</p>
-      <div class="who-checks">
-        <div class="who-check">Runs while your team works other deals</div>
-        <div class="who-check">Pause, adjust, and relaunch anytime</div>
-        <div class="who-check">Every submission logged automatically</div>
-      </div>
-    </div>
-
-    <div class="who-card reveal reveal-delay-3">
-      <div class="who-icon who-icon-purple">📋</div>
-      <h3>Data Providers</h3>
-      <p>You already have the lists. Drop your CSV in and Loylty figures out the rest — URL detection, field mapping, deduplication. Raw data becomes a live campaign in minutes.</p>
-      <div class="who-checks">
-        <div class="who-check">Smart CSV column auto-mapping</div>
-        <div class="who-check">Handles messy URL formats automatically</div>
-        <div class="who-check">Built-in deduplication across imports</div>
-      </div>
-    </div>
-
-    <div class="who-card reveal">
-      <div class="who-icon who-icon-amber">⚡</div>
-      <h3>Solopreneurs</h3>
-      <p>You don't have a sales team, a big budget, or time to waste. Import a list, write one message, and wake up to replies from businesses you've never spoken to.</p>
-      <div class="who-checks">
-        <div class="who-check">Free plan — 100 outreaches to start</div>
-        <div class="who-check">No setup fees, no annual contracts</div>
-        <div class="who-check">Run it yourself in under 10 minutes</div>
-      </div>
-    </div>
-
-    <div class="who-card reveal reveal-delay-1">
-      <div class="who-icon who-icon-teal">🔬</div>
-      <h3>Market Researchers</h3>
-      <p>Need to know if a market wants what you're selling? Send a test message to 500 businesses in a specific category and city. Real responses in 24 hours, not 2 weeks.</p>
-      <div class="who-checks">
-        <div class="who-check">Target by category, city, and state</div>
-        <div class="who-check">Test multiple messages simultaneously</div>
-        <div class="who-check">Real reply data — not survey guesses</div>
-      </div>
-    </div>
-
-    <div class="who-card reveal reveal-delay-2">
-      <div class="who-icon who-icon-rose">🧪</div>
-      <h3>Offer Testers</h3>
-      <p>Before you build the landing page, run the pitch. Send your offer to 200 real businesses in your target niche and let the reply rate tell you if you've got something.</p>
-      <div class="who-checks">
-        <div class="who-check">Validate before you invest in ads</div>
-        <div class="who-check">Compare offers with message variations</div>
-        <div class="who-check">Filter by niche for clean test data</div>
-      </div>
-    </div>
-
-    <div class="who-card reveal reveal-delay-3">
-      <div class="who-icon who-icon-cyan">🤝</div>
-      <h3>Recruiters &amp; Staffing</h3>
-      <p>Reach hiring managers at thousands of small businesses that never post on LinkedIn. Contact forms go straight to the owner — the person who actually makes the call.</p>
-      <div class="who-checks">
-        <div class="who-check">Bypass HR gatekeepers at SMBs</div>
-        <div class="who-check">Target by industry and geography</div>
-        <div class="who-check">Scale outreach without more headcount</div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Section CTA -->
-  <div style="text-align:center; margin-top:72px;" class="reveal">
-    <a href="coming-soon" class="btn-primary">Get Early Access →</a>
-    <p style="margin-top:14px; font-size:13px; color:var(--muted);">No credit card required. Cancel anytime.</p>
   </div>
 </section>
+
 
 <!-- ══ WHY IT WORKS ══ -->
 <section class="why-section" id="why">
@@ -2179,34 +2162,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
   </div>
 </section>
 
-<!-- ══ COMPLEMENT ══ -->
-<section class="complement-section">
-  <div class="inner">
-    <div class="complement-header">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Your Outbound Stack</div>
-      <h2 class="s-h2 reveal reveal-delay-1">A third channel — not a replacement.</h2>
-      <p class="reveal reveal-delay-2">Keep your cold email sequences. Keep your LinkedIn outreach. Loylty adds a third touch through an entirely different path — same prospect, different channel, zero overlap.</p>
-    </div>
-    <div class="complement-cols reveal reveal-delay-3">
-      <div class="cc-col cc-existing">
-        <div class="cc-label">What you're already doing</div>
-        <div class="cc-item">📧 Cold email sequences</div>
-        <div class="cc-item">💼 LinkedIn outreach</div>
-        <div class="cc-item">📞 Cold calls</div>
-      </div>
-      <div class="cc-plus">+</div>
-      <div class="cc-col cc-new">
-        <div class="cc-label new">What Loylty adds</div>
-        <div class="cc-item cc-highlight">📋 Contact form outreach</div>
-        <p>Delivery through the website inbox your targets actually monitor. Zero overlap with your email stack. No extra infrastructure. Starts the same day.</p>
-      </div>
-    </div>
-    <div class="complement-note reveal reveal-delay-4">
-      Multi-channel outreach converts at 3–5× the rate of single-channel. Loylty adds the touch that takes 20 minutes to set up — and runs while you sleep.
-    </div>
-  </div>
-</section>
-
 <!-- ══ COST COMPARISON ══ -->
 <section class="cost-section" id="cost">
   <div class="inner">
@@ -2364,195 +2319,6 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ══ DATABASE ══ -->
-<section class="db-section" id="database">
-  <div class="db-inner inner">
-    <div class="section-eyebrow reveal" style="justify-content:center;">Built-In Data</div>
-    <div class="db-100m reveal reveal-delay-1" style="display:flex;align-items:center;justify-content:center;gap:16px;">2.3M+ <span style="font-size:16px;background:rgba(245,158,11,0.12);color:#f59e0b;border:1px solid rgba(245,158,11,0.35);padding:4px 14px;border-radius:20px;font-weight:800;letter-spacing:0.08em;vertical-align:middle;">BETA</span></div>
-    <div class="db-label reveal reveal-delay-2">businesses. Already found.</div>
-    <p class="db-desc reveal reveal-delay-3">
-      No data vendor required. Loylty ships with 2.3 million indexed businesses — filtered by industry, geography, and business type. The Pro and Agency plans include full access. <strong style="color:#f59e0b;">Database is currently in beta</strong> — we're actively expanding coverage and cleaning categories. More coming soon.
-    </p>
-    <div class="db-tags reveal reveal-delay-4">
-      <span class="db-tag">Fence &amp; Gate</span>
-      <span class="db-tag">Roofing</span>
-      <span class="db-tag">HVAC</span>
-      <span class="db-tag">Plumbing</span>
-      <span class="db-tag">Electrical</span>
-      <span class="db-tag">Auto Repair</span>
-      <span class="db-tag">Dental</span>
-      <span class="db-tag">Law Firms</span>
-      <span class="db-tag">Landscaping</span>
-      <span class="db-tag">Pest Control</span>
-      <span class="db-tag">Real Estate</span>
-      <span class="db-tag">Insurance</span>
-    </div>
-    <div class="db-etc reveal">+ every other local business category you can think of</div>
-
-    <!-- Section CTA -->
-    <div style="text-align:center; margin-top:64px;" class="reveal">
-      <a href="coming-soon" class="btn-primary">Get Early Access →</a>
-      <p style="margin-top:14px; font-size:13px; color:var(--muted);">Free 100 sends. No CC required.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══ WORKFLOW ══ -->
-<section class="workflow-section" id="workflow">
-  <div class="inner">
-    <div class="workflow-grid">
-      <div>
-        <div class="section-eyebrow reveal">Workflow</div>
-        <h2 class="s-h2 reveal reveal-delay-1">Set it Monday morning.<br>Get replies by EOD.</h2>
-        <p class="s-body reveal reveal-delay-2" style="margin-bottom:0;">Loylty is designed for sales teams who need results fast — not engineers who want to build infrastructure.</p>
-
-        <div class="wf-items" style="margin-top:48px;">
-          <div class="wf-item reveal">
-            <div class="wf-icon-box">📥</div>
-            <div class="wf-body">
-              <h4>CSV Import or Database Filter</h4>
-              <p>Bring your own list or filter from 2.3M+ indexed businesses by industry, state, city, or zip code.</p>
-            </div>
-          </div>
-          <div class="wf-item reveal reveal-delay-1">
-            <div class="wf-icon-box">✍️</div>
-            <div class="wf-body">
-              <h4>Message Generation — 3 Modes</h4>
-              <p>Generic, Light Variation, or Personalized. Personalized mode uses visible site content to write an opening line specific to each company.</p>
-              <div class="wf-new">NEW: AI Personalization</div>
-            </div>
-          </div>
-          <div class="wf-item reveal reveal-delay-2">
-            <div class="wf-icon-box">🤖</div>
-            <div class="wf-body">
-              <h4>Automation Runs in Background</h4>
-              <p>Loylty navigates to each site, finds the form, solves CAPTCHAs, fills fields, and submits. No babysitting required.</p>
-            </div>
-          </div>
-          <div class="wf-item reveal reveal-delay-3">
-            <div class="wf-icon-box">📊</div>
-            <div class="wf-body">
-              <h4>Replies Surface Automatically</h4>
-              <p>Replies surface in your inbox automatically. Daily cap controls prevent over-sending. Full activity log for every record.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="wf-panels">
-        <div class="wf-panel reveal reveal-delay-1">
-          <div class="wfp-head">
-            <div class="wfp-title">Today's activity</div>
-            <div class="wfp-val">147 processed</div>
-          </div>
-          <div class="wfp-row"><div class="wfp-dot wfp-g"></div><div class="wfp-co">Texas Fence &amp; Gate</div><div class="wfp-st">Submitted · 3m</div></div>
-          <div class="wfp-row"><div class="wfp-dot wfp-b"></div><div class="wfp-co">Premier Fencing Solutions</div><div class="wfp-st">Running…</div></div>
-          <div class="wfp-row"><div class="wfp-dot wfp-g"></div><div class="wfp-co">Lone Star Fence Works</div><div class="wfp-st">Submitted · 9m</div></div>
-          <div class="wfp-row"><div class="wfp-dot wfp-a"></div><div class="wfp-co">Riverside Fence Pros</div><div class="wfp-st">CAPTCHA · retrying</div></div>
-          <div class="wfp-crm"><div class="wfp-crm-dot"></div><div class="wfp-crm"><strong>3 replies</strong> received today</div></div>
-        </div>
-
-        <div class="wf-panel reveal reveal-delay-2">
-          <div class="wfp-stats">
-            <div class="wfp-stat"><div class="wfp-stat-n" style="color:var(--green);">59</div><div class="wfp-stat-l">Sent in one session</div></div>
-            <div class="wfp-stat"><div class="wfp-stat-n" style="color:var(--accent);">6</div><div class="wfp-stat-l">Replies by EOD</div></div>
-            <div class="wfp-stat"><div class="wfp-stat-n">500</div><div class="wfp-stat-l">Sent on Friday</div></div>
-            <div class="wfp-stat"><div class="wfp-stat-n" style="color:var(--amber);">11</div><div class="wfp-stat-l">Replies by Monday</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ INTEGRATIONS ══ -->
-<section class="int-section" id="integrations">
-  <div class="inner">
-    <div class="int-header">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Lead Sources</div>
-      <h2 class="s-h2 reveal reveal-delay-1">Three ways to fill a campaign.</h2>
-      <p class="s-body reveal reveal-delay-2">Your own data, our database, or scrape Google Maps and Yellow Pages in one click. Never run out of prospects.</p>
-    </div>
-
-    <!-- Lead source cards -->
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;" class="reveal reveal-delay-1">
-
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 22px;">
-        <div style="font-size:28px;margin-bottom:12px;">📁</div>
-        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Your Data</div>
-        <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;">CSV Import</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Already have a list? Drop in a CSV. Loylty auto-maps columns, deduplicates, and loads every record into your campaign — no reformatting required.</p>
-        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Smart column auto-mapping</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Built-in deduplication</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Any format · every plan</div>
-        </div>
-      </div>
-
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 22px;">
-        <div style="font-size:28px;margin-bottom:12px;">🗄️</div>
-        <div style="font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Built-In</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-          <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;">Business Database</div>
-          <span style="font-size:10px;background:rgba(245,158,11,0.15);color:#f59e0b;border:1px solid rgba(245,158,11,0.3);padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:0.05em;white-space:nowrap;">BETA</span>
-        </div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">2.3M+ businesses indexed and searchable. Filter by industry, state, and city. Pull exactly the prospects you want without touching a spreadsheet.</p>
-        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Filter by category + location</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> One-click import to campaign</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Pro &amp; Agency plans</div>
-        </div>
-      </div>
-
-      <div style="background:var(--surface);border:1px solid rgba(79,142,255,0.25);border-radius:14px;padding:24px 22px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#4f8eff,#7c6fff);border-radius:14px 14px 0 0;"></div>
-        <div style="font-size:28px;margin-bottom:12px;">⚡</div>
-        <div style="font-size:13px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:8px;">Scraping Integrations</div>
-        <div style="font-size:18px;font-weight:800;letter-spacing:-0.3px;margin-bottom:10px;">Google Maps + Yellow Pages</div>
-        <p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0;">Type a category and location, slide to a number, hit run. Pulls real listings directly from Google Maps and Yellow Pages into your campaign in minutes.</p>
-        <div style="margin-top:14px;display:flex;flex-direction:column;gap:6px;">
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Any category, any city or state</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Up to 1,000 results per run</div>
-          <div style="font-size:12px;color:var(--muted);display:flex;gap:8px;align-items:center;"><span style="color:var(--green);">✓</span> Powered by Apify · ~$3–4 per 1k</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="int-grid">
-      <div class="int-col reveal">
-        <div class="int-col-label">Email Sending</div>
-        <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Gmail / Outlook</div><div class="int-item-sub">Email fallback channel</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">SMTP (any provider)</div><div class="int-item-sub">Bring your own sender</div></div></div>
-        </div>
-      </div>
-      <div class="int-col reveal reveal-delay-1">
-        <div class="int-col-label">AI &amp; CAPTCHA</div>
-        <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">AI Form Detection</div><div class="int-item-sub">Field mapping + message generation</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">CAPTCHA Solver</div><div class="int-item-sub">reCAPTCHA, hCaptcha, image</div></div></div>
-        </div>
-      </div>
-      <div class="int-col reveal reveal-delay-2">
-        <div class="int-col-label">Scraping</div>
-        <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Google Maps</div><div class="int-item-sub">Local business scraper</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Yellow Pages</div><div class="int-item-sub">Category + location scraper</div></div></div>
-          <div class="int-item"><div class="int-dot" style="background:var(--border);box-shadow:none;"></div><div><div class="int-item-name">More scrapers</div><div class="int-item-sub">Yelp, Angi, and more</div></div><span class="int-coming">Soon</span></div>
-        </div>
-      </div>
-      <div class="int-col reveal reveal-delay-3">
-        <div class="int-col-label">Data &amp; Export</div>
-        <div class="int-items">
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">CSV Import / Export</div><div class="int-item-sub">Any format</div></div></div>
-          <div class="int-item"><div class="int-dot"></div><div><div class="int-item-name">Activity Log</div><div class="int-item-sub">Full history for every record</div></div></div>
-          <div class="int-item"><div class="int-dot" style="background:var(--border);box-shadow:none;"></div><div><div class="int-item-name">REST API</div><div class="int-item-sub">Coming Agency plan</div></div><span class="int-coming">Soon</span></div>
-        </div>
-      </div>
-    </div>
   </div>
 </section>
 
