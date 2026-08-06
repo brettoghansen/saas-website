@@ -466,8 +466,17 @@ nav ul a:hover { color: var(--text); }
   content: ''; position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(79,142,255,0.05) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(139,92,246,0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 55% 60% at 85% 40%, rgba(79,142,255,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 55% at 5% 75%, rgba(139,92,246,0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 40% at 50% 10%, rgba(79,142,255,0.05) 0%, transparent 50%);
+  pointer-events: none;
+}
+.why-section::after {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 25% 35% at 20% 20%, rgba(139,92,246,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 35% 30% at 90% 90%, rgba(34,197,94,0.03) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -554,7 +563,16 @@ nav ul a:hover { color: var(--text); }
 .vs-section::before {
   content: ''; position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 50% 60% at 50% 0%, rgba(79,142,255,0.05) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 60% 50% at 50% -10%, rgba(79,142,255,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 10% 50%, rgba(239,68,68,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 40% at 90% 60%, rgba(34,197,94,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.vs-section::after {
+  content: ''; position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 40% at 50% 110%, rgba(139,92,246,0.05) 0%, transparent 55%);
   pointer-events: none;
 }
 .vs-header { text-align: center; margin-bottom: 72px; }
@@ -620,7 +638,17 @@ nav ul a:hover { color: var(--text); }
 }
 .how-section::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 40% at 50% 100%, rgba(79,142,255,0.04) 0%, transparent 65%);
+  background:
+    radial-gradient(ellipse 60% 45% at 15% 50%, rgba(79,142,255,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 35% at 85% 20%, rgba(139,92,246,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 70% 40% at 50% 105%, rgba(79,142,255,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.how-section::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 30% 30% at 50% 0%, rgba(79,142,255,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 25% 30% at 90% 85%, rgba(34,197,94,0.04) 0%, transparent 50%);
   pointer-events: none;
 }
 .how-header { text-align: center; margin-bottom: 64px; }
@@ -704,7 +732,17 @@ nav ul a:hover { color: var(--text); }
 }
 .bento-section::before {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(ellipse 60% 40% at 50% 100%, rgba(139,92,246,0.04) 0%, transparent 65%);
+  background:
+    radial-gradient(ellipse 55% 50% at 90% 40%, rgba(139,92,246,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 40% at 10% 60%, rgba(79,142,255,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 105%, rgba(139,92,246,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+.bento-section::after {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 35% 30% at 30% 5%, rgba(79,142,255,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 25% at 70% 95%, rgba(245,158,11,0.03) 0%, transparent 50%);
   pointer-events: none;
 }
 .bento-header { text-align: center; margin-bottom: 64px; }
@@ -1910,7 +1948,7 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     </div>
 
     <!-- Section CTA -->
-    <div style="text-align:center; margin-top:72px; padding-top:64px; border-top:1px solid var(--border);" class="reveal">
+    <div style="text-align:center; margin-top:48px;" class="reveal">
       <a href="coming-soon" class="btn-primary">Get Early Access →</a>
       <p style="margin-top:14px; font-size:13px; color:var(--muted);">Free 100 sends. No CC required.</p>
     </div>
@@ -1931,35 +1969,41 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <!-- Step 1 -->
       <div class="how-card reveal">
         <div class="how-card-bg">01</div>
-        <div class="how-card-icon ic-blue">📥</div>
+        <div class="how-card-icon ic-blue">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4f8eff" stroke-width="1.8"><rect x="2" y="3" width="16" height="4" rx="1.5"/><rect x="2" y="9" width="16" height="4" rx="1.5"/><rect x="2" y="15" width="10" height="4" rx="1.5"/><circle cx="18" cy="17" r="2.5" fill="#4f8eff" stroke="none"/><path d="M17 17h2M18 16v2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
         <div class="how-card-label">Step 1</div>
         <h4>Build your prospect list</h4>
-        <p>Bring a CSV, pull from our 2.3M+ database, or scrape Google Maps and Yellow Pages in one click.</p>
+        <p>Bring a CSV, pull from our 2.3M+ database, or pull from Google Maps and Yellow Pages via Apify (~$3–4 per 1,000 leads).</p>
         <div class="how-card-tags">
-          <span class="how-card-tag">📁 CSV upload</span>
-          <span class="how-card-tag">🗄️ Database</span>
-          <span class="how-card-tag">⚡ Scraper</span>
+          <span class="how-card-tag">CSV upload</span>
+          <span class="how-card-tag">Database</span>
+          <span class="how-card-tag">Apify scraper</span>
         </div>
       </div>
 
       <!-- Step 2 -->
       <div class="how-card reveal reveal-delay-1">
         <div class="how-card-bg">02</div>
-        <div class="how-card-icon ic-purple">✍️</div>
+        <div class="how-card-icon ic-purple">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#8b5cf6" stroke-width="1.8"><path d="M3 4h14a1 1 0 011 1v8a1 1 0 01-1 1H7l-4 3V5a1 1 0 011-1z"/><path d="M7 8h6M7 11h4"/></svg>
+        </div>
         <div class="how-card-label">Step 2</div>
         <h4>Write your message once</h4>
         <p>One template. Loylty handles the rest — generic sends, subtle variation, or AI-personalized per company.</p>
         <div class="how-card-tags">
           <span class="how-card-tag">Generic</span>
           <span class="how-card-tag">Varied</span>
-          <span class="how-card-tag">✨ AI mode</span>
+          <span class="how-card-tag">AI mode</span>
         </div>
       </div>
 
       <!-- Step 3 -->
       <div class="how-card reveal reveal-delay-2">
         <div class="how-card-bg">03</div>
-        <div class="how-card-icon ic-green">🤖</div>
+        <div class="how-card-icon ic-green">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#22c55e" stroke-width="1.8"><rect x="2" y="3" width="16" height="12" rx="2"/><path d="M6 17h8"/><path d="M10 15v2"/><circle cx="14" cy="7.5" r="3" stroke-width="0"/><path d="M12.5 7.5l1.5 1.5 2-2" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
         <div class="how-card-label">Step 3</div>
         <h4>Automation runs in the background</h4>
         <p>Loylty navigates to each site, detects the contact form, solves CAPTCHAs, fills fields, and submits.</p>
@@ -1972,7 +2016,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <!-- Step 4 -->
       <div class="how-card reveal reveal-delay-3">
         <div class="how-card-bg">04</div>
-        <div class="how-card-icon ic-amber">📬</div>
+        <div class="how-card-icon ic-amber">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#f59e0b" stroke-width="1.8"><rect x="2" y="4" width="16" height="13" rx="2"/><path d="M2 8l8 5 8-5"/><path d="M15 3l2 2-2 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
         <div class="how-card-label">Step 4</div>
         <h4>Replies come to you</h4>
         <p>Responses land in your inbox automatically. You only touch the ones worth responding to.</p>
@@ -1985,7 +2031,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
     </div>
 
     <div class="how-note reveal">
-      <div class="how-note-icon">🛡️</div>
+      <div class="how-note-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#4f8eff" stroke-width="1.7"><path d="M10 2L3 5v5c0 4.4 3.1 8.1 7 9 3.9-.9 7-4.6 7-9V5L10 2z"/><path d="M7.5 10.5l2 2 3-3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
       <div class="how-note-body">
         <strong>Loylty never auto-submits without your review.</strong> You set the campaign parameters and approve the message. The automation handles the mechanical work — you stay in control of what goes out.
       </div>
@@ -2265,7 +2313,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
 
       <!-- CAPTCHA -->
       <div class="bc bc-small reveal reveal-delay-1">
-        <div class="bc-icon bc-icon-amber">🔐</div>
+        <div class="bc-icon bc-icon-amber">
+          <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 6v7c0 5.5 3.9 10.1 9 11 5.1-0.9 9-5.5 9-11V6L13 2z"/><path d="M9.5 13.5l2.5 2.5 4.5-4.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
         <div class="bc-eyebrow">Auto-Solve</div>
         <h3>CAPTCHAs don't stop this campaign.</h3>
         <p>reCAPTCHA, hCaptcha, image puzzles — all solved in real time. A blocked form is a skipped row. The campaign keeps running.</p>
@@ -2299,7 +2349,9 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
       <!-- Message mode card — full width -->
       <div class="bc bc-full reveal">
         <div style="display:flex;align-items:flex-start;gap:20px;margin-bottom:8px;">
-          <div class="bc-icon bc-icon-blue" style="margin-bottom:0;flex-shrink:0;">✍️</div>
+          <div class="bc-icon bc-icon-blue" style="margin-bottom:0;flex-shrink:0;">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 3l4 4-12 12H7v-4L19 3z" stroke-linejoin="round"/><path d="M3 22h20" stroke-linecap="round"/></svg>
+          </div>
           <div>
             <div class="bc-eyebrow" style="margin-bottom:10px;">Message Mode</div>
             <h3 style="margin-bottom:0;">Most tools fake personalization.<br>This one actually reads their site.</h3>
@@ -2308,14 +2360,16 @@ footer { border-top: 1px solid var(--border); padding: 64px 56px 40px; margin-to
         <div class="bc-mode-compare">
           <div class="bc-mode-panel">
             <div class="bc-mode-panel-label">
-              <span>📝</span> Template Mode
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="12" height="14" rx="1.5"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
+              Template Mode
             </div>
             <div class="bc-mode-panel-desc">Your message, sent exactly as written. Fast, consistent, works at any volume. One template — Loylty handles field mapping, form detection, and submission automatically.</div>
             <div class="bc-mode-panel-footer" style="color:var(--green);">✓ Available on every plan</div>
           </div>
           <div class="bc-mode-panel bc-mode-panel-ai">
             <div class="bc-mode-panel-label bc-mode-panel-label-ai">
-              <span>✨</span> AI Mode
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 1v3M8 12v3M1 8h3M12 8h3M3.05 3.05l2.12 2.12M10.83 10.83l2.12 2.12M3.05 12.95l2.12-2.12M10.83 5.17l2.12-2.12" stroke-linecap="round"/></svg>
+              AI Mode
               <span class="bc-mode-cs-badge">Coming Soon</span>
             </div>
             <div class="bc-mode-panel-desc">While the browser is already on their page, AI reads their headline, description, and business name — then writes a custom opening line for that specific company. Not a mail-merge. A real reading of their site.</div>
