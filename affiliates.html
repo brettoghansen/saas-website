@@ -365,9 +365,9 @@
         <div style="flex:1; min-width:160px; background:linear-gradient(135deg,rgba(79,142,255,0.08),rgba(123,92,240,0.08)); border:1px solid rgba(79,142,255,0.3); border-radius:16px; padding:24px; text-align:center; position:relative;">
           <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;font-size:10px;font-weight:800;padding:3px 12px;border-radius:10px;letter-spacing:0.08em;">MOST POPULAR</div>
           <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--accent); text-transform:uppercase; margin-bottom:10px;">Per Pro Referral</div>
-          <div style="font-size:34px; font-weight:900; letter-spacing:-2px; color:var(--text);">$59.80</div>
+          <div style="font-size:34px; font-weight:900; letter-spacing:-2px; color:var(--text);">$49.80</div>
           <div style="font-size:13px; color:var(--muted); margin-top:6px;">every month, forever</div>
-          <div style="font-size:12px; color:var(--muted); margin-top:4px;">20% of $299/mo</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">20% of $249/mo</div>
         </div>
         <div style="flex:1; min-width:160px; background:linear-gradient(135deg,rgba(123,92,240,0.08),rgba(79,142,255,0.05)); border:1px solid rgba(123,92,240,0.25); border-radius:16px; padding:24px; text-align:center;">
           <div style="font-size:11px; font-weight:800; letter-spacing:0.12em; color:var(--purple); text-transform:uppercase; margin-bottom:10px;">Per Agency Referral</div>
@@ -384,7 +384,7 @@
               <div class="calc-label">Plan</div>
               <div style="display:flex; gap:8px; margin-top:10px;">
                 <button id="plan-starter" onclick="setPlan('starter')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:var(--bg);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Starter<br/><span style="font-size:11px;font-weight:500;">$99/mo</span></button>
-                <button id="plan-pro" onclick="setPlan('pro')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid var(--accent);background:rgba(79,142,255,0.1);color:var(--text);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Pro<br/><span style="font-size:11px;font-weight:500;">$299/mo</span></button>
+                <button id="plan-pro" onclick="setPlan('pro')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid var(--accent);background:rgba(79,142,255,0.1);color:var(--text);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Pro<br/><span style="font-size:11px;font-weight:500;">$249/mo</span></button>
                 <button id="plan-agency" onclick="setPlan('agency')" style="flex:1;padding:12px 8px;border-radius:10px;border:1px solid rgba(255,255,255,0.1);background:var(--bg);color:var(--muted);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:all 0.15s;">Agency<br/><span style="font-size:11px;font-weight:500;">$499/mo</span></button>
               </div>
             </div>
@@ -398,7 +398,7 @@
           <div class="calc-result">
             <div class="calc-result-card">
               <div class="calc-result-label">Your Monthly Recurring Income</div>
-              <div class="calc-result-n grad" id="monthly-result">$299</div>
+              <div class="calc-result-n grad" id="monthly-result">$249</div>
               <div class="calc-result-sub" id="monthly-sub">from 5 paying Pro customers</div>
             </div>
             <div>
@@ -546,7 +546,7 @@
             What plans does the commission apply to?
             <span class="faq-chevron">▾</span>
           </button>
-          <div class="faq-a">All paid plans — Starter ($99/mo), Pro ($299/mo), and Agency ($499/mo). Annual plans earn the commission on the full annual payment when it's made, rather than split monthly.</div>
+          <div class="faq-a">All paid plans — Starter ($99/mo), Pro ($249/mo), and Agency ($499/mo). Annual plans earn the commission on the full annual payment when it's made, rather than split monthly.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
@@ -615,7 +615,7 @@
   <script>
     // Calculator
     var currentPlan = 'pro'
-    var prices = { starter: 99, pro: 299, agency: 499 }
+    var prices = { starter: 99, pro: 249, agency: 499 }
     var planLabels = { starter: 'Starter', pro: 'Pro', agency: 'Agency' }
 
     function fmt(n) {
